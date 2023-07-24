@@ -3,7 +3,7 @@
 
 int main(void)
 {
-    string name = get_string("enter your name: ");
+    int age = get_int("enter your age: ");
 
-    printf("The name you entered is : %s\n", name);
+    printf("You are %i years old\n", age);
 }
