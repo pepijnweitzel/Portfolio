@@ -1,9 +1,9 @@
-#include stdio.h
-#include cs50.h
+#include <stdio.h>
+#include <cs50.h>
 
 int main(void)
 {
-    string name = get_string("enter your name: ")
+    string name = get_string("enter your name: ");
 
-    printf(%s, name)
+    printf("The name you entered is : %s\n", name);
 }
