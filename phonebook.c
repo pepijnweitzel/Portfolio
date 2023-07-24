@@ -7,7 +7,5 @@ int main(void)
     string name = get_string("enter your name: ");
     string number = get_string("enter your phone number: ");
 
-    printf("Your name is %s \n", name);
-    printf("You are %i years old\n", age);
-    printf("And your phone number is: %s\n", number);
+    printf("%s is %i years old and is reachable on: %s\n", name, age, number);
 }
