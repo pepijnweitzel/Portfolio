@@ -3,6 +3,20 @@
 
 int main(void)
 {
+    int start;
+    do
+    {
+        start = get_int("What is the starting population of lama's? \n");
+
+    }
+    while (start < 9);
+
+    int goal
+    do
+    {
+        goal = get_int("What is the goal population of lama's? \n");
+    }
+    while ()
     int start = get_int("What is the starting population of lama's? \n");
     int goal = get_int("What is the goal population of lama's? \n");
 
