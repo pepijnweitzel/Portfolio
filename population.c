@@ -7,6 +7,19 @@ int main(void)
     int goal = get_int("What is the goal population of lama's? \n");
 
     //every year n/3 get born and n/4 die
-    
-    printf("%i %i\n", start, goal);
+
+    int y = 0;
+    while (start < goal)
+    {
+        int n = start;
+        int b = n/3;
+        int p = n/4;
+        start = start + b - p;
+        y += 1;
+    }
+
+    printf("It took %i years to reach a population of %i lama's \n", y, goal);
+
+
+
 }
