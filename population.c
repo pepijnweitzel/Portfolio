@@ -22,14 +22,14 @@ int main(void)
 
     //every year n/3 get born and n/4 die
 
-    int y = 0;
+    int years = 0;
     while (start < goal)
     {
         int n = start;
         int b = n/3;
         int p = n/4;
         start = start + b - p;
-        y += 1;
+        years ++;
     }
 
     printf("It took %i years to reach a population of %i lama's \n", y, goal);
