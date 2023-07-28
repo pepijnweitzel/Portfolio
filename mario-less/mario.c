@@ -16,6 +16,11 @@ int main(void)
     int i = 1;
     while (height > 0)
     {
+        
+
+
+
+
         string hash = i * "#";
         printf("%s\n", hash);
         height--;
