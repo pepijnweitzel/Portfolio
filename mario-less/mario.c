@@ -14,5 +14,13 @@ int main(void)
 
     // Make the pyramid
 
+    int space = height - 1;
+    int hash = height - space;
+
+    while (b <= height)
+    {
+        //print 3 times space and 1 time hash
+        
+    }
 
 }
