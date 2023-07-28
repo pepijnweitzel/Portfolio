@@ -3,7 +3,7 @@
 
 int main(void)
 {
-    // Prompt for height
+    // Prompt for height:
     int height;
     do
     {
@@ -12,7 +12,7 @@ int main(void)
 
     while (height < 1 || height > 8);
 
-    // Make the pyramid
+    // Make the pyramid:
 
     int space = height - 1;
     int hash = height - space;
@@ -40,5 +40,4 @@ int main(void)
         space--;
         hash++;
     }
-
 }
