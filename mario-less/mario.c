@@ -1,8 +1,4 @@
-#include <cs50.h>
-#include <stdio.h>
-
-int main(void)
-{
+// Code created by Pepijn Weitzel on 28/7/2023
     // Prompt for height:
     int height;
     do
