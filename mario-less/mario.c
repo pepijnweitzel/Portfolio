@@ -16,11 +16,27 @@ int main(void)
 
     int space = height - 1;
     int hash = height - space;
+    int a;
+    int b;
 
-    while (b <= height)
+    while (hash <= height)
     {
+        a = space;
+        b = hash;
         //print 3 times space and 1 time hash
-        
+        while (a > 0)
+        {
+            printf(" ");
+            a--;
+        }
+        while (b > 0)
+        {
+            printf("#");
+            b--;
+        }
+        printf("\n");
+        space--;
+        hash++;
     }
 
 }
