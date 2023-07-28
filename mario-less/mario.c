@@ -3,6 +3,7 @@
 
 int main(void)
 {
+    // Prompt for height
     int height;
     do
     {
@@ -11,5 +12,9 @@ int main(void)
 
     while (height < 1 || height > 8);
 
-    printf("%i\n", height);
+    // Make the pyramid
+    while (height > 0)
+    {
+        int i = height - (height -1)
+    }
 }
