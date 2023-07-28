@@ -15,6 +15,6 @@ int main(void)
     // Make the pyramid
     while (height > 0)
     {
-        int i = height - (height -1)
+        int i = 1
     }
 }
