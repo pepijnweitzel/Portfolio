@@ -13,17 +13,11 @@ int main(void)
     while (height < 1 || height > 8);
 
     // Make the pyramid
-    int i = 1;
+
     while (height > 0)
     {
-        
-
-
-
-
-        string hash = i * "#";
-        printf("%s\n", hash);
+        printf("#");
         height--;
-        i++;
     }
+    printf("\n");
 }
