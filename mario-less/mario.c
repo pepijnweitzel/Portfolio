@@ -23,17 +23,19 @@ int main(void)
     {
         a = space;
         b = hash;
-        //print 3 times space and 1 time hash
+        // Print a times " ":
         while (a > 0)
         {
             printf(" ");
             a--;
         }
+        // Print b times #:
         while (b > 0)
         {
             printf("#");
             b--;
         }
+        // Go to next line and update value for a and b:
         printf("\n");
         space--;
         hash++;
