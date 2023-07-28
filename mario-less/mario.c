@@ -14,10 +14,5 @@ int main(void)
 
     // Make the pyramid
 
-    while (height > 0)
-    {
-        printf("#");
-        height--;
-    }
-    printf("\n");
+
 }
