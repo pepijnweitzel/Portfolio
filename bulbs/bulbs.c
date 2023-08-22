@@ -30,7 +30,7 @@ int main(void)
         }
 
         // Print the binary value via the lightbulbs
-        for (int j = 0; j < (BITS_IN_BYTE - 1); j++)
+        for (int j = 0; j <= (BITS_IN_BYTE - 1); j++)
         {
           print_bulb(binary[j]);
         }
