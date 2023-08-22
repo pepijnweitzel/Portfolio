@@ -39,16 +39,18 @@ int main(void)
 
 int compute_score(string word)
 {
-    int length = strlen(word);
-    int i = 0;
     int score = 0;
 
     // Iterate through every letter in the string given and calculate its score
-    for (i = 0; i < length; i++)
+    int length = strlen(word);
+    for (int i = 0; i < length; i++)
     {
         if (isupper(word[i]))
         {
-            word[i] = tolower(word[i]);
+            score += POINTS[word[i] - 65];
+        }
+        else if (islower(word[i]))
+        {
             score += POINTS[word[i] - 97];
         }
     }
