@@ -31,7 +31,8 @@ int compute_score(string word)
         if (isupper(word[i]))
         {
             word[i] = tolower(word[i]);
-            if 
+            int ascii_value = word[i];
+            if ascii_value 
         }
     }
 }

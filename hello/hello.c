@@ -8,5 +8,6 @@ int main(void)
     char name = get_char("What is your letter? \n");
     // Greet user by their name:
     printf("Hello, %c\n", name);
-    printf("%i", name);
+    int a = name;
+    printf("%i", a);
 }
