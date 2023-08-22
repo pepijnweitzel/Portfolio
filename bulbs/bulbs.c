@@ -8,7 +8,9 @@ void print_bulb(int bit);
 
 int main(void)
 {
-    // TODO
+    string message = get_string("Message: ");
+
+    
 }
 
 void print_bulb(int bit)
