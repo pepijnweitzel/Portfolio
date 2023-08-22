@@ -1,6 +1,6 @@
 // Code created by Pepijn Weitzel on 22/8/2023
-#include <ctype.h>
 #include <cs50.h>
+#include <ctype.h>
 #include <stdio.h>
 #include <string.h>
 
