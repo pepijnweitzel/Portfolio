@@ -1,9 +1,9 @@
 // Code created by Pepijn Weitzel on 22/8/2023
 #include <cs50.h>
-#include <stdio.h>
 #include <ctype.h>
-#include <string.h>
 #include <math.h>
+#include <stdio.h>
+#include <string.h>
 
 int count_letters(string text);
 int count_words(string text);
@@ -41,11 +41,9 @@ int main(void)
     else
     {
         index = round(index);
-        printf("Grade %i\n", (int)index);
+        printf("Grade %i\n", (int) index);
     }
 }
-
-
 
 int count_letters(string text)
 {
