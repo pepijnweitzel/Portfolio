@@ -44,7 +44,7 @@ int compute_score(string word)
     int score = 0;
 
     // Iterate through every letter in the string given and calculate its score
-    for (i = 0; i = length; i++)
+    for (i = 0; i < length; i++)
     {
         if (isupper(word[i]))
         {
