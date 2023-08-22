@@ -9,23 +9,24 @@ void print_bulb(int bit);
 
 int main(void)
 {
-    string message = get_string("Message: ");
+    char message = get_char("Char: ");
     int binary[BITS_IN_BYTE];
-    int a = get_int("int");
+    int x = message;
 
     for (int i = (BITS_IN_BYTE - 1); i >= 0; i--)
     {
-        if (a % 2 == 1)
+        if (x % 2 == 1)
         {
             binary[i] = 1;
         }
-        a = a / 2;
+        x = x / 2;
     }
 
     for (int i = 0; i < BITS_IN_BYTE; i++)
     {
         printf("%i", binary[i]);
     }
+    printf("\n");
 
 }
 
