@@ -9,10 +9,18 @@ void print_bulb(int bit);
 
 int main(void)
 {
-    char message = get_char("Char: ");
-    int binary[BITS_IN_BYTE];
-    int x = message;
+    char message = get_string("Message: ");
 
+    for (int i = 0, len = strlen(message); i++)
+    {
+        
+    }
+
+
+
+
+    int x = ?????
+    int binary[BITS_IN_BYTE];
     for (int i = (BITS_IN_BYTE - 1); i >= 0; i--)
     {
         if (x % 2 == 1)
