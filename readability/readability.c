@@ -85,7 +85,7 @@ int count_sentences(string text)
 {
     int number_of_sentences = 0;
 
-    // Iterate through all characters in the string to check whether its a 
+    // Iterate through all characters in the string to check whether its a period, exclamation point or question mark
     for (int i = 0, length = strlen(text); i < length; i++)
     {
         if (text[i] == '.' || text[i] == '?' || text[i] == '!')
