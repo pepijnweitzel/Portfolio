@@ -28,6 +28,10 @@ int compute_score(string word)
 
     for (i = 0; i < length; i++)
     {
-        word[i]
+        if (isupper(word[i]))
+        {
+            word[i] = tolower(word[i]);
+            printf("%c", word[i]);
+        }
     }
 }
