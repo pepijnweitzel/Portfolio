@@ -9,9 +9,10 @@ void print_bulb(int bit);
 int main(void)
 {
     string message = get_string("Message: ");
+    int binary[BITS_IN_BYTE];
     int a = 97;
 
-    
+
 }
 
 void print_bulb(int bit)
