@@ -8,12 +8,13 @@ int count_letters(string text);
 int count_words(string text);
 int count_sentences(string text);
 
+//    index = 0.0588 * L - 0.296 * S - 15.8
+//   L: Number of letters per 100 words
+//   S: Number of sentences per 100 words
 int main(void)
 {
     string text = get_string("Text: ");
-    printf("%i Letters\n", count_letters(text));
-    printf("%i Words\n", count_words(text));
-    printf("%i Sentences\n", count_sentences(text));
+    
 }
 
 
