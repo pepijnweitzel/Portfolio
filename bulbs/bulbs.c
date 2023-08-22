@@ -11,11 +11,20 @@ int main(void)
 {
     string message = get_string("Message: ");
     int binary[BITS_IN_BYTE];
-    int a = 97;
+    int a = get_int("int");
 
-    for (int i = 0; i < 8; i++;)
+    for (int i = (BITS_IN_BYTE - 1); i >= 0; i--)
     {
+        if (a % 2 == 1)
+        {
+            binary[i] = 1;
+        }
+        a = a / 2;
+    }
 
+    for (int i = 0; i < BITS_IN_BYTE; i++)
+    {
+        printf("%i", binary[i]);
     }
 
 }
