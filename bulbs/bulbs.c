@@ -4,6 +4,7 @@
 
 const int BITS_IN_BYTE = 8;
 
+
 void print_bulb(int bit);
 
 int main(void)
@@ -14,7 +15,7 @@ int main(void)
 
     for (int i = 0; i < 8; i++;)
     {
-        
+
     }
 
 }
