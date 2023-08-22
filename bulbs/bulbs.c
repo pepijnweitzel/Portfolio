@@ -1,3 +1,4 @@
+// Code created by Pepijn Weitzel on 22/8/2023
 #include <cs50.h>
 #include <stdio.h>
 #include <string.h>
@@ -9,12 +10,17 @@ void print_bulb(int bit);
 
 int main(void)
 {
+    // Prompt user for message
     string message = get_string("Message: ");
 
+    // Iterate through the whole message
     for (int i = 0, len = strlen(message); i < len; i++)
     {
-        int binary[BITS] = {0,0,0,0,0,0,0,0};
-        for (int j = 7, x = message[i]; j >= 0; j--)
+        // Create array to store binary value of character in
+        int binary[BITS_IN_BYTE] = {0,0,0,0,0,0,0,0};
+
+        // Calculate the binary value
+        for (int j = (BITS_IN_BYTE - 1), x = message[i]; j >= 0; j--)
         {
             if (x % 2 == 1)
             {
@@ -22,7 +28,9 @@ int main(void)
             }
             x = x / 2;
         }
-        for (int j = 0; j < 7; j++)
+
+        // Print the binary value via the lightbulbs
+        for (int j = 0; j < (BITS_IN_BYTE - 1); j++)
         {
           print_bulb(binary[j]);
         }
