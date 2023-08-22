@@ -35,7 +35,7 @@ int main(void)
     }
     else if (index < 1)
     {
-        printf("Before grade 1\n");
+        printf("Before Grade 1\n");
     }
     else
     {
