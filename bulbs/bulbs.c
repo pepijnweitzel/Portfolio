@@ -12,6 +12,10 @@ int main(void)
     int binary[BITS_IN_BYTE];
     int a = 97;
 
+    for (int i = 0; i < 8; i++;)
+    {
+        
+    }
 
 }
 
