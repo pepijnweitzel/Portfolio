@@ -9,12 +9,39 @@ int count_words(string text);
 int count_sentences(string text);
 
 //    index = 0.0588 * L - 0.296 * S - 15.8
-//   L: Number of letters per 100 words
-//   S: Number of sentences per 100 words
+//   L: Number of letters per 100 words >> L = letters / words * 100
+//   S: Number of sentences per 100 words >> S = sentences / words * 100
 int main(void)
 {
+    // Prompt for the text
     string text = get_string("Text: ");
-    
+
+    // Declare and calculate all variables
+    int letters = count_letters(text);
+    int words = count_words(text);
+    int sentences = count_sentences(text);
+
+    // Calculate last 2 variables for Coleman-Liau index
+    float L = (float) letters / (float) words * 100;
+    float S = (float) sentences / (float) words * 100;
+
+    // Calculate the index via the Coleman-Liau index
+    float index = 0.0588 * L - 0.296 * S - 15.8;
+
+
+    if (index >= 16)
+    {
+        printf("Grade 16+\n");
+    }
+    else if (index < 1)
+    {
+        printf("Before grade 1\n");
+    }
+    else
+    {
+        index = round(index);
+        printf("Grade %i\n", (int)index);
+    }
 }
 
 
