@@ -9,8 +9,8 @@ void print_bulb(int bit);
 int main(void)
 {
     string message = get_string("Message: ");
-
-    
+    bool a = 4 % 2;
+    printf("%b", a);
 }
 
 void print_bulb(int bit)
