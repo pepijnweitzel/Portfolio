@@ -1,3 +1,4 @@
+// Code created by Pepijn Weitzel on 22/8/2023
 #include <ctype.h>
 #include <cs50.h>
 #include <stdio.h>
@@ -18,7 +19,7 @@ int main(void)
     int score1 = compute_score(word1);
     int score2 = compute_score(word2);
 
-    // TODO: Print the winner
+    // Print the winner
     if (score1 > score2)
     {
         printf("Player 1 wins!\n");
@@ -35,10 +36,12 @@ int main(void)
 
 int compute_score(string word)
 {
-    // TODO: Compute and return score for string
+    // Compute and return score for string
     int length = strlen(word);
     int i = 0;
-    int value = 0;
+    int score = 0;
+
+    // Iterate through every letter in the string given and calculate its value
     for (i = 0; i < length; i++)
     {
         if (isupper(word[i]))
@@ -48,9 +51,9 @@ int compute_score(string word)
             if (ascii_value >= 97 && ascii_value <= 122)
             {
                 int x = ascii_value - 97;
-                value += POINTS[x];
+                score += POINTS[x];
             }
         }
     }
-    return value;
+    return score;
 }
