@@ -5,7 +5,6 @@
 
 const int BITS_IN_BYTE = 8;
 
-
 void print_bulb(int bit);
 
 int main(void)
@@ -17,7 +16,7 @@ int main(void)
     for (int i = 0, len = strlen(message); i < len; i++)
     {
         // Create array to store binary value of character in
-        int binary[BITS_IN_BYTE] = {0,0,0,0,0,0,0,0};
+        int binary[BITS_IN_BYTE] = {0, 0, 0, 0, 0, 0, 0, 0};
 
         // Calculate the binary value
         for (int j = (BITS_IN_BYTE - 1), x = message[i]; j >= 0; j--)
@@ -32,12 +31,10 @@ int main(void)
         // Print the binary value via the lightbulbs
         for (int j = 0; j <= (BITS_IN_BYTE - 1); j++)
         {
-          print_bulb(binary[j]);
+            print_bulb(binary[j]);
         }
         printf("\n");
     }
-
-
 }
 
 void print_bulb(int bit)
