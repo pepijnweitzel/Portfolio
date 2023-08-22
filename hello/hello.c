@@ -5,7 +5,8 @@
 int main(void)
 {
     // Prompt for users name:
-    string name = get_string("What is your name? \n");
+    char name = get_char("What is your letter? \n");
     // Greet user by their name:
-    printf("Hello, %s\n", name);
+    printf("Hello, %c\n", name);
+    printf("%i", name);
 }
