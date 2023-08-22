@@ -49,12 +49,7 @@ int compute_score(string word)
         if (isupper(word[i]))
         {
             word[i] = tolower(word[i]);
-            int ascii_value = word[i];
-            if (ascii_value >= 97 && ascii_value <= 122)
-            {
-                int x = ascii_value - 97;
-                score += POINTS[x];
-            }
+            score += POINTS[word[i] - 97];
         }
     }
     return score;
