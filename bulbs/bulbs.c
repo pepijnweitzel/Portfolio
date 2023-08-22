@@ -13,7 +13,7 @@ int main(void)
 
     for (int i = 0, len = strlen(message); i < len; i++)
     {
-        int binary[8] = {0,0,0,0,0,0,0,0};
+        int binary[BITS] = {0,0,0,0,0,0,0,0};
         for (int j = 7, x = message[i]; j >= 0; j--)
         {
             if (x % 2 == 1)
@@ -24,7 +24,7 @@ int main(void)
         }
         for (int j = 0; j < 7; j++)
         {
-          printf("%i", binary[j]);
+          print_bulb(binary[j]);
         }
         printf("\n");
     }
