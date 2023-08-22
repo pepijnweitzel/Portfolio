@@ -13,8 +13,8 @@ int main(void)
 
     for (int i = 0, len = strlen(message); i < len; i++)
     {
-        int binary[BITS_IN_BYTE];
-        for (int j = (BITS_IN_BYTE - 1), x = message[i]; j >= 0; j--)
+        int binary[8] = {0,0,0,0,0,0,0,0};
+        for (int j = 7, x = message[i]; j >= 0; j--)
         {
             if (x % 2 == 1)
             {
@@ -22,7 +22,7 @@ int main(void)
             }
             x = x / 2;
         }
-        for (int j = 0; j < BITS_IN_BYTE; j++)
+        for (int j = 0; j < 7; j++)
         {
           printf("%i", binary[j]);
         }
