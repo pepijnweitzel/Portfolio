@@ -9,32 +9,27 @@ void print_bulb(int bit);
 
 int main(void)
 {
-    char message = get_string("Message: ");
+    string message = get_string("Message: ");
 
-    for (int i = 0, len = strlen(message); i++)
+    for (int i = 0, len = strlen(message); i < len; i++)
     {
-        
-    }
-
-
-
-
-    int x = ?????
-    int binary[BITS_IN_BYTE];
-    for (int i = (BITS_IN_BYTE - 1); i >= 0; i--)
-    {
-        if (x % 2 == 1)
+        int binary[BITS_IN_BYTE];
+        for (int j = (BITS_IN_BYTE - 1), x = message[i]; j >= 0; j--)
         {
-            binary[i] = 1;
+            if (x % 2 == 1)
+            {
+                binary[j] = 1;
+            }
+            x = x / 2;
         }
-        x = x / 2;
+        for (int j = 0; j < BITS_IN_BYTE; j++)
+        {
+          printf("%i", binary[j]);
+        }
+        printf("\n");
     }
 
-    for (int i = 0; i < BITS_IN_BYTE; i++)
-    {
-        printf("%i", binary[i]);
-    }
-    printf("\n");
+
 }
 
 void print_bulb(int bit)
