@@ -69,9 +69,9 @@ bool vote(string name)
     // TODO
     for (int i = 0; i < candidate_count; i++)
     {
-        if (name == candidate[i].name)
+        if (name == candidates[i].name)
         {
-            candidate[i].votes++;
+            candidates[i].votes++;
             return true;
         }
     }
@@ -88,9 +88,9 @@ void print_winner(void)
 
     for (int i = 0; i < candidate_count; i++)
     {
-        if (x == candidate[i].votes)
+        if (x == candidates[i].votes)
         {
-            x = candidate[i].votes;
+            x = candidates[i].votes;
             number_of_winners++;
         }
     }
@@ -101,9 +101,9 @@ void print_winner(void)
 
     for (int i = 0; i < candidate_count; i++)
     {
-        if (x == candidate[i].votes)
+        if (x == candidates[i].votes)
         {
-            winners[a] = candidate[i].name;
+            winners[a] = candidates[i].name;
             a++;
         }
     }
