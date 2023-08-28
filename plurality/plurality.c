@@ -72,10 +72,12 @@ bool vote(string name)
         if (name == candidates[i].name)
         {
             candidates[i].votes++;
+            printf("gelukt\n");
             return true;
         }
         else
         {
+            printf("niet gelukt\n");
             return false;
         }
     }
