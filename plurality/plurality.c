@@ -90,30 +90,32 @@ void print_winner(void)
 
     for (int i = 0; i < candidate_count; i++)
     {
-        if (x == candidates[i].votes)
+        if (x < candidates[i].votes)
         {
             x = candidates[i].votes;
             number_of_winners++;
         }
     }
+    printf("test\n");
+    printf("%i\n", x);
     // Now x is equal to the number of votes the top candidates received.
 
-    string winners[number_of_winners];
-    int a = 0;
+ //   string winners[number_of_winners];
+ //   int a = 0;
 
-    for (int i = 0; i < candidate_count; i++)
-    {
-        if (x == candidates[i].votes)
-        {
-            winners[a] = candidates[i].name;
-            a++;
-        }
-    }
+ //   for (int i = 0; i < candidate_count; i++)
+ //   {
+ //       if (x == candidates[i].votes)
+ //       {
+ //           winners[a] = candidates[i].name;
+ //           a++;
+ //       }
+ //   }
 
-    for (int i = 0; i < number_of_winners; i++)
-    {
-        printf("%s\n", winners[i]);
-    }
+ //   for (int i = 0; i < number_of_winners; i++)
+ //   {
+ //       printf("%s\n", winners[i]);
+ //   }
 
 
     return;
