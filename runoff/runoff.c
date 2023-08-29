@@ -153,6 +153,14 @@ void tabulate(void)
                 candidates[preferences[i][j]].votes++;
                 break;
             }
+            else if (candidates[preferences[i][j]].eliminated == true)
+            {
+                if (candidates[preferences[i][j + 1]].eliminated == false)
+                {
+                    candidates[preferences[i][j + 1]].votes++;
+                    break;
+                }
+            }
         }
     }
 
