@@ -150,7 +150,7 @@ void tabulate(void)
         for (int j = 0; i < candidate_count; j++)
         {
             int n = preferences[i][j];
-            if (candidates[n].elimenated == false)
+            if (candidates[n].eliminated == false)
             {
                 candidates[n].votes++;
                 return;
@@ -186,7 +186,7 @@ int find_min(void)
 
     for (int i = 0; i < candidate_count; i++)
     {
-        if (candidates[i].votes < least_votes && candidates[i].elimenated == false)
+        if (candidates[i].votes < least_votes && candidates[i].eliminated == false)
         {
             least_votes = candidates[i].votes;
         }
@@ -223,5 +223,14 @@ bool is_tie(int min)
 void eliminate(int min)
 {
     // TODO
+
+    for (int i = 0; i < candidate_count; i++)
+    {
+        if (candidates[i].votes == min)
+        {
+            candidates[i].eliminated = true;
+        }
+    }
+
     return;
 }
