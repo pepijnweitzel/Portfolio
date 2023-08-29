@@ -153,14 +153,6 @@ void tabulate(void)
                 candidates[preferences[i][j]].votes++;
                 break;
             }
-            else if (candidates[preferences[i][j]].eliminated == true)
-            {
-                if (candidates[preferences[i][j + 1]].eliminated == false)
-                {
-                    candidates[preferences[i][j + 1]].votes++;
-                    break;
-                }
-            }
         }
     }
 
@@ -170,11 +162,10 @@ void tabulate(void)
 // Print the winner of the election, if there is one
 bool print_winner(void)
 {
-    // TODO
-
-
+    // Itereate through all candidates
     for (int i = 0; i < candidate_count; i++)
     {
+        // Check whether their votes are high enough to win
         if (candidates[i].votes > voter_count / 2)
         {
             printf("%s\n", candidates[i].name);
@@ -187,9 +178,10 @@ bool print_winner(void)
 // Return the minimum number of votes any remaining candidate has
 int find_min(void)
 {
-    // TODO
+    // Set a starting value
     int least_votes = voter_count;
 
+    // Iterate through all candidates and check what the lowest number of votes are
     for (int i = 0; i < candidate_count; i++)
     {
         if (candidates[i].votes < least_votes && candidates[i].eliminated == false)
@@ -204,9 +196,10 @@ int find_min(void)
 // Return true if the election is tied between all candidates, false otherwise
 bool is_tie(int min)
 {
-    // TODO
+    // Set a variable to check how many candidates do NOT have the same number of votes as the minimum
     int x = 0;
 
+    // Iterate and check whether the variable has been changed
     for (int i = 0; i < candidate_count; i++)
     {
         if (candidates[i].votes != min && candidates[i].eliminated == false)
@@ -228,8 +221,7 @@ bool is_tie(int min)
 // Eliminate the candidate (or candidates) in last place
 void eliminate(int min)
 {
-    // TODO
-
+    // Iterate through all candidates to eliminate the last one(s)
     for (int i = 0; i < candidate_count; i++)
     {
         if (candidates[i].votes == min)
