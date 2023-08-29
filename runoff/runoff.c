@@ -128,7 +128,7 @@ int main(int argc, string argv[])
 // Record preference if vote is valid
 bool vote(int voter, int rank, string name)
 {
-    // TODO
+    // Iterate through all candidates to check whether given name for the specific rank is the same as one of the candidates'
     for (int i = 0; i < candidate_count; i++)
     {
         if (strcmp(candidates[i].name, name) == 0)
@@ -148,9 +148,10 @@ void tabulate(void)
     {
         for (int j = 0; i < candidate_count; j++)
         {
-            if (candidates[preferences[i][j]].eliminated == false)
+            int n = preferences[i][j];
+            if (candidates[n].eliminated == false)
             {
-                candidates[preferences[i][j]].votes++;
+                candidates[n].votes++;
                 break;
             }
         }
