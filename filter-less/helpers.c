@@ -84,14 +84,7 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
     {
         for (int j = 0; int j < width; j++)
         {
-             if (i == 0)
-             {
-                if (j == 0)
-                {
-                    int average = copy[i][j] + copy[i + 1][j] + copy[i][j + 1] + copy[i + 1][j + 1];
-                    int new = round(average / 4.0);
-                }
-             }
+            
         }
     }
     return;
