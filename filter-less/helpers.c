@@ -1,3 +1,4 @@
+// Code created by Pepijn Weitzel on 7/9/2023
 #include "helpers.h"
 #include <math.h>
 
@@ -35,7 +36,7 @@ void sepia(int height, int width, RGBTRIPLE image[height][width])
             {
                 sepiaGreen = 255;
             }
-            float sepiaBlue = .272 *image[i][j].rgbtRed + .534 * image[i][j].rgbtGreen + .131 * image[i][j].rgbtBlue;
+            float sepiaBlue = .272 * image[i][j].rgbtRed + .534 * image[i][j].rgbtGreen + .131 * image[i][j].rgbtBlue;
             if (sepiaBlue > 255)
             {
                 sepiaBlue = 255;
@@ -106,7 +107,6 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
                     total_red += copy[i + i_line][j + j_line].rgbtRed;
                     total_green += copy[i + i_line][j + j_line].rgbtGreen;
                     total_blue += copy[i + i_line][j + j_line].rgbtBlue;
-
                 }
             }
 
