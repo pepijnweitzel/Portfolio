@@ -93,7 +93,16 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
             {
                 for (int j_line = -1; j_line < 2; j_line++)
                 {
-                    if (i + i_line < 0 || i + i_line > )
+                    if (i + i_line < 0 || i + i_line > height - 1)
+                    {
+                        continue;
+                    }
+                    if (j + j_line < 0 || j + j_line > width - 1)
+                    {
+                        continue;
+                    }
+
+                    total_red += copy
                 }
             }
         }
