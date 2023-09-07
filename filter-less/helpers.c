@@ -93,7 +93,7 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
             {
                 for (int j_line = -1; j_line < 2; j_line++)
                 {
-                    
+                    if (i + i_line < 0 || i + i_line > )
                 }
             }
         }
