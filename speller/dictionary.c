@@ -48,6 +48,10 @@ unsigned int hash(const char *word)
 {
     // TODO: Improve this hash function
     // Create a value based on the first 2 letters of the word ('aa' being 0, 'ba' being 26, 'bc' being 28)
+    if (strlen(word) < 3)
+    {
+        return toupper(word[0] - 'A');
+    }
     int value = 0;
     value = toupper(word[0]) - 'A';
     value = value * 26 + toupper(word[1]) - 'A';
