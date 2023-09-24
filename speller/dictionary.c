@@ -30,19 +30,15 @@ int number_words = 0;
 bool check(const char *word)
 {
     // TODO
-    // Get hash value for the word and create a node pointer to start iterating at the given index through the linked list
-    int hash_value = hash(word);
-    node *cursor = table[hash_value];
-
-    // Create a while loop that iterates and checks the word with the value in the nodes of the linked list
-    while(cursor != NULL)
+    // Create the hash value of the word
+    int value = hash(word);
+    // Iterate through the linked list at the given index to compare the word with each node
+    for (node *ptr = table[value]; ptr != NULL; ptr = ptr->next)
     {
-        if (strcasecmp(word, cursor->word) == 0)
+        if(strcasecmp(word, ptr->word) == 0)
         {
             return true;
         }
-        // Go to next node in linked list
-        cursor = cursor->next;
     }
     return false;
 }
