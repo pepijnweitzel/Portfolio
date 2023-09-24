@@ -131,5 +131,5 @@ bool unload(void)
             ptr = temp;
         }
     }
-    return false;
+    return true;
 }
