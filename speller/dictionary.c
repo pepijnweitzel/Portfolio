@@ -37,6 +37,10 @@ unsigned int hash(const char *word)
     int value = 0;
     value = toupper(word[0]) - 'A';
     value = value * 26 + toupper(word[1]) - 'A';
+    if (value >= 675)
+    {
+        return value % 676;
+    }
     return value;
 }
 
