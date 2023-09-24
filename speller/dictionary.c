@@ -81,6 +81,7 @@ bool load(const char *dictionary)
         if (n == NULL)
         {
             printf("Not enough memory to use malloc\n");
+            fclose(file);
             return false;
         }
 
@@ -93,6 +94,7 @@ bool load(const char *dictionary)
         table[hash_value] = n;
         number_words++;
     }
+    fclose(file);
     return true;
 }
 
@@ -107,5 +109,15 @@ unsigned int size(void)
 bool unload(void)
 {
     // TODO
+    for (int i = 0; i < N; i++)
+    {
+        node *ptr = table[i];
+        while (ptr != NULL)
+        {
+            node *temp = ptr->next;
+            free(ptr);
+            ptr = temp;
+        }
+    }
     return false;
 }
