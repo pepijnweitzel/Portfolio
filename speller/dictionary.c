@@ -3,6 +3,8 @@
 #include <ctype.h>
 #include <stdbool.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 #include "dictionary.h"
 
@@ -44,7 +46,11 @@ bool load(const char *dictionary)
         printf("Could not find file\n")
         return false;
     }
-    while(fscanf)
+    while(fscanf(file, "%s", word) != EOF)
+    {
+        node *n = malloc(sizeof(node));
+
+    }
 
     return false;
 }
