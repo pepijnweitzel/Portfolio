@@ -71,8 +71,10 @@ bool load(const char *dictionary)
 
     char bufferword[LENGTH + 1];
 
+    // Create new nodes and put them in the hash table
     while (fscanf(file, "%s", bufferword) != EOF)
     {
+        // Create and check new node
         node *n = malloc(sizeof(node));
         if(n == NULL)
         {
@@ -80,6 +82,14 @@ bool load(const char *dictionary)
             fclose(file);
             return false;
         }
+
+        // Put the word in the newly made node
+        strcopy(n->word, bufferword);
+
+        // Get the index for the node
+        int index = hash(bufferword);
+
+
     }
     return true;
 
