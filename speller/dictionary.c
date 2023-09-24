@@ -40,7 +40,8 @@ unsigned int hash(const char *word)
 bool load(const char *dictionary)
 {
     // TODO
-    FILE *file = fopen(dictionary);
+    // Open the file
+    FILE *file = fopen(dictionary, "r");
     if (file == NULL)
     {
         printf("Could not find file\n")
@@ -49,15 +50,22 @@ bool load(const char *dictionary)
     char *bufferword;
     while(fscanf(file, "%s", bufferword) != EOF)
     {
+        // Create space for the new node and check whether there is enough space
         node *n = malloc(sizeof(node));
         if (n == NULL)
         {
             printf("Not enough memory to use malloc\n");
             return false;
         }
+
+        // Copy the word into the node and set the node's pointer to NULL
         strcpy(n->word, bufferword);
         n->next = NULL;
+
+        // Get the hash value to insert the node and insert the node at the location
         int hash_value = hash(bufferword);
+        
+
 
     }
 
