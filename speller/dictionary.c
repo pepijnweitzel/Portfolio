@@ -56,8 +56,8 @@ bool load(const char *dictionary)
             return false;
         }
         strcpy(n->word, bufferword);
-        
-
+        n->next = NULL;
+        int hash_value = hash(bufferword);
 
     }
 
