@@ -55,7 +55,9 @@ bool load(const char *dictionary)
             printf("Not enough memory to use malloc\n");
             return false;
         }
+        strcpy(n->word, bufferword);
         
+
 
     }
 
