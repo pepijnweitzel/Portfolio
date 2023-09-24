@@ -33,7 +33,11 @@ bool check(const char *word)
 unsigned int hash(const char *word)
 {
     // TODO: Improve this hash function
-    return toupper(word[0]) - 'A';
+    // Create a value based on the first 2 letters of the word ('aa' being 0, 'ba' being 26, 'bc' being 28)
+    int value = 0;
+    value = toupper(word[0]) - 'A';
+    value = value * 26 + toupper(word[1]) - 'A';
+    return value;
 }
 
 // Loads dictionary into memory, returning true if successful, else false
