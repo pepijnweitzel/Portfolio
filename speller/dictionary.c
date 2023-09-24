@@ -58,9 +58,8 @@ bool load(const char *dictionary)
             return false;
         }
 
-        // Copy the word into the node and set the node's pointer to NULL
+        // Copy the word into the node
         strcpy(n->word, bufferword);
-        n->next = NULL;
 
         // Get the hash value to insert the node and insert the node at the location
         int hash_value = hash(bufferword);
