@@ -62,52 +62,87 @@ unsigned int hash(const char *word)
 bool load(const char *dictionary)
 {
     // TODO
-    // Open the file
+    // Open the dictionary
     FILE *file = fopen(dictionary, "r");
     if (file == NULL)
     {
-        printf("Could not find file\n");
-        fclose(file);
         return false;
     }
-    char *bufferword = malloc(LENGTH + 1);
-    if (bufferword == NULL)
+
+    char bufferword[LENGTH + 1];
+
+    while (fscanf(file, "%s", bufferword) != EOF)
     {
-        free(bufferword);
-        return false;
-    }
-    while(fscanf(file, "%s", bufferword) != EOF)
-    {
-        // Create space for the new node and check whether there is enough space
         node *n = malloc(sizeof(node));
-        if (n == NULL)
+        if(n == NULL)
         {
-            printf("Not enough memory to use malloc\n");
+            printf("Not enough memory to malloc\n");
             fclose(file);
             return false;
         }
+    }
+    return true;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // Open the file
+    //FILE *file = fopen(dictionary, "r");
+    //if (file == NULL)
+    //{
+    //    printf("Could not find file\n");
+    //    fclose(file);
+    //    return false;
+    //}
+    //char *bufferword = malloc(LENGTH + 1);
+    //if (bufferword == NULL)
+    //{
+    //    free(bufferword);
+    //    return false;
+    //}
+    //while(fscanf(file, "%s", bufferword) != EOF)
+    //{
+        // Create space for the new node and check whether there is enough space
+    //    node *n = malloc(sizeof(node));
+    //    if (n == NULL)
+    //    {
+    //        printf("Not enough memory to use malloc\n");
+    //        fclose(file);
+    //        return false;
+    //    }
 
         // Copy the word into the node
-        strcpy(n->word, bufferword);
+    //    strcpy(n->word, bufferword);
 
         // Get the hash value to insert the node and insert the node at the location
-        int hash_value = hash(bufferword);
+    //    int hash_value = hash(bufferword);
 
-        if (table[hash_value] == NULL)
-        {
-            n->next = NULL;
-            table[hash_value] = n;
-        }
-        else
-        {
-            n->next = table[hash_value];
-            table[hash_value] = n;
-        }
-        number_words++;
-    }
-    fclose(file);
-    free(bufferword);
-    return true;
+    //    if (table[hash_value] == NULL)
+    //    {
+    //        n->next = NULL;
+    //        table[hash_value] = n;
+    //    }
+    //    else
+    //    {
+    //        n->next = table[hash_value];
+    //        table[hash_value] = n;
+    //    }
+    //    number_words++;
+    //}
+    //fclose(file);
+    //free(bufferword);
+    //return true;
 }
 
 // Returns number of words in dictionary if loaded, else 0 if not yet loaded
