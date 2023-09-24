@@ -73,7 +73,7 @@ bool load(const char *dictionary)
     char *bufferword = malloc(LENGTH + 1);
     if (bufferword == NULL)
     {
-        
+        free(bufferword);
         return false;
     }
     while(fscanf(file, "%s", bufferword) != EOF)
