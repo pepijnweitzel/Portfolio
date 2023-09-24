@@ -89,7 +89,18 @@ bool load(const char *dictionary)
         // Get the index for the node
         int index = hash(bufferword);
 
-
+        // Add node to the linked list in the table
+        if (table[index] == NULL)
+        {
+            table[index] = n;
+            n->next = NULL;
+        }
+        else
+        {
+            n->next = table[index];
+            table[index] = n;
+        }
+        number_words++;
     }
     return true;
 
