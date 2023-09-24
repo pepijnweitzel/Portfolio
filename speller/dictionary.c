@@ -47,7 +47,7 @@ bool load(const char *dictionary)
         printf("Could not find file\n");
         return false;
     }
-    char *bufferword;
+    char bufferword[N+1];
     while(fscanf(file, "%s", bufferword) != EOF)
     {
         // Create space for the new node and check whether there is enough space
