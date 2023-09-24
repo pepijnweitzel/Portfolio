@@ -30,6 +30,9 @@ int number_words = 0;
 bool check(const char *word)
 {
     // TODO
+    int hash_value = hash(word);
+    node *cursor = table[hash_value]
+
     return false;
 }
 
@@ -86,7 +89,7 @@ bool load(const char *dictionary)
 unsigned int size(void)
 {
     // TODO
-    return 0;
+    return number_words;
 }
 
 // Unloads dictionary from memory, returning true if successful, else false
