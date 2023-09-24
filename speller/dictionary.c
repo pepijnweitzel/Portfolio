@@ -67,11 +67,13 @@ bool load(const char *dictionary)
     if (file == NULL)
     {
         printf("Could not find file\n");
+        fclose(file);
         return false;
     }
     char *bufferword = malloc(LENGTH + 1);
     if (bufferword == NULL)
     {
+        
         return false;
     }
     while(fscanf(file, "%s", bufferword) != EOF)
