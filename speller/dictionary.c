@@ -84,7 +84,7 @@ bool load(const char *dictionary)
         }
 
         // Put the word in the newly made node
-        strcopy(n->word, bufferword);
+        strcpy(n->word, bufferword);
 
         // Get the index for the node
         int index = hash(bufferword);
@@ -102,6 +102,7 @@ bool load(const char *dictionary)
         }
         number_words++;
     }
+    fclose(file);
     return true;
 
 
