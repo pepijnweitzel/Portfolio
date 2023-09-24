@@ -14,8 +14,7 @@ typedef struct node
 {
     char word[LENGTH + 1];
     struct node *next;
-}
-node;
+} node;
 
 // TODO: Choose number of buckets in hash table
 const unsigned int N = 676;
@@ -35,7 +34,7 @@ bool check(const char *word)
     // Iterate through the linked list at the given index to compare the word with each node
     for (node *ptr = table[value]; ptr != NULL; ptr = ptr->next)
     {
-        if(strcasecmp(word, ptr->word) == 0)
+        if (strcasecmp(word, ptr->word) == 0)
         {
             return true;
         }
@@ -80,7 +79,7 @@ bool load(const char *dictionary)
     {
         // Create and check new node
         node *n = malloc(sizeof(node));
-        if(n == NULL)
+        if (n == NULL)
         {
             printf("Not enough memory to malloc\n");
             fclose(file);
