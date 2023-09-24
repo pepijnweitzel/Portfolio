@@ -46,7 +46,8 @@ bool load(const char *dictionary)
         printf("Could not find file\n")
         return false;
     }
-    while(fscanf(file, "%s", word) != EOF)
+    char *bufferword;
+    while(fscanf(file, "%s", bufferword) != EOF)
     {
         node *n = malloc(sizeof(node));
 
