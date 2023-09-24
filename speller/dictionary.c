@@ -64,7 +64,8 @@ bool load(const char *dictionary)
 
         // Get the hash value to insert the node and insert the node at the location
         int hash_value = hash(bufferword);
-        
+        n->next = table[hash_value];
+        table[hash_value] = n;
 
 
     }
