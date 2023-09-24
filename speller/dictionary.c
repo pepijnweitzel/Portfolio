@@ -93,7 +93,7 @@ bool load(const char *dictionary)
         // Get the index for the node
         int index = hash(bufferword);
 
-        // Add node to the linked list in the table
+        // Add node to the linked list in the table while checking whether its the first item to set pointers correctly
         if (table[index] == NULL)
         {
             table[index] = n;
@@ -104,8 +104,10 @@ bool load(const char *dictionary)
             n->next = table[index];
             table[index] = n;
         }
+        // Increase the number_words variable by 1 for every word added to the hash table
         number_words++;
     }
+    // Close the opened file for no memory errors
     fclose(file);
     return true;
 }
@@ -121,8 +123,10 @@ unsigned int size(void)
 bool unload(void)
 {
     // TODO
+    // Iterate through the entire array
     for (int i = 0; i < N; i++)
     {
+        // Create a temporary pointer which will be used to free all the nodes while iterating through the linked list
         node *ptr = table[i];
         while (ptr != NULL)
         {
