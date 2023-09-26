@@ -2,10 +2,15 @@ from cs50 import get_string
 
 
 text = get_string("Text: ")
+
+words = text.split(" ")
+number_words = len(words)
+
 sentences = 0
 for char in text:
     if char == '.' or char == '!' or char == '?':
         sentences =+ 1
+S = 
 
 
 
