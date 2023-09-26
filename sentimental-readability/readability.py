@@ -10,7 +10,9 @@ sentences = 0
 for char in text:
     if char == '.' or char == '!' or char == '?':
         sentences =+ 1
-S = 
+S = sentences / number_words
+
+
 
 
 
