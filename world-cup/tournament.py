@@ -33,7 +33,7 @@ def main():
 
     for i in range(n):
         winningteam = simulate_tournament(teams)
-        
+        counts[winningteam] += 1
 
     # Print each team's chances of winning, according to simulation
     for team in sorted(counts, key=lambda team: counts[team], reverse=True):
