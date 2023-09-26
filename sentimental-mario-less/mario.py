@@ -7,8 +7,6 @@ def main():
         print(" " * spaties + "#" * hashes)
 
 
-
-
 def get_height():
     while True:
         try:
@@ -18,8 +16,6 @@ def get_height():
         else:
             if 1 <= number <= 8:
                 return number
-
-
 
 
 main()
