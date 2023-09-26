@@ -3,11 +3,11 @@ from cs50 import get_float
 def main():
     change = get_change()
     quarters = int(change / 0.25)
-    change = change/quarters
+    change = change - quarters * 0.25
     dimes = int(change / 0.10)
-    change = change/dimes
+    change = change - dimes * 0.10
     nickels = int(change / 0.05)
-    change = change/nickels
+    change = change - nickels * 0.05
     pennies = int(change / 0.01)
 
     total_number = quarters + dimes + nickels + pennies
