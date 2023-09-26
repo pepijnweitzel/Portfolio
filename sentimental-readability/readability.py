@@ -4,7 +4,8 @@ from cs50 import get_string
 text = get_string("Text: ")
 sentences = 0
 for char in text:
-    if char == 
+    if char == '.' or char == '!' or char == '?':
+        sentences =+ 1
 
 
 
