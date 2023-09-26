@@ -14,4 +14,6 @@ Which predictions, if any, proved incorrect as you increased the number of simul
 With the number of simulations multiplying by 10, the real time however did not multiply by 10.
 
 Suppose you're charged a fee for each second of compute time your program uses.
-After how many simulations would you call the predictions "good enough"?: TODO
+After how many simulations would you call the predictions "good enough"?:
+
+The predictions seemed to stabilize after 10000 simulations.
