@@ -29,7 +29,9 @@ def main():
         file_reader= csv.DictReader(file)
         for team in file_reader:
             teamname = team["team"]
-            counts
+            counts[teamname] = 0
+
+    
 
     # Print each team's chances of winning, according to simulation
     for team in sorted(counts, key=lambda team: counts[team], reverse=True):
