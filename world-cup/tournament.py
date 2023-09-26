@@ -7,8 +7,8 @@ import random
 # Number of simluations to run
 N = 1000
 
-def main():
 
+def main():
     # Ensure correct usage
     if len(sys.argv) != 2:
         sys.exit("Usage: python tournament.py FILENAME")
@@ -25,7 +25,7 @@ def main():
     counts = {}
     # TODO: Simulate N tournaments and keep track of win counts
     with open(filename) as file:
-        file_reader= csv.DictReader(file)
+        file_reader = csv.DictReader(file)
         for team in file_reader:
             teamname = team["team"]
             counts[teamname] = 0
@@ -69,6 +69,7 @@ def simulate_tournament(teams):
 
     # So know you've got:   teams = [{team : "name",rating : "number"}]
     return teams[0].get("team")
+
 
 if __name__ == "__main__":
     main()
