@@ -1,11 +1,11 @@
 Times:
 
-10 simulations: 0m0.020
-100 simulations: 0m0.023
-1000 simulations: 0m0.027
-10000 simulations: 0m0.089
-100000 simulations: 0m0.791
-1000000 simulations: 0m6.928
+10 simulations: 0m0.020s
+100 simulations: 0m0.023s
+1000 simulations: 0m0.027s
+10000 simulations: 0m0.089s
+100000 simulations: 0m0.791s
+1000000 simulations: 0m6.928s
 
 Questions:
 
