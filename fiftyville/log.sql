@@ -128,3 +128,7 @@ WHERE name = 'Diana';
 -- Get Bruce's passport number: 5773159633
 SELECT passport_number FROM people
 WHERE name = 'Bruce';
+
+-- Find out the passengers passports list on the flight and whether bruce's is on it
+SELECT passport_number FROM passengers
+WHERE flight_id = 36;
