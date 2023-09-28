@@ -25,9 +25,11 @@ AND month = 7;
 .schema
 
 -- To find the license plate from the thief's car
-SELECT * FROM bakery_security_logs
+SELECT license_plate FROM bakery_security_logs
 WHERE year = 2021
 AND day = 28
 AND month = 7
-AND hour = 10;
+AND hour = 10
+AND minute <= 25
+AND activity = 'exit';
 
