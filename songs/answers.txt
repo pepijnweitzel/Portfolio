@@ -1,2 +1,6 @@
 Their valence was quiet on average, which shows his music taste wasn't particularly happy, nor sad. There is however
 quiet some danceability and energy in his songs which means they were party-ish songs.
+
+The reason why this might not be very representative of the listener is that this raw data doesn't know the exact message
+most people get when listening to the song, you might have a very high energy value, which could still be interperted,
+perhabs because of the lyrics, as a non-energetic song.
