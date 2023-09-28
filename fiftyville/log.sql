@@ -45,4 +45,10 @@ WHERE licen_plate IN (
     AND activity = 'exit'
 );
 
---
+-- Get account number from withdrawns made at leggett street at 28-07-2021
+SELECT account_number FROM atm_transactions
+WHERE year = 2021
+AND month = 7
+AND day = 28
+AND atm_location = 'Leggett Street'
+AND transaction_type = 'withdraw';
