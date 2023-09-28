@@ -134,6 +134,10 @@ SELECT passport_number FROM passengers
 WHERE flight_id = 36
 AND passport_number = 5773159633;
 
--- Find out where he went.
+-- Find out where he went: destination id = 4
 SELECT destination_airport_id FROM flights
 WHERE id = 36;
+
+-- Find out the name of the city where the airport is.
+SELECT city FROM airports
+WHERE id = 4;
