@@ -131,4 +131,6 @@ WHERE name = 'Bruce';
 
 -- Find out the passengers passports list on the flight and whether bruce's is on it
 SELECT passport_number FROM passengers
-WHERE flight_id = 36;
+WHERE flight_id = 36
+AND passport_number = 5773159633;
+
