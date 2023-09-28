@@ -143,3 +143,12 @@ SELECT city FROM airports
 WHERE id = 4;
 
 -- Find out the compliance's phone number.
+SELECT receiver FROM phone_calls
+WHERE year = 2021
+AND month = 7
+AND day = 28
+AND caller = (
+    SELECT phone_number FROM people
+    WHERE name = 'Bruce'
+)
+AND duration < 60;
