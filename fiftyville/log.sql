@@ -24,3 +24,10 @@ AND month = 7;
 --To find all the kinds of columns in all the tables
 .schema
 
+-- To find the license plate from the thief's car
+SELECT * FROM bakery_security_logs
+WHERE year = 2021
+AND day = 28
+AND month = 7
+AND hour = 10;
+
