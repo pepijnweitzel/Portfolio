@@ -21,3 +21,6 @@ WHERE year = 2021
 AND day = 28
 AND month = 7;
 
+--To find all the kinds of columns in all the tables
+.schema
+
