@@ -113,3 +113,11 @@ WHERE name IN (
     SELECT name FROM (SELECT name FROM people WHERE licen_plate IN (SELECT license_plate FROM bakery_security_logs WHERE year = 2021 AND day = 28 AND month = 7 AND hour = 10 AND minute <= 25 AND activity = 'exit'))
     WHERE name IN (SELECT name FROM people WHERE id IN (SELECT person_id FROM bank_accounts WHERE account_number IN (SELECT account_number FROM atm_transactions WHERE year = 2021 AND month = 7 AND day = 28 AND atm_location = 'Leggett Street' AND transaction_type = 'withdraw'))));
 
+-- To get the earliest flight id the day after the theft
+SELECT id FROM flights
+WHERE year = 2021
+AND month = 7
+AND day = 29
+ORDER BY hour
+LIMIT 1;
+
