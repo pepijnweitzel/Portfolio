@@ -138,6 +138,7 @@ AND passport_number = 5773159633;
 SELECT destination_airport_id FROM flights
 WHERE id = 36;
 
--- Find out the name of the city where the airport is.
+-- Find out the name of the city where the airport is. He went to New York City!
 SELECT city FROM airports
 WHERE id = 4;
+
