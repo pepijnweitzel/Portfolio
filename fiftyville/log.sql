@@ -81,3 +81,11 @@ WHERE id IN (
 -- Check for the same names in withdraw name list and people leaving bakery name list. Which gave me: Luca, Diana, Bruce
 SELECT name FROM (SELECT name FROM people WHERE licen_plate IN (SELECT license_plate FROM bakery_security_logs WHERE year = 2021 AND day = 28 AND month = 7 AND hour = 10 AND minute <= 25 AND activity = 'exit'))
 WHERE name IN (SELECT name FROM people WHERE id IN (SELECT person_id FROM bank_accounts WHERE account_number IN (SELECT account_number FROM atm_transactions WHERE year = 2021 AND month = 7 AND day = 28 AND atm_location = 'Leggett Street' AND transaction_type = 'withdraw')));
+
+-- To get the numbers from the people calling for less than a minute on the day of the theft.
+SELECT caller FROM phone_calls
+WHERE year = 2021
+AND month = 7
+AND day = 28
+AND duration < 60;
+
