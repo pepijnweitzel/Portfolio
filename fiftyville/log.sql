@@ -24,7 +24,7 @@ AND month = 7;
 --To find all the kinds of columns in all the tables
 .schema
 
--- To find the license plate from the thief's car
+-- To find the possible license plate from the thief's car
 SELECT license_plate FROM bakery_security_logs
 WHERE year = 2021
 AND day = 28
