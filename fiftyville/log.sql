@@ -44,3 +44,5 @@ WHERE licen_plate IN (
     AND minute <= 25
     AND activity = 'exit'
 );
+
+--
