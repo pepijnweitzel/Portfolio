@@ -129,8 +129,11 @@ WHERE name = 'Diana';
 SELECT passport_number FROM people
 WHERE name = 'Bruce';
 
--- Find out the passengers passports list on the flight and whether bruce's is on it
+-- Find out the passengers passports list on the flight and whether bruce's is on it. It gives back his passport number so it was Bruce who commited the crime!
 SELECT passport_number FROM passengers
 WHERE flight_id = 36
 AND passport_number = 5773159633;
 
+-- Find out where he went.
+SELECT destination_airport_id FROM flights
+WHERE id = 36;
