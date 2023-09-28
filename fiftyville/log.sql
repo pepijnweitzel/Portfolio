@@ -142,7 +142,7 @@ WHERE id = 36;
 SELECT city FROM airports
 WHERE id = 4;
 
--- Find out the compliance's phone number.
+-- Find out the compliance's phone number: (375) 555-8161
 SELECT receiver FROM phone_calls
 WHERE year = 2021
 AND month = 7
@@ -152,3 +152,5 @@ AND caller = (
     WHERE name = 'Bruce'
 )
 AND duration < 60;
+
+--Find out compliance's name:
