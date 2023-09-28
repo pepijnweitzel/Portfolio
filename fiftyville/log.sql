@@ -33,3 +33,14 @@ AND hour = 10
 AND minute <= 25
 AND activity = 'exit';
 
+-- To find all the names from the people leaving the bakery after the theft within 10 minutes of the theft
+SELECT name FROM people
+WHERE licen_plate IN (
+    SELECT license_plate FROM bakery_security_logs
+    WHERE year = 2021
+    AND day = 28
+    AND month = 7
+    AND hour = 10
+    AND minute <= 25
+    AND activity = 'exit'
+);
