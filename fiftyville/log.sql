@@ -153,4 +153,6 @@ AND caller = (
 )
 AND duration < 60;
 
---Find out compliance's name:
+--Find out compliance's name: Robin
+SELECT name FROM people
+WHERE phone_number = '(375) 555-8161';
