@@ -12,4 +12,9 @@ AND month = 7;
 -- To find out all the kinds of columns there are in this table
 .schema interviews
 
---
+-- To tell me more about what the witnesses said
+
+SELECT * FROM interviews
+WHERE year = 2021
+AND day = 28
+AND month = 7;
