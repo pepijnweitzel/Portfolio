@@ -5,17 +5,6 @@
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
         <link href="styles.css" rel="stylesheet">
         <title>Trivia!</title>
-        <script>
-            // TODO: Add code to check answers to questions
-            document.addEventListener('DomContentLoaded',function(){
-                //question1:
-                let correct = document.querySelector('.correct');
-                correct.addEventListener('click', function(){
-                    correct.style.backgroundColor = 'green';
-                    document.querySelector('feedback1').innerHTML = 'Correct!';
-                });
-            });
-        </script>
     </head>
     <body>
         <div class="header">
@@ -31,6 +20,8 @@
                 <button class="incorrect">The Hague</button>
                 <button class="correct">Amsterdam</button>
                 <button class="incorrect">Rotterdam</button>
+                <button class="incorrect">Arnhem</button>
+                <button class="incorrect">Zwolle</button>
 
                 <p id="feedback1"></p>
             </div>
@@ -41,5 +32,20 @@
                 <!-- TODO: Add free response question here -->
             </div>
         </div>
+        <script>
+            let correct = document.querySelector('.correct');
+            correct.addEventListener('click', function(){
+                correct.style.backgroundColor = 'green';
+                document.querySelector('#feedback1').innerHTML = 'Correct!';
+            });
+            let incorrect = document.querySelector('.correct');
+            for (let i = 0; i < incorrects.length; i++){
+                incorrect.addEventListener('click', function(){
+                    incorrect.style.backgroundColor = 'red';
+                    document.querySelector('#feedback1').innerHTML = 'Incorrect!';
+            });
+            };
+
+        </script>
     </body>
 </html>
