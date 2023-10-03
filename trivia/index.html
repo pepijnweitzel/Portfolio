@@ -9,7 +9,11 @@
             // TODO: Add code to check answers to questions
             document.addEventListener('DomContentLoaded',function(){
                 //question1:
-                let correct = 
+                let correct = document.querySelector('.correct');
+                correct.addEventListener('click', function(){
+                    correct.style.backgroundColor = 'green';
+                    document.querySelector('feedback1').innerHTML = 'Correct!';
+                });
             });
         </script>
     </head>
