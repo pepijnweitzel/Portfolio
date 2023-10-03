@@ -7,7 +7,13 @@ body {
 #h1 {
     font-size: 80px;
     color: #FFFFFF;
-    margin: 200px;
+    margin-top: 200px;
+    margin-bottom: 100px;
+}
+
+#indexpara {
+    color: #FFFFFF;
+    margin-bottom: 50px;
 }
 
 .navigator {
@@ -22,6 +28,7 @@ body {
     padding: 50px 100px
 }
 
-#test {
+#marquee {
     color: #FFFFFF;
+    margin-top: 200px;
 }
