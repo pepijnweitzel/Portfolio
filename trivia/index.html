@@ -7,22 +7,6 @@
         <title>Trivia!</title>
         <script>
             // TODO: Add code to check answers to questions
-            document.addEventListener('DomContentLoaded', function(){
-                // Question 1:
-
-                // Question 2:
-                document.querySelector('#check').addEventListener('submit',function() {
-                    let input = document.querySelector('input').value;
-                    if (input.value === 'stock exchange'){
-                        input.style.backgroundColor = 'green';
-                    }
-                    else{
-                        input.style.backgroundColor = 'red';
-                    }
-
-                });
-            });
-
         </script>
     </head>
     <body>
@@ -34,20 +18,13 @@
             <div class="section">
                 <h2>Part 1: Multiple Choice </h2>
                 <hr>
-                <h3>
                 <!-- TODO: Add multiple choice question here -->
-                What is the capital of the Netherlands?
-                </h3>
-                <button class="buttons">The Hague</button> &nbsp <button class="buttons">Amsterdam</button> &nbsp <button class="buttons">Arnhem</button>
             </div>
 
             <div class="section">
                 <h2>Part 2: Free Response</h2>
                 <hr>
                 <!-- TODO: Add free response question here -->
-                <h3>In 1611 Amsterdam was the first city in the world to have a ...</h3>
-                <input type="text" autocomplete="off"></input>
-                <button id="check" type="submit">Check Answer</button>
             </div>
         </div>
     </body>
