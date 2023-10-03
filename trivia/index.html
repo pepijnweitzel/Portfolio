@@ -38,10 +38,10 @@
                 correct.style.backgroundColor = 'green';
                 document.querySelector('#feedback1').innerHTML = 'Correct!';
             });
-            let incorrect = document.querySelector('.correct');
+            let incorrects = document.querySelector('.incorrect');
             for (let i = 0; i < incorrects.length; i++){
-                incorrect.addEventListener('click', function(){
-                    incorrect.style.backgroundColor = 'red';
+                incorrects[i].addEventListener('click', function(){
+                    incorrects[i].style.backgroundColor = 'red';
                     document.querySelector('#feedback1').innerHTML = 'Incorrect!';
             });
             };
