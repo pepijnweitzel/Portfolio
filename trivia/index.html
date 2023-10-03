@@ -11,9 +11,9 @@
                 // Question 1:
 
                 // Question 2:
-                document.querySelector('#check').addEventListener('click',function(event) {
-                    let answer = document.querySelector('input').value;
-                    if (answer.value === 'stock exchange'){
+                document.querySelector('#check').addEventListener('submit',function(event) {
+                    let input = document.querySelector('input').value;
+                    if (input.value === 'stock exchange'){
                         input.style.backgroundColor = 'green';
                     }
                     else{
