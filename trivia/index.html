@@ -30,6 +30,11 @@
                 <h2>Part 2: Free Response</h2>
                 <hr>
                 <!-- TODO: Add free response question here -->
+                <h3>In 1611 Amsterdam was to first city in the world to have a ...</h3>
+                <input type="text">
+                <button id="submit">submit</button>
+
+                <p id="feedback2"></p>
             </div>
         </div>
         <script>
@@ -38,13 +43,24 @@
                 correct.style.backgroundColor = 'green';
                 document.querySelector('#feedback1').innerHTML = 'Correct!';
             });
-            let incorrects = document.querySelector('.incorrect');
+            let incorrects = document.querySelectorAll('.incorrect');
             for (let i = 0; i < incorrects.length; i++){
                 incorrects[i].addEventListener('click', function(){
                     incorrects[i].style.backgroundColor = 'red';
                     document.querySelector('#feedback1').innerHTML = 'Incorrect!';
             });
             };
+            document.querySelector('#submit').addEventListener('click', function(){
+                let answer = document.querySelector('input');
+                if (answer.value === 'stock exchange'){
+                    answer.style.backgroundColor = 'green';
+                    document.querySelector('#feedback2').innerHTML = 'Correct!';
+                }
+                else{
+                    answer.style.backgroundColor = 'red';
+                    document.querySelector('#feedback2').innerHTML = 'Incorrect!';
+                }
+            });
 
         </script>
     </body>
