@@ -11,7 +11,7 @@
                 // Question 1:
 
                 // Question 2:
-                document.querySelector('#check').addEventListener('submit',function(event) {
+                document.querySelector('#check').addEventListener('submit',function() {
                     let input = document.querySelector('input').value;
                     if (input.value === 'stock exchange'){
                         input.style.backgroundColor = 'green';
@@ -46,8 +46,8 @@
                 <hr>
                 <!-- TODO: Add free response question here -->
                 <h3>In 1611 Amsterdam was the first city in the world to have a ...</h3>
-                <input type="text"></input>
-                <button id="check">Check Answer</button>
+                <input type="text" autocomplete="off"></input>
+                <button id="check" type="submit">Check Answer</button>
             </div>
         </div>
     </body>
