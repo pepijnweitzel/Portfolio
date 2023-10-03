@@ -8,13 +8,6 @@
         <script>
             // TODO: Add code to check answers to questions
             // Question 1:
-
-            // Question 2:
-            document.querySelector('form').addEventListener('submit',function(event) {
-                let answer = document.querySelector('#multianswer').value;
-                // doe de kleurwisseling en laat de text zien
-                event.preventDefault();
-            });
         </script>
     </head>
     <body>
@@ -44,6 +37,14 @@
                     <input autocomplete="off" id="multianswer" type="text">
                     <button type="submit">Check Answer</button>
                 </form>
+                <script>
+                    // Question 2:
+                    document.querySelector('form').addEventListener('submit',function(event) {
+                        let answer = document.querySelector('#multianswer').value;
+                        // doe de kleurwisseling en laat de text zien
+                        event.preventDefault();
+                    });
+                </script>
             </div>
         </div>
     </body>
