@@ -11,8 +11,8 @@
 
             // Question 2:
             document.addEventListener('DomContentLoaded', function(){
-                document.querySelector('form').addEventListener('click',function(event) {
-                    let answer = document.querySelector('#multianswer').value;
+                document.querySelector('#multianswer').addEventListener('click',function(event) {
+                    let answer = document.querySelector('input').value;
                     // doe de kleurwisseling en laat de text zien
                     alert('Hello, ' + answer);
                     event.preventDefault();
