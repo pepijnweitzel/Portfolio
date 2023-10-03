@@ -7,12 +7,18 @@
         <title>Trivia!</title>
         <script>
             // TODO: Add code to check answers to questions
-            // Question 1:
-
-            // Question 2:
             document.addEventListener('DomContentLoaded', function(){
+                // Question 1:
+
+                // Question 2:
                 document.querySelector('#check').addEventListener('click',function(event) {
                     let answer = document.querySelector('input').value;
+                    if (answer.value === 'stock exchange'){
+                        answer.style.backgroundColor = 'green';
+                    }
+                    else{
+                        answer.style.backgroundColor = 'red';
+                    }
 
                 });
             });
