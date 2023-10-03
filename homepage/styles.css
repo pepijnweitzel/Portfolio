@@ -15,5 +15,6 @@ body {
 
 .navbutton {
     background-color: #FF0000;
-    
+    border-radius: 50px;
+    margin: 10px
 }
