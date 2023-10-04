@@ -18,3 +18,8 @@ body {
     margin-bottom: 20px;
     color: #000000;
 }
+
+p {
+    font-size: 16px;
+    margin-top: 40px;
+}
