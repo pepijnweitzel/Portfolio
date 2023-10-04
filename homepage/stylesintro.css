@@ -1,5 +1,7 @@
 body {
     background-image: url(https://png.pngtree.com/thumb_back/fh260/background/20220215/pngtree-brief-introduction-of-simple-small-fresh-watercolor-company-ppt-background-image_926616.jpg);
+    background-repeat: no-repeat;
+    background-size: 1720px 1015px;
     text-align: center;
     vertical-align: middle;
 }
