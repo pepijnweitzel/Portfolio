@@ -8,7 +8,16 @@
         <title>Pepijn's Webpage</title>
     </head>
     <body>
-
+        <p>
+            <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+              Show the websites creator
+            </button>
+        </p>
+        <div class="collapse" id="collapseExample">
+            <div class="card card-body">
+                Pepijn Weitzel, born on june the 8th in 2004.
+            </div>
+        </div>
         <h1 id="h1">A warm welcome!</h1>
         <p id="indexpara">
             This Website was an assignment part of the CS50 Introduction to Computer Science Course.
@@ -23,7 +32,6 @@
                 <button class="navbutton" onclick="location.href='future.html'">Future</button>
             </ul>
         </nav>
-        <h6 id="marquee"><marquee>Pepijn Weitzel :D</marquee></h6>
         <script>
             function hoverfunction(){
                 alert("Hey there! You're already on that page!");
