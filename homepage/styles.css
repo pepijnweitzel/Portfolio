@@ -1,6 +1,6 @@
 body {
     background-image: url('pexels-felix-mittermeier-956999.jpg');
-    text-align: center;
+    text-align: left;
     vertical-align: middle;
 }
 
@@ -9,11 +9,13 @@ body {
     color: #FFFFFF;
     margin-top: 200px;
     margin-bottom: 100px;
+    text-align: center;
 }
 
 #indexpara {
     color: #FFFFFF;
     margin-bottom: 50px;
+    text-align: center;
 }
 
 .navigator {
