@@ -30,6 +30,9 @@
     padding: 50px 100px
 }
 
-.test {
-    color: #FF0000;
+.navbar-brand {
+    font-family: 'Lato', sans-serif;
+    color:grey;
+    font-size: 100px;
+    margin: 0px;
 }
