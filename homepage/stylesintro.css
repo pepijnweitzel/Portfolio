@@ -5,21 +5,10 @@ body {
 
 #h1 {
     font-size: 80px;
-    color: #FFFFFF;
+    color: #FF0000;
     margin-top: 200px;
     margin-bottom: 100px;
     text-align: center;
-}
-
-#indexpara {
-    color: #FFFFFF;
-    margin-bottom: 50px;
-    text-align: center;
-}
-
-.navigator {
-    height: 100px;
-    font-size: 50px;
 }
 
 .navbutton {
