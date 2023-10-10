@@ -218,8 +218,15 @@ def sell():
 
     # Check and try to sell given stock and the number of
     if request.method == "POST":
-        # Ensure number of shares is not negative
-        if 
+        # Ensure symbol was submitted
+        if not request.form.get("symbol"):
+            return apology("missing symbol", 400)
+        # Ensure shares was submitted and it is a positive number
+        elif not request.form.get("shares") or int(request.form.get("shares")) < 1:
+            return apology("missing shares", 400)
+        # Ensure user has enough shares to sell
+        number_of_shares =
+
         return redirect("/")
     else:
         return render_template("sell.html", stock_names=stock_names)
