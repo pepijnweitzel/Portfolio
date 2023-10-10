@@ -96,7 +96,7 @@ def buy():
                     db.execute("UPDATE stocks SET number = ? WHERE users_id = ? AND stock = ?", new_amount, session["user_id"], info["name"])
 
         # Add transaction to database
-        name_stock = request.form.get("symbol")
+        name_stock = request.form.get("symbol").upper()
         number_of = int(request.form.get("shares"))
         price_of = usd(int(lookup(name_stock)["price"]))
         current_time = time.ctime()
@@ -252,7 +252,7 @@ def sell():
         db.execute("UPDATE stocks SET number = ? WHERE users_id = ? AND stock = ?", number_of_shares, session["user_id"], request.form.get("symbol"))
 
         # Add transaction to database
-        name_stock = request.form.get("symbol")
+        name_stock = request.form.get("symbol").upper()
         number_of = -abs(int(request.form.get("shares")))
         price_of = usd(int(lookup(name_stock)["price"]))
         current_time = time.ctime()
