@@ -66,7 +66,8 @@ def buy():
                 db.execute("UPDATE users SET cash = ? WHERE id = ?", newcash, session["user_id"])
                 # Add stock to user
                 number_shares = request.form.get("shares")
-                print(db.execute("SELECT number FROM stocks WHERE user_id = ? AND stock = ?", session["user_id"], number_shares))
+                if len(db.execute("SELECT number FROM stocks WHERE users_id = ? AND stock = ?", session["user_id"], number_shares)) != 1:
+                    db.execute("INSERT INTO stocks ")
 
         return apology("TODO")
     else:
