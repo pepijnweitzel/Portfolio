@@ -36,6 +36,9 @@ def after_request(response):
 def index():
     """Show portfolio of stocks"""
     list_of_stocks = db.execute("SELECT * FROM stocks WHERE users_id = ?", session["user_id"])
+    total_stocks = len(list_of_stocks)
+    for i in range(total_stocks):
+        
 
     return render_template("index.html", test=list_of_stocks)
 

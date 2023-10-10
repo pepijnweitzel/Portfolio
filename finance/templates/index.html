@@ -8,17 +8,21 @@
     <table class="table table-striped">
         <thead>
             <tr>
-                <th class="text-start">Symbol</th>
-                <th class="text-start">Name</th>
-                <th class="text-end">Shares</th>
-                <th class="text-end">Price</th>
-                <th class="text-end">TOTAL</th>
+                <th>Symbol</th>
+                <th>Name</th>
+                <th>Shares</th>
+                <th>Price</th>
+                <th>TOTAL</th>
             </tr>
         </thead>
         <tbody>
-            {% for stock in test %}
+            {% for dictionary in test %}
                 <tr>
-                    <td></td>
+                    <td>{{ dictionary['stock'] }}</td>
+                    <td>{{ dictionary['stock'] }}</td>
+                    <td>{{ dictionary['number'] }}</td>
+                    <td>...</td>
+                    <td>...</td>
                 </tr>
             {% endfor %}
         </tbody>
