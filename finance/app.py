@@ -37,18 +37,26 @@ def after_request(response):
 def index():
     """Show portfolio of stocks"""
     # Get names of stocks owned by user
-    list_of_stocks = db.execute("SELECT * FROM stocks WHERE users_id = ?", session["user_id"])
+    list_of_stocks = db.execute(
+        "SELECT * FROM stocks WHERE users_id = ?", session["user_id"]
+    )
 
     # Get prices of stocks owned by user and input in list of dictionaries
     for i in range(len(list_of_stocks)):
         price = lookup(list_of_stocks[i]["stock"])["price"]
         list_of_stocks[i]["price"] = usd(price)
-        amount_of_stocks = db.execute("SELECT number FROM stocks WHERE stock = ? AND users_id = ?", list_of_stocks[i]["stock"], session["user_id"])[0]["number"]
+        amount_of_stocks = db.execute(
+            "SELECT number FROM stocks WHERE stock = ? AND users_id = ?",
+            list_of_stocks[i]["stock"],
+            session["user_id"],
+        )[0]["number"]
         list_of_stocks[i]["total_price"] = usd(int(price) * int(amount_of_stocks))
         list_of_stocks[i]["total_price_not_usd"] = int(price) * int(amount_of_stocks)
 
     # Get amount of cash
-    cash_not_usd = int(db.execute("SELECT cash FROM users WHERE id = ?", session["user_id"])[0]["cash"])
+    cash_not_usd = int(
+        db.execute("SELECT cash FROM users WHERE id = ?", session["user_id"])[0]["cash"]
+    )
     cash = usd(cash_not_usd)
 
     # Add cash to the prices off all the stocks for TOTAL
@@ -57,7 +65,9 @@ def index():
         shares_total += int(list_of_stocks[i]["total_price_not_usd"])
     shares_total = usd(shares_total + cash_not_usd)
 
-    return render_template("index.html", list_of_stocks=list_of_stocks, cash=cash, total=shares_total)
+    return render_template(
+        "index.html", list_of_stocks=list_of_stocks, cash=cash, total=shares_total
+    )
 
 
 @app.route("/buy", methods=["GET", "POST"])
@@ -85,28 +95,64 @@ def buy():
             info = lookup(request.form.get("symbol"))
             total_price = info["price"] * int(request.form.get("shares"))
             # Ensure user has enough cash
-            userscash = db.execute("SELECT cash FROM users WHERE id = ?", session["user_id"])[0]["cash"]
+            userscash = db.execute(
+                "SELECT cash FROM users WHERE id = ?", session["user_id"]
+            )[0]["cash"]
             if userscash < total_price:
                 return apology("can't afford", 400)
             else:
                 # Remove the total price from cash of user
                 newcash = userscash - total_price
-                db.execute("UPDATE users SET cash = ? WHERE id = ?", newcash, session["user_id"])
+                db.execute(
+                    "UPDATE users SET cash = ? WHERE id = ?",
+                    newcash,
+                    session["user_id"],
+                )
                 # Add stock to user
                 number_shares = request.form.get("shares")
-                if len(db.execute("SELECT number FROM stocks WHERE users_id = ? AND stock = ?", session["user_id"], info["name"])) != 1:
-                    db.execute("INSERT INTO stocks (users_id, stock, number) VALUES (?, ?, ?)", session["user_id"], info["name"], number_shares)
+                if (
+                    len(
+                        db.execute(
+                            "SELECT number FROM stocks WHERE users_id = ? AND stock = ?",
+                            session["user_id"],
+                            info["name"],
+                        )
+                    )
+                    != 1
+                ):
+                    db.execute(
+                        "INSERT INTO stocks (users_id, stock, number) VALUES (?, ?, ?)",
+                        session["user_id"],
+                        info["name"],
+                        number_shares,
+                    )
                 else:
-                    previous_amount = db.execute("SELECT number FROM stocks WHERE users_id = ? AND stock = ?", session["user_id"], info["name"])[0]["number"]
+                    previous_amount = db.execute(
+                        "SELECT number FROM stocks WHERE users_id = ? AND stock = ?",
+                        session["user_id"],
+                        info["name"],
+                    )[0]["number"]
                     new_amount = int(previous_amount) + int(number_shares)
-                    db.execute("UPDATE stocks SET number = ? WHERE users_id = ? AND stock = ?", new_amount, session["user_id"], info["name"])
+                    db.execute(
+                        "UPDATE stocks SET number = ? WHERE users_id = ? AND stock = ?",
+                        new_amount,
+                        session["user_id"],
+                        info["name"],
+                    )
 
         # Add transaction to database
         name_stock = request.form.get("symbol").upper()
         number_of = int(request.form.get("shares"))
         price_of = usd(int(lookup(name_stock)["price"]))
         current_time = time.ctime()
-        db.execute("INSERT INTO history (users_id, stock, number, price, date_time) VALUES (?, ?, ?, ?, ?)", session["user_id"], name_stock, number_of, price_of, current_time)
+        db.execute(
+            "INSERT INTO history (users_id, stock, number, price, date_time) VALUES (?, ?, ?, ?, ?)",
+            session["user_id"],
+            name_stock,
+            number_of,
+            price_of,
+            current_time,
+        )
         flash("Bought!")
         return redirect("/")
     else:
@@ -118,7 +164,10 @@ def buy():
 def history():
     """Show history of transactions"""
     # Create list to use for html page
-    transaction_rows = db.execute("SELECT stock, number, price, date_time FROM history WHERE users_id = ?", session["user_id"])
+    transaction_rows = db.execute(
+        "SELECT stock, number, price, date_time FROM history WHERE users_id = ?",
+        session["user_id"],
+    )
     return render_template("history.html", transaction_rows=transaction_rows)
 
 
@@ -131,7 +180,6 @@ def login():
 
     # User reached route via POST (as by submitting a form via POST)
     if request.method == "POST":
-
         # Ensure username was submitted
         if not request.form.get("username"):
             return apology("must provide username", 403)
@@ -141,10 +189,14 @@ def login():
             return apology("must provide password", 403)
 
         # Query database for username
-        rows = db.execute("SELECT * FROM users WHERE username = ?", request.form.get("username"))
+        rows = db.execute(
+            "SELECT * FROM users WHERE username = ?", request.form.get("username")
+        )
 
         # Ensure username exists and password is correct
-        if len(rows) != 1 or not check_password_hash(rows[0]["hash"], request.form.get("password")):
+        if len(rows) != 1 or not check_password_hash(
+            rows[0]["hash"], request.form.get("password")
+        ):
             return apology("invalid username and/or password", 403)
 
         # Remember which user has logged in
@@ -185,7 +237,9 @@ def quote():
         else:
             info = lookup(request.form.get("symbol"))
             info["price"] = usd(info["price"])
-            return render_template("quoted.html", symbol=info["name"], price=info["price"])
+            return render_template(
+                "quoted.html", symbol=info["name"], price=info["price"]
+            )
     else:
         return render_template("quote.html")
 
@@ -195,12 +249,19 @@ def register():
     """Register user"""
 
     if request.method == "POST":
-
         # Ensure username was submitted
         if not request.form.get("username"):
             return apology("must provide username", 400)
         # Ensure username not already in use
-        elif len(db.execute("SELECT username FROM users WHERE username = ?;", request.form.get("username"))) != 0:
+        elif (
+            len(
+                db.execute(
+                    "SELECT username FROM users WHERE username = ?;",
+                    request.form.get("username"),
+                )
+            )
+            != 0
+        ):
             return apology("username already in use", 400)
         # Ensure password was submitted
         elif not request.form.get("password"):
@@ -241,28 +302,56 @@ def sell():
         elif not request.form.get("shares") or int(request.form.get("shares")) < 1:
             return apology("missing shares", 400)
         # Ensure user has enough shares to sell
-        elif int(request.form.get("shares")) > int(db.execute("SELECT number FROM stocks WHERE users_id = ? AND stock = ?", session["user_id"], request.form.get("symbol"))[0]["number"]):
+        elif int(request.form.get("shares")) > int(
+            db.execute(
+                "SELECT number FROM stocks WHERE users_id = ? AND stock = ?",
+                session["user_id"],
+                request.form.get("symbol"),
+            )[0]["number"]
+        ):
             return apology("too many shares", 400)
         # Get current share price
         price = int(lookup(request.form.get("symbol"))["price"])
         # Get the total price added to cash
         total_price = price * int(request.form.get("shares"))
         # Get current cash from user
-        cash = int(db.execute("SELECT cash FROM users WHERE id = ?", session["user_id"])[0]["cash"])
+        cash = int(
+            db.execute("SELECT cash FROM users WHERE id = ?", session["user_id"])[0][
+                "cash"
+            ]
+        )
         # Update users' cash
         cash += total_price
         db.execute("UPDATE users SET cash = ? WHERE id = ?", cash, session["user_id"])
         # Update number of owned shares for user
-        number_of_shares = int(db.execute("SELECT number FROM stocks WHERE users_id = ? AND stock = ?", session["user_id"], request.form.get("symbol"))[0]["number"])
+        number_of_shares = int(
+            db.execute(
+                "SELECT number FROM stocks WHERE users_id = ? AND stock = ?",
+                session["user_id"],
+                request.form.get("symbol"),
+            )[0]["number"]
+        )
         number_of_shares -= int(request.form.get("shares"))
-        db.execute("UPDATE stocks SET number = ? WHERE users_id = ? AND stock = ?", number_of_shares, session["user_id"], request.form.get("symbol"))
+        db.execute(
+            "UPDATE stocks SET number = ? WHERE users_id = ? AND stock = ?",
+            number_of_shares,
+            session["user_id"],
+            request.form.get("symbol"),
+        )
 
         # Add transaction to database
         name_stock = request.form.get("symbol").upper()
         number_of = -abs(int(request.form.get("shares")))
         price_of = usd(int(lookup(name_stock)["price"]))
         current_time = time.ctime()
-        db.execute("INSERT INTO history (users_id, stock, number, price, date_time) VALUES (?, ?, ?, ?, ?)", session["user_id"], name_stock, number_of, price_of, current_time)
+        db.execute(
+            "INSERT INTO history (users_id, stock, number, price, date_time) VALUES (?, ?, ?, ?, ?)",
+            session["user_id"],
+            name_stock,
+            number_of,
+            price_of,
+            current_time,
+        )
 
         # Get rid of stock in table if 0 in portfolio
         db.execute("DELETE FROM stocks WHERE number = 0")
@@ -272,13 +361,13 @@ def sell():
     else:
         return render_template("sell.html", stock_names=stock_names)
 
+
 @app.route("/change", methods=["GET", "POST"])
 @login_required
 def change():
     """Change password"""
 
     if request.method == "POST":
-
         # Ensure password was submitted
         if not request.form.get("password"):
             return apology("must provide password", 403)
@@ -291,7 +380,9 @@ def change():
 
         # Change passwords
         new_password = generate_password_hash(request.form.get("password"))
-        db.execute("UPDATE users SET hash = ? WHERE id = ?", new_password, session["user_id"])
+        db.execute(
+            "UPDATE users SET hash = ? WHERE id = ?", new_password, session["user_id"]
+        )
 
         return redirect("/")
     else:
