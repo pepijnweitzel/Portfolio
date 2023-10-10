@@ -143,7 +143,7 @@ def buy():
         # Add transaction to database
         name_stock = request.form.get("symbol").upper()
         number_of = int(request.form.get("shares"))
-        price_of = usd(int(lookup(name_stock)["price"]))
+        price_of = float(lookup(name_stock)["price"])
         current_time = time.ctime()
         db.execute(
             "INSERT INTO history (users_id, stock, number, price, date_time) VALUES (?, ?, ?, ?, ?)",
@@ -342,7 +342,7 @@ def sell():
         # Add transaction to database
         name_stock = request.form.get("symbol").upper()
         number_of = -abs(int(request.form.get("shares")))
-        price_of = usd(int(lookup(name_stock)["price"]))
+        price_of = float(lookup(name_stock)["price"])
         current_time = time.ctime()
         db.execute(
             "INSERT INTO history (users_id, stock, number, price, date_time) VALUES (?, ?, ?, ?, ?)",

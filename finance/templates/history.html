@@ -19,7 +19,7 @@
             <tr>
                 <td>{{ row['stock'] }}</td>
                 <td>{{ row['number'] }} </td>
-                <td>{{ row['price'] }} </td>
+                <td>{{ row['price'] | usd }} </td>
                 <td>{{ row['date_time'] }} </td>
             </tr>
             {% endfor %}
