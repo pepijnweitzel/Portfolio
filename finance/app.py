@@ -265,9 +265,21 @@ def sell():
     else:
         return render_template("sell.html", stock_names=stock_names)
 
-@app.route("/change")
+@app.route("/change", methods=["GET", "POST"])
 @login_required
 def change():
     """Change password"""
 
-    return redirect("/")
+    if request.method == "POST":
+
+        # Ensure password was submitted
+        if not request.form.get("password"):
+            return apology("must provide password", 403)
+        # Ensure confirmation was submitted
+        elif not request.form.get("confirmation"):
+            return apology("must provide repeated password", 403)
+        
+
+        return redirect("/")
+    else:
+        return render_template("change.html")
