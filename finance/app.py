@@ -69,7 +69,7 @@ def buy():
                 if len(db.execute("SELECT number FROM stocks WHERE users_id = ? AND stock = ?", session["user_id"], number_shares)) != 1:
                     db.execute("INSERT INTO stocks (stock, number) VALUES (?, ?)", info["name"], number_shares)
                 else:
-                    db.execute
+                    db.execute("SELECT number FROM stocks WHERE users_id = ? AND stock = ?", session["user_id"], number_shares)
 
         return apology("TODO")
     else:
