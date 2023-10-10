@@ -35,8 +35,12 @@ def after_request(response):
 @login_required
 def index():
     """Show portfolio of stocks"""
+    # Get names of stocks owned by user
     list_of_stocks = db.execute("SELECT * FROM stocks WHERE users_id = ?", session["user_id"])
+
+    # Get prices of stocks owned by user
     total_stocks = len(list_of_stocks)
+    prices = []
     for i in range(total_stocks):
         
 
