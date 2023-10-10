@@ -55,6 +55,8 @@ def buy():
             return apology("missing shares", 400)
         else:
             info = lookup(request.form.get("symbol"))
+            total_price = info["price"] * int(request.form.get("shares"))
+            print(db.execute("SELECT cash FROM "))
 
 
         return apology("TODO")
