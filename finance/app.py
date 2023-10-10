@@ -116,7 +116,7 @@ def register():
         if not request.form.get("username"):
             return apology("must provide username", 403)
         # Ensure username not already in use
-        elif len(db.execute("SELECT username FROM users WHERE username = ?", request.form.get("username"))) != 0:
+        elif len(db.execute("SELECT username FROM users WHERE username = ?;", request.form.get("username"))) != 0:
             return apology("username already in use", 403)
         # Ensure password was submitted
         elif not request.form.get("password"):
@@ -128,11 +128,9 @@ def register():
         elif request.form.get("password") != request.form.get("confirmation"):
             return apology("passwords do not match", 403)
         # Add user to userbase
-        username = request.form.get("username")
-        password
-
-
-        db.execute()
+        name = request.form.get("username")
+        password = generate_password_hash(request.form.get("password"))
+        db.execute("INSERT INTO users (username, hash) VALUES (?, ?);", name, password)
 
 
 
