@@ -42,7 +42,21 @@ def index():
 @login_required
 def buy():
     """Buy shares of stock"""
-    return apology("TODO")
+
+    if request.method == "POST":
+        # Ensure symbol was submitted
+        if not request.form.get("symbol"):
+            return apology("missing symbol", 400)
+        # Ensure symbol exists in US marketplace
+        elif not lookup(request.form.get("symbol")):
+            return apology("inavlid symbol", 400)
+        # Ensure shares was submitted
+        elif not request.form.get("shares"):
+            return apology("missing shares", 400)
+
+        return apology("TODO")
+    else:
+        return render_template("buy.html")
 
 
 @app.route("/history")
