@@ -42,7 +42,7 @@ def index():
     for i in range(len(list_of_stocks)):
         info = lookup(list_of_stocks[i]["stock"])
         #list_of_stocks[i]["price"] = price
-        db.execute("SELECT number FROM stocks WHERE stock = ?", list_of_stocks[i]["stock"])[]
+        amount_of_stocks = db.execute("SELECT number FROM stocks WHERE stock = ?", list_of_stocks[i]["stock"])[0]["number"]
         #list_of_stocks[i]["total_price"] = price *
 
 
