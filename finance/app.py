@@ -62,7 +62,8 @@ def buy():
                 return apology("can't afford", 400)
             else:
                 # Remove the total price from cash of user
-                db.execute("")
+                newcash = userscash - total_price
+                db.execute("UPDATE users SET cash = ? WHERE id = ?", newcash, session["user_id"])
 
         return apology("TODO")
     else:
