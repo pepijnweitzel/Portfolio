@@ -218,7 +218,7 @@ def sell():
 
     # Check and try to sell given stock and the number of
     if request.method == "POST":
-        # Ensure stock is owned
+        # Ensure
         return redirect("/")
     else:
         return render_template("sell.html", stock_names=stock_names)
