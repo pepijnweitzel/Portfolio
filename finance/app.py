@@ -209,4 +209,8 @@ def register():
 @login_required
 def sell():
     """Sell shares of stock"""
-    return apology("TODO")
+    owned_stocks = 
+    if request.method == "POST":
+        return apology("TODO")
+    else:
+        return render_template("sell.html")
