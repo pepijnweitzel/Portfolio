@@ -228,7 +228,9 @@ def sell():
         number_of_shares = int(db.execute("SELECT number FROM stocks WHERE useres_id = ? AND stock = ?", session["user_id"], request.form.get("symbol"))[0]["number"])
         if int(request.form.get("shares")) > number_of_shares:
             apology("too many shares", 400)
-        price = lookup(request.form.get("symbol"))
+        price = int(lookup(request.form.get("symbol"))["price"])
+        total_price = price * int(request.form.get("shares"))
+        
 
         return redirect("/")
     else:
