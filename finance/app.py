@@ -73,7 +73,7 @@ def buy():
                     new_amount = int(previous_amount) + int(number_shares)
                     db.execute("UPDATE stocks SET number = ? WHERE users_id = ? AND stock = ?", new_amount, session["user_id"], info["name"])
 
-        return apology("TODO")
+        return render_template("index.html")
     else:
         return render_template("buy.html")
 
