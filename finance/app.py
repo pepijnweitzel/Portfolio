@@ -225,7 +225,7 @@ def sell():
         elif not request.form.get("shares") or int(request.form.get("shares")) < 1:
             return apology("missing shares", 400)
         # Ensure user has enough shares to sell
-        number_of_shares =
+        number_of_shares = db.execute("SELECT number FROM stocks WHERE useres_id = ? AND stock = ?", session["user_id"], request.form.get("symbol"))
 
         return redirect("/")
     else:
