@@ -39,13 +39,14 @@ def index():
     list_of_stocks = db.execute("SELECT * FROM stocks WHERE users_id = ?", session["user_id"])
 
     # Get prices of stocks owned by user
-    total_stocks = len(list_of_stocks)
-    prices = []
-    for i in range(total_stocks):
+    for i in range(len(total_stocks)):
         price = lookup(list_of_stocks[i]["stock"])["price"]
-        prices.append(price)
+        list_of_stocks[i]["price"] = price
+        amount_of_stocks = 
+        list_of_stocks[i]["total_price"] = price *
 
-    return render_template("index.html", test=list_of_stocks, prices=prices)
+
+    return render_template("index.html", list_of_stocks=list_of_stocks, prices=prices)
 
 
 @app.route("/buy", methods=["GET", "POST"])
