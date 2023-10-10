@@ -218,7 +218,8 @@ def sell():
 
     # Check and try to sell given stock and the number of
     if request.method == "POST":
-        # Ensure
+        # Ensure number of shares is not negative
+        if 
         return redirect("/")
     else:
         return render_template("sell.html", stock_names=stock_names)
