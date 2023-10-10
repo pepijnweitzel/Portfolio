@@ -65,7 +65,8 @@ def buy():
                 newcash = userscash - total_price
                 db.execute("UPDATE users SET cash = ? WHERE id = ?", newcash, session["user_id"])
                 # Add stock to user
-                
+                number_shares = request.form.get("shares")
+                print(db.execute("SELECT number FROM stocks WHERE user_id = ? AND stock = ?", session["user_id"], number_shares))
 
         return apology("TODO")
     else:
