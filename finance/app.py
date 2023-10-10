@@ -258,8 +258,16 @@ def sell():
         current_time = time.ctime()
         db.execute("INSERT INTO history (users_id, stock, number, price, date_time) VALUES (?, ?, ?, ?, ?)", session["user_id"], name_stock, number_of, price_of, current_time)
 
-        remaining = 
+        # Get rid of stock in table if 0 in portfolio
+        db.execute("DELETE FROM stocks WHERE number = 0")
 
         return redirect("/")
     else:
         return render_template("sell.html", stock_names=stock_names)
+
+@app.route("/change")
+@login_required
+def change():
+    """Change password"""
+
+    return redirect("/")
