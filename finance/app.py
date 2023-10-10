@@ -123,7 +123,8 @@ def register():
             return apology("must provide repeated password", 403)
         elif request.form.get("password") != request.form.get("confirmation"):
             return apology("passwords do not match", 403)
-        
+        print(db.execute("SELECT username FROM users WHERE username = ?", request.form.get("username")))
+
 
 
     else:
