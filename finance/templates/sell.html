@@ -9,8 +9,8 @@
         <div class="mb-3">
             <select class="form-select mx-auto w-auto" name="symbol">
                 <option disabled selected>Symbol</option>
-                {% for something in something %}
-                <option value="{{something}}">{{ something }}</option>
+                {% for stock_name in stock_names %}
+                <option value="{{stock_name}}">{{ stock_name }}</option>
                 {% endfor %}
             </select>
         </div>

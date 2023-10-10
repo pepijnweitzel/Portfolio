@@ -209,8 +209,14 @@ def register():
 @login_required
 def sell():
     """Sell shares of stock"""
-    #owned_stocks = 
+    
+    # Get names of all the owned stocks
+    rows = db.execute("SELECT stock FROM stocks WHERE users_id = ?", session["user_id"])
+    stock_names = []
+    for row in rows:
+        stock_names.append(row["stock"])
+
     if request.method == "POST":
         return apology("TODO")
     else:
-        return render_template("sell.html")
+        return render_template("sell.html", stock_names=stock_names)
