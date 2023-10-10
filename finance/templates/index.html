@@ -21,7 +21,7 @@
                     <td>{{ dictionary['stock'] }}</td>
                     <td>{{ dictionary['stock'] }}</td>
                     <td>{{ dictionary['number'] }}</td>
-                    <td>{{ dictionary['price'] }}</td>
+                    <td>{{ dictionary['price'] | usd }}</td>
                     <td>{{ dictionary['total_price'] }}</td>
                 </tr>
             {% endfor %}
