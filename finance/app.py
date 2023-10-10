@@ -53,7 +53,9 @@ def buy():
         # Ensure shares was submitted and shares is positive number
         elif not request.form.get("shares") or int(request.form.get("shares")) < 1:
             return apology("missing shares", 400)
-        
+        else:
+            info = lookup(request.form.get("symbol"))
+
 
         return apology("TODO")
     else:
