@@ -56,10 +56,13 @@ def buy():
         else:
             info = lookup(request.form.get("symbol"))
             total_price = info["price"] * int(request.form.get("shares"))
+            # Ensure user has enough cash
             if db.execute("SELECT cash FROM users WHERE id = ?", session["user_id"])[0]["cash"] < total_price:
                 return apology("can't afford", 400)
+            else:
+                # Remove the total price from cash of user
+                db.execute("")
 
-    
         return apology("TODO")
     else:
         return render_template("buy.html")
