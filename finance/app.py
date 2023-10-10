@@ -111,6 +111,7 @@ def buy():
 @login_required
 def history():
     """Show history of transactions"""
+    # Create list to use for html page
     transaction_rows = db.execute("SELECT stock, number, price, date_time FROM history WHERE users_id = ?", session["user_id"])
     return render_template("history.html", transaction_rows=transaction_rows)
 
