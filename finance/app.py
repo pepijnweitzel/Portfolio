@@ -111,6 +111,7 @@ def buy():
 @login_required
 def history():
     """Show history of transactions"""
+    
     return render_template("history.html")
 
 
@@ -252,8 +253,7 @@ def sell():
 
         # Add transaction to database
         name_stock = request.form.get("symbol")
-        number_of = int(request.form.get("shares"))
-        
+        number_of = -abs(int(request.form.get("shares")))
         price_of = int(lookup(name_stock)["price"])
         current_time = time.ctime()
         db.execute("INSERT INTO history (users_id, stock, number, price, date_time) VALUES (?, ?, ?, ?, ?)", session["user_id"], name_stock, number_of, price_of, current_time)
