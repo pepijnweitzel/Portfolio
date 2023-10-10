@@ -114,7 +114,7 @@ def register():
         #
 
     else:
-        return
+        return render_template("register.html")
     return apology("TODO")
 
 
