@@ -53,6 +53,10 @@ def buy():
         # Ensure shares was submitted
         elif not request.form.get("shares"):
             return apology("missing shares", 400)
+        # Ensure shares is positive number
+        elif int(request.form.get("shares")) < 1:
+            return apology("shares must be 1 or over", 400)
+
 
         return apology("TODO")
     else:
