@@ -234,7 +234,7 @@ def sell():
         # Get the total price added to cash
         total_price = price * int(request.form.get("shares"))
         # Get current cash from user
-        cash = int(db.execute("SELECT cash FROM users WHERE id = ?", session["user_id"]))
+        cash = int(db.execute("SELECT cash FROM users WHERE id = ?", session["user_id"])[0]["cash"])
         # Update users' cash
         cash += total_price
         db.execute("UPDATE users SET cash = ? WHERE id = ?", cash, session["user_id"])
