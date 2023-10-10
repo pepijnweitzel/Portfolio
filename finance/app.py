@@ -236,7 +236,7 @@ def sell():
             return apology("missing shares", 400)
         # Ensure user has enough shares to sell
         elif int(request.form.get("shares")) > int(db.execute("SELECT number FROM stocks WHERE users_id = ? AND stock = ?", session["user_id"], request.form.get("symbol"))[0]["number"]):
-            apology("too many shares", 400)
+            return apology("too many shares", 400)
         # Get current share price
         price = int(lookup(request.form.get("symbol"))["price"])
         # Get the total price added to cash
