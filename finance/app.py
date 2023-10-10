@@ -107,7 +107,7 @@ def buy():
         price_of = usd(int(lookup(name_stock)["price"]))
         current_time = time.ctime()
         db.execute("INSERT INTO history (users_id, stock, number, price, date_time) VALUES (?, ?, ?, ?, ?)", session["user_id"], name_stock, number_of, price_of, current_time)
-
+        flash("Bought!")
         return redirect("/")
     else:
         return render_template("buy.html")
@@ -267,6 +267,7 @@ def sell():
         # Get rid of stock in table if 0 in portfolio
         db.execute("DELETE FROM stocks WHERE number = 0")
 
+        flash("Sold!")
         return redirect("/")
     else:
         return render_template("sell.html", stock_names=stock_names)
