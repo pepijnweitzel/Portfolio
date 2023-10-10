@@ -42,9 +42,10 @@ def index():
     total_stocks = len(list_of_stocks)
     prices = []
     for i in range(total_stocks):
-        
+        price = lookup(list_of_stocks[i]["stock"])["price"]
+        prices.append(price)
 
-    return render_template("index.html", test=list_of_stocks)
+    return render_template("index.html", test=list_of_stocks, prices=prices)
 
 
 @app.route("/buy", methods=["GET", "POST"])
