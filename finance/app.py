@@ -258,6 +258,8 @@ def sell():
         current_time = time.ctime()
         db.execute("INSERT INTO history (users_id, stock, number, price, date_time) VALUES (?, ?, ?, ?, ?)", session["user_id"], name_stock, number_of, price_of, current_time)
 
+        remaining = 
+
         return redirect("/")
     else:
         return render_template("sell.html", stock_names=stock_names)
