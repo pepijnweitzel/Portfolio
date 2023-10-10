@@ -94,7 +94,13 @@ def buy():
                     previous_amount = db.execute("SELECT number FROM stocks WHERE users_id = ? AND stock = ?", session["user_id"], info["name"])[0]["number"]
                     new_amount = int(previous_amount) + int(number_shares)
                     db.execute("UPDATE stocks SET number = ? WHERE users_id = ? AND stock = ?", new_amount, session["user_id"], info["name"])
-                
+
+        # Add transaction to database
+        name_stock = request.form.get("symbol")
+        number_of = int(request.form.get("shares"))
+        price_of = int(lookup(name_stock)["price"])
+        current_time = time.ctime()
+        db.execute("INSERT INTO history (users_id, stock, number, price, date_time) VALUES (?, ?, ?, ?, ?)", session["user_id"], name_stock, number_of, price_of, current_time)
 
         return redirect("/")
     else:
