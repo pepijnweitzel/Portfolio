@@ -110,7 +110,9 @@ def quote():
         elif not lookup(request.form.get("symbol")):
             return apology("inavlid symbol", 400)
         else:
-            
+            info = lookup(request.form.get("symbol"))
+            info["price"] = usd(info["price"])
+            return render_template("quoted.html", symbol=info["name"], price)
 
     else:
         return render_template("quote.html")
