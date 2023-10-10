@@ -98,7 +98,7 @@ def buy():
         # Add transaction to database
         name_stock = request.form.get("symbol")
         number_of = int(request.form.get("shares"))
-        price_of = int(lookup(name_stock)["price"])
+        price_of = usd(int(lookup(name_stock)["price"]))
         current_time = time.ctime()
         db.execute("INSERT INTO history (users_id, stock, number, price, date_time) VALUES (?, ?, ?, ?, ?)", session["user_id"], name_stock, number_of, price_of, current_time)
 
@@ -112,7 +112,7 @@ def buy():
 def history():
     """Show history of transactions"""
     transaction_rows = db.execute("SELECT stock, number, price, date_time FROM history WHERE users_id = ?", session["user_id"])
-    return render_template("history.html" transaction_rows=transaction_rows)
+    return render_template("history.html", transaction_rows=transaction_rows)
 
 
 @app.route("/login", methods=["GET", "POST"])
@@ -254,7 +254,7 @@ def sell():
         # Add transaction to database
         name_stock = request.form.get("symbol")
         number_of = -abs(int(request.form.get("shares")))
-        price_of = int(lookup(name_stock)["price"])
+        price_of = usd(int(lookup(name_stock)["price"]))
         current_time = time.ctime()
         db.execute("INSERT INTO history (users_id, stock, number, price, date_time) VALUES (?, ?, ?, ?, ?)", session["user_id"], name_stock, number_of, price_of, current_time)
 
