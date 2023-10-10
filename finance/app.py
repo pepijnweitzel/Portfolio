@@ -72,8 +72,14 @@ def buy():
         # Ensure symbol exists in US marketplace
         elif not lookup(request.form.get("symbol")):
             return apology("inavlid symbol", 400)
-        # Ensure shares was submitted and shares is positive number
-        elif not request.form.get("shares") or int(request.form.get("shares")) < 1:
+        # Ensure shares was submitted
+        elif not request.form.get("shares"):
+            return apology("missing shares", 400)
+        # Ensure shares is number:
+        elif not request.form.get("shares").isdigit():
+            return apology("missing shares", 400)
+        # Ensure shares is positive number
+        elif int(request.form.get("shares")) < 1:
             return apology("missing shares", 400)
         else:
             info = lookup(request.form.get("symbol"))
