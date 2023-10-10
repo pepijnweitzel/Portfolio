@@ -250,6 +250,13 @@ def sell():
         number_of_shares -= int(request.form.get("shares"))
         db.execute("UPDATE stocks SET number = ? WHERE users_id = ? AND stock = ?", number_of_shares, session["user_id"], request.form.get("symbol"))
 
+        # Add transaction to database
+        name_stock = request.form.get("symbol")
+        number_of = int(request.form.get("shares"))
+        price_of = int(lookup(name_stock)["price"])
+        current_time = time.ctime()
+        db.execute("INSERT INTO history (users_id, stock, number, price, date_time) VALUES (?, ?, ?, ?, ?)", session["user_id"], name_stock, number_of, price_of, current_time)
+
         return redirect("/")
     else:
         return render_template("sell.html", stock_names=stock_names)
