@@ -94,6 +94,7 @@ def buy():
                     previous_amount = db.execute("SELECT number FROM stocks WHERE users_id = ? AND stock = ?", session["user_id"], info["name"])[0]["number"]
                     new_amount = int(previous_amount) + int(number_shares)
                     db.execute("UPDATE stocks SET number = ? WHERE users_id = ? AND stock = ?", new_amount, session["user_id"], info["name"])
+                
 
         return redirect("/")
     else:
