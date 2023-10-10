@@ -66,11 +66,11 @@ def buy():
                 db.execute("UPDATE users SET cash = ? WHERE id = ?", newcash, session["user_id"])
                 # Add stock to user
                 number_shares = request.form.get("shares")
-                if len(db.execute("SELECT number FROM stocks WHERE users_id = ? AND stock = ?", session["user_id"], number_shares)) != 1:
+                if len(db.execute("SELECT number FROM stocks WHERE users_id = ? AND stock = ?", session["user_id"], info["name"])) != 1:
                     db.execute("INSERT INTO stocks (users_id, stock, number) VALUES (?, ?, ?)", session["user_id"], info["name"], number_shares)
                 else:
                     previous_amount = db.execute("SELECT number FROM stocks WHERE users_id = ? AND stock = ?", session["user_id"], info["name"])[0]["number"]
-                    new_amount = previous_amount + number_shares
+                    new_amount = int(previous_amount) + int(number_shares)
                     db.execute("UPDATE stocks SET number = ? WHERE users_id = ? AND stock = ?", new_amount, session["user_id"], info["name"])
 
         return apology("TODO")
