@@ -105,15 +105,17 @@ def quote():
     """Get stock quote."""
 
     if request.method == "POST":
+        # Ensure symbol was submitted
         if not request.form.get("symbol"):
             return apology("missing symbol", 400)
+        # Ensure symbol exists in US marketplace
         elif not lookup(request.form.get("symbol")):
             return apology("inavlid symbol", 400)
+        # Show the price of the given symbol stock
         else:
             info = lookup(request.form.get("symbol"))
             info["price"] = usd(info["price"])
             return render_template("quoted.html", symbol=info["name"], price=info["price"])
-
     else:
         return render_template("quote.html")
 
