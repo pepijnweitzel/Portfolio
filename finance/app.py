@@ -282,8 +282,9 @@ def change():
         elif request.form.get("password") != request.form.get("confirmation"):
             return apology("passwords do not match", 403)
 
-        # Change 
-
+        # Change passwords
+        new_password = generate_password_hash(request.form.get("password"))
+        db.execute("UPDATE users SET hash = ? WHERE id = ?", new_password, session["user_id"])
 
         return redirect("/")
     else:
