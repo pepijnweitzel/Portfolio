@@ -112,7 +112,7 @@ def quote():
         else:
             info = lookup(request.form.get("symbol"))
             info["price"] = usd(info["price"])
-            return render_template("quoted.html", symbol=info["name"], price)
+            return render_template("quoted.html", symbol=info["name"], price=info["price"])
 
     else:
         return render_template("quote.html")
