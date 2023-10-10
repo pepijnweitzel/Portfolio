@@ -225,12 +225,22 @@ def sell():
         elif not request.form.get("shares") or int(request.form.get("shares")) < 1:
             return apology("missing shares", 400)
         # Ensure user has enough shares to sell
-        number_of_shares = int(db.execute("SELECT number FROM stocks WHERE useres_id = ? AND stock = ?", session["user_id"], request.form.get("symbol"))[0]["number"])
+        number_of_shares = int(db.execute("SELECT number FROM stocks WHERE users_id = ? AND stock = ?", session["user_id"], request.form.get("symbol"))[0]["number"])
         if int(request.form.get("shares")) > number_of_shares:
             apology("too many shares", 400)
+
+        # Get current share price
         price = int(lookup(request.form.get("symbol"))["price"])
+        # Get the total price added to cash
         total_price = price * int(request.form.get("shares"))
-        
+        # Get current cash from user
+        cash = int(db.execute("SELECT cash FROM users WHERE id = ?", session["user_id"]))
+        # Update users' cash
+        cash += total_price
+        db.execute("UPDATE users SET cash = ? WHERE id = ?", cash, session["user_id"])
+        # Update number of owned shares for user
+        number_of_shares -= int(request.form.get("shares"))
+        db.execute("UPDATE stocks SET number = ? WHERE users_id = ? AND stock = ?", number_of_shares, session["user_id"], request.form.get("symbol"))
 
         return redirect("/")
     else:
