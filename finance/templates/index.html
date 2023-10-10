@@ -22,19 +22,19 @@
                     <td>{{ dictionary['stock'] }}</td>
                     <td>{{ dictionary['number'] }}</td>
                     <td>{{ dictionary['price'] | usd }}</td>
-                    <td>{{ dictionary['total_price'] }}</td>
+                    <td>{{ dictionary['total_price'] | usd }}</td>
                 </tr>
             {% endfor %}
             <tfoot>
                 <tr>
                     <td class="border-0"></td><td class="border-0"></td><td class="border-0"></td>
                     <td class="border-0 fw-bold">Cash</td>
-                    <td class="border-0">{{ cash }}</td>
+                    <td class="border-0">{{ cash | usd }}</td>
                 </tr>
                 <tr>
                     <td class="border-0"></td><td class="border-0"></td><td class="border-0"></td>
                     <td class="border-0 fw-bold">TOTAL</td>
-                    <td class="border-0">{{ total }}</td>
+                    <td class="border-0">{{ total | usd }}</td>
                 </tr>
             </tfoot>
         </tbody>
