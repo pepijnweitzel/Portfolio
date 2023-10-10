@@ -43,7 +43,8 @@ def index():
         price = lookup(list_of_stocks[i]["stock"])["price"]
         list_of_stocks[i]["price"] = usd(price)
         amount_of_stocks = db.execute("SELECT number FROM stocks WHERE stock = ? AND users_id = ?", list_of_stocks[i]["stock"], session["user_id"])[0]["number"]
-        list_of_stocks[i]["total_price"] = int(price) * int(amount_of_stocks)
+        list_of_stocks[i]["total_price"] = usd(int(price) * int(amount_of_stocks))
+        list_of_stocks[i]["total_price_not_usd"] = int(price) * int(amount_of_stocks)
 
     # Get amount of cash
     cash = usd(int(db.execute("SELECT cash FROM users WHERE id = ?", session["user_id"])[0]["cash"]))
@@ -51,7 +52,8 @@ def index():
     # Add cash to the prices off all the stocks for TOTAL
     shares_total = 0
     for i in range(len(list_of_stocks)):
-        shares_total += int(list_of_stocks[i]["total_price"])
+        shares_total += int(list_of_stocks[i]["total_price_not_usd"])
+    shares_total = usd(shares_total)
 
     return render_template("index.html", list_of_stocks=list_of_stocks, cash=cash, total=shares_total)
 
