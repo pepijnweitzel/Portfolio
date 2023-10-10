@@ -40,11 +40,10 @@ def index():
 
     # Get prices of stocks owned by user
     for i in range(len(list_of_stocks)):
-        info = lookup(list_of_stocks[i]["stock"])
-        #list_of_stocks[i]["price"] = price
+        price = lookup(list_of_stocks[i]["stock"])["price"]
+        list_of_stocks[i]["price"] = usd(price)
         amount_of_stocks = db.execute("SELECT number FROM stocks WHERE stock = ? AND users_id = ?", list_of_stocks[i]["stock"], session["user_id"])[0]["number"]
-        #list_of_stocks[i]["total_price"] = price *
-
+        list_of_stocks[i]["total_price"] = usd(int(price) * int(amount_of_stocks))
 
     return render_template("index.html", list_of_stocks=list_of_stocks)
 
