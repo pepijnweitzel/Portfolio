@@ -278,7 +278,12 @@ def change():
         # Ensure confirmation was submitted
         elif not request.form.get("confirmation"):
             return apology("must provide repeated password", 403)
-        
+        # Ensure password matches confirmation
+        elif request.form.get("password") != request.form.get("confirmation"):
+            return apology("passwords do not match", 403)
+
+        # Change 
+
 
         return redirect("/")
     else:
