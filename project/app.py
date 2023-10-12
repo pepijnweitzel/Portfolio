@@ -30,10 +30,14 @@ def index():
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
-    """Log user in"""
 
     # Forget any user_id
     session.clear()
 
     # Return for test in creating this project
     return render_template("login.html")
+
+@app.route("/register", methods=["GET", "POST"])
+def register():
+
+    
