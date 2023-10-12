@@ -19,7 +19,7 @@
             <input autocomplete="off" class="form-control mx-auto w-auto" id="group_code" name="group_code" placeholder="Group code" type="text">
         </div>
         <div>
-            <button class="btn btn-primary" type="submit" onmouseover="showgroup()" onmouseleave="unshowgroup()" onmousedown="groupcreated()">Create group</button>
+            <button class="btn btn-secondary" onmouseover="showjoingroup()" onmouseleave="unshowjoingroup()">Join group</button> <button class="btn btn-secondary" onmouseover="showcreategroup()" onmouseleave="unshowcreategroup()" >Create group</button>
         </div>
         <p id="text"></p>
         <br>
@@ -29,14 +29,18 @@
     <script>
 
         const text = document.getElementById('text');
-        function showgroup(){
-            text.innerHTML = 'If new, click button to create a group';
+        function showjoingroup(){
+            text.innerHTML = 'If owning a group code, enter it';
         };
-        function unshowgroup(){
+        function unshowjoingroup(){
             text.innerHTML = '';
-        }
-
-        
+        };
+        function showcreategroup(){
+            text.innerHTML = 'If not owning a group code, input a random';
+        };
+        function unshowcreategroup(){
+            text.innerHTML = '';
+        };
 
     </script>
 {% endblock %}
