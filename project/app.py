@@ -23,3 +23,13 @@ def after_request(response):
     response.headers["Expires"] = 0
     response.headers["Pragma"] = "no-cache"
     return response
+
+@app.route("/login", methods=["GET", "POST"])
+def login():
+    """Log user in"""
+
+    # Forget any user_id
+    session.clear()
+
+    # Return for test in creating this project
+    return render_template("login.html")
