@@ -105,6 +105,8 @@ def register():
             return render_template("register.html")
         # Check whether they inputted create or join with group code
         elif request.form.get("group_code_join"):
+            print(len(db.execute("SELECT groupcode FROM users WHERE groupcode = ?;", request.form.get("group_code_join"))))
+            return render_template("register.html")
             if len(
                 db.execute(
                     "SELECT groupcode FROM users WHERE groupcode = ?;",
