@@ -102,6 +102,9 @@ def register():
         # Check whether they inputted something in both group codes
         elif request.form.get("group_code_join") and request.form.get("group_code_create"):
             return render_template("register.html")
+        # Check whether they inputted create or join with group code
+        elif request.form.get("group_code_join"):
+            return render_template("login.html")
 
         # Check if groupcode already exists, otherwise create new one
         #groupcode = request.form.get("group_code")
