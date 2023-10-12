@@ -113,9 +113,9 @@ def register():
                     "INSERT INTO users (username, hash, groupcode) VALUES (?, ?, ?);",
                     request.form.get("username"), generate_password_hash(request.form.get("password")), request.form.get("group_code_join")
                 )
-                print("someone joined succesfully")
+
                 # Remember which user has logged in
-                session["user_id"] = rows[0]["id"]
+                session["user_id"] = db.execute("SELECT id FROM users WHERE username = ?;", request.form.get("username"))[0]["id"]
 
                 # Redirect user to home page
                 return redirect("/")
@@ -133,8 +133,12 @@ def register():
                     "INSERT INTO users (username, hash, groupcode) VALUES (?, ?, ?);",
                     request.form.get("username"), generate_password_hash(request.form.get("password")), request.form.get("group_code_create")
                 )
-                print("someone created succesfully")
-                # Sent to login page
+                
+                # Remember which user has logged in
+                session["user_id"] = db.execute("SELECT id FROM users WHERE username = ?;", request.form.get("username"))[0]["id"]
+
+                # Redirect user to home page
+                return redirect("/")
 
     # If get:
     else:
