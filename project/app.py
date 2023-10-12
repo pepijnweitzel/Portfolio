@@ -110,23 +110,23 @@ def register():
                     "SELECT groupcode FROM users WHERE groupcode = ?;",
                     request.form.get("group_code_join")
                 )
-                != 1
+                != 0
             ):
-                #if the code is not found in database, it does not exist and they can not join the group
-                return render_template("register.html")
-            else:
+                #if the code is found in database, it exists and they can join the group
                 db.execute(
                     "INSERT INTO users (username, hash, groupcode) VALUES (?, ?, ?);",
                     request.form.get("username"), generate_password_hash(request.form.get("password")), request.form.get("group_code_join")
                 )
                 return login()
+            else:
+                return render_template("register.html")
         else:
             if len(
                 db.execute(
                     "SELECT groupcode FROM users WHERE groupcode = ?;",
                     request.form.get("group_code_create")
                 )
-                == 1
+                != 0
             ):
                 #if the code is found in the database, it already exists and they need to come up with another one
                 return render_template("register.html")
