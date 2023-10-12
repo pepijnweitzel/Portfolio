@@ -46,9 +46,34 @@ def register():
 
     if request.method == "POST":
 
-        #
-
-
-
-    return render_template("register.html")
-
+        # Ensure username was submitted
+        if not request.form.get("username"):
+            return render_template("/register")
+        # Ensure username not already in use
+        elif (
+            len(
+                db.execute(
+                    "SELECT username FROM users WHERE username = ?;",
+                    request.form.get("username"),
+                )
+            )
+            != 0
+        ):
+            return render_template("/register")
+        # Ensure password was submitted
+        elif not request.form.get("password"):
+            return render_template("/register")
+        # Ensure confirmation was submitted
+        elif not request.form.get("confirmation"):
+            return render_template("/register")
+        # Ensure password matches confirmation
+        elif request.form.get("password") != request.form.get("confirmation"):
+            return render_template("/register")
+        # Add user to userbase
+        name = request.form.get("username")
+        password = generate_password_hash(request.form.get("password"))
+        db.execute("INSERT INTO users (username, hash) VALUES (?, ?);", name, password)
+        # Sent to login page
+        return login()
+    else:
+        return render_template("register.html")
