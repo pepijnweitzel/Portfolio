@@ -100,6 +100,9 @@ def register():
         name = request.form.get("username")
         password = generate_password_hash(request.form.get("password"))
         db.execute("INSERT INTO users (username, hash) VALUES (?, ?);", name, password)
+
+        groupcode = request.form.get("group_code")
+        
         # Sent to login page
         return login()
     else:
