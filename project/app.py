@@ -114,7 +114,8 @@ def register():
                     request.form.get("username"), generate_password_hash(request.form.get("password")), request.form.get("group_code_join")
                 )
                 print("someone joined succesfully")
-                return redirect("/")
+                # Sent to login page
+                return login()
         else:
             if len(
                 db.execute(
@@ -130,7 +131,8 @@ def register():
                     request.form.get("username"), generate_password_hash(request.form.get("password")), request.form.get("group_code_create")
                 )
                 print("someone created succesfully")
-                redirect("/")
+                # Sent to login page
+                return login()
     # If get:
     else:
         return render_template("register.html")
