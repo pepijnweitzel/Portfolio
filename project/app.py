@@ -105,31 +105,22 @@ def register():
             return render_template("register.html")
         # Check whether they inputted create or join with group code
         elif request.form.get("group_code_join"):
-            print(len(db.execute("SELECT groupcode FROM users WHERE groupcode = ?;", request.form.get("group_code_join"))))
-            return render_template("register.html")
-            if len(
-                db.execute(
-                    "SELECT groupcode FROM users WHERE groupcode = ?;",
-                    request.form.get("group_code_join")
-                )
-                != 0
-            ):
+            if (len(db.execute("SELECT groupcode FROM users WHERE groupcode = ?;", request.form.get("group_code_join")))) == 0:
+                return render_template("register.html")
+            else:
                 #if the code is found in database, it exists and they can join the group
                 db.execute(
                     "INSERT INTO users (username, hash, groupcode) VALUES (?, ?, ?);",
                     request.form.get("username"), generate_password_hash(request.form.get("password")), request.form.get("group_code_join")
                 )
                 return login()
-            else:
-                return render_template("register.html")
         else:
             if len(
                 db.execute(
                     "SELECT groupcode FROM users WHERE groupcode = ?;",
                     request.form.get("group_code_create")
                 )
-                != 0
-            ):
+            ) != 0:
                 #if the code is found in the database, it already exists and they need to come up with another one
                 return render_template("register.html")
             else:
