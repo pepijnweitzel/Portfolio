@@ -110,7 +110,7 @@ def register():
                     "SELECT groupcode FROM users WHERE groupcode = ?;",
                     request.form.get("group_code_join")
                 )
-                == 0
+                != 1
             ):
                 #if the code is not found in database, it does not exist and they can not join the group
                 return render_template("register.html")
