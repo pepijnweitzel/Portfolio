@@ -48,7 +48,7 @@ def register():
 
         # Ensure username was submitted
         if not request.form.get("username"):
-            return render_template("/register")
+            return render_template("register.html")
         # Ensure username not already in use
         elif (
             len(
@@ -59,16 +59,16 @@ def register():
             )
             != 0
         ):
-            return render_template("/register")
+            return render_template("register.html")
         # Ensure password was submitted
         elif not request.form.get("password"):
-            return render_template("/register")
+            return render_template("register.html")
         # Ensure confirmation was submitted
         elif not request.form.get("confirmation"):
-            return render_template("/register")
+            return render_template("register.html")
         # Ensure password matches confirmation
         elif request.form.get("password") != request.form.get("confirmation"):
-            return render_template("/register")
+            return render_template("register.html")
         # Add user to userbase
         name = request.form.get("username")
         password = generate_password_hash(request.form.get("password"))
