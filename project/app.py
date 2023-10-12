@@ -96,13 +96,26 @@ def register():
         # Ensure password matches confirmation
         elif request.form.get("password") != request.form.get("confirmation"):
             return render_template("register.html")
-        # Add user to userbase
-        name = request.form.get("username")
-        password = generate_password_hash(request.form.get("password"))
-        db.execute("INSERT INTO users (username, hash) VALUES (?, ?);", name, password)
+        # Check whether they inputted nothing at group codes
+        elif not request.form.get("group_code_join") and not request.form.get("group_code_create"):
+            return render_template("register.html")
+        # Check whether they inputted something in both group codes
+        elif request.form.get("group_code_join") and request.form.get("group_code_create"):
+            return render_template("register.html")
 
-        groupcode = request.form.get("group_code")
-        
+        # Check if groupcode already exists, otherwise create new one
+        #groupcode = request.form.get("group_code")
+        #if len(
+            #db.execute(
+             #   "SELECT groupcode FROM users WHERE groupcode = ?;",
+            #    groupcode
+           # )
+       #     == 0
+      #  ):
+
+       #     db. execute("INSERT INTO users (username, hash, )")
+
+
         # Sent to login page
         return login()
     else:
