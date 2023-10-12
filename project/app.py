@@ -5,6 +5,9 @@ from flask import Flask, flash, redirect, render_template, request, session
 from flask_session import Session
 import time
 
+# Import functions from other file
+from helpers import login_required
+
 # Configure application
 app = Flask(__name__)
 
@@ -25,6 +28,7 @@ def after_request(response):
     return response
 
 @app.route("/")
+@login_required
 def index():
     return render_template("login.html")
 
