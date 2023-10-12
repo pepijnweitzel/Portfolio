@@ -40,4 +40,5 @@ def login():
 @app.route("/register", methods=["GET", "POST"])
 def register():
 
-    
+    # Return for test in creating this project
+    return render_template("register.html")
