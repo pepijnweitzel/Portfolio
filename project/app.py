@@ -113,7 +113,8 @@ def register():
                     "INSERT INTO users (username, hash, groupcode) VALUES (?, ?, ?);",
                     request.form.get("username"), generate_password_hash(request.form.get("password")), request.form.get("group_code_join")
                 )
-                return login()
+                print("someone joined succesfully")
+                return redirect("/")
         else:
             if len(
                 db.execute(
@@ -128,7 +129,8 @@ def register():
                     "INSERT INTO users (username, hash, groupcode) VALUES (?, ?, ?);",
                     request.form.get("username"), generate_password_hash(request.form.get("password")), request.form.get("group_code_create")
                 )
-                return login()
+                print("someone created succesfully")
+                redirect("/")
     # If get:
     else:
         return render_template("register.html")
