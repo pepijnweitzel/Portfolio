@@ -31,7 +31,7 @@ def after_request(response):
 @app.route("/")
 @login_required
 def index():
-    return render_template("login.html")
+    return render_template("index.html")
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
@@ -113,12 +113,9 @@ def register():
                     "INSERT INTO users (username, hash, groupcode) VALUES (?, ?, ?);",
                     request.form.get("username"), generate_password_hash(request.form.get("password")), request.form.get("group_code_join")
                 )
-
-                # Remember which user has logged in
-                session["user_id"] = db.execute("SELECT id FROM users WHERE username = ?;", request.form.get("username"))[0]["id"]
-
+                
                 # Redirect user to home page
-                return redirect("/")
+                login()
         else:
             if len(
                 db.execute(
@@ -133,12 +130,9 @@ def register():
                     "INSERT INTO users (username, hash, groupcode) VALUES (?, ?, ?);",
                     request.form.get("username"), generate_password_hash(request.form.get("password")), request.form.get("group_code_create")
                 )
-                
-                # Remember which user has logged in
-                session["user_id"] = db.execute("SELECT id FROM users WHERE username = ?;", request.form.get("username"))[0]["id"]
 
                 # Redirect user to home page
-                return redirect("/")
+                login()
 
     # If get:
     else:
