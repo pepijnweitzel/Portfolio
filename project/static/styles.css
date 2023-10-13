@@ -20,3 +20,6 @@ nav .nav-item {
     font-size: 40px;
 }
 
+nav #navbar {
+    margin: 30px;
+}
