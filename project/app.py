@@ -147,7 +147,7 @@ def logout():
     # Redirect user to login page by sending to index page.
     return redirect("/")
 
-@app.route("/profile")
+@app.route("/profile", methods=["GET", "POST"])
 def profile():
 
 
@@ -159,11 +159,13 @@ def profile():
             old_name = db.execute("SELECT username FROM users WHERE id = ?;", session["user_id"])[0]["username"]
             # If new username is similar to old username changing it has no use
             if new_name == old_name:
-                return render_template("profile.html")
+                return apology("you already have that username", 400)
+            elif len(db.execute("SELECT username FROM users WHERE username = ?;", new_name)) != 0:
+                return apology("username already in use", 400)
             else:
                 # Update username to new username
                 db.execute("UPDATE users SET username = ? WHERE id = ?;", new_name, session["user_id"])
-        # If both passwords have been submitted check whether they are the same, and if not, update new password
+        # If both passwords have been submitted check whether they are the same, and if so, update new password
         elif request.form.get("new_password"):
             new_password = request.form.get("new_password")
             if request.form.get("confirmation"):
