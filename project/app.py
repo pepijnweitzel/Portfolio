@@ -42,11 +42,11 @@ def login():
     if request.method == "POST":
         # Ensure username was submitted
         if not request.form.get("username"):
-            return render_template("login.html")
+            return apology("please give username", 400)
 
         # Ensure password was submitted
         elif not request.form.get("password"):
-            return render_template("login.html")
+            return apology("please give password", 400)
 
         # Query database for username
         rows = db.execute(
@@ -57,7 +57,7 @@ def login():
         if len(rows) != 1 or not check_password_hash(
             rows[0]["hash"], request.form.get("password")
         ):
-            return render_template("login.html")
+            return apology("password ", 400)
 
         # Remember which user has logged in
         session["user_id"] = rows[0]["id"]
@@ -76,7 +76,7 @@ def register():
 
         # Ensure username was submitted
         if not request.form.get("username"):
-            return render_template("register.html")
+            return apology("please give username", 400)
         # Ensure username not already in use
         elif (
             len(
@@ -87,26 +87,26 @@ def register():
             )
             != 0
         ):
-            return render_template("register.html")
+            return apology("username already in use", 400)
         # Ensure password was submitted
         elif not request.form.get("password"):
-            return render_template("register.html")
+            return apology("please give password", 400)
         # Ensure confirmation was submitted
         elif not request.form.get("confirmation"):
-            return render_template("register.html")
+            return apology("please give repeated password", 400)
         # Ensure password matches confirmation
         elif request.form.get("password") != request.form.get("confirmation"):
-            return render_template("register.html")
+            return apology("passwords do not match", 400)
         # Check whether they inputted nothing at group codes
         elif not request.form.get("group_code_join") and not request.form.get("group_code_create"):
-            return render_template("register.html")
+            return apology("please give a group code or create one", 400)
         # Check whether they inputted something in both group codes
         elif request.form.get("group_code_join") and request.form.get("group_code_create"):
-            return render_template("register.html")
+            return apology("please only give one group code", 400)
         # Check whether they inputted create or join with group code
         elif request.form.get("group_code_join"):
             if (len(db.execute("SELECT groupcode FROM users WHERE groupcode = ?;", request.form.get("group_code_join")))) == 0:
-                return render_template("register.html")
+                return apology("groupcode does not exist", 400)
             else:
                 #if the code is found in database, it exists and they can join the group
                 db.execute(
@@ -124,7 +124,7 @@ def register():
                 )
             ) != 0:
                 #if the code is found in the database, it already exists and they need to come up with another one
-                return render_template("register.html")
+                return apology("code already in use", 400)
             else:
                 db.execute(
                     "INSERT INTO users (username, hash, groupcode) VALUES (?, ?, ?);",
@@ -173,15 +173,10 @@ def profile():
                 if new_password != confirmation:
                     return apology("passwords do not match", 400)
                 else:
-                    old_password_hashed = db.execute("SELECT hash FROM users WHERE id = ?;", session["user_id"])[0]["hash"]
                     new_password_hashed = generate_password_hash(new_password)
-                    # If old password and new password are the same give apology
-                    if old_password_hashed == new_password_hashed:
-                        return apology("old password same as new password", 400)
-                    else:
-                        # Update password
-                        db.execute("UPDATE users SET hash = ? WHERE id = ?;", new_password_hashed, session["user_id"])
-                        return redirect("/")
+                    # Update password
+                    db.execute("UPDATE users SET hash = ? WHERE id = ?;", new_password_hashed, session["user_id"])
+                    return redirect("/")
 
         return redirect("/")
 
