@@ -146,3 +146,16 @@ def logout():
 
     # Redirect user to login page by sending to index page.
     return redirect("/")
+
+@app.route("/profile")
+def profile():
+
+    if request.method == "POST":
+        
+
+
+    else:
+        username = db.execute("SELECT username FROM users WHERE id = ?;", session["user_id"])[0]["username"]
+        return render_template("profile.html", username=username)
+
+
