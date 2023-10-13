@@ -148,6 +148,7 @@ def logout():
     return redirect("/")
 
 @app.route("/profile", methods=["GET", "POST"])
+@login_required
 def profile():
 
 
@@ -184,3 +185,8 @@ def profile():
     else:
         username = db.execute("SELECT username FROM users WHERE id = ?;", session["user_id"])[0]["username"]
         return render_template("profile.html", username=username)
+
+@app.route("/history")
+@login_required
+def history():
+    return render_template("history.html")
