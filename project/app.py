@@ -171,13 +171,13 @@ def profile():
             if request.form.get("confirmation"):
                 confirmation = request.form.get("confirmation")
                 if new_password != confirmation:
-                    return render_template("profile.html")
+                    return apology("passwords do not match", 400)
                 else:
-                    old_password_hashed = db.execute("SELECT hash FROM users WHERE id = ?;", session["user_id"])[0]["username"]
+                    old_password_hashed = db.execute("SELECT hash FROM users WHERE id = ?;", session["user_id"])[0]["hash"]
                     new_password_hashed = generate_password_hash(new_password)
-                    # If passwords are the same:
+                    # If old password and new password are the same give apology
                     if old_password_hashed == new_password_hashed:
-                        return render_template("profile.html")
+                        return apology("old password same as new password", 400)
                     else:
                         # Update password
                         db.execute("UPDATE users SET hash = ? WHERE id = ?;", new_password_hashed, session["user_id"])
