@@ -24,7 +24,7 @@ nav #navbar {
     margin-right: 20px;
 }
 
-.test {
-    max-width: 100px;
-    height: 60px;
+.carousel {
+    text-align: center;
+    max-width: 500px;
 }
