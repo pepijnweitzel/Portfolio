@@ -150,12 +150,41 @@ def logout():
 @app.route("/profile")
 def profile():
 
+
+
     if request.method == "POST":
+        # If submitted execute this:
+        if request.form.get("new_username"):
+            new_name = request.form.get("new_username")
+            old_name = db.execute("SELECT username FROM users WHERE id = ?;", session["user_id"])[0]["username"]
+            # If new username is similar to old username changing it has no use
+            if new_name == old_name:
+                return render_template("profile.html")
+            else:
+                # Update username to new username
+                db.execute("UPDATE users SET username = ? WHERE id = ?;", new_name, session["user_id"])
+        # If both passwords have been submitted check whether they are the same, and if not, update new password
+        elif request.form.get("new_password"):
+            new_password = request.form.get("new_password")
+            if request.form.get("confirmation"):
+                confirmation = request.form.get("confirmation")
+                if new_password != confirmation:
+                    return render_template("profile.html")
+                else:
+                    old_password_hashed = db.execute("SELECT hash FROM users WHERE id = ?;", session["user_id"])[0]["username"]
+                    new_password_hashed = generate_password_hash(new_password)
+                    # If passwords are the same:
+                    if old_password_hashed == new_password_hashed:
+                        return render_template("profile.html")
+                    else:
+                        # Update password
+                        db.execute("UPDATE users SET hash = ? WHERE id = ?;", new_password_hashed, session["user_id"])
+                        return redirect("/")
+
         return redirect("/")
 
 
     else:
-        username = db.execute("SELECT username FROM users WHERE id = ?;", session["user_id"])[0]["username"]
-        return render_template("profile.html", username=username)
+        return render_template("profile.html", username=old_name)
 
 
