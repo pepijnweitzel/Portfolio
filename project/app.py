@@ -151,7 +151,7 @@ def logout():
 def profile():
 
     if request.method == "POST":
-        return render_template("profile.html")
+        return redirect("/")
 
 
     else:

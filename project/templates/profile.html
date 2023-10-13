@@ -6,15 +6,18 @@
 
 {% block main %}
     <form action="/profile" method="post">
+        <h5>Change username</h5>
         <div class="mb-3">
-            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="username" name="username" placeholder = {{ username }} type="text">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="newusername" name="newusername" placeholder = {{ username }} type="text">
         </div>
+        <h5>Change password</h5>
         <div class="mb-3">
-            <input class="form-control mx-auto w-auto" id="password" name="password" placeholder="New password" type="password">
+            <input class="form-control mx-auto w-auto" id="password" name="newpassword" placeholder="New password" type="password">
         </div>
         <div class="mb-3">
             <input class="form-control mx-auto w-auto" id="password" name="confirmation" placeholder="Repeat new password" type="password">
         </div>
         <button class="btn btn-primary" type="submit">Adjust</button>
+        <p>Leave blank if no adjustments to be made</p>
     </form>
 {% endblock %}
