@@ -7,7 +7,7 @@ from werkzeug.security import check_password_hash, generate_password_hash
 import time
 
 # Import functions from other file
-from helpers import login_required
+from helpers import login_required, apology
 
 # Configure application
 app = Flask(__name__)
@@ -159,7 +159,7 @@ def profile():
             old_name = db.execute("SELECT username FROM users WHERE id = ?;", session["user_id"])[0]["username"]
             # If new username is similar to old username changing it has no use
             if new_name == old_name:
-                return render_template("profile.html")
+                return apology("test", 400)
             else:
                 # Update username to new username
                 db.execute("UPDATE users SET username = ? WHERE id = ?;", new_name, session["user_id"])
