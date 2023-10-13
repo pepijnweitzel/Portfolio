@@ -113,7 +113,7 @@ def register():
                     "INSERT INTO users (username, hash, groupcode) VALUES (?, ?, ?);",
                     request.form.get("username"), generate_password_hash(request.form.get("password")), request.form.get("group_code_join")
                 )
-                
+
                 # Redirect user to home page
                 login()
         else:
@@ -137,3 +137,12 @@ def register():
     # If get:
     else:
         return render_template("register.html")
+
+@app.route("/logout")
+def logout():
+
+    # Forget the user_id (cookie)
+    session.clear()
+
+    # Redirect user to login page by sending to index page.
+    return redirect("/")
