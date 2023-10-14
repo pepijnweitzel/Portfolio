@@ -13,7 +13,32 @@
             </div>
             <div class="col-6 col-md-4">
                 <h5>
-                    Current number of cars: {{ number_of_cars }}
+                    <table class="table indextable">
+                        <thead>
+                            <tr>
+                                <th scope="col">Number of cars</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Kilometer count</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>Larry the Bird</td>
+                                <td>@twitter</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </h5>
                 <form action="/" method="post">
                     <select class="form-select mx-auto w-auto car-selector" name="car_name">
@@ -23,7 +48,7 @@
                         {% endfor %}
                     </select>
                     <div>
-                        <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="kilometer_count" name="kilometer_count" placeholder="current count: {{ kilometer_count }}km" type="number">
+                        <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="kilometer_count" name="kilometer_count" placeholder="new kilometer count" type="number">
                         <button class="btn btn-primary carsbtn" type="submit">Adjust</button>
                     </div>
                     <hr>
