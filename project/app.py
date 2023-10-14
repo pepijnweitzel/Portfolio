@@ -48,6 +48,10 @@ def index():
         else:
             return redirect("/")
 
+
+
+
+
     else:
         return render_template("index.html", number_of_cars=number_of_cars)
 
