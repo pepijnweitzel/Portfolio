@@ -44,9 +44,11 @@ def index():
                     return apology("can't submit without any input", 400)
                 else:
                     given_car_name = request.form.get("remove_car")
-                    list_of_dicts_with_carnames = db.execute("SELECT car_name FROM car")
-            elif request.form.get("new_car") == db.execute("SELECT car_name FROM cars WHERE groupcode = ?;", users_groupcode)[0]["car_name"]:
-                return apology("name already exists", 400)
+                    list_of_dicts_with_carnames = db.execute("SELECT car_name FROM cars WHERE car_groupcode = ?;", users_groupcode)
+                    return redirect("/")
+
+            #todo: elif request.form.get("new_car") == db.execute("SELECT car_name FROM cars WHERE car_groupcode = ?;", users_groupcode)[0]["car_name"]:
+                #todo: return apology("name already exists", 400)
             else:
                 db.execute("INSERT INTO cars (car_name, car_groupcode) VALUES (?, ?);", request.form.get("new_car"), users_groupcode)
                 return redirect("/")
