@@ -54,14 +54,14 @@ def index():
                         redirect("/")
                     else:
                         return apology("car name incorrect", 400)
+            # Check for errors with adding new car otherwise, add it
             else:
-                
+                if request.form.get("new_car") in car_names:
+                    return apology("car already exists", 400)
+                else:
+                    db.execute("INSERT INTO cars (car_name, car_groupcode) VALUES (?, ?);", request.form.get("new_car"), users_groupcode)
+                    return redirect("/")
 
-            #todo: elif request.form.get("new_car") == db.execute("SELECT car_name FROM cars WHERE car_groupcode = ?;", users_groupcode)[0]["car_name"]:
-                #todo: return apology("name already exists", 400)
-            else:
-                db.execute("INSERT INTO cars (car_name, car_groupcode) VALUES (?, ?);", request.form.get("new_car"), users_groupcode)
-                return redirect("/")
         elif request.form.get("car_name") and not request.form.get("kilometer_count"):
             return apology("please give kilometer count", 400)
         elif not request.form.get("car_name") and request.form.get("kilometer_count"):
@@ -76,7 +76,7 @@ def index():
 
 
     else:
-        return render_template("index.html", number_of_cars=number_of_cars)
+        return render_template("index.html", number_of_cars=number_of_cars, car_names=car_names)
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
