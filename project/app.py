@@ -45,6 +45,11 @@ def index():
                 else:
                     given_car_name = request.form.get("remove_car")
                     list_of_dicts_with_carnames = db.execute("SELECT car_name FROM cars WHERE car_groupcode = ?;", users_groupcode)
+                    carnames = []
+                    for i in range(len(list_of_dicts_with_carnames)):
+                        list_of_carnames.append(list_of_dicts_with_carnames[i]["car_name"])
+                        print(list_of_carnames)
+
                     return redirect("/")
 
             #todo: elif request.form.get("new_car") == db.execute("SELECT car_name FROM cars WHERE car_groupcode = ?;", users_groupcode)[0]["car_name"]:
