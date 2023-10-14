@@ -32,10 +32,11 @@ def after_request(response):
 @login_required
 def index():
 
+    users_groupcode = db.execute("SELECT groupcode FROM users WHERE id = ?;", session["user_id"])[0]["groupcode"]
+    number_of_cars = len(db.execute("SELECT * FROM cars WHERE groupcode = ?;", users_groupcode))
+
     if request.method == "POST":
 
-        users_groupcode = db.execute("SELECT groupcode FROM users WHERE id = ?;", session["user_id"])[0]["groupcode"]
-        number_of_cars = len(db.execute("SELECT * FROM cars WHERE groupcode = ?;", users_groupcode))
         # Check whether they inputted any box
         if not request.form.get("car_name") and not request.form.get("kilometer_count"):
             if not request.form.get("new_car"):
@@ -45,12 +46,10 @@ def index():
 
 
         else:
-            return render_template
+            return redirect("/")
 
 
-
-
-    return render_template("index.html")
+    return render_template("index.html", number_of_cars=number_of_cars)
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
