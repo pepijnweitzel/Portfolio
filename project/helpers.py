@@ -13,9 +13,8 @@ def login_required(f):
 def apology(message, code=400):
     def escape(s):
 
-        # Escape special characters.
+        # Escape special characters
         # https://github.com/jacebrowning/memegen#special-characters
-
         for old, new in [("-", "--"), (" ", "-"), ("_", "__"), ("?", "~q"),
                          ("%", "~p"), ("#", "~h"), ("/", "~s"), ("\"", "''")]:
             s = s.replace(old, new)
