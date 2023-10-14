@@ -5,17 +5,17 @@
 {% endblock %}
 
 {% block main %}
-<div>
-  <table class="table table-striped">
-    <thead>
+  <div>
+    <table class="table table-striped">
+      <thead>
         <tr>
             <th>Car name</th>
             <th>New kilometer count</th>
             <th>Adjuster</th>
             <th>Date-time</th>
         </tr>
-    </thead>
-    <tbody>
+      </thead>
+      <tbody>
         {% for dictionary in info_list_of_dictionaries %}
         <tr>
             <td>{{ info['stock'] }}</td>
@@ -24,7 +24,7 @@
             <td>{{ info['date_time'] }} </td>
         </tr>
         {% endfor %}
-    </tbody>
-</table>
-</div>
+      </tbody>
+    </table>
+  </div>
 {% endblock %}
