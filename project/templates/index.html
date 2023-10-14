@@ -115,6 +115,8 @@
             </div>
     </div>
     <script>
+        var text = document.getElementById("January");
+        text.style.display = "block";
         {% for month in months %}
         function display{{ month }}() {
             {% for month in months %}
