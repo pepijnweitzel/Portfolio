@@ -243,14 +243,17 @@ def history():
     # Get variables to call for correct history table
     car_ids = []
     current_groupcode = db.execute("SELECT groupcode FROM users WHERE id = ?;", session["user_id"])[0]["groupcode"]
-    for i in range(len(db.execute("SELECT id FROM cars WHERE car_groupcode = ?;", current_groupcode))):
+    list_of = db.execute("SELECT id FROM cars WHERE car_groupcode = ?;", current_groupcode)
+    for i in range(len(list_of)):
         car_ids.append(list_of[i]["id"])
     # Make all ids an integer
     for id in car_ids:
         id = int(id)
-    print(car_ids)
+        db.execute("INSERT INTO temporary (temp_ids) VALUES (?);", id)
     # now do a db.execute with all those id's for the history of it.
-    print(db.execute())
-    rows = db.execute("SELECT new_kilometercount, datetime, usersname, car_name FROM adjustments WHERE cars_id IN ?;", car_ids)
+    rows = db.execute("SELECT new_kilometercount, datetime, usersname, car_name FROM adjustments WHERE cars_id IN ?;", "temporary")
+
+    for id in car_ids:
+        db.execute("DELETE FROM temporary WHERE temp_ids = ?;", id)
 
     return render_template("history.html", rows=rows)
