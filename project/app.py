@@ -46,12 +46,16 @@ def index():
             if not request.form.get("new_car"):
                 if not request.form.get("remove_car"):
                     return apology("can't submit without any input", 400)
+                # Check for errors with removing car otherwise, remove it
                 else:
                     given_car_name = request.form.get("remove_car")
                     if given_car_name in car_names:
-                        
-
-                    return redirect("/")
+                        db.execute("DELETE FROM cars WHERE car_name = ? AND car_groupcode = ?", given_car_name, users_groupcode)
+                        redirect("/")
+                    else:
+                        return apology("car name incorrect", 400)
+            else:
+                
 
             #todo: elif request.form.get("new_car") == db.execute("SELECT car_name FROM cars WHERE car_groupcode = ?;", users_groupcode)[0]["car_name"]:
                 #todo: return apology("name already exists", 400)
