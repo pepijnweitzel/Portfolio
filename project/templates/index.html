@@ -71,9 +71,12 @@
     <script>
         {% for month in months %}
         function display{{ month }}() {
+            {% for month in months %}
+            var text = document.getElementById("{{ month }}");
+            text.style.display = "none";
+            {% endfor %}
             var text = document.getElementById("{{ month }}");
             text.style.display = "block";
-            
         }
         {% endfor %}
     </script>
