@@ -6,6 +6,44 @@
 
 {% block main %}
     <div>
-        You're at the homepage!
+        <div class="container text-center">
+            <div class="row">
+              <div class="col-md-8">
+                calendar over here
+            </div>
+            <div class="col-6 col-md-4">
+                <h5>
+                    Current number of cars: {{ number_of_cars }}
+                </h5>
+                <form action="/" method="post">
+                    <select class="form-select mx-auto w-auto car-selector" name="car_name">
+                        <option disabled selected>Select car</option>
+                        {% for car_name in car_names %}
+                        <option value="{{car_name}}">{{ car_name }}</option>
+                        {% endfor %}
+                    </select>
+                    <div>
+                        <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="kilometer_count" name="kilometer_count" placeholder="new kilometer count" type="number">
+                        <button class="btn btn-primary carsbtn" type="submit">Adjust</button>
+                    </div>
+                    <hr>
+                    <h5>
+                        Add a new car:
+                    </h5>
+                    <div>
+                        <input autocomplete="off" autofocus class="form-control mx-auto w-auto add-car" id="new_car" name="new_car" placeholder="new car name" type="text">
+                        <button class="btn btn-primary carsbtn" type="submit">Add</button>
+                    </div>
+                    <hr>
+                    <h5>
+                        Remove a car:
+                    </h5>
+                    <div>
+                        <input autocomplete="off" autofocus class="form-control mx-auto w-auto add-car" id="remove_car" name="remove_car" placeholder="existing car name" type="text">
+                        <button class="btn btn-primary carsbtn" type="submit">Remove</button>
+                    </div>
+                </form>
+            </div>
+            </div>
     </div>
 {% endblock %}

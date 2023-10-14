@@ -28,9 +28,28 @@ def after_request(response):
     response.headers["Pragma"] = "no-cache"
     return response
 
-@app.route("/")
+@app.route("/", methods=["GET", "POST"])
 @login_required
 def index():
+
+    if request.method == "POST":
+
+        users_groupcode = db.execute("SELECT groupcode FROM users WHERE id = ?;", session["user_id"])[0]["groupcode"]
+        number_of_cars = len(db.execute("SELECT * FROM cars WHERE groupcode = ?;", users_groupcode))
+        # Check whether they inputted any box
+        if not request.form.get("car_name") and not request.form.get("kilometer_count"):
+            if not request.form.get("new_car"):
+                return apology("can't submit without any input", 400)
+            elif request.form.get("new_car") == db.execute("SELECT car_name FROM cars WHERE groupcode = ?;", users_groupcode)[0]["car_name"]:
+                return apology("name already exists", 400)
+
+
+        else:
+            return render_template
+
+
+
+
     return render_template("index.html")
 
 @app.route("/login", methods=["GET", "POST"])

@@ -28,3 +28,15 @@ nav #navbar {
     margin-left: 580px;
     max-width: 500px;
 }
+
+.carsbtn {
+    margin-top: 20px;
+}
+
+.car-selector {
+    margin: 20px;
+}
+
+.add-car {
+    margin-top: 20px;
+}
