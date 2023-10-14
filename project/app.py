@@ -42,7 +42,9 @@ def index():
             if not request.form.get("new_car"):
                 if not request.form.get("remove_car"):
                     return apology("can't submit without any input", 400)
-                elif request.form.get()
+                else:
+                    given_car_name = request.form.get("remove_car")
+                    list_of_dicts_with_carnames = db.execute("SELECT car_name FROM car")
             elif request.form.get("new_car") == db.execute("SELECT car_name FROM cars WHERE groupcode = ?;", users_groupcode)[0]["car_name"]:
                 return apology("name already exists", 400)
             else:
