@@ -243,7 +243,6 @@ def history():
     # Get variables to call for correct history table
     car_ids = []
     current_groupcode = db.execute("SELECT groupcode FROM users WHERE id = ?;", session["user_id"])[0]["groupcode"]
-    list_of = db.execute("SELECT id FROM cars WHERE car_groupcode = ?;", current_groupcode)
     for i in range(len(db.execute("SELECT id FROM cars WHERE car_groupcode = ?;", current_groupcode))):
         car_ids.append(list_of[i]["id"])
     # Make all ids an integer
@@ -251,6 +250,7 @@ def history():
         id = int(id)
     print(car_ids)
     # now do a db.execute with all those id's for the history of it.
+    print(db.execute())
     rows = db.execute("SELECT new_kilometercount, datetime, usersname, car_name FROM adjustments WHERE cars_id IN ?;", car_ids)
 
     return render_template("history.html", rows=rows)
