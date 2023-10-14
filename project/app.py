@@ -49,11 +49,12 @@ def index():
                 # Check for errors with removing car otherwise, remove it
                 else:
                     given_car_name = request.form.get("remove_car")
-                    if given_car_name in car_names:
-                        db.execute("DELETE FROM cars WHERE car_name = ? AND car_groupcode = ?", given_car_name, users_groupcode)
-                        redirect("/")
-                    else:
+                    if given_car_name not in car_names:
                         return apology("car name incorrect", 400)
+                    else:
+                        db.execute("DELETE FROM cars WHERE car_name = ? AND car_groupcode = ?", given_car_name, users_groupcode)
+                        print("test")
+                        return redirect("/")
             # Check for errors with adding new car otherwise, add it
             else:
                 if request.form.get("new_car") in car_names:
