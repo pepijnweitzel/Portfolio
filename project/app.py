@@ -70,8 +70,8 @@ def index():
         # Change kilometercount of car
         else:
             db.execute("UPDATE cars SET kilometercount = ? WHERE car_groupcode = ? AND car_name = ?;", request.form.get("kilometer_count"), users_groupcode, request.form.get("car_name"))
-            #current_time = time.ctime()
-            #db.execute("INSERT INTO adjustments (new_kilometercount, datetime) VALUES")
+            current_time = time.ctime()
+            db.execute("INSERT INTO adjustments (new_kilometercount, datetime) VALUES")
             return redirect("/")
     # Give page if GET method
     else:
