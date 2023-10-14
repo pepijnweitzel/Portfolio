@@ -63,18 +63,11 @@ def index():
             return apology("please give kilometer count", 400)
         elif not request.form.get("car_name") and request.form.get("kilometer_count"):
             return apology("please choose a car", 400)
+        # Change kilometercount of car
         else:
             db.execute("UPDATE cars SET kilometercount = ? WHERE car_groupcode = ? AND car_name = ?;", request.form.get("kilometer_count"), users_groupcode, request.form.get("car_name"))
-            
-
-
-        else:
             return redirect("/")
-
-
-
-
-
+    # Give page if GET method
     else:
         return render_template("index.html", number_of_cars=number_of_cars, car_names=car_names)
 
