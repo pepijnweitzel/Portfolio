@@ -34,6 +34,10 @@ def index():
 
     users_groupcode = db.execute("SELECT groupcode FROM users WHERE id = ?;", session["user_id"])[0]["groupcode"]
     number_of_cars = len(db.execute("SELECT * FROM cars WHERE car_groupcode = ?;", users_groupcode))
+    list_of_dicts_with_carnames = db.execute("SELECT car_name FROM cars WHERE car_groupcode = ?;", users_groupcode)
+    car_names = []
+    for i in range(len(list_of_dicts_with_carnames)):
+        car_names.append(list_of_dicts_with_carnames[i]["car_name"])
 
     if request.method == "POST":
 
@@ -44,11 +48,8 @@ def index():
                     return apology("can't submit without any input", 400)
                 else:
                     given_car_name = request.form.get("remove_car")
-                    list_of_dicts_with_carnames = db.execute("SELECT car_name FROM cars WHERE car_groupcode = ?;", users_groupcode)
-                    carnames = []
-                    for i in range(len(list_of_dicts_with_carnames)):
-                        list_of_carnames.append(list_of_dicts_with_carnames[i]["car_name"])
-                        print(list_of_carnames)
+                    if given_car_name in car_names:
+                        
 
                     return redirect("/")
 
