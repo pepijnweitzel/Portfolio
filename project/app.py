@@ -239,4 +239,12 @@ def profile():
 @app.route("/history")
 @login_required
 def history():
+
+    car_ids = []
+    current_groupcode = db.execute("SELECT groupcode FROM users WHERE id = ?;", session["user_id"])[0]["groupcode"]
+    list_of = db.execute("SELECT id FROM cars WHERE car_groupcode = ?;", current_groupcode)
+    for i in range(len(db.execute("SELECT id FROM cars WHERE car_groupcode = ?;", current_groupcode))):
+        car_ids.append(list_of[i]["id"])
+    # now do a db.execute with all those id's for the history of it.
+
     return render_template("history.html")
