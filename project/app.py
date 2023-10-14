@@ -40,14 +40,18 @@ def index():
         # Check whether they inputted any box
         if not request.form.get("car_name") and not request.form.get("kilometer_count"):
             if not request.form.get("new_car"):
-                return apology("can't submit without any input", 400)
+                if not request.form.get("remove_car"):
+                    return apology("can't submit without any input", 400)
+                elif request.form.get()
             elif request.form.get("new_car") == db.execute("SELECT car_name FROM cars WHERE groupcode = ?;", users_groupcode)[0]["car_name"]:
                 return apology("name already exists", 400)
             else:
                 db.execute("INSERT INTO cars (car_name, car_groupcode) VALUES (?, ?);", request.form.get("new_car"), users_groupcode)
                 return redirect("/")
         elif request.form.get("car_name") and not request.form.get("kilometer_count"):
-            return apology
+            return apology("please give kilometer count", 400)
+        elif not request.form.get("car_name") and request.form.get("kilometer_count"):
+            return apology("please choose a car", 400)
 
 
         else:
