@@ -21,19 +21,12 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {% for car_name in car_names %}
+                            {% for car_info in car_info_list %}
                             <tr>
-                                <td>Mark</td>
-                                <td>Otto</td>
+                                <td>{{ car_info[0] }}</td>
+                                <td>{{ car_info[1] }}km</td>
                             </tr>
-                            <tr>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                            </tr>
-                            <tr>
-                                <td>Larry the Bird</td>
-                                <td>@twitter</td>
-                            </tr>
+                            {% endfor %}
                         </tbody>
                     </table>
                 </h5>

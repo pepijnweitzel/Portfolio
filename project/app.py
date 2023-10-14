@@ -38,6 +38,10 @@ def index():
     car_names = []
     for i in range(len(list_of_dicts_with_carnames)):
         car_names.append(list_of_dicts_with_carnames[i]["car_name"])
+    car_info_list = []
+    for car_name in car_names:
+        kilometercount = db.execute("SELECT kilometercount FROM cars WHERE car_name = ? AND car_groupcode = ?;", car_name, users_groupcode)[0]["kilometercount"]
+        car_info_list.append([car_name, kilometercount])
 
     if request.method == "POST":
 
@@ -69,7 +73,7 @@ def index():
             return redirect("/")
     # Give page if GET method
     else:
-        return render_template("index.html", number_of_cars=number_of_cars, car_names=car_names)
+        return render_template("index.html", number_of_cars=number_of_cars, car_names=car_names, car_info_list=car_info_list)
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
