@@ -247,4 +247,8 @@ def history():
         car_ids.append(list_of[i]["id"])
     # now do a db.execute with all those id's for the history of it.
 
+
+
+    
+
     return render_template("history.html")
