@@ -75,8 +75,9 @@ def index():
             # Add adjustment to adjustments table
             current_time = time.ctime()
             car_id = db.execute("SELECT id FROM cars WHERE car_name = ? AND car_groupcode = ?;", current_carname, users_groupcode)[0]["id"]
+            usersname = db.execute("SELECT username FROM users WHERE id = ?;", session["user_id"])[0]["username"]
 
-            db.execute("INSERT INTO adjustments (cars_id, new_kilometercount, datetime, usersname, car_name) VALUES (car_id, )")
+            db.execute("INSERT INTO adjustments (cars_id, new_kilometercount, datetime, usersname, car_name) VALUES (?, ?, ?, ?, ?)", car_id, newkilometercount, current_time, usersname, current_carname)
             return redirect("/")
     # Give page if GET method
     else:
