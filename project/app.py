@@ -33,7 +33,7 @@ def after_request(response):
 def index():
 
     users_groupcode = db.execute("SELECT groupcode FROM users WHERE id = ?;", session["user_id"])[0]["groupcode"]
-    number_of_cars = len(db.execute("SELECT * FROM cars WHERE groupcode = ?;", users_groupcode))
+    number_of_cars = len(db.execute("SELECT * FROM cars WHERE car_groupcode = ?;", users_groupcode))
 
     if request.method == "POST":
 
@@ -48,8 +48,8 @@ def index():
         else:
             return redirect("/")
 
-
-    return render_template("index.html", number_of_cars=number_of_cars)
+    else:
+        return render_template("index.html", number_of_cars=number_of_cars)
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
