@@ -47,8 +47,7 @@ def index():
                 if not request.form.get("remove_car"):
                     return apology("can't submit without any input", 400)
                 # Check for errors with removing car otherwise, remove it
-                elif:
-                    request.form.get("remove_car") not in car_names:
+                elif request.form.get("remove_car") not in car_names:
                     return apology("car name incorrect", 400)
                 else:
                     db.execute("DELETE FROM cars WHERE car_name = ? AND car_groupcode = ?", request.form.get("remove_car"), users_groupcode)
