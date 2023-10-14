@@ -6,6 +6,25 @@
 
 {% block main %}
 <div>
-  history page
+  <table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Car name</th>
+            <th>New kilometer count</th>
+            <th>Adjuster</th>
+            <th>Date-time</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for dictionary in info_list_of_dictionaries %}
+        <tr>
+            <td>{{ info['stock'] }}</td>
+            <td>{{ info['number'] }} </td>
+            <td>{{ info['price'] }} </td>
+            <td>{{ info['date_time'] }} </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
 </div>
 {% endblock %}
