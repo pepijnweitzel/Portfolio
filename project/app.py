@@ -58,10 +58,14 @@ def index():
             else:
                 db.execute("INSERT INTO cars (car_name, car_groupcode) VALUES (?, ?);", request.form.get("new_car"), users_groupcode)
                 return redirect("/")
+        # Check whether they inputted both and not just 1:
         elif request.form.get("car_name") and not request.form.get("kilometer_count"):
             return apology("please give kilometer count", 400)
         elif not request.form.get("car_name") and request.form.get("kilometer_count"):
             return apology("please choose a car", 400)
+        else:
+            db.execute("UPDATE cars SET kilometercount = ? WHERE car_groupcode = ? AND car_name = ?;", request.form.get("kilometer_count"), users_groupcode, request.form.get("car_name"))
+            
 
 
         else:
