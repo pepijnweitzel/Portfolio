@@ -10,7 +10,7 @@
             <div class="row">
               <div class="col-md-8">
                 {% for month in months %}
-                <button onclick="display{{ month }}()">{{ month }}</button>
+                <button class="button"onclick="display{{ month }}()">{{ month }}</button>
                 {% endfor %}
                 {% for month in months %}
                 <div id="{{ month }}" style="display: none;">
@@ -19,7 +19,6 @@
                           <li>{{ month }}<br><span style="font-size:18px">2023</span></li>
                         </ul>
                       </div>
-
                       <ul class="weekdays">
                         <li>Mo</li>
                         <li>Tu</li>
