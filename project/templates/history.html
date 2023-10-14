@@ -16,12 +16,12 @@
         </tr>
       </thead>
       <tbody>
-        {% for dictionary in info_list_of_dictionaries %}
+        {% for row in rows %}
         <tr>
-            <td>{{ info['stock'] }}</td>
-            <td>{{ info['number'] }} </td>
-            <td>{{ info['price'] }} </td>
-            <td>{{ info['date_time'] }} </td>
+            <td>{{ row['car_name'] }}</td>
+            <td>{{ row['new_kilometercount'] }} </td>
+            <td>{{ row['usersname'] }} </td>
+            <td>{{ row['date_time'] }} </td>
         </tr>
         {% endfor %}
       </tbody>
