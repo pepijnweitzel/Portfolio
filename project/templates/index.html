@@ -118,9 +118,9 @@
         const month = ["January","February","March","April","May","June","July","August","September","October","November","December"];
         const date = new Date();
         let current_month = month[date.getMonth()];
-
         var text = document.getElementById(current_month);
         text.style.display = "block";
+        
         {% for month in months %}
         function display{{ month }}() {
             {% for month in months %}
