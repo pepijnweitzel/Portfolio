@@ -110,8 +110,22 @@
     <script>
         const now = new Date();
         const day = now.getDate();
+        let day_of_week = now.getDay()
+        let current_day = ""
+        days_of_week = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saterday", "Sunday"]
         for (let i = 0; i < 14; i++) {
-            document.querySelectorAll("th")[i].innerHTML += day + i;
+            if day_of_week = 0 {
+                if day_of_week = 0 {
+                    current_day = "Monday"
+                }
+                else if day_of_week = 1 {
+                    current_day = "Tuesday"
+                }
+                else if day_of_week = 1 {
+                    current_day = "Wednesday"
+                }
+            }
+            document.querySelectorAll("th")[i].innerHTML = day + i;
         }
     </script>
 {% endblock %}
