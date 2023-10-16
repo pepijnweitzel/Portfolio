@@ -113,32 +113,30 @@
         let day_of_week = new Date().getDay();
         console.log(day_of_week)
         let current_day = "";
-        const days_of_week = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saterday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saterday", "Sunday"];
+        const days_of_week = ["Monday ", "Tuesday ", "Wednesday ", "Thursday ", "Friday ", "Saterday ", "Sunday ", "Monday ", "Tuesday ", "Wednesday ", "Thursday ", "Friday ", "Saterday ", "Sunday "];
         for (let i = 0; i < 14; i++) {
             if (day_of_week = 0 || 7) {
                 current_day = days_of_week[i];
-            };
-            if else (day_of_week = 1 || 8) {
+            }
+            else if (day_of_week = 1 || 8) {
                 current_day = days_of_week[i + 1];
-            };
-            if else (day_of_week = 2 || 9) {
+            }
+            else if (day_of_week = 2 || 9) {
                 current_day = days_of_week[i + 1];
-            };
+            }
             else if (day_of_week = 3 || 10) {
                 current_day = days_of_week[i + 1];
-            };
+            }
             else if (day_of_week = 4 || 11) {
                 current_day = days_of_week[i + 1];
-            };
+            }
             else if (day_of_week = 5 || 12) {
                 current_day = days_of_week[i + 1];
-            };
+            }
             else if (day_of_week = 6 || 13) {
                 current_day = days_of_week[i + 1];
-            };
-            console.log(current_day);
-            console.log(day + i);
-            document.querySelectorAll("th")[i].innerHTML = (day + i);
-        };
+            }
+            document.querySelectorAll("th")[i].innerHTML = current_day + (day + i);
+        }
     </script>
 {% endblock %}
