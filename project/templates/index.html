@@ -111,9 +111,11 @@
         const now = new Date();
         const day = now.getDate();
         let day_of_week = now.getDay();
+        console.log(day_of_week);
         let current_day = "";
-        const days_of_week = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saterday", "Sunday"];
+        const days_of_week = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saterday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saterday", "Sunday"];
         for (let i = 0; i < 14; i++) {
+            current_day = days_of_week[i]
             if day_of_week = 0 or 7 {
                 current_day = "Monday"
             }
@@ -135,6 +137,7 @@
             else if day_of_week = 6 or 13 {
                 current_day = "Sunday"
             }
+
             document.querySelectorAll("th")[i].innerHTML = current_day + (day + i);
             console.log(current_day + (day + i))
         }
