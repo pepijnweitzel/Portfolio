@@ -111,11 +111,34 @@
         const day = new Date().getDate();
         console.log(day);
         let day_of_week = new Date().getDay();
-        
+        console.log(day_of_week)
         let current_day = "";
         const days_of_week = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saterday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saterday", "Sunday"];
         for (let i = 0; i < 14; i++) {
-            document.querySelectorAll("th")[i].innerHTML = (day + i);
-        }
+            if day_of_week = 0 or 7 {
+                current_day = days_of_week[i];
+            };
+            else if day_of_week = 1 or 8 {
+                current_day = days_of_week[i + 1];
+            };
+            else if day_of_week = 2 or 9 {
+                current_day = days_of_week[i + 1];
+            };
+            else if day_of_week = 3 or 10 {
+                current_day = days_of_week[i + 1];
+            };
+            else if day_of_week = 4 or 11 {
+                current_day = days_of_week[i + 1];
+            };
+            else if day_of_week = 5 or 12 {
+                current_day = days_of_week[i + 1];
+            };
+            else if day_of_week = 6 or 13 {
+                current_day = days_of_week[i + 1];
+            };
+            console.log(current_day);
+            console.log(day + i);
+            document.querySelectorAll("th")[i].innerHTML = current_day + (day + i);
+        };
     </script>
 {% endblock %}
