@@ -112,6 +112,7 @@
         let day_of_week = new Date().getDay();
         let current_month = new Date().getMonth();
         let current_day = "";
+        let something = 0;
         const days_of_week = ["Monday ", "Tuesday ", "Wednesday ", "Thursday ", "Friday ", "Saterday ", "Sunday ", "Monday ", "Tuesday ", "Wednesday ", "Thursday ", "Friday ", "Saterday ", "Sunday "];
         for (let i = 0; i < 14; i++) {
             if (day_of_week = 0 || 7) {
@@ -137,7 +138,24 @@
             }
 
             let day_number = 0;
-            if current_month == 0 || 2 || 4 || 5 ||
+            if (current_month == 0 || current_month == 2 || current_month == 4 || current_month == 6 || current_month == 7 || current_month == 9 || current_month == 11){
+                if (day + i) > 31 {
+                    something ++;
+                    document.querySelectorAll("th")[i].innerHTML = current_day + (something);
+                }
+            }
+            else if (current_month == 3 || current_month == 5 || current_month == 8 || current_month == 10){
+                if (day + i) > 30 {
+                    something ++;
+                    document.querySelectorAll("th")[i].innerHTML = current_day + (something);
+                }
+            }
+            else if (current_month == 1){
+                if (day + i) > 28 {
+                    something ++;
+                    document.querySelectorAll("th")[i].innerHTML = current_day + (something);
+                }
+            }
             document.querySelectorAll("th")[i].innerHTML = current_day + (day + i);
         }
     </script>
