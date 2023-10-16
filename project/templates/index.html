@@ -32,56 +32,30 @@
                             <td>7</td>
                         </tr>
                     </tbody>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Monday</th>
+                                <th>Tuesday</th>
+                                <th>Wednesday</th>
+                                <th>Thursday</th>
+                                <th>Friday</th>
+                                <th>Saterday</th>
+                                <th>Sunday</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>8</td>
+                                <td>9</td>
+                                <td>10</td>
+                                <td>11</td>
+                                <td>12</td>
+                                <td>13</td>
+                                <td>14</td>
+                            </tr>
+                        </tbody>
                 </table>
-                <div id="{{ month }}" style="display: none;">
-                    <div class="month">
-                        <ul>
-                          <li>{{ month }}<br><span style="font-size:18px">2023</span></li>
-                        </ul>
-                      </div>
-                      <ul class="weekdays">
-                        <li>Mo</li>
-                        <li>Tu</li>
-                        <li>We</li>
-                        <li>Th</li>
-                        <li>Fr</li>
-                        <li>Sa</li>
-                        <li>Su</li>
-                      </ul>
-
-                      <ul class="days">
-                        <li>1</li>
-                        <li>2</li>
-                        <li>3</li>
-                        <li>4</li>
-                        <li>5</li>
-                        <li>6</li>
-                        <li>7</li>
-                        <li>8</li>
-                        <li>9</li>
-                        <li>10</li>
-                        <li>11</li>
-                        <li>12</li>
-                        <li>13</li>
-                        <li>14</li>
-                        <li>15</li>
-                        <li>16</li>
-                        <li>17</li>
-                        <li>18</li>
-                        <li>19</li>
-                        <li>20</li>
-                        <li>21</li>
-                        <li>22</li>
-                        <li>23</li>
-                        <li>24</li>
-                        <li>25</li>
-                        <li>26</li>
-                        <li>27</li>
-                        <li>28</li>
-                        <li>29</li>
-                        <li>30</li>
-                      </ul>
-                </div>
             </div>
             <div class="col-6 col-md-4">
                 <h5>
@@ -131,24 +105,6 @@
                     </div>
                 </form>
             </div>
-            </div>
+        </div>
     </div>
-    <script>
-        const month = ["January","February","March","April","May","June","July","August","September","October","November","December"];
-        const date = new Date();
-        let current_month = month[date.getMonth()];
-        var text = document.getElementById(current_month);
-        text.style.display = "block";
-
-        {% for month in months %}
-        function display{{ month }}() {
-            {% for month in months %}
-            var text = document.getElementById("{{ month }}");
-            text.style.display = "none";
-            {% endfor %}
-            var text = document.getElementById("{{ month }}");
-            text.style.display = "block";
-        }
-        {% endfor %}
-    </script>
 {% endblock %}
