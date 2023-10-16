@@ -109,9 +109,8 @@
     </div>
     <script>
         const day = new Date().getDate();
-        console.log(day);
         let day_of_week = new Date().getDay();
-        console.log(day_of_week)
+        let current_month = new Date().getMonth();
         let current_day = "";
         const days_of_week = ["Monday ", "Tuesday ", "Wednesday ", "Thursday ", "Friday ", "Saterday ", "Sunday ", "Monday ", "Tuesday ", "Wednesday ", "Thursday ", "Friday ", "Saterday ", "Sunday "];
         for (let i = 0; i < 14; i++) {
@@ -136,8 +135,9 @@
             else if (day_of_week = 6 || 13) {
                 current_day = days_of_week[i + 1];
             }
-            let day_number = 0
-            if 
+
+            let day_number = 0;
+            if current_month == 0 || 2 || 4 || 5 ||
             document.querySelectorAll("th")[i].innerHTML = current_day + (day + i);
         }
     </script>
