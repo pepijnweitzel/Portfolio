@@ -110,36 +110,10 @@
     <script>
         const day = new Date().getDate();
         console.log(day)
-        const day_of_week = new Date().getDay();
-        console.log(day_of_week);
         let current_day = "";
         const days_of_week = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saterday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saterday", "Sunday"];
         for (let i = 0; i < 14; i++) {
-            current_day = days_of_week[i]
-            if day_of_week = 0 or 7 {
-                current_day = "Monday"
-            }
-            else if day_of_week = 1 or 8 {
-                current_day = "Tuesday"
-            }
-            else if day_of_week = 2 or 9 {
-                current_day = "Wednesday"
-            }
-            else if day_of_week = 3 or 10 {
-                current_day = "Thursday"
-            }
-            else if day_of_week = 4 or 11 {
-                current_day = "Friday"
-            }
-            else if day_of_week = 5 or 12 {
-                current_day = "Saterday"
-            }
-            else if day_of_week = 6 or 13 {
-                current_day = "Sunday"
-            }
-
-            document.querySelectorAll("th")[i].innerHTML = current_day + (day + i);
-            console.log(current_day + (day + i))
+            document.querySelectorAll("th")[i].innerHTML = (day + i);
         }
     </script>
 {% endblock %}
