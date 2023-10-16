@@ -108,9 +108,8 @@
         </div>
     </div>
     <script>
-        const now = new Date();
-        const day = now.getDate();
-        let day_of_week = now.getDay();
+        const day = new Date().getDate();
+        const day_of_week = new Date().getDay();
         console.log(day_of_week);
         let current_day = "";
         const days_of_week = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saterday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saterday", "Sunday"];
