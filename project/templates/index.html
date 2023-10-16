@@ -23,7 +23,7 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>1</td>
+                            <td >1</td>
                             <td>2</td>
                             <td>3</td>
                             <td>4</td>
@@ -109,6 +109,10 @@
     </div>
     <script>
         const now = new Date();
-        const day = now.getDay();
+        const day = now.getDate();
+        console.log(day);
+        
+        document.querySelectorAll("th")[0].innerHTML += day;
+
     </script>
 {% endblock %}
