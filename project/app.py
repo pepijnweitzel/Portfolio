@@ -45,40 +45,45 @@ def index():
 
     if request.method == "POST":
 
-        # Check whether they inputted any box
-        if not request.form.get("car_name") and not request.form.get("kilometer_count"):
-            if not request.form.get("new_car"):
-                if not request.form.get("remove_car"):
-                    return apology("can't submit without any input", 400)
-                # Check for errors with removing car otherwise, remove it
-                elif request.form.get("remove_car") not in car_names:
-                    return apology("car name incorrect", 400)
+        # Check wheter they want to make reservation(left-side) or adjustment(right-side)
+        if not request.form.get("") and not request.form.get("") and not request.form.get(""):
+            # Check whether they inputted any box
+            if not request.form.get("car_name") and not request.form.get("kilometer_count"):
+                if not request.form.get("new_car"):
+                    if not request.form.get("remove_car"):
+                        return apology("can't submit without any input", 400)
+                    # Check for errors with removing car otherwise, remove it
+                    elif request.form.get("remove_car") not in car_names:
+                        return apology("car name incorrect", 400)
+                    else:
+                        db.execute("DELETE FROM cars WHERE car_name = ? AND car_groupcode = ?", request.form.get("remove_car"), users_groupcode)
+                        return redirect("/")
+                # Check for errors with adding new car otherwise, add it
+                elif request.form.get("new_car") in car_names:
+                    return apology("car already exists", 400)
                 else:
-                    db.execute("DELETE FROM cars WHERE car_name = ? AND car_groupcode = ?", request.form.get("remove_car"), users_groupcode)
+                    db.execute("INSERT INTO cars (car_name, car_groupcode) VALUES (?, ?);", request.form.get("new_car"), users_groupcode)
                     return redirect("/")
-            # Check for errors with adding new car otherwise, add it
-            elif request.form.get("new_car") in car_names:
-                return apology("car already exists", 400)
+            # Check whether they inputted both and not just 1:
+            elif request.form.get("car_name") and not request.form.get("kilometer_count"):
+                return apology("please give kilometer count", 400)
+            elif not request.form.get("car_name") and request.form.get("kilometer_count"):
+                return apology("please choose a car", 400)
+            # Change kilometercount of car
             else:
-                db.execute("INSERT INTO cars (car_name, car_groupcode) VALUES (?, ?);", request.form.get("new_car"), users_groupcode)
-                return redirect("/")
-        # Check whether they inputted both and not just 1:
-        elif request.form.get("car_name") and not request.form.get("kilometer_count"):
-            return apology("please give kilometer count", 400)
-        elif not request.form.get("car_name") and request.form.get("kilometer_count"):
-            return apology("please choose a car", 400)
-        # Change kilometercount of car
-        else:
-            newkilometercount = request.form.get("kilometer_count")
-            current_carname = request.form.get("car_name")
-            db.execute("UPDATE cars SET kilometercount = ? WHERE car_groupcode = ? AND car_name = ?;", newkilometercount, users_groupcode, current_carname)
-            # Add adjustment to adjustments table
-            current_time = time.ctime()
-            car_id = db.execute("SELECT id FROM cars WHERE car_name = ? AND car_groupcode = ?;", current_carname, users_groupcode)[0]["id"]
-            usersname = db.execute("SELECT username FROM users WHERE id = ?;", session["user_id"])[0]["username"]
+                newkilometercount = request.form.get("kilometer_count")
+                current_carname = request.form.get("car_name")
+                db.execute("UPDATE cars SET kilometercount = ? WHERE car_groupcode = ? AND car_name = ?;", newkilometercount, users_groupcode, current_carname)
+                # Add adjustment to adjustments table
+                current_time = time.ctime()
+                car_id = db.execute("SELECT id FROM cars WHERE car_name = ? AND car_groupcode = ?;", current_carname, users_groupcode)[0]["id"]
+                usersname = db.execute("SELECT username FROM users WHERE id = ?;", session["user_id"])[0]["username"]
 
-            db.execute("INSERT INTO adjustments (cars_id, new_kilometercount, datetime, usersname, car_name) VALUES (?, ?, ?, ?, ?)", car_id, newkilometercount, current_time, usersname, current_carname)
-            return redirect("/")
+                db.execute("INSERT INTO adjustments (cars_id, new_kilometercount, datetime, usersname, car_name) VALUES (?, ?, ?, ?, ?)", car_id, newkilometercount, current_time, usersname, current_carname)
+                return redirect("/")
+        # If they  submitted reservation(left-side)
+        else:
+            ...
     # Give page if GET method
     else:
         months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
