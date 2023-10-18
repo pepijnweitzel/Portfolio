@@ -113,8 +113,9 @@ def index():
     else:
         # Create table to show car reservations
         # Declare variables
+        usersname = db.execute("SELECT username FROM users WHERE id = ?;", session["user_id"])[0]["username"]
         if len(number_of_cars) = 1:
-            rows = db.execute("SELECT * FROM calendar WHERE cars_name = ? AND usersname = ?;", car_names[0], )
+            rows = db.execute("SELECT * FROM calendar WHERE cars_name = ? AND usersname = ?;", car_names[0], usersname)
 
         elif len(number_of_cars) = 2:
 
@@ -122,7 +123,7 @@ def index():
 
         elif len(number_of_cars) > 3:
 
-        return render_template("index.html", number_of_cars=number_of_cars, car_names=car_names, car_info_list=car_info_list)
+        return render_template("index.html", number_of_cars=number_of_cars, car_names=car_names, car_info_list=car_info_list rows=rows)
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
