@@ -88,6 +88,10 @@ def index():
                 return apology("please give car name for reservation", 400)
             elif not request.form.get("starting_hour"):
                 return apology("please give starting hour", 400)
+            elif not request.form.get("ending_hour"):
+                return apology("please give ending hour", 400)
+            elif request.form.get("starting_hour") >= request.form.get("ending_hour"):
+                return apology("please give correct time frame")
     # Give page if GET method
     else:
         return render_template("index.html", number_of_cars=number_of_cars, car_names=car_names, car_info_list=car_info_list)
