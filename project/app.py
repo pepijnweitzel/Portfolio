@@ -62,7 +62,8 @@ def index():
                 # Check for errors with adding new car otherwise (max 4 cars), add it
                 elif request.form.get("new_car") in car_names:
                     return apology("car already exists", 400)
-                elif len(db.execute("SELECT car_name FROM cars WHERE car_groupcode = ?"))
+                elif len(db.execute("SELECT car_name FROM cars WHERE car_groupcode = ?;", users_groupcode)) > 3:
+                    return apology("maximum number of cars is 4", 400)
                 else:
                     db.execute("INSERT INTO cars (car_name, car_groupcode) VALUES (?, ?);", request.form.get("new_car"), users_groupcode)
                     return redirect("/")
