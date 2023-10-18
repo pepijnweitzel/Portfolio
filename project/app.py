@@ -46,7 +46,7 @@ def index():
     if request.method == "POST":
 
         # Check wheter they want to make reservation(left-side) or adjustment(right-side)
-        if not request.form.get("") and not request.form.get("") and not request.form.get(""):
+        if not request.form.get("car_name_reservation") and not request.form.get("starting_hour") and not request.form.get("ending_hour"):
             # Check whether they inputted any box
             if not request.form.get("car_name") and not request.form.get("kilometer_count"):
                 if not request.form.get("new_car"):
@@ -83,7 +83,11 @@ def index():
                 return redirect("/")
         # If they  submitted reservation(left-side)
         else:
-            ...
+            # Check for errors:
+            if not request.form.get("car_name_reservation"):
+                return apology("please give car name for reservation", 400)
+            elif not request.form.get("starting_hour"):
+                return apology("please give starting hour", 400)
     # Give page if GET method
     else:
         return render_template("index.html", number_of_cars=number_of_cars, car_names=car_names, car_info_list=car_info_list)
