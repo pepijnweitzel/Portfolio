@@ -148,8 +148,9 @@
     <script>
         // Declare variables for the reservations table
         const day = new Date().getDate();
-        let random_int = new Date().getDay();
-        let day_of_week = random_int;
+        var random_int = new Date().getDay();
+        var tester = random_int.toString();
+        var day_of_week = tester.toInteger
         let current_month = new Date().getMonth();
         let current_day = "";
         let something = 0;
