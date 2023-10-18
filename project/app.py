@@ -100,7 +100,7 @@ def index():
                 usersname = db.execute("SELECT username FROM users WHERE id = ?;", session["user_id"])[0]["username"]
                 begin_time = request.form.get("starting_hour")
                 end_time = request.form.get("ending_hour")
-                car_id = db.execute("SELECT id FROM cars WHERE car_name = ? AND car_groupcode = ?;", car_name_reservation, users_groupcode)
+                car_id = db.execute("SELECT id FROM cars WHERE car_name = ? AND car_groupcode = ?;", car_name_reservation, users_groupcode)[0]["id"]
                 current_day = datetime.datetime.now().day
                 db.execute("INSERT INTO calendar (cars_id, usersname, begin_time, end_time, day) VALUES (?, ?, ?, ?, ?;", car_id, usersname, begin_time, end_time, current_day)
                 return redirect("/")
