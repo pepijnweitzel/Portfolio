@@ -109,7 +109,6 @@ def index():
 
     # Give page if GET method
     else:
-        db.execute("SELECT ")
         return render_template("index.html", number_of_cars=number_of_cars, car_names=car_names, car_info_list=car_info_list)
 
 @app.route("/login", methods=["GET", "POST"])
