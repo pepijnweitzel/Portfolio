@@ -155,7 +155,7 @@
         let available_days = [];
         const days_of_week = ["Monday ", "Tuesday ", "Wednesday ", "Thursday ", "Friday ", "Saterday ", "Sunday ", "Monday ", "Tuesday ", "Wednesday ", "Thursday ", "Friday ", "Saterday ", "Sunday "];
         for (let i = 0 ; i < 14; i++) {
-            j = day_of_week;
+            
             if (day_of_week = 0 || 7) {
                 current_day = days_of_week[i];
             }
@@ -177,7 +177,6 @@
             if (day_of_week = 6 || 13) {
                 current_day = days_of_week[i + 1];
             }
-
             if (current_month == 0 || current_month == 2 || current_month == 4 || current_month == 6 || current_month == 7 || current_month == 9 || current_month == 11){
                 if ((day + i) > 31) {
                     something ++;
