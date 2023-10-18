@@ -12,8 +12,8 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>Monday</th>
-                            <th>Tuesday</th>
+                            <th></th>
+                            <th></th>
                             <th>Wednesday</th>
                             <th>Thursday</th>
                             <th>Friday</th>
@@ -32,10 +32,6 @@
                             <td>7</td>
                         </tr>
                     </tbody>
-                    <br>
-                    <thead>
-                        
-                    </thead>
                 </table>
                     <table class="table">
                         <thead>
@@ -206,6 +202,7 @@
                 }
             }
             document.querySelectorAll("th")[i].innerHTML = current_day + (day + i);
+            console.log(current_day)
             available_days.push(day + i)
         }
         let selectElement = document.getElementById("available")
