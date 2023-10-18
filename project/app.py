@@ -114,7 +114,7 @@ def index():
         # Create table to show car reservations
         # Declare variables
         if len(number_of_cars) = 1:
-            rows = db.execute("SELECT * FROM calendar WHERE cars_name = ? AND usersname = ?;", number_of_cars)
+            rows = db.execute("SELECT * FROM calendar WHERE cars_name = ? AND usersname = ?;", car_names[0], )
 
         elif len(number_of_cars) = 2:
 
