@@ -152,32 +152,30 @@
         let current_day = "";
         let something = 0;
         let available_days = [];
-        const days_of_week = ["Monday ", "Tuesday ", "Wednesday ", "Thursday ", "Friday ", "Saterday ", "Sunday ", "Monday ", "Tuesday ", "Wednesday ", "Thursday ", "Friday ", "Saterday ", "Sunday "];
+        const days_of_week = ["Monday ", "Tuesday ", "Wednesday ", "Thursday ", "Friday ", "Saterday ", "Sunday ", "Monday ", "Tuesday ", "Wednesday ", "Thursday ", "Friday ", "Saterday ", "Sunday ", "Monday ", "Tuesday ", "Wednesday ", "Thursday ", "Friday ", "Saterday ", "Sunday "];
         for (let i = 0; i < 14; i++) {
             if (day_of_week = 0 || 7) {
                 current_day = days_of_week[i];
-                console.log("test")
             }
-            else if (day_of_week = 1 || 8) {
+            if (day_of_week = 1 || 8) {
                 current_day = days_of_week[i + 1];
             }
-            else if (day_of_week = 2 || 9) {
+            if (day_of_week = 2 || 9) {
                 current_day = days_of_week[i + 1];
             }
-            else if (day_of_week = 3 || 10) {
+            if (day_of_week = 3 || 10) {
                 current_day = days_of_week[i + 1];
             }
-            else if (day_of_week = 4 || 11) {
+            if (day_of_week = 4 || 11) {
                 current_day = days_of_week[i + 1];
             }
-            else if (day_of_week = 5 || 12) {
+            if (day_of_week = 5 || 12) {
                 current_day = days_of_week[i + 1];
             }
-            else if (day_of_week = 6 || 13) {
+            if (day_of_week = 6 || 13) {
                 current_day = days_of_week[i + 1];
             }
 
-            let day_number = 0;
             if (current_month == 0 || current_month == 2 || current_month == 4 || current_month == 6 || current_month == 7 || current_month == 9 || current_month == 11){
                 if ((day + i) > 31) {
                     something ++;
@@ -186,7 +184,7 @@
                     continue;
                 }
             }
-            else if (current_month == 3 || current_month == 5 || current_month == 8 || current_month == 10){
+            if (current_month == 3 || current_month == 5 || current_month == 8 || current_month == 10){
                 if ((day + i) > 30) {
                     something ++;
                     document.querySelectorAll("th")[i].innerHTML = current_day + something;
@@ -194,7 +192,7 @@
                     continue;
                 }
             }
-            else if (current_month == 1){
+            if (current_month == 1){
                 if ((day + i) > 28) {
                     something ++;
                     document.querySelectorAll("th")[i].innerHTML = current_day + something;
