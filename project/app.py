@@ -32,6 +32,7 @@ def after_request(response):
 @login_required
 def index():
 
+    # Declare variables
     users_groupcode = db.execute("SELECT groupcode FROM users WHERE id = ?;", session["user_id"])[0]["groupcode"]
     number_of_cars = len(db.execute("SELECT * FROM cars WHERE car_groupcode = ?;", users_groupcode))
     list_of_dicts_with_carnames = db.execute("SELECT car_name FROM cars WHERE car_groupcode = ?;", users_groupcode)
@@ -109,6 +110,7 @@ def index():
 
     # Give page if GET method
     else:
+        db.execute("SELECT ")
         return render_template("index.html", number_of_cars=number_of_cars, car_names=car_names, car_info_list=car_info_list)
 
 @app.route("/login", methods=["GET", "POST"])
