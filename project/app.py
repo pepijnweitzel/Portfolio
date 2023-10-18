@@ -193,7 +193,7 @@ def register():
                 )
 
                 # Redirect user to home page
-                login()
+                return login()
         else:
             if len(
                 db.execute(
@@ -210,7 +210,7 @@ def register():
                 )
 
                 # Redirect user to home page
-                login()
+                return login()
 
     # If get:
     else:
