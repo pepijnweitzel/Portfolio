@@ -5,6 +5,7 @@ from flask import Flask, flash, redirect, render_template, request, session
 from flask_session import Session
 from werkzeug.security import check_password_hash, generate_password_hash
 from time import ctime
+import datetime
 
 # Import functions from other file
 from helpers import login_required, apology
@@ -99,9 +100,10 @@ def index():
                 usersname = db.execute("SELECT username FROM users WHERE id = ?;", session["user_id"])[0]["username"]
                 begin_time = request.form.get("starting_hour")
                 end_time = request.form.get("ending_hour")
-                cars_id = db.execute("SELECT id FROM cars WHERE car_name = ? AND car_groupcode = ?;", car_name_reservation, users_groupcode)
-                cu
-                db.execute
+                car_id = db.execute("SELECT id FROM cars WHERE car_name = ? AND car_groupcode = ?;", car_name_reservation, users_groupcode)
+                current_day = datetime.datetime.now().day
+                db.execute("INSERT INTO calendar (cars_id, usersname, begin_time, end_time, day) VALUES (?, ?, ?, ?, ?;", car_id, usersname, begin_time, end_time, current_day)
+                return redirect("/")
 
     # Give page if GET method
     else:
