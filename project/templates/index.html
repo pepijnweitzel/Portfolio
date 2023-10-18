@@ -148,14 +148,15 @@
     <script>
         // Declare variables for the reservations table
         const day = new Date().getDate();
-        let day_of_week = new Date().getDay();
+        let random_int = new Date().getDay();
+        let day_of_week = random_int;
         let current_month = new Date().getMonth();
         let current_day = "";
         let something = 0;
         let available_days = [];
         const days_of_week = ["Sunday", "Monday ", "Tuesday ", "Wednesday ", "Thursday ", "Friday ", "Saterday ", "Sunday ", "Monday ", "Tuesday ", "Wednesday ", "Thursday ", "Friday ", "Saterday ", "Sunday", "Monday ", "Tuesday ", "Wednesday ", "Thursday ", "Friday ", "Saterday ", "Sunday"];
         for (let i = 0 ; i < 14; i++) {
-
+            console.log(day_of_week)
             if (day_of_week = 0 || 7) {
                 current_day = days_of_week[i];
             }
@@ -203,7 +204,7 @@
             }
             document.querySelectorAll("th")[i].innerHTML = current_day + (day + i);
             available_days.push(day + i)
-            day_of_week +
+            day_of_week++;
         }
         // Get all the available days they can select to make a reservation
         let selectElement = document.getElementById("available")
