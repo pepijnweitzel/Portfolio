@@ -100,6 +100,7 @@ def index():
                 begin_time = request.form.get("starting_hour")
                 end_time = request.form.get("ending_hour")
                 cars_id = db.execute("SELECT id FROM cars WHERE car_name = ? AND car_groupcode = ?;", car_name_reservation, users_groupcode)
+                cu
                 db.execute
 
     # Give page if GET method
