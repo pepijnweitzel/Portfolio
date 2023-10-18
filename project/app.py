@@ -275,7 +275,7 @@ def history():
         id = int(id)
         db.execute("INSERT INTO temporary (temp_ids) VALUES (?);", id)
     # now do a db.execute with all those id's for the history of it.
-    rows = db.execute("SELECT new_kilometercount, datetime, usersname, car_name FROM adjustments WHERE cars_id IN ? ORDER BY datetime DESC;", "temporary")
+    rows = db.execute("SELECT new_kilometercount, datetime, usersname, car_name FROM adjustments WHERE cars_id IN ?;", "temporary")
 
     for id in car_ids:
         db.execute("DELETE FROM temporary WHERE temp_ids = ?;", id)
