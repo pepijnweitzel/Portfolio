@@ -202,9 +202,10 @@
             document.querySelectorAll("th")[i].innerHTML = current_day + (day + i);
             available_days.push(current_day + (day + i))
         }
+        let selectElement = document.getElementById("available")
+
         for (let i = 0; i < available_days.length; i++) {
-            let available_day = array[i];
-            document.querySelector("available").innerHTML = <option value="available_day">available_day</option>;
+            selectElement.add(new Option)
         }
     </script>
 {% endblock %}
