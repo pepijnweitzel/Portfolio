@@ -92,7 +92,16 @@ def index():
                 return apology("please give ending hour", 400)
             elif request.form.get("starting_hour") >= request.form.get("ending_hour"):
                 return apology("please give a correct time frame")
-            
+            # If no errors execute following
+            else:
+                # Declare variables
+                car_name_reservation = request.form.get("car_name_reservation")
+                usersname = db.execute("SELECT username FROM users WHERE id = ?;", session["user_id"])[0]["username"]
+                begin_time = request.form.get("starting_hour")
+                end_time = request.form.get("ending_hour")
+                cars_id = db.execute("SELECT id FROM cars WHERE car_name = ? AND car_groupcode = ?;", car_name_reservation, users_groupcode)
+                db.execute
+
     # Give page if GET method
     else:
         return render_template("index.html", number_of_cars=number_of_cars, car_names=car_names, car_info_list=car_info_list)
