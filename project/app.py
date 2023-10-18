@@ -4,7 +4,7 @@ from cs50 import SQL
 from flask import Flask, flash, redirect, render_template, request, session
 from flask_session import Session
 from werkzeug.security import check_password_hash, generate_password_hash
-import time
+from time import ctime
 
 # Import functions from other file
 from helpers import login_required, apology
@@ -75,7 +75,7 @@ def index():
                 current_carname = request.form.get("car_name")
                 db.execute("UPDATE cars SET kilometercount = ? WHERE car_groupcode = ? AND car_name = ?;", newkilometercount, users_groupcode, current_carname)
                 # Add adjustment to adjustments table
-                current_time = time.ctime()
+                current_time = ctime()
                 car_id = db.execute("SELECT id FROM cars WHERE car_name = ? AND car_groupcode = ?;", current_carname, users_groupcode)[0]["id"]
                 usersname = db.execute("SELECT username FROM users WHERE id = ?;", session["user_id"])[0]["username"]
 
