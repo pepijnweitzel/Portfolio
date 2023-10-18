@@ -109,6 +109,10 @@ def index():
 
     # Give page if GET method
     else:
+        # Create table to show car reservations
+        # Declare variables
+        usersname = db.execute("SELECT username FROM users WHERE id = ?;", session["user_id"])[0]["username"]
+        db.execute("SELECT * FROM calendar WHERE cars_name IN ")
         return render_template("index.html", number_of_cars=number_of_cars, car_names=car_names, car_info_list=car_info_list)
 
 @app.route("/login", methods=["GET", "POST"])
