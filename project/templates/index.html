@@ -156,6 +156,7 @@
         for (let i = 0; i < 14; i++) {
             if (day_of_week = 0 || 7) {
                 current_day = days_of_week[i];
+                console.log("test")
             }
             else if (day_of_week = 1 || 8) {
                 current_day = days_of_week[i + 1];
@@ -202,7 +203,6 @@
                 }
             }
             document.querySelectorAll("th")[i].innerHTML = current_day + (day + i);
-            console.log(current_day)
             available_days.push(day + i)
         }
         let selectElement = document.getElementById("available")
