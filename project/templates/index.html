@@ -180,7 +180,7 @@
                 if ((day + i) > 31) {
                     something ++;
                     document.querySelectorAll("th")[i].innerHTML = current_day + something;
-                    available_days.push(current_day + something)
+                    available_days.push(something)
                     continue;
                 }
             }
@@ -188,6 +188,7 @@
                 if ((day + i) > 30) {
                     something ++;
                     document.querySelectorAll("th")[i].innerHTML = current_day + something;
+                    available_days.push(something)
                     continue;
                 }
             }
@@ -195,17 +196,17 @@
                 if ((day + i) > 28) {
                     something ++;
                     document.querySelectorAll("th")[i].innerHTML = current_day + something;
-                    available_days.push(current_day + something)
+                    available_days.push(something)
                     continue;
                 }
             }
             document.querySelectorAll("th")[i].innerHTML = current_day + (day + i);
-            available_days.push(current_day + (day + i))
+            available_days.push(day + i)
         }
         let selectElement = document.getElementById("available")
 
         for (let i = 0; i < available_days.length; i++) {
-            selectElement.add(new Option)
+            selectElement.add(new Option(available_days[i]))
         }
     </script>
 {% endblock %}

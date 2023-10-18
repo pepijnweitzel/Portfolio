@@ -47,7 +47,7 @@ def index():
     if request.method == "POST":
 
         # Check wheter they want to make reservation(left-side) or adjustment(right-side)
-        if not request.form.get("car_name_reservation") and not request.form.get("starting_hour") and not request.form.get("ending_hour"):
+        if not request.form.get("car_name_reservation") and not request.form.get("starting_hour") and not request.form.get("ending_hour") and not request.form.get("reservations_day"):
             # Check whether they inputted any box
             if not request.form.get("car_name") and not request.form.get("kilometer_count"):
                 if not request.form.get("new_car"):
@@ -93,6 +93,8 @@ def index():
                 return apology("please give ending hour", 400)
             elif request.form.get("starting_hour") >= request.form.get("ending_hour"):
                 return apology("please give a correct time frame")
+            elif not request.form.get("reservations_day"):
+                return apology("please give day of reservation", 400)
             # If no errors execute following
             else:
                 # Declare variables
