@@ -118,12 +118,15 @@ def index():
             rows = db.execute("SELECT * FROM calendar WHERE cars_name = ? AND usersname = ?;", car_names[0], usersname)
 
         elif len(number_of_cars) = 2:
+            rows = db.execute("SELECT * FROM calendar WHERE cars_name = ? OR cars_name = ? AND usersname = ?;", car_names[0], car_names[1], usersname)
 
         elif len(number_of_cars) = 3:
+            rows = db.execute("SELECT * FROM calendar WHERE cars_name = ? OR cars_name = ? AND usersname = ?;", car_names[0], car_names[1], car_names[2], usersname)
 
-        elif len(number_of_cars) > 3:
+        else:
+            rows = db.execute("SELECT * FROM calendar WHERE cars_name = ? OR cars_name = ? AND usersname = ?;", car_names[0], car_names[1], car_names[2], car_names[3], usersname)
 
-        return render_template("index.html", number_of_cars=number_of_cars, car_names=car_names, car_info_list=car_info_list rows=rows)
+        return render_template("index.html", number_of_cars=number_of_cars, car_names=car_names, car_info_list=car_info_list, rows=rows)
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
