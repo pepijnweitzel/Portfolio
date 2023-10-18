@@ -59,9 +59,10 @@ def index():
                     else:
                         db.execute("DELETE FROM cars WHERE car_name = ? AND car_groupcode = ?", request.form.get("remove_car"), users_groupcode)
                         return redirect("/")
-                # Check for errors with adding new car otherwise, add it
+                # Check for errors with adding new car otherwise (max 4 cars), add it
                 elif request.form.get("new_car") in car_names:
                     return apology("car already exists", 400)
+                elif len(db.execute("SELECT car_name FROM cars WHERE car_groupcode = ?"))
                 else:
                     db.execute("INSERT INTO cars (car_name, car_groupcode) VALUES (?, ?);", request.form.get("new_car"), users_groupcode)
                     return redirect("/")
@@ -111,8 +112,6 @@ def index():
     else:
         # Create table to show car reservations
         # Declare variables
-        usersname = db.execute("SELECT username FROM users WHERE id = ?;", session["user_id"])[0]["username"]
-        db.execute("SELECT * FROM calendar WHERE cars_name IN ")
         return render_template("index.html", number_of_cars=number_of_cars, car_names=car_names, car_info_list=car_info_list)
 
 @app.route("/login", methods=["GET", "POST"])
