@@ -5,7 +5,6 @@ from flask import Flask, redirect, render_template, request, session
 from flask_session import Session
 from werkzeug.security import check_password_hash, generate_password_hash
 from time import ctime
-import datetime
 
 # Import functions from other file
 from helpers import login_required, apology
@@ -103,7 +102,7 @@ def index():
                 begin_time = int(request.form.get("starting_hour"))
                 end_time = int(request.form.get("ending_hour"))
                 car_id = db.execute("SELECT id FROM cars WHERE car_name = ? AND car_groupcode = ?;", car_name_reservation, users_groupcode)[0]["id"]
-                current_day = datetime.datetime.now().day
+                current_day = int(request.form.get("reservations_day"))
                 db.execute("INSERT INTO calendar (cars_id, usersname, begin_time, end_time, day) VALUES (?, ?, ?, ?, ?);", car_id, usersname, begin_time, end_time, current_day)
                 return redirect("/")
 
