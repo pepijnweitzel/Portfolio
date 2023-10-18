@@ -102,10 +102,9 @@ def index():
                 usersname = db.execute("SELECT username FROM users WHERE id = ?;", session["user_id"])[0]["username"]
                 begin_time = int(request.form.get("starting_hour"))
                 end_time = int(request.form.get("ending_hour"))
-                car_id = db.execute("SELECT id FROM cars WHERE car_name = ? AND car_groupcode = ?;", car_name_reservation, users_groupcode)[0]["id"]
                 current_day = int(request.form.get("reservations_day"))
                 # Input data into database
-                db.execute("INSERT INTO calendar (cars_id, usersname, begin_time, end_time, day) VALUES (?, ?, ?, ?, ?);", car_id, usersname, begin_time, end_time, current_day)
+                db.execute("INSERT INTO calendar (cars_name, usersname, begin_time, end_time, day) VALUES (?, ?, ?, ?, ?);", car_name_reservation, usersname, begin_time, end_time, current_day)
                 return redirect("/")
 
     # Give page if GET method
