@@ -91,7 +91,7 @@ def index():
             elif not request.form.get("ending_hour"):
                 return apology("please give ending hour", 400)
             elif request.form.get("starting_hour") >= request.form.get("ending_hour"):
-                return apology("please give correct time frame")
+                return apology("please give a correct time frame")
     # Give page if GET method
     else:
         return render_template("index.html", number_of_cars=number_of_cars, car_names=car_names, car_info_list=car_info_list)
