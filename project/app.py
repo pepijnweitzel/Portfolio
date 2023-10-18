@@ -86,8 +86,7 @@ def index():
             ...
     # Give page if GET method
     else:
-        months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
-        return render_template("index.html", number_of_cars=number_of_cars, car_names=car_names, car_info_list=car_info_list, months=months)
+        return render_template("index.html", number_of_cars=number_of_cars, car_names=car_names, car_info_list=car_info_list)
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
