@@ -5,6 +5,7 @@ from flask import Flask, redirect, render_template, request, session
 from flask_session import Session
 from werkzeug.security import check_password_hash, generate_password_hash
 from time import ctime
+from datetime import datetime
 
 # Import functions from other file
 from helpers import login_required, apology
@@ -150,7 +151,8 @@ def index():
         # Create table to show car reservations
         # Declare variables
         if session["user_id"]:
-            db.execute("REMOVE FROM")
+            date_right_now = datetime.now().day
+            
             usersname = db.execute("SELECT username FROM users WHERE id = ?;", session["user_id"])[0]["username"]
             if number_of_cars == 0:
                 rows = db.execute("SELECT * FROM calendar WHERE usersname = ?;", usersname)
