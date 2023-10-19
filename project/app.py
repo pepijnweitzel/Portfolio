@@ -130,7 +130,7 @@ def index():
                 end_time = int(request.form.get("ending_hour"))
                 reservations_day = int(request.form.get("reservations_day"))
                 # Input data into database
-                db.execute("INSERT INTO calendar (cars_name, usersname, begin_time, end_time, day) VALUES (?, ?, ?, ?, ?);", car_name_reservation, usersname, begin_time, end_time, reservations_day)
+                db.execute("INSERT INTO calendar (cars_name, usersname, groups_code, begin_time, end_time, day) VALUES (?, ?, ?, ?, ?);", car_name_reservation, usersname, users_groupcode, begin_time, end_time, reservations_day)
                 return redirect("/")
             # If no errors execute following
             else:
@@ -141,7 +141,7 @@ def index():
                 end_time = int(request.form.get("ending_hour"))
                 reservations_day = int(request.form.get("reservations_day"))
                 # Input data into database
-                db.execute("INSERT INTO calendar (cars_name, usersname, begin_time, end_time, day) VALUES (?, ?, ?, ?, ?);", car_name_reservation, usersname, begin_time, end_time, reservations_day)
+                db.execute("INSERT INTO calendar (cars_name, usersname, groups_code, begin_time, end_time, day) VALUES (?, ?, ?, ?, ?);", car_name_reservation, usersname, users_groupcode, begin_time, end_time, reservations_day)
                 return redirect("/")
 
     # Give page if GET method
@@ -156,21 +156,21 @@ def index():
             # Create table to show car reservations
             # Declare variables
             usersname = db.execute("SELECT username FROM users WHERE id = ?;", session["user_id"])[0]["username"]
-            
+
             if number_of_cars == 0:
                 rows = db.execute("SELECT * FROM calendar WHERE usersname = ?;", usersname)
 
             elif number_of_cars == 1:
-                rows = db.execute("SELECT * FROM calendar WHERE cars_name = ? AND usersname = ?;", car_names[0], usersname)
+                rows = db.execute("SELECT * FROM calendar WHERE cars_name = ? AND groups_code = ?;", car_names[0], users_groupcode)
 
             elif number_of_cars == 2:
-                rows = db.execute("SELECT * FROM calendar WHERE cars_name = ? OR cars_name = ? AND usersname = ?;", car_names[0], car_names[1], usersname)
+                rows = db.execute("SELECT * FROM calendar WHERE cars_name = ? OR cars_name = ? AND groups_code = ?;", car_names[0], car_names[1], users_groupcode)
 
             elif number_of_cars == 3:
-                rows = db.execute("SELECT * FROM calendar WHERE cars_name = ? OR cars_name = ? OR cars_name = ? AND usersname = ?;", car_names[0], car_names[1], car_names[2], usersname)
+                rows = db.execute("SELECT * FROM calendar WHERE cars_name = ? OR cars_name = ? OR cars_name = ? AND groups_code = ?;", car_names[0], car_names[1], car_names[2], users_groupcode)
 
             else:
-                rows = db.execute("SELECT * FROM calendar WHERE cars_name = ? OR cars_name = ? OR cars_name = ? OR cars_name = ? AND usersname = ?;", car_names[0], car_names[1], car_names[2], car_names[3], usersname)
+                rows = db.execute("SELECT * FROM calendar WHERE cars_name = ? OR cars_name = ? OR cars_name = ? OR cars_name = ? AND groups_code = ?;", car_names[0], car_names[1], car_names[2], car_names[3], users_groupcode)
 
             return render_template("index.html", number_of_cars=number_of_cars, car_names=car_names, car_info_list=car_info_list, rows=rows)
         else:
