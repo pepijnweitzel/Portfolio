@@ -178,7 +178,7 @@
                 if ((day + i) > 31) {
                     something ++;
                     document.querySelectorAll("th")[i].innerHTML = current_day + " " + something;
-                    available_days.push(something)
+                    available_days.push(something);
                     continue;
                 }
             }
@@ -186,7 +186,7 @@
                 if ((day + i) > 30) {
                     something ++;
                     document.querySelectorAll("th")[i].innerHTML = current_day + " " + something;
-                    available_days.push(something)
+                    available_days.push(something);
                     continue;
                 }
             }
@@ -194,24 +194,48 @@
                 if ((day + i) > 28) {
                     something ++;
                     document.querySelectorAll("th")[i].innerHTML = current_day + " " + something;
-                    available_days.push(something)
+                    available_days.push(something);
                     continue;
                 }
             }
             document.querySelectorAll("th")[i].innerHTML = current_day + " " + (day + i);
-            available_days.push(day + i)
+            available_days.push(day + i);
             day_of_week++;
         }
         // Get all the available days they can select to make a reservation
-        let selectElement = document.getElementById("available")
+        let selectElement = document.getElementById("available");
 
         for (let i = 0; i < available_days.length; i++) {
-            selectElement.add(new Option(available_days[i]))
+            selectElement.add(new Option(available_days[i]));
         }
 
         {% for row in rows %}
         // Hash day number to calendar value
-        row["day"]
+        day_number = row["day"];
+        if (current_month == 0 || current_month == 2 || current_month == 4 || current_month == 6 || current_month == 7 || current_month == 9 || current_month == 11){
+                if ((day + i) > 31) {
+                    something ++;
+                    document.querySelectorAll("th")[i].innerHTML = current_day + " " + something;
+                    available_days.push(something);
+                    continue;
+                }
+            }
+            if (current_month == 3 || current_month == 5 || current_month == 8 || current_month == 10){
+                if ((day + i) > 30) {
+                    something ++;
+                    document.querySelectorAll("th")[i].innerHTML = current_day + " " + something;
+                    available_days.push(something);
+                    continue;
+                }
+            }
+            if (current_month == 1){
+                if ((day + i) > 28) {
+                    something ++;
+                    document.querySelectorAll("th")[i].innerHTML = current_day + " " + something;
+                    available_days.push(something);
+                    continue;
+                }
+            }
         {% endfor %}
     </script>
 {% endblock %}
