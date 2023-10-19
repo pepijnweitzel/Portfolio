@@ -215,10 +215,10 @@
         if (current_month == 0 || current_month == 2 || current_month == 4 || current_month == 6 || current_month == 7 || current_month == 9 || current_month == 11){
             if ((day + 13) > 31) {
                 let int = 31 - day;
-                
+                var calendar_id = reservations_day + 
             }
             else {
-                var calendar_id = reservations_day - day + 1;
+                var calendar_id = reservations_day - day;
             }
         }
         if (current_month == 3 || current_month == 5 || current_month == 8 || current_month == 10){
