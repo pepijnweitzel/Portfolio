@@ -47,7 +47,7 @@ def index():
     if request.method == "POST":
 
         # Check wheter they want to make reservation(left-side) or adjustment(right-side)
-        if not request.form.get("car_name_reservation") and not request.form.get("starting_hour") and not request.form.get("ending_hour") and not request.form.get("reservations_day"):
+        if not request.form.get("car_name_reservation") and not request.form.get("starting_hour") and not request.form.get("ending_hour") and not request.form.get("reservations_day") and not request.form.get("starting_hour_removing") and not request.form.get("ending_hour_removing") and not request.form.get("car_name_removing") and not request.form.get("removing_day"):
             # Check whether they inputted any box
             if not request.form.get("car_name") and not request.form.get("kilometer_count"):
                 if not request.form.get("new_car"):
@@ -85,6 +85,21 @@ def index():
                 db.execute("INSERT INTO adjustments (cars_id, new_kilometercount, datetime, usersname, car_name) VALUES (?, ?, ?, ?, ?)", car_id, newkilometercount, current_time, usersname, current_carname)
                 return redirect("/")
         # If they  submitted reservation(left-side)
+        # Check whether they want to remove a reservation or add one
+        elif not request.form.get("car_name_reservation") and not request.form.get("starting_hour") and not request.form.get("ending_hour") and not request.form.get("reservations_day"):
+            if not request.form.get("car_name_removing"):
+                return apology("please give car name for removing", 400)
+            elif not request.form.get("starting_hour_removing"):
+                return apology("please give starting hour", 400)
+            elif not request.form.get("ending_hour_removing"):
+                return apology("please give ending hour", 400)
+            elif not request.form.get("removing_day"):
+                return apology("please give day of reservation", 400)
+            elif len(db.execute("SELECT * FROM calendar WHERE cars_name = ? AND begin_time = ? AND end_time = ? and day = ?;", request.form.get("car_name_removing"), request.form.get("starting_hour_removing"), request.form.get("ending_hour_removing"), request.form.get("removing_day"))) == 0:
+                return apology("No reservation with that data", 400)
+            else:
+                db.execute("DELETE FROM calendar WHERE cars_name = ? AND begin_time = ? AND end_time = ? and day = ?;", request.form.get("car_name_removing"), request.form.get("starting_hour_removing"), request.form.get("ending_hour_removing"), request.form.get("removing_day"))
+                return redirect("/")
         else:
             # Check for errors:
             if not request.form.get("car_name_reservation"):
