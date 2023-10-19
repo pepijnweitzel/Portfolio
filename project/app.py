@@ -98,8 +98,8 @@ def index():
             elif not request.form.get("reservations_day"):
                 return apology("please give day of reservation", 400)
             # Check whether time frame not possible
-            elif len(db.execute("SELECT * FROM calendar WHERE cars_name = ? AND day = ;", request.form.get("car_name_reservation"), request.form.get("reservations_day"))) != 0:
-                for row in db.execute("SELECT * FROM calendar WHERE cars_name = ? AND day = ;", request.form.get("car_name_reservation"), request.form.get("reservations_day")):
+            elif len(db.execute("SELECT * FROM calendar WHERE cars_name = ? AND day = ?;", request.form.get("car_name_reservation"), request.form.get("reservations_day"))) != 0:
+                for row in db.execute("SELECT * FROM calendar WHERE cars_name = ? AND day = ?;", request.form.get("car_name_reservation"), request.form.get("reservations_day")):
                     existing_begin = row["begin_time"]
                     existing_end = row["end_time"]
                     using_hours = []
@@ -108,8 +108,17 @@ def index():
                     asking_begin = int(request.form.get("starting_hour"))
                     asking_end = int(request.form.get("ending_hour"))
                     if asking_begin in using_hours or asking_end in using_hours:
-                        
-
+                        return apology("time-frame not possible", 400)
+                    else:
+                        # Declare variables
+                        car_name_reservation = request.form.get("car_name_reservation")
+                        usersname = db.execute("SELECT username FROM users WHERE id = ?;", session["user_id"])[0]["username"]
+                        begin_time = int(request.form.get("starting_hour"))
+                        end_time = int(request.form.get("ending_hour"))
+                        reservations_day = int(request.form.get("reservations_day"))
+                        # Input data into database
+                        db.execute("INSERT INTO calendar (cars_name, usersname, begin_time, end_time, day) VALUES (?, ?, ?, ?, ?);", car_name_reservation, usersname, begin_time, end_time, reservations_day)
+                        return redirect("/")
             # If no errors execute following
             else:
                 # Declare variables
