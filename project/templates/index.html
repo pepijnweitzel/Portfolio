@@ -23,13 +23,13 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>1</td>
-                            <td>2</td>
-                            <td>3</td>
-                            <td>4</td>
-                            <td>5</td>
-                            <td>6</td>
-                            <td>7</td>
+                            <td id="1">1</td>
+                            <td id="2">2</td>
+                            <td id="3">3</td>
+                            <td id="4">4</td>
+                            <td id="5">5</td>
+                            <td id="6">6</td>
+                            <td id="7">7</td>
                         </tr>
                     </tbody>
                     <thead>
@@ -45,13 +45,13 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>1</td>
-                            <td>2</td>
-                            <td>3</td>
-                            <td>4</td>
-                            <td>5</td>
-                            <td>6</td>
-                            <td>7</td>
+                            <td id="8">1</td>
+                            <td id="9">2</td>
+                            <td id="10">3</td>
+                            <td id="11">4</td>
+                            <td id="12">5</td>
+                            <td id="13">6</td>
+                            <td id="14">7</td>
                         </tr>
                     </tbody>
                 </table>
@@ -208,6 +208,10 @@
         for (let i = 0; i < available_days.length; i++) {
             selectElement.add(new Option(available_days[i]))
         }
-        
+
+        {% for row in rows %}
+        // Hash day number to calendar value
+        row["day"]
+        {% endfor %}
     </script>
 {% endblock %}
