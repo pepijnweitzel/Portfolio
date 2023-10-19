@@ -23,7 +23,7 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td id="1">1</td>
+                            <td id="0">1</td>
                             <td id="2">2</td>
                             <td id="3">3</td>
                             <td id="4">4</td>
@@ -213,7 +213,12 @@
         // Hash day number to calendar value
         let reservations_day = {{ row["day"] }};
         if (current_month == 0 || current_month == 2 || current_month == 4 || current_month == 6 || current_month == 7 || current_month == 9 || current_month == 11){
-            let 
+            if ((day + 13) > 31) {
+
+            }
+            else {
+                let calendar_id = reservations_day - day + 1;
+            }
         }
         if (current_month == 3 || current_month == 5 || current_month == 8 || current_month == 10){
 
