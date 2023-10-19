@@ -130,7 +130,7 @@ def index():
                 end_time = int(request.form.get("ending_hour"))
                 reservations_day = int(request.form.get("reservations_day"))
                 # Input data into database
-                db.execute("INSERT INTO calendar (cars_name, usersname, groups_code, begin_time, end_time, day) VALUES (?, ?, ?, ?, ?);", car_name_reservation, usersname, users_groupcode, begin_time, end_time, reservations_day)
+                db.execute("INSERT INTO calendar (cars_name, usersname, groups_code, begin_time, end_time, day) VALUES (?, ?, ?, ?, ?, ?);", car_name_reservation, usersname, users_groupcode, begin_time, end_time, reservations_day)
                 return redirect("/")
             # If no errors execute following
             else:
@@ -141,7 +141,7 @@ def index():
                 end_time = int(request.form.get("ending_hour"))
                 reservations_day = int(request.form.get("reservations_day"))
                 # Input data into database
-                db.execute("INSERT INTO calendar (cars_name, usersname, groups_code, begin_time, end_time, day) VALUES (?, ?, ?, ?, ?);", car_name_reservation, usersname, users_groupcode, begin_time, end_time, reservations_day)
+                db.execute("INSERT INTO calendar (cars_name, usersname, groups_code, begin_time, end_time, day) VALUES (?, ?, ?, ?, ?, ?);", car_name_reservation, usersname, users_groupcode, begin_time, end_time, reservations_day)
                 return redirect("/")
 
     # Give page if GET method
