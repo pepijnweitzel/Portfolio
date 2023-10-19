@@ -97,11 +97,19 @@ def index():
                 return apology("please give a correct time frame")
             elif not request.form.get("reservations_day"):
                 return apology("please give day of reservation", 400)
+            # Check whether time frame not possible
             elif len(db.execute("SELECT * FROM calendar WHERE cars_name = ? AND day = ;", request.form.get("car_name_reservation"), request.form.get("reservations_day"))) != 0:
                 for row in db.execute("SELECT * FROM calendar WHERE cars_name = ? AND day = ;", request.form.get("car_name_reservation"), request.form.get("reservations_day")):
                     existing_begin = row["begin_time"]
                     existing_end = row["end_time"]
-                    
+                    using_hours = []
+                    for i in range(existing_begin, existing_end):
+                        using_hours.append(int(i))
+                    asking_begin = int(request.form.get("starting_hour"))
+                    asking_end = int(request.form.get("ending_hour"))
+                    if asking_begin in using_hours or asking_end in using_hours:
+                        
+
             # If no errors execute following
             else:
                 # Declare variables
