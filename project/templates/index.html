@@ -23,13 +23,13 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>No reservations</td>
-                            <td>No reservations</td>
-                            <td>No reservations</td>
-                            <td>No reservations</td>
-                            <td>No reservations</td>
-                            <td>No reservations</td>
-                            <td>No reservations</td>
+                            <td>No <br> reservations</td>
+                            <td>No <br> reservations</td>
+                            <td>No <br> reservations</td>
+                            <td>No <br> reservations</td>
+                            <td>No <br> reservations</td>
+                            <td>No <br> reservations</td>
+                            <td>No <br> reservations</td>
                         </tr>
                     </tbody>
                     <thead>
@@ -45,13 +45,13 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>No reservations</td>
-                            <td>No reservations</td>
-                            <td>No reservations</td>
-                            <td>No reservations</td>
-                            <td>No reservations</td>
-                            <td>No reservations</td>
-                            <td>No reservations</td>
+                            <td>No <br> reservations</td>
+                            <td>No <br> reservations</td>
+                            <td>No <br> reservations</td>
+                            <td>No <br> reservations</td>
+                            <td>No <br> reservations</td>
+                            <td>No <br> reservations</td>
+                            <td>No <br> reservations</td>
                         </tr>
                     </tbody>
                 </table>
@@ -180,7 +180,7 @@
                 if ((day + i) > 31) {
                     something ++;
                     // Insert date and weekday into table header and set it's id to its date
-                    document.querySelectorAll("th")[i].innerHTML = current_day + "\n" + something;
+                    document.querySelectorAll("th")[i].innerHTML = current_day + "<br>" + something;
                     document.querySelectorAll("td")[i].setAttribute("id", something);
                     available_days.push(something);
                     continue;
@@ -190,7 +190,7 @@
                 if ((day + i) > 30){
                     something ++;
                     // Insert date and weekday into table header and set it's id to its date
-                    document.querySelectorAll("th")[i].innerHTML = current_day + "\n" + something;
+                    document.querySelectorAll("th")[i].innerHTML = current_day + "<br>" + something;
                     document.querySelectorAll("td")[i].setAttribute("id", something);
                     available_days.push(something);
                     continue;
@@ -200,14 +200,14 @@
                 if ((day + i) > 28) {
                     something ++;
                     // Insert date and weekday into table header and set it's id to its date
-                    document.querySelectorAll("th")[i].innerHTML = current_day + "\n" + something;
+                    document.querySelectorAll("th")[i].innerHTML = current_day + "<br>" + something;
                     document.querySelectorAll("td")[i].setAttribute("id", something);
                     available_days.push(something);
                     continue;
                 }
             }
             // Insert date and weekday into table header and set it's id to its date
-            document.querySelectorAll("th")[i].innerHTML = current_day + "\n" + (day + i);
+            document.querySelectorAll("th")[i].innerHTML = current_day + "<br>" + (day + i);
             document.querySelectorAll("td")[i].setAttribute("id", (day + i));
             available_days.push(day + i);
             day_of_week++;
@@ -232,7 +232,7 @@
             using_time = beginning + ":00 - " + ending + ":00";
             reservations_day_id = row["day"];
             // Insert data into calendar
-            document.getElementById(reservations_day_id).innerHTML = "car: " + car_name + "\nname: " + user + "\ntime: " + using_time;
+            document.getElementById(reservations_day_id).innerHTML = "car: " + car_name + "<br>name: " + user + "<br>time: " + using_time;
 
         }
     </script>
