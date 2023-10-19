@@ -209,9 +209,6 @@
             selectElement.add(new Option(available_days[i]));
         }
 
-        {% for row in rows %}
-        let reservations_day = {{ row["day"] }};
-        console.log(reservations_day)
-        {% endfor %}
+        
     </script>
 {% endblock %}
