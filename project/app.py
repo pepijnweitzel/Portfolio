@@ -109,6 +109,15 @@ def index():
                     asking_end = int(request.form.get("ending_hour"))
                     if asking_begin in using_hours or asking_end in using_hours:
                         return apology("time-frame not possible", 400)
+                # Declare variables
+                car_name_reservation = request.form.get("car_name_reservation")
+                usersname = db.execute("SELECT username FROM users WHERE id = ?;", session["user_id"])[0]["username"]
+                begin_time = int(request.form.get("starting_hour"))
+                end_time = int(request.form.get("ending_hour"))
+                reservations_day = int(request.form.get("reservations_day"))
+                # Input data into database
+                db.execute("INSERT INTO calendar (cars_name, usersname, begin_time, end_time, day) VALUES (?, ?, ?, ?, ?);", car_name_reservation, usersname, begin_time, end_time, reservations_day)
+                return redirect("/")
             # If no errors execute following
             else:
                 # Declare variables
