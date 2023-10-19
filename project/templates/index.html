@@ -152,6 +152,7 @@
         let something = 0;
         let available_days = [];
         const days_of_week = ["Sunday", "Monday ", "Tuesday ", "Wednesday ", "Thursday ", "Friday ", "Saterday ", "Sunday ", "Monday ", "Tuesday ", "Wednesday ", "Thursday ", "Friday ", "Saterday ", "Sunday", "Monday ", "Tuesday ", "Wednesday ", "Thursday ", "Friday ", "Saterday ", "Sunday"];
+        // Iterate to get all elements for table headers
         for (let i = 0; i < 14; i++) {
             if (day_of_week == 0 || day_of_week == 7 || day_of_week == 14) {
                 current_day = days_of_week[i];
@@ -174,9 +175,11 @@
             if (day_of_week == 6 || day_of_week == 13 || day_of_week == 20) {
                 current_day = days_of_week[i + 6];
             }
+            // Check what month it is to get correct dates
             if (current_month == 0 || current_month == 2 || current_month == 4 || current_month == 6 || current_month == 7 || current_month == 9 || current_month == 11){
                 if ((day + i) > 31) {
                     something ++;
+                    // Insert date and weekday into table header and set it's id to its date
                     document.querySelectorAll("th")[i].innerHTML = current_day + " " + something;
                     document.querySelectorAll("td")[i].setAttribute("id", something);
                     available_days.push(something);
@@ -186,6 +189,7 @@
             if (current_month == 3 || current_month == 5 || current_month == 8 || current_month == 10){
                 if ((day + i) > 30){
                     something ++;
+                    // Insert date and weekday into table header and set it's id to its date
                     document.querySelectorAll("th")[i].innerHTML = current_day + " " + something;
                     document.querySelectorAll("td")[i].setAttribute("id", something);
                     available_days.push(something);
@@ -195,12 +199,14 @@
             if (current_month == 1) {
                 if ((day + i) > 28) {
                     something ++;
+                    // Insert date and weekday into table header and set it's id to its date
                     document.querySelectorAll("th")[i].innerHTML = current_day + " " + something;
                     document.querySelectorAll("td")[i].setAttribute("id", something);
                     available_days.push(something);
                     continue;
                 }
             }
+            // Insert date and weekday into table header and set it's id to its date
             document.querySelectorAll("th")[i].innerHTML = current_day + " " + (day + i);
             document.querySelectorAll("td")[i].setAttribute("id", (day + i));
             available_days.push(day + i);
@@ -213,7 +219,7 @@
             selectElement.add(new Option(available_days[i]));
         }
 
-        // Add made reservations to the calendar table
+        // Add the made reservations to the calendar
         var rows = {{ rows|tojson }};
         for (let i = 0; i < rows.length; i++) {
             let row = rows[i];
@@ -224,9 +230,9 @@
             ending = row["end_time"];
             using_time = beginning + ":00 - " + ending + ":00";
             reservations_day_id = row["day"];
+            // Insert data into calendar
             document.getElementById(reservations_day_id).innerHTML = car_name + user + using_time;
 
         }
-
     </script>
 {% endblock %}
