@@ -217,8 +217,14 @@
         var rows = {{ rows|tojson }};
         for (let i = 0; i < rows.length; i++) {
             let row = rows[i];
+            // Declare variables
+            car_name = row["cars_name"];
+            user = row["usersname"];
+            beginning = row["begin_time"];
+            ending = row["end_time"];
             reservations_day = row["day"];
-            console.log(reservations_day);
+            document.querySelectorById
+
         }
 
     </script>
