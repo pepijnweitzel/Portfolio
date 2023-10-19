@@ -217,7 +217,7 @@
         var rows = {{ rows|tojson }};
         for (let i = 0; i < rows.length; i++) {
             let row = rows[i];
-            reservations_day = Object.values(row);
+            reservations_day = row["day"];
             console.log(reservations_day);
         }
 
