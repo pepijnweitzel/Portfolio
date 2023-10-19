@@ -151,7 +151,9 @@ def index():
         # Declare variables
         if session["user_id"]:
             usersname = db.execute("SELECT username FROM users WHERE id = ?;", session["user_id"])[0]["username"]
-            if number_of_cars == 1:
+            if number_of_cars == 0:
+                rows = db.execute("SELECT * FROM calendar WHERE usersname = ?;", usersname)
+            elif number_of_cars == 1:
                 rows = db.execute("SELECT * FROM calendar WHERE cars_name = ? AND usersname = ?;", car_names[0], usersname)
 
             elif number_of_cars == 2:
