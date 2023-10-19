@@ -215,7 +215,7 @@
         if (current_month == 0 || current_month == 2 || current_month == 4 || current_month == 6 || current_month == 7 || current_month == 9 || current_month == 11){
             if ((day + 13) > 31) {
                 let int = 31 - day;
-                var calendar_id = reservations_day + 
+                var calendar_id = reservations_day + int;
             }
             else {
                 var calendar_id = reservations_day - day;
