@@ -214,6 +214,7 @@
         let reservations_day = {{ row["day"] }};
         if (current_month == 0 || current_month == 2 || current_month == 4 || current_month == 6 || current_month == 7 || current_month == 9 || current_month == 11){
             if ((day + 13) > 31) {
+                let int = 31 - day;
                 
             }
             else {
