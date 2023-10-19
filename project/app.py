@@ -149,20 +149,23 @@ def index():
     else:
         # Create table to show car reservations
         # Declare variables
-        usersname = db.execute("SELECT username FROM users WHERE id = ?;", session["user_id"])[0]["username"]
-        if number_of_cars == 1:
-            rows = db.execute("SELECT * FROM calendar WHERE cars_name = ? AND usersname = ?;", car_names[0], usersname)
+        if session["user_id"]:
+            usersname = db.execute("SELECT username FROM users WHERE id = ?;", session["user_id"])[0]["username"]
+            if number_of_cars == 1:
+                rows = db.execute("SELECT * FROM calendar WHERE cars_name = ? AND usersname = ?;", car_names[0], usersname)
 
-        elif number_of_cars == 2:
-            rows = db.execute("SELECT * FROM calendar WHERE cars_name = ? OR cars_name = ? AND usersname = ?;", car_names[0], car_names[1], usersname)
+            elif number_of_cars == 2:
+                rows = db.execute("SELECT * FROM calendar WHERE cars_name = ? OR cars_name = ? AND usersname = ?;", car_names[0], car_names[1], usersname)
 
-        elif number_of_cars == 3:
-            rows = db.execute("SELECT * FROM calendar WHERE cars_name = ? OR cars_name = ? OR cars_name = ? AND usersname = ?;", car_names[0], car_names[1], car_names[2], usersname)
+            elif number_of_cars == 3:
+                rows = db.execute("SELECT * FROM calendar WHERE cars_name = ? OR cars_name = ? OR cars_name = ? AND usersname = ?;", car_names[0], car_names[1], car_names[2], usersname)
 
+            else:
+                rows = db.execute("SELECT * FROM calendar WHERE cars_name = ? OR cars_name = ? OR cars_name = ? OR cars_name = ? AND usersname = ?;", car_names[0], car_names[1], car_names[2], car_names[3], usersname)
+
+            return render_template("index.html", number_of_cars=number_of_cars, car_names=car_names, car_info_list=car_info_list, rows=rows)
         else:
-            rows = db.execute("SELECT * FROM calendar WHERE cars_name = ? OR cars_name = ? OR cars_name = ? OR cars_name = ? AND usersname = ?;", car_names[0], car_names[1], car_names[2], car_names[3], usersname)
-
-        return render_template("index.html", number_of_cars=number_of_cars, car_names=car_names, car_info_list=car_info_list, rows=rows)
+            return render_template("index.html", number_of_cars=number_of_cars, car_names=car_names, car_info_list=car_info_list)
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
