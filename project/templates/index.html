@@ -91,6 +91,41 @@
                         </div>
                         <button class="btn btn-primary carsbtn" type="submit">Make reservation</button>
                     </div>
+                    <hr>
+                    <div class="container text-center">
+                        <div class="row">
+                            <div class="col">
+                                <select class="form-select mx-auto w-auto car-selector left-options" name="car_name_removing">
+                                    <option disabled selected>Select car</option>
+                                    {% for car_name in car_names %}
+                                    <option value="{{car_name}}">{{ car_name }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="col">
+                                <select class="form-select mx-auto w-auto car-selector left-options" name="starting_hour_removing">
+                                    <option disabled selected>Begin time</option>
+                                    {% for i in range(24) %}
+                                    <option value="{{ i }}">{{ i }}:00</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="col">
+                                <select class="form-select mx-auto w-auto car-selector left-options" name="ending_hour_removing">
+                                    <option disabled selected>End time</option>
+                                    {% for i in range(24) %}
+                                    <option value="{{ i }}">{{ i }}:00</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="col">
+                                <select class="form-select mx-auto w-auto car-selector left-options" id="available"  name="reservations_day">
+                                    <option disabled selected>Day</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary carsbtn" type="submit">Delete reservation</button>
+                    </div>
                 </form>
             </div>
             <div class="col-6 col-md-4">
