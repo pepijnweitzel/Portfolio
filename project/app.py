@@ -150,6 +150,7 @@ def index():
         # Create table to show car reservations
         # Declare variables
         if session["user_id"]:
+            db.execute("REMOVE FROM")
             usersname = db.execute("SELECT username FROM users WHERE id = ?;", session["user_id"])[0]["username"]
             if number_of_cars == 0:
                 rows = db.execute("SELECT * FROM calendar WHERE usersname = ?;", usersname)
