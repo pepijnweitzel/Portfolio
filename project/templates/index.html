@@ -213,29 +213,14 @@
         // Hash day number to calendar value
         day_number = row["day"];
         if (current_month == 0 || current_month == 2 || current_month == 4 || current_month == 6 || current_month == 7 || current_month == 9 || current_month == 11){
-                if ((day + i) > 31) {
-                    something ++;
-                    document.querySelectorAll("th")[i].innerHTML = current_day + " " + something;
-                    available_days.push(something);
-                    continue;
-                }
-            }
-            if (current_month == 3 || current_month == 5 || current_month == 8 || current_month == 10){
-                if ((day + i) > 30) {
-                    something ++;
-                    document.querySelectorAll("th")[i].innerHTML = current_day + " " + something;
-                    available_days.push(something);
-                    continue;
-                }
-            }
-            if (current_month == 1){
-                if ((day + i) > 28) {
-                    something ++;
-                    document.querySelectorAll("th")[i].innerHTML = current_day + " " + something;
-                    available_days.push(something);
-                    continue;
-                }
-            }
+            
+        }
+        if (current_month == 3 || current_month == 5 || current_month == 8 || current_month == 10){
+
+        }
+        if (current_month == 1){
+
+        }
         {% endfor %}
     </script>
 {% endblock %}
