@@ -97,6 +97,7 @@ def index():
                 return apology("please give a correct time frame")
             elif not request.form.get("reservations_day"):
                 return apology("please give day of reservation", 400)
+            elif len()
             # If no errors execute following
             else:
                 # Declare variables
