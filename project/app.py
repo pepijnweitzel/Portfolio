@@ -97,7 +97,7 @@ def index():
                 return apology("please give a correct time frame")
             elif not request.form.get("reservations_day"):
                 return apology("please give day of reservation", 400)
-            elif len()
+            elif len(db.execute("SELECT * FROM calendar WHERE cars_name = ? AND day = ;", request.form.get("car_name_reservation")))
             # If no errors execute following
             else:
                 # Declare variables
@@ -105,7 +105,7 @@ def index():
                 usersname = db.execute("SELECT username FROM users WHERE id = ?;", session["user_id"])[0]["username"]
                 begin_time = int(request.form.get("starting_hour"))
                 end_time = int(request.form.get("ending_hour"))
-                current_day = int(request.form.get("reservations_day"))
+                reservations_day = int(request.form.get("reservations_day"))
                 # Input data into database
                 db.execute("INSERT INTO calendar (cars_name, usersname, begin_time, end_time, day) VALUES (?, ?, ?, ?, ?);", car_name_reservation, usersname, begin_time, end_time, current_day)
                 return redirect("/")
