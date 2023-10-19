@@ -148,11 +148,15 @@ def index():
 
     # Give page if GET method
     else:
-        # Create table to show car reservations
-        # Declare variables
         if session["user_id"]:
+            # Get rid of old reservations
             date_right_now = datetime.now().day
-            
+            day_1 = date_right_now - 1
+            day_2 = date_right_now - 2
+            day_3 = date_right_now - 3
+            db.execute("DELETE FROM calendar WHERE day = ? or day = ? or day = ?;", day_1, day_2, day_3)
+            # Create table to show car reservations
+            # Declare variables
             usersname = db.execute("SELECT username FROM users WHERE id = ?;", session["user_id"])[0]["username"]
             if number_of_cars == 0:
                 rows = db.execute("SELECT * FROM calendar WHERE usersname = ?;", usersname)
