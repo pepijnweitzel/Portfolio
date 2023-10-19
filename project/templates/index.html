@@ -119,7 +119,7 @@
                                 </select>
                             </div>
                             <div class="col">
-                                <select class="form-select mx-auto w-auto car-selector left-options" id="available"  name="reservations_day">
+                                <select class="form-select mx-auto w-auto car-selector left-options" id="available_remove"  name="removing_day">
                                     <option disabled selected>Day</option>
                                 </select>
                             </div>
@@ -248,14 +248,12 @@
             day_of_week++;
         }
         // Get all the available days they can select to make a reservation
-        let selectElement = document.getElementById("available");
-
         for (let i = 0; i < available_days.length; i++) {
-            selectElement.add(new Option(available_days[i]));
+            document.getElementById("available").add(new Option(available_days[i]))
+            document.getElementById("available_remove").add(new Option(available_days[i]))
         }
 
         // Add the made reservations to the calendar
-
         var rows = {{ rows|tojson }};
         for (let i = 0; i < rows.length; i++) {
             let row = rows[i];
