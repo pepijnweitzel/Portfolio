@@ -199,6 +199,7 @@
                 }
             }
             document.querySelectorAll("th")[i].innerHTML = current_day + " " + (day + i);
+            document.querySelectorAll("th")[i].setAttribute("className", i)
             available_days.push(day + i);
             day_of_week++;
         }
@@ -209,6 +210,5 @@
             selectElement.add(new Option(available_days[i]));
         }
 
-        
     </script>
 {% endblock %}
