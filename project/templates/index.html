@@ -232,7 +232,7 @@
             using_time = beginning + ":00 - " + ending + ":00";
             reservations_day_id = row["day"];
             // Insert data into calendar
-            document.getElementById(reservations_day_id).innerHTML = "car: " + car_name + "<br>name: " + user + "<br>time: " + using_time;
+            document.getElementById(reservations_day_id).innerHTML += "car: " + car_name + "<br>name: " + user + "<br>time: " + using_time;
 
         }
     </script>
