@@ -222,8 +222,9 @@
             user = row["usersname"];
             beginning = row["begin_time"];
             ending = row["end_time"];
-            reservations_day = row["day"];
-            document.querySelectorById
+            using_time = beginning + ":00 - " + ending + ":00";
+            reservations_day_id = row["day"];
+            document.getElementById(reservations_day_id).innerHTML = car_name + user + using_time;
 
         }
 
