@@ -99,6 +99,8 @@ def index():
                 return apology("please give day of reservation", 400)
             elif len(db.execute("SELECT * FROM calendar WHERE cars_name = ? AND day = ;", request.form.get("car_name_reservation"), request.form.get("reservations_day"))) != 0:
                 for row in db.execute("SELECT * FROM calendar WHERE cars_name = ? AND day = ;", request.form.get("car_name_reservation"), request.form.get("reservations_day")):
+                    existing_begin = row["begin_time"]
+                    existing_end = row["end_time"]
                     
             # If no errors execute following
             else:
