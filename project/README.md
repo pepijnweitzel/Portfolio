@@ -11,3 +11,4 @@ In the static folder you'll find a favicon folder containing a small picture of 
 
 ### Backend:
 For my backend I created to files: app.py and helpers.py. In helpers.py I defined 2 functions, The login decorated function (used to make sure users can only acces specific pages while being loged in) and the apology function (used to send users to the apology html page when giving incorrect input), which I imported into my main app.py file.
+In app.py I start of important all necessary functions or complete libraries to use in the following code, followed by all the configuring lines to start everything off. After that all the code is divided into 6 divisions which all explain one by one. 
