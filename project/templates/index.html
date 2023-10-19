@@ -184,7 +184,7 @@
                 }
             }
             if (current_month == 3 || current_month == 5 || current_month == 8 || current_month == 10){
-                if ((day + i) > 30) {
+                if ((day + i) > 30){
                     something ++;
                     document.querySelectorAll("th")[i].innerHTML = current_day + " " + something;
                     document.querySelectorAll("td")[i].setAttribute("id", something);
@@ -192,7 +192,7 @@
                     continue;
                 }
             }
-            if (current_month == 1){
+            if (current_month == 1) {
                 if ((day + i) > 28) {
                     something ++;
                     document.querySelectorAll("th")[i].innerHTML = current_day + " " + something;
@@ -213,8 +213,12 @@
             selectElement.add(new Option(available_days[i]));
         }
 
+        // Add made reservations to the calendar table
         var rows = {{ rows|tojson }};
-        
+        for (let i = 0; i < rows.length; i++) {
+            let row = rows[i];
+            reservations_day = 
+        }
 
     </script>
 {% endblock %}
