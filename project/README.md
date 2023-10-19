@@ -1,4 +1,4 @@
 # CarShare
 #### Video Demo:  <URL HERE>
 #### Description:
-test
+CarShare is a web-based application using JavaScript, Python and Sqlite3. 
