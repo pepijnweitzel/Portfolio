@@ -8,11 +8,16 @@ def main():
 
 def dollars_to_float(d):
     # TODO
-    d = d.(replace)
+    d = d.strip("$")
+    d = float(d)
+    return d
 
 
 def percent_to_float(p):
     # TODO
+    p = p.strip("%")
+    p = float(p)
+    return p
 
 
 main()
