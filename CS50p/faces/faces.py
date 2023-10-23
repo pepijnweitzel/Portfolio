@@ -5,6 +5,7 @@ def main():
     # Print converted text
     print(convert(text))
 
+# Convert :) and :( to smileys
 def convert(text):
     text = text.replace(":)", "🙂")
     text = text.replace(":(", "🙁")
