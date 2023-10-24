@@ -25,5 +25,7 @@ def main():
         "tangerine" : "50",
         "watermelon" : "80",
         }
+    if item in foods:
+        print(f"Calories: {foods[item]}")
 
-    print(f"Calories: {foods["item"]}")
+main()
