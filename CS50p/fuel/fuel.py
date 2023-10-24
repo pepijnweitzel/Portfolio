@@ -12,7 +12,7 @@ while True:
 
     # Make sure / symbol was given
     if j != 1:
-        break
+        continue
 
     # Create x variable
     x = ""
