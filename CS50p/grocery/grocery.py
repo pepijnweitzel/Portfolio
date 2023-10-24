@@ -14,5 +14,5 @@ while True:
         print(groceries_keys)
         #sorted_groceries = {}
         #for item in groceries_keys:
-            sorted_groceries[item] = groceries[item]
-            print(item, sorted_groceries[item])
+        #    sorted_groceries[item] = groceries[item]
+        #    print(item, sorted_groceries[item])
