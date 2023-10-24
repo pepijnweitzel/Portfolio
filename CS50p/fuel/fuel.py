@@ -4,9 +4,17 @@ while True:
     # Prompt user for fraction
     fraction = input("Fraction: ")
     # Find out how many numbers before /
+    j = 0
     for i in range(len(fraction)):
         if fraction[i] == "/":
             index = i
+        else:
+            j += 1
+
+    # Make sure / symbol was given
+    if j == len(fraction):
+        break
+
     # Create x variable
     x = ""
     for i in range(index):
