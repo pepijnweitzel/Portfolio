@@ -15,8 +15,8 @@ match file:
     case str(x) if ".pdg" in x:
         print("image/pdg")
     case str(x) if ".txt" in x:
-        print("image/txt")
+        print("application/txt")
     case str(x) if ".zip" in x:
-        print("image/zip")
+        print("application/zip")
     case _:
         print("application/octet-stream")
