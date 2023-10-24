@@ -10,8 +10,9 @@ while True:
         else:
             groceries[grocery] = 1
     except EOFError:
-        groceries_keys = groceries.keys().sort()
-        sorted_groceries = {}
-        for item in groceries_keys:
-            sorted_groceries[item] = groceries[item]
-            print(item, sorted_groceries[item])
+        groceries_keys = groceries.keys()
+        print(groceries_keys)
+        #sorted_groceries = {}
+        #for item in groceries_keys:
+        #    sorted_groceries[item] = groceries[item]
+        #    print(item, sorted_groceries[item])
