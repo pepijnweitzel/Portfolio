@@ -7,7 +7,7 @@ match file:
     case str(x) if ".gif" in x:
         print("image/gif")
     case str(x) if ".jpg" in x:
-        print("image/jpg")
+        print("image/jpeg")
     case str(x) if ".jpeg" in x:
         print("image/jpeg")
     case str(x) if ".png" in x:
