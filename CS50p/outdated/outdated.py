@@ -29,7 +29,7 @@ while True:
         #Check whether dates are correct
         if info[1] < 0 or info[1] > 31:
             continue
-        elif info[0] < 0 or info[1] > 12:
+        elif info[0] < 0 or info[0] > 12:
             continue
         else:
             if info[0] < 10:
