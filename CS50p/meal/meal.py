@@ -6,7 +6,10 @@ def main():
 
 def convert(time):
     if len(time == 4):
-    tmp = len[1]
+        tmp = len[0]
+        minutes = str(((int(len[2] + len[3]))/60)*100)
+        tmp += minutes
+
 
 
 if __name__ == "__main__":
