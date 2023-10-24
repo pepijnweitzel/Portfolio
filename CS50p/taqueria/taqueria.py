@@ -13,6 +13,10 @@ menu = {
 }
 total = 0.0
 while True:
-    item = input("Item: ").title()
-    total += menu[item]
-    print(f"Total: ${total}")
+    try:
+        item = input("Item: ").title()
+        if item in menu:
+            total += menu[item]
+        print(f"Total: ${total}")
+    except EOFError:
+        break
