@@ -6,4 +6,5 @@ while True:
     try:
         grocery = input().upper()
     except EOFError:
-        print
+        for item in groceries:
+            print()
