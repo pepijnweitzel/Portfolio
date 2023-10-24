@@ -11,7 +11,6 @@ while True:
             groceries[grocery] = 1
     except EOFError:
         groceries_keys = sorted(list(groceries.keys()))
-        print(groceries_keys)
         sorted_groceries = {}
         for item in groceries_keys:
             sorted_groceries[item] = groceries[item]
