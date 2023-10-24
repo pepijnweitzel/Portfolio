@@ -13,6 +13,6 @@ menu = {
 }
 total = 0.0
 while True:
-    item = input("Item: ")
+    item = input("Item: ").title()
     total += menu[item]
     print(f"Total: ${total}")
