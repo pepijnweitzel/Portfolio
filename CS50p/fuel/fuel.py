@@ -8,11 +8,10 @@ while True:
     for i in range(len(fraction)):
         if fraction[i] == "/":
             index = i
-        else:
-            j += 1
+            j = 1
 
     # Make sure / symbol was given
-    if j == len(fraction):
+    if j != 1:
         break
 
     # Create x variable
