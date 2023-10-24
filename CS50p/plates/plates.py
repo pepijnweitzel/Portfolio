@@ -16,11 +16,8 @@ def is_valid(s):
             # Check whether no letters after numbers and first number == 0
             if no_letters_after_numbers(s):
                 # Check for punctuation
-                for char in s:
-                    if char.isnumeric() and char.isalpha():
-                        continue
-                    else:
-                        return False
+                if "." in s or "," in s or "!" in s or " " in s or "!" in s:
+                    return False
                 return True
     return False
 
