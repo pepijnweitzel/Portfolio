@@ -33,4 +33,13 @@ while True:
         continue
     else:
         z = round(z * 100)
-        
+        if z <= 1:
+            print("E")
+            break
+        elif z >= 99:
+            print("F")
+            break
+        else:
+            print(f"{z}%")
+            break
+
