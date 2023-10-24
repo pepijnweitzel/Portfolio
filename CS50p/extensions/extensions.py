@@ -12,8 +12,8 @@ match file:
         print("image/jpeg")
     case str(x) if ".png" in x:
         print("image/png")
-    case str(x) if ".pdg" in x:
-        print("image/pdg")
+    case str(x) if ".pdf" in x:
+        print("application/pdf")
     case str(x) if ".txt" in x:
         print("application/txt")
     case str(x) if ".zip" in x:
