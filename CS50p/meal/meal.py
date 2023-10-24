@@ -7,8 +7,8 @@ def main():
 def convert(time):
     if len(time) == 4:
         hour = time[0] + "."
-        minutes = str(int(time[2] + time[3])/60*100)
-        print(hour + minutes)
+        minutes = int(time[2] + time[3])/60*100
+        print(hour, minutes)
 
 
 if __name__ == "__main__":
