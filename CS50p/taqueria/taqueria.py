@@ -11,7 +11,8 @@ menu = {
     "Taco": 3.00,
     "Tortilla Salad": 8.00
 }
-
+total = 0.0
 while True:
-    test = input("test")
-    print("test", test)
+    item = input("Item: ")
+    total += menu[item]
+    print(f"Total: ${total}")
