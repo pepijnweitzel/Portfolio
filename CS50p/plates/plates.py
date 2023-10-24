@@ -13,23 +13,31 @@ def is_valid(s):
     if 2 <= len(s) <= 6:
         # Check whether first 2 chars are letters
         if s[0].isalpha() and s[1].isalpha():
-            # Check whether no letters after numbers
-            first_number = 0
-            for i in range(len(s)):
-                if s[i].isalpha() == False:
-                    first_number = i
-                    break
-            for i in range(i, len(s)):
-                if s[i].isalpha() == True:
-                    return False
-            # Check for periods, spaces or punctuation
-            for char in s:
-                if char.isalpha() == False or char.isnumeric() == False:
-                    return False
-            return True
-
-
-
+            # Check whether no letters after numbers and first number == 0
+            if no_letters_after_numbers(s):
+                # Check for punctuation
+                for char in s:
+                    if char.isnumeric() and char.isalpha():
+                        continue
+                    else:
+                        return False
+                return True
     return False
+
+def no_letters_after_numbers(s):
+    # Create function that checks if there is a number in plate no letters come after it
+    numbers_in_plate = "no"
+    for i in range(len(s)):
+        if s[i].isnumeric():
+            number_index = i
+            numbers_in_plate = "yes"
+            if s[i] == "0":
+                return False
+            break
+    if numbers_in_plate == "yes":
+        for i in range(number_index + 1, len(s)):
+            if s[i].isalpha():
+                return False
+    return True
 
 main()
