@@ -48,6 +48,6 @@ while True:
         if int(info[1]) < 0 or int(info[1]) > 31:
             continue
         else:
-            info[0] = months.index(info[0])
+            info[0] = months.index(info[0]) + 1
         print(f"{info[2]}-{info[0]}-{info[1]}")
         break
