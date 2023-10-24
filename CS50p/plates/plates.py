@@ -24,7 +24,9 @@ def is_valid(s):
                     return False
             # Check for periods, spaces or punctuation
             for char in s:
-                if 
+                if char.isalpha() == False or char.isnum() == False:
+                    return False
+            return True
 
 
 
