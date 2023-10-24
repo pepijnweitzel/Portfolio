@@ -15,7 +15,7 @@ match file:
     case str(x) if ".pdf" in x:
         print("application/pdf")
     case str(x) if ".txt" in x:
-        print("application/txt")
+        print("text/plain")
     case str(x) if ".zip" in x:
         print("application/zip")
     case _:
