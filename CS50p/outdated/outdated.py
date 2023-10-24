@@ -24,8 +24,11 @@ while True:
         # Get list of all dates
         info = date.split("/")
         # Make all dates integers
-        for i in range(len(info)):
-            info[i] = int(info[i])
+        try:
+            for i in range(len(info)):
+                info[i] = int(info[i])
+        except ValueError:
+            continue
         #Check whether dates are correct
         if info[1] < 0 or info[1] > 31:
             continue
