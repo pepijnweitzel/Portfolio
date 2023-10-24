@@ -55,7 +55,8 @@ while True:
         else:
             if int(info[1]) < 10:
                 info[1] = "0" + info[1]
-
             info[0] = months.index(info[0]) + 1
+            if info[0] < 10:
+                info[0] = "0" + str(info[0])
             print(f"{info[2]}-{info[0]}-{info[1]}")
             break
