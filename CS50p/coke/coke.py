@@ -9,6 +9,6 @@ while amount_due > 0:
         amount_due -= insertion
 
 if amount_due == 0:
-    print("Change owed: 0")
+    print("Change Owed: 0")
 else:
-    print(f"Change owed: {amount_due * -1}")
+    print(f"Change Owed: {amount_due * -1}")
