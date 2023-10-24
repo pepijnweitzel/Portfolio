@@ -16,3 +16,4 @@ while True:
         for item in groceries_keys:
             sorted_groceries[item] = groceries[item]
             print(item, sorted_groceries[item])
+        break
