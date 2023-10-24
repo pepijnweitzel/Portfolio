@@ -16,11 +16,17 @@ months = [
 ]
 
 while True:
+    # Get date from user
     date = input("Date: ")
+
+    # Check which format it has used
     if len(date.split("/")) == 3:
         info = date.split("/")
-    else:
-        print(date.split())
+        
+
+    # Check which format it has used
+    elif len(date.split()) == 3:
+        info = date.split()
 
 
     break
