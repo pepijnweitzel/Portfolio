@@ -22,7 +22,8 @@ while True:
     # Check which format it has used
     if len(date.split("/")) == 3:
         info = date.split("/")
-        
+        if len(info[1])
+
 
     # Check which format it has used
     elif len(date.split()) == 3:
