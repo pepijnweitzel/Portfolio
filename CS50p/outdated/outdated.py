@@ -40,7 +40,7 @@ while True:
         # Get list of all dates
         info = date.split()
         if "," in info[1]:
-            info = info[1].strip(",")
+            info[1] = info[1].strip(",")
         else:
             continue
         if info[0] not in months:
@@ -48,8 +48,6 @@ while True:
         if int(info[1]) < 0 or int(info[1]) > 31:
             continue
         else:
-            print(f"")
-
-
-    #only break if not finiosh w/ code yet
-    break
+            info[0] = months.index(info[0])
+        print(f"{info[2]}-{info[0]}-{info[1]}")
+        break
