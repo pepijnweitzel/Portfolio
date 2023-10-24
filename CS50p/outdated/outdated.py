@@ -31,9 +31,12 @@ while True:
             continue
         elif info[0] < 0 or info[1] > 12:
             continue
-        elif 
         else:
-            print(f"{info[2]}-{info[1]}-{info[0]}")
+            if info[0] < 10:
+                info[0] = "0" + str(info[0])
+            if info[1] < 10:
+                info[1] = "0" + str(info[1])
+            print(f"{info[2]}-{info[0]}-{info[1]}")
             break
 
 
@@ -50,6 +53,9 @@ while True:
         if int(info[1]) < 0 or int(info[1]) > 31:
             continue
         else:
+            if int(info[1]) < 10:
+                info[1] = "0" + info[1]
+
             info[0] = months.index(info[0]) + 1
             print(f"{info[2]}-{info[0]}-{info[1]}")
             break
