@@ -24,20 +24,32 @@ while True:
         # Get list of all dates
         info = date.split("/")
         # Make all dates integers
-        for data in info:
-            data = int(data)
-        # Check whether dates are correct
+        for i in range(len(info)):
+            info[i] = int(info[i])
+        #Check whether dates are correct
         if info[1] < 0 or info[1] > 31:
             continue
-        if info[0] < 0 or info[1] > 12:
+        elif info[0] < 0 or info[1] > 12:
             continue
-        print(f"{info[0]}-{info[1]}-{info[2]}")
+        print(f"{info[2]}-{info[1]}-{info[0]}")
         break
 
 
     # Check which format it has used
     elif len(date.split()) == 3:
+        # Get list of all dates
         info = date.split()
+        if "," in info[1]:
+            info = info[1].strip(",")
+        else:
+            continue
+        if info[0] not in months:
+            continue
+        if int(info[1]) < 0 or int(info[1]) > 31:
+            continue
+        else:
+            print(f"")
 
 
+    #only break if not finiosh w/ code yet
     break
