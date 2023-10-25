@@ -33,7 +33,26 @@ def convert(fraction):
             y = int(y)
         except ValueError:
             raise ValueError
-            continue
+
+        # Make sure y is bigger than x
+        if x > y:
+            raise ValueError
+
+        try:
+            z = float(x) / float(y)
+        except ZeroDivisionError:
+            raise ZeroDivisionError
+        else:
+            z = round(z * 100)
+            if z <= 1:
+                print("E")
+                break
+            elif z >= 99:
+                print("F")
+                break
+            else:
+                print(f"{z}%")
+                break
 
 def gauge(percentage):
     ...
@@ -41,26 +60,3 @@ def gauge(percentage):
 
 if __name__ == "__main__":
     main()
-
-while True:
-
-    # Make sure y is bigger than x
-    if x > y:
-        continue
-
-    try:
-        z = float(x) / float(y)
-    except ZeroDivisionError:
-        continue
-    else:
-        z = round(z * 100)
-        if z <= 1:
-            print("E")
-            break
-        elif z >= 99:
-            print("F")
-            break
-        else:
-            print(f"{z}%")
-            break
-
