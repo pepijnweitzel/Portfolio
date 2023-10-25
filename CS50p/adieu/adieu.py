@@ -14,6 +14,8 @@ def main():
     number_of_people = len(names)
     if number_of_people == 1:
         print("Adieu, adieu, to", names[0])
+    elif number_of_people == 2:
+        print(f"Adieu, adiue, to {names[0]} and {names[1]}")
     else:
         print("Adieu, adieu, to", end=" ")
         for name in names[:number_of_people - 1]:
