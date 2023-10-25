@@ -16,7 +16,7 @@ def main():
         print("Adieu, adieu, to", names[0])
     else:
         print("Adieu, adieu, to", end=" ")
-        for name in names[:number_of_people]:
+        for name in names[:number_of_people - 1]:
             print(name + ",", end =" ")
         print("and", names[number_of_people - 1])
 
