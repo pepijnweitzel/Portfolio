@@ -8,7 +8,8 @@ def main():
             names.append(given_name)
         except EOFError:
             break
-    print(names)
+
+    
 
 
 
