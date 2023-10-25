@@ -5,6 +5,7 @@ def main():
         # Prompt user for fraction
         fraction = input("Fraction: ")
         answer = convert(fraction)
+        print(gauge(answer))
 
 def convert(fraction):
     # Find out how many numbers before /
@@ -16,7 +17,7 @@ def convert(fraction):
 
         # Make sure / symbol was given
         if j != 1:
-            continue
+            raise ValueError
 
         # Create x variable
         x = ""
@@ -44,18 +45,16 @@ def convert(fraction):
             raise ZeroDivisionError
         else:
             z = round(z * 100)
-            if z <= 1:
-                print("E")
-                break
-            elif z >= 99:
-                print("F")
-                break
-            else:
-                print(f"{z}%")
-                break
+            return z
+
 
 def gauge(percentage):
-    ...
+    if percentage <= 1:
+        return "E"
+    elif percentage >= 99:
+        return "F"
+    else:
+        return f"{percentage}%"
 
 
 if __name__ == "__main__":
