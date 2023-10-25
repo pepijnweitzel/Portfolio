@@ -29,9 +29,9 @@ def generate_integer(level):
     if level == 1:
         return random.randint(0, 9)
     elif level == 2:
-        return random.randint(0, 99)
+        return random.randint(10, 99)
     elif level == 3:
-        return random.randint(0, 999)
+        return random.randint(100, 999)
     else:
         raise ValueError
 
@@ -54,6 +54,7 @@ def question(x, y):
                 # Answer is correct so give point
                 return 1
     # If while loop finishes, so 3 mistakes have been made
+    print(f"{x} + {y} = {z}")
     return 0
 
 
