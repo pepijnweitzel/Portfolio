@@ -5,6 +5,9 @@ import random
 
 def main():
     level = get_level()
+    x = generate_integer(level)
+    y = generate_integer(level)
+
 
 
 def get_level():
@@ -22,8 +25,17 @@ def get_level():
 
 def generate_integer(level):
     if level == 1:
-        
+        return random.randint(0, 9)
+    elif level == 2:
+        return random.randint(0, 99)
+    elif level == 3:
+        return random.randint(0, 999)
+    else:
+        raise ValueError
 
+def question(x, y):
+    z = x + y
+    
 
 if __name__ == "__main__":
     main()
