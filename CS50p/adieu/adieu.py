@@ -9,7 +9,8 @@ def main():
         except EOFError:
             break
 
-    
+    number_of_people = len(names)
+    for 
 
 
 
