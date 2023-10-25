@@ -5,8 +5,10 @@ import random
 
 def main():
     level = get_level()
-    x = generate_integer(level)
-    y = generate_integer(level)
+    correct_answers = 0
+    for i in range(10):
+        correct_answers += question(generate_integer(level), generate_integer(level))
+    print(f"Score: {correct_answers}")
 
 
 
@@ -34,8 +36,26 @@ def generate_integer(level):
         raise ValueError
 
 def question(x, y):
+    # return 1 if answer correct, return 0 if answer incorrect
+    incorrect = 0
     z = x + y
-    
+    while incorrect < 3:
+        try:
+            answer = int(input(f"{x} + {y} = "))
+        except ValueError:
+            incorrect += 1
+            print("EEE")
+            continue
+        else:
+            if answer != z:
+                incorrect += 1
+                print("EEE")
+            else:
+                # Answer is correct so give point
+                return 1
+    # If while loop finishes, so 3 mistakes have been made
+    return 0
+
 
 if __name__ == "__main__":
     main()
