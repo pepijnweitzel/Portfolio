@@ -13,3 +13,6 @@ def shorten(string):
         else:
             new_text += letter
     return new_text
+
+if __name__ == "__main__":
+    main()
