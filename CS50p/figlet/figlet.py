@@ -17,5 +17,5 @@ elif sys.argv[1] != "-f" and sys.argv[1] != "--font":
 else:
     set_font = choice(all_fonts)
     figlet.setFont(font=set_font)
-    text = input("Input: ")
-    print("Output", figlet.renderText(text))
+    text = input()
+    print(figlet.renderText(text))
