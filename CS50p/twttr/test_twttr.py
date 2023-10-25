@@ -8,4 +8,5 @@ def test_shorten():
     assert shorten("Kaas") == "Ks"
     assert shorten("") == ""
     assert shorten("bdaeioudb") == "bddb"
+    assert shorten("bdaEOSDFdda") == "bdSDFdd"
 
