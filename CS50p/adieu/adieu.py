@@ -10,7 +10,10 @@ def main():
             break
 
     number_of_people = len(names)
-    for 
+    print("")
+    for i in range(number_of_people):
+        names[i] +=
+    print(names)
 
 
 
