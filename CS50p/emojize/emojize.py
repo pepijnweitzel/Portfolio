@@ -3,7 +3,8 @@ import emoji
 
 def main():
     inputs = input("Input: ")
-    print(emoji.emojize("Output: " + inputs))
+    print(emoji.emojize("Python is " + inputs))
+
 
 
 
