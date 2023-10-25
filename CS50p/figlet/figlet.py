@@ -8,6 +8,11 @@ figlet = Figlet()
 all_fonts = figlet.getFonts()
 
 # Check for errors
+if len(sys.argv) == 1:
+    set_font = choice(all_fonts)
+    figlet.setFont(font=set_font)
+    text = input()
+    print(figlet.renderText(text))
 if len(sys.argv) != 3:
     sys.exit("Invalid usage")
 elif sys.argv[2] not in all_fonts:
@@ -15,7 +20,6 @@ elif sys.argv[2] not in all_fonts:
 elif sys.argv[1] != "-f" and sys.argv[1] != "--font":
     sys.exit("Invalid usage")
 else:
-    set_font = choice(all_fonts)
-    figlet.setFont(font=set_font)
+    figlet.setFont(font=sys.argv[2])
     text = input()
     print(figlet.renderText(text))
