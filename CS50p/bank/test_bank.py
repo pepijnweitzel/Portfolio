@@ -5,7 +5,7 @@ def test_hello():
     assert value("hello") == 0
 
 def test_start_h():
-    assert value("hey") == 20
+    assert value("Hey") == 20
 
 def test_nothing():
     assert value("bye") == 100
