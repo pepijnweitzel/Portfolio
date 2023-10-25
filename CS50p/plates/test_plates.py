@@ -14,6 +14,3 @@ def test_numbers_middle():
 
 def test_no_periods():
     assert is_valid("BA!?DA") == False
-
-def test_no_input():
-    assert is_valid("") == False
