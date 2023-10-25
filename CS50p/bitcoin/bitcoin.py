@@ -13,11 +13,13 @@ def main():
         sys.exit("Command-line argument is not a number")
 
     try:
-        response = requests.get("https://api.coindesk.com/v1/bpi/currentprice.json")
+        response = requests.get("https://api.coindesk.com/v1/bpi/currentprice.json").json()
     except requests.RequestException:
         sys.exit("Request error")
     else:
-        print(response.json())
+        amount = float(response["bpi"]["USD"]["rate_float"])
+        amount *= number
+        print(f"${amount:,.4f}")
 
 if __name__ == "__main__":
     main()
