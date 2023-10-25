@@ -1,7 +1,9 @@
 # Code created by Pepijn Weitzel
+import emoji
 
-def main()
-    input = 
+def main():
+    inputs = input("Input: ")
+    print(emoji.emojize("Output: " + inputs))
 
 
 
