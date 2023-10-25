@@ -37,4 +37,5 @@ def no_letters_after_numbers(s):
                 return False
     return True
 
-main()
+if __name__ == "__main__":
+    main()
