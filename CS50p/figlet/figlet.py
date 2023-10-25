@@ -18,5 +18,4 @@ else:
     set_font = choice(all_fonts)
     figlet.setFont(font=set_font)
     text = input("Input: ")
-    print("Output:")
-    print(figlet.renderText(text))
+    print("Output", figlet.renderText(text))
