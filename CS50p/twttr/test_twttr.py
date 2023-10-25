@@ -1,8 +1,7 @@
 # Code created by Pepijn Weitzel
-import twttr
+from twttr import shorten
 
-def main():
-    print(shorten("test"))
+
 
 
 def test_shorten():
@@ -10,4 +9,3 @@ def test_shorten():
     assert shorten("") == ""
     assert shorten("bdaeioudb") == "bddb"
 
-main()
