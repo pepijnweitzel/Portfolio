@@ -1,5 +1,6 @@
 # Code created by Pepijn Weitzel
 
+
 def main():
     names = []
     while True:
@@ -9,11 +10,15 @@ def main():
         except EOFError:
             break
 
+
     number_of_people = len(names)
-    print("")
-    for i in range(number_of_people):
-        names[i] +=
-    print(names)
+    if number_of_people == 1:
+        print("Adieu, adieu, to", names[0])
+    else:
+        print("Adieu, adieu, to", end=" ")
+        for name in names[:number_of_people]:
+            print(name + ",", end =" ")
+        print("and", names[number_of_people - 1])
 
 
 
