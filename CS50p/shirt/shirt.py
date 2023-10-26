@@ -26,9 +26,7 @@ else:
 # Size
 image_size = image.size
 image = ImageOps.fit(image, image_size)
-shirt_size = shirt.size
-shirt = ImageOps.fit(shirt, shirt_size)
 
-image.paste(image, shirt)
+image.paste(shirt, shirt)
 
 image.save(sys.argv[2], save=True)
