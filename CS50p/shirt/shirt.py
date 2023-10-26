@@ -14,12 +14,9 @@ elif sys.argv[1][len(sys.argv[1])-4:] != sys.argv[2][len(sys.argv[2])-4:]:
     sys.exit("Input and output have different extensions")
 
 # Open and save images
-images = []
 try:
     image = Image.open(sys.argv[1])
 except FileNotFoundError:
     sys.exit("Input does not exist")
 else:
-    images.append(image)
-    image = Image.open("shirt.png")
-    images.append(image)
+    shirt = Image.open("shirt.png")
