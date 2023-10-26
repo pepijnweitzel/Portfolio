@@ -29,7 +29,7 @@ for student in students:
     new_students.append(studen)
 
 
-with open(sys.argv[2], "w") as file:
+with open(sys.argv[2], "w", newline="") as file:
     writer = csv.DictWriter(file, fieldnames=["first", "last", "house"])
     writer.writeheader()
     for student in new_students:
