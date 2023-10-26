@@ -13,10 +13,12 @@ except FileNotFoundError:
     sys.exit("Could not read ", sys.argv[1])
 
 
-some = []
+students = []
 with open(sys.argv[1]) as file:
     reader = csv.DictReader(file)
     for row in reader:
-        some.append(row)
+        students.append(row)
 
-print(some)
+for student in students:
+    full_name = student["name"].strip('"')
+    print(full_name)
