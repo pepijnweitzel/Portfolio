@@ -19,6 +19,6 @@ with open(sys.argv[1]) as file:
     for row in reader:
         students.append(row)
 
-for student in students:
-    full_name = student["name"].strip('"')
-    print(full_name)
+with open(sys.argv[2], "w") as file:
+    for student in students:
+        writer = csv.DictWriter()
