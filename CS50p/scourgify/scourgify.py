@@ -23,6 +23,7 @@ new_students = []
 for student in students:
     studen = {}
     last_name, first_name = student["name"].split(",")
+    first_name = first_name.strip()
     studen["first"] = first_name
     studen["last"] = last_name
     studen["house"] = student["house"]
