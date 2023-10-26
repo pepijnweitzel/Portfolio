@@ -1,6 +1,6 @@
 # Code created by Pepijn Weitzel
 import sys
-from PIL import Image
+from PIL import Image, ImageOps
 
 
 # Check for errors
@@ -20,3 +20,9 @@ except FileNotFoundError:
     sys.exit("Input does not exist")
 else:
     shirt = Image.open("shirt.png")
+
+# Size
+image_size = image.size
+image = ImageOps.fit(image, image_size)
+shirt_size = shirt.size
+shirt = ImageOps.fit(shirt, shirt_size)
