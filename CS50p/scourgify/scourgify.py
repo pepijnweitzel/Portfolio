@@ -30,7 +30,7 @@ for student in students:
 
 
 with open(sys.argv[2], "w") as file:
+    writer = csv.DictWriter(file, fieldnames=["first", "last", "house"])
+    writer.writeheader()
     for student in new_students:
-        writer = csv.DictWriter(file, fieldnames=["first", "last", "house"])
-        writer.writeheader()
         writer.writerow(student)
