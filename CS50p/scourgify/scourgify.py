@@ -19,6 +19,17 @@ with open(sys.argv[1]) as file:
     for row in reader:
         students.append(row)
 
+new_students = []
+for student in students:
+    studen = {}
+    last_name, first_name = student["name"].split(",")
+    studen["first"] = first_name
+    studen["last"] = last_name
+    studen["house"] = student["house"]
+    new_students.append(studen)
+
+
 with open(sys.argv[2], "w") as file:
-    for student in students:
-        writer = csv.DictWriter()
+    for student in new_students:
+        writer = csv.DictWriter(file, fieldnames=["first", "last", "house"])
+        writer.writerow(student)
