@@ -28,3 +28,4 @@ shirt_size = shirt.size
 shirt = ImageOps.fit(shirt, shirt_size)
 
 image.paste(image, shirt)
+image.save(sys.argv[2])
