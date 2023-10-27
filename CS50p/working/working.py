@@ -32,7 +32,7 @@ def convert(s):
                     start = f"{str(int(time.group(1)) + 12)}:00"
             else:
                 if time.group(1) == "12":
-                    start == "00:00"
+                    start = f"00:00"
                 elif int(time.group(1)) < 10:
                     start = f"0{time.group(1)}:00"
                 else:
