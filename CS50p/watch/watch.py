@@ -17,9 +17,8 @@ def parse(s):
             return youtube_link
         # If string contains http
         else:
-            something = re.sub(r"http", "https", link.group(1))
-            print(something)
-            youtube_link = link.group(1) + link.group(2)
+            new_string = re.sub(r"http", "https", link.group(1))
+            youtube_link = new_string + link.group(2)
             return youtube_link
 
     else:
