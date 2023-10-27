@@ -9,7 +9,7 @@ def main():
 
 
 def parse(s):
-    if link := re.search(r'<iframe(?:.)+src"', s)
+    if link := re.search(r'<iframe(?:.)+src"(https?://)', s)
 
 
 if __name__ == "__main__":
