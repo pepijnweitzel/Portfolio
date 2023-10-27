@@ -9,7 +9,7 @@ def main():
 
 def convert(s):
 
-    if time := re.search():
+    if time := re.search(r"([0-9]|)"):
         return time
 
     raise ValueError
