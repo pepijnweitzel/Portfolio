@@ -17,7 +17,7 @@ def convert(s):
                 if hours != "12":
                     hours = str(int(hours) + 12)
                 else:
-                    hours = "0"
+                    hours = "12"
             start = f"{hours}:{minutes}"
         else:
             if time.group(2) == "PM":
