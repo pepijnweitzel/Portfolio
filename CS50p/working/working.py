@@ -18,13 +18,34 @@ def convert(s):
                     hours = str(int(hours) + 12)
                 else:
                     hours = "12"
+            else:
+                if hours == "12":
+                    hours = "00"
             start = f"{hours}:{minutes}"
         else:
             if time.group(2) == "PM":
                 start = f"{str(int(time.group(1)) + 12)}:00"
             else:
                 start = f"{time.group(1)}:00"
-        return f"{start} to "
+
+        if ":" in time.group(3):
+            hours, minutes = time.group(3).split(":")
+            if time.group(4) == "PM":
+                if hours != "12":
+                    hours = str(int(hours) + 12)
+                else:
+                    hours = "12"
+            else:
+                if hours == "12":
+                    hours = "00"
+            end = f"{hours}:{minutes}"
+        else:
+            if time.group(4) == "PM":
+                end = f"{str(int(time.group(3)) + 12)}:00"
+            else:
+                end = f"{time.group(3)}:00"
+
+        return f"{start} to {end}"
     else:
         raise ValueError
 
