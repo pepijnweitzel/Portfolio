@@ -1,7 +1,7 @@
 # Code created by Pepijn Weitzel
 
 def main():
-    
+    email = input("What's you email address? ")
 
 
 
