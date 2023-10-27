@@ -8,7 +8,11 @@ def main():
 
 
 def convert(s):
-    return s
+
+    if time := re.search():
+        return time
+
+    raise ValueError
 
 
 
