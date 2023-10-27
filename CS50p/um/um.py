@@ -9,11 +9,11 @@ def main():
 
 
 def count(s):
+    count = 0
+    if string := re.search(r"^(um[,\.?! ])", s, re.IGNORECASE):
 
-    if string := re.search
 
-
-
+    return count
 
 
 if __name__ == "__main__":
