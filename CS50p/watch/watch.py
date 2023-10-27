@@ -11,7 +11,8 @@ def main():
 def parse(s):
 
     if link := re.search(r'^<iframe(?:.)+src="(https?://(?:www\.)?youtube\.com)/embed(/.+)"></iframe>$', s):
-        youtube_link = link.group(1) + link.group(2)
+
+        youtube_link = link.group(1) + link.group(3)
         return youtube_link
     else:
         return "None"
