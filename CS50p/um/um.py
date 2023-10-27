@@ -9,10 +9,11 @@ def main():
 
 
 def count(s):
-    ...
+
+    if string := re.search
 
 
-...
+
 
 
 if __name__ == "__main__":
