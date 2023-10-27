@@ -13,12 +13,14 @@ def parse(s):
     if link := re.search(r'^<iframe(?:.)+src="(https?://(?:www\.)?youtube\.com)/embed(/.+)"></iframe>$', s):
         # If string contains https
         if re.search(r".+https.+", s):
-            youtube_link = link.group(1) + link.group(2)
+            new_youtube = re.sub(r"youtube\.com", "youtu.be", link.group(1))
+            youtube_link = new_youtube + link.group(2)
             return youtube_link
         # If string contains http
         else:
             new_string = re.sub(r"http", "https", link.group(1))
-            youtube_link = new_string + link.group(2)
+            new_youtube = re.sub(r"youtube\.com", "youtu.be", new_string)
+            youtube_link = new_youtube + link.group(2)
             return youtube_link
 
     else:
