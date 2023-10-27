@@ -13,7 +13,9 @@ def convert(s):
         # Check for which format was used
         if ":" in time.group(1):
             hours, minutes = time.group(1).split(":")
-            
+            if time.group(2) == "PM":
+                hours = str(int(hours) + 12)
+            start = f"{hours}:{minutes}"
 
         return start
     else:
