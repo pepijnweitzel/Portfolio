@@ -8,7 +8,9 @@ def main():
 
 
 def validate(ip):
+    # Make sure if ip addres has correct characters
     if ip_adress := re.search(r"^([0-9]+)\.([0-9]+)\.([0-9]+)\.([0-9]+)$", ip):
+        # Make sure numbers are in correct range
         if 0 <= int(ip_adress.group(1)) <= 255:
             if 0 <= int(ip_adress.group(2)) <= 255:
                 if 0 <= int(ip_adress.group(3)) <= 255:
