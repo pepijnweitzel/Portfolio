@@ -10,8 +10,8 @@ def main():
 
 def count(s):
     count = 0
-    if string := re.search(r"([\s]um[\s,\.])*", s, re.IGNORECASE):
-        print(string.group(1))
+    if string := re.findall(r"\sum[\s\.,?]", s, re.IGNORECASE):
+        print(string)
 
 
     return count
