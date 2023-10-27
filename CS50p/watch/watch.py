@@ -10,10 +10,11 @@ def main():
 
 def parse(s):
 
-    if link := re.search(r'^<iframe(?:.)+src="(https?://(www\.)?youtube\.com)/embed(/.+)"></iframe>$', s):
-        print(link.group(1))
-        print(link.group(2))
-    return "test"
+    if link := re.search(r'^<iframe(?:.)+src="(https?://(?:www\.)?youtube\.com)/embed(/.+)"></iframe>$', s):
+        youtube_link = link.group(1) + link.group(2)
+        return youtube_link
+    else:
+        return "None"
 
 
 if __name__ == "__main__":
