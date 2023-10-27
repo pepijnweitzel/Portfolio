@@ -11,7 +11,9 @@ def main():
 def count(s):
     count = 0
     if string := re.findall(r"\sum[\s\.,?]", s, re.IGNORECASE):
-        print(string)
+        count += len(string)
+    if string := re.search(r"(^um[\s,\.])|(^um$)", s, re.IGNORECASE):
+        count += 1
 
 
     return count
