@@ -9,7 +9,7 @@ def main():
 
 def convert(s):
 
-    if time := re.search(r"([0-9]|)"):
+    if time := re.search(r"([0-9](?::[0-5][0-9])?|1[0-2])"):
         return time
 
     raise ValueError
