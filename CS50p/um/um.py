@@ -10,7 +10,7 @@ def main():
 
 def count(s):
     count = 0
-    if string := re.search(r"([\s]um[\s,\.])", s, re.IGNORECASE):
+    if string := re.search(r"([\s]um[\s,\.])*", s, re.IGNORECASE):
         print(string.group(1))
 
 
