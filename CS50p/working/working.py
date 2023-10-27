@@ -21,6 +21,8 @@ def convert(s):
             else:
                 if hours == "12":
                     hours = "00"
+                elif 0 <= int(hours) <= 9:
+                    hours = "0" + hours
             start = f"{hours}:{minutes}"
         else:
             if time.group(2) == "PM":
@@ -38,6 +40,8 @@ def convert(s):
             else:
                 if hours == "12":
                     hours = "00"
+                elif 0 <= int(hours) <= 9:
+                    hours = "0" + hours
             end = f"{hours}:{minutes}"
         else:
             if time.group(4) == "PM":
