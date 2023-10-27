@@ -1,16 +1,10 @@
 # Code created by Pepijn Weitzel
-import re
-import sys
 
+from numb3rs import validate
 
-def main():
-    print(validate(input("IPv4 Address: ")))
+def test_nothing():
+    assert validate("") == False
 
-
-def validate(ip):
-    ...
-
-
-
-if __name__ == "__main__":
-    main()
+def test_rest():
+    assert validate("2.3.4.5") == True
+    assert validate("266.234.223.12") == False
