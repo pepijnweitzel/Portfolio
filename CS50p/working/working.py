@@ -31,7 +31,10 @@ def convert(s):
                 else:
                     start = f"{str(int(time.group(1)) + 12)}:00"
             else:
-                start = f"{time.group(1)}:00"
+                if int(time.group(1)) < 10:
+                    start = f"0{time.group(1)}:00"
+                else:
+                    start = f"{time.group(1)}:00"
 
         if ":" in time.group(3):
             hours, minutes = time.group(3).split(":")
@@ -53,7 +56,10 @@ def convert(s):
                 else:
                     end = f"{str(int(time.group(3)) + 12)}:00"
             else:
-                end = f"{time.group(3)}:00"
+                if int(time.group(3)) < 10:
+                    end = f"0{time.group(3)}:00"
+                else:
+                    end = f"{time.group(3)}:00"
 
         return f"{start} to {end}"
     else:
