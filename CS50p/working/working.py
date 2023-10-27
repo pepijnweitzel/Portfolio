@@ -16,8 +16,12 @@ def convert(s):
             if time.group(2) == "PM":
                 hours = str(int(hours) + 12)
             start = f"{hours}:{minutes}"
-
-        return start
+        else:
+            if time.group(2) == "PM":
+                start = f"{str(int(time.group(1)) + 12)}:00"
+            else:
+                start = f"{time.group(1)}:00"
+        return f"{start} to "
     else:
         raise ValueError
 
