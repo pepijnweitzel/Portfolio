@@ -13,6 +13,8 @@ def convert(s):
         # Check for which format was used
         if ":" in time.group(1):
             hours, minutes = time.group(1).split(":")
+            if int(hours) < 10:
+                hours = 
             if time.group(2) == "PM":
                 if hours != "12":
                     hours = str(int(hours) + 12)
