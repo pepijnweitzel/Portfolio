@@ -9,8 +9,6 @@ def test_wrong_value():
         convert("9AM - 5PM")
         convert(" to ")
         convert("13 PM to 18 AM")
-        convert("12 PM 2 AM")
-        convert
 
 def test_correct():
     assert convert("9 AM to 5 PM") == "09:00 to 17:00"
