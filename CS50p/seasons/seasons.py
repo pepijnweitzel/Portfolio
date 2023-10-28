@@ -35,7 +35,7 @@ def get_date():
 
 def get_difference(birthdate):
 
-    current_date = datetime.date.today()
+    current_date = datetime.date(2000, 1, 1)
     return ((current_date - birthdate).days) * 24 * 60
 
 
