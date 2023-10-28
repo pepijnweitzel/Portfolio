@@ -6,8 +6,8 @@ import sys
 
 
 def main():
-    given_date = get_date()
-    print(given_date)
+    birth_date = get_date()
+    current_date = datetime.date.today()
 
 
 def get_date():
