@@ -3,6 +3,7 @@
 import datetime
 import re
 import sys
+from num2words import num2words
 
 
 def main():
@@ -31,7 +32,7 @@ def get_date():
 def get_difference(birthdate):
 
     current_date = datetime.date.today()
-    return (current_date - birthdate).days
+    return ((current_date - birthdate).days) * 24 * 60
 
 
 
