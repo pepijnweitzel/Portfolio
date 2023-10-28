@@ -37,12 +37,12 @@ def get_date():
 
 def get_difference(birthdate):
 
-    current_date = datetime.date(1999, 1, 1)
+    current_date = datetime.date.today()
     return ((current_date - birthdate).days) * 24 * 60
 
 
 def get_text(minutes):
-    text = p.number_to_words(minutes)
+    text = p.number_to_words(minutes, andword="")
     text += " minutes"
     return text.capitalize()
 
