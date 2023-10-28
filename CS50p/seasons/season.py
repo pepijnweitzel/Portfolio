@@ -8,7 +8,7 @@ import sys
 def main():
     given_date = get_date()
     print(given_date)
-    print(type(date.today()))
+
 
 def get_date():
 
