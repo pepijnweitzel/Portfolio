@@ -6,10 +6,13 @@ import sys
 
 
 def main():
+    # Get users birthdate
     birth_date = get_date()
-    current_date = datetime.date.today()
-    difference = (current_date - birth_date).days
-    print(difference)
+
+    # Get difference with today
+    minute_difference = get_difference(birth_date)
+
+    print(minute_difference)
 
 
 def get_date():
@@ -23,6 +26,13 @@ def get_date():
         else:
             return given_date
     sys.exit("Invalid date")
+
+
+def get_difference(birthdate):
+
+    current_date = datetime.date.today()
+    return (current_date - birthdate).days
+
 
 
 if __name__ == "__main__":
