@@ -43,7 +43,7 @@ def get_text(minutes):
     text = num2words(minutes, to = "ordinal")
     text = text.replace("ieth", "y")
     text += " minutes"
-    return text
+    return text.capitalize()
 
 if __name__ == "__main__":
     main()
