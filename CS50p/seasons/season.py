@@ -8,6 +8,8 @@ import sys
 def main():
     birth_date = get_date()
     current_date = datetime.date.today()
+    date_difference = current_date - birth_date
+    print(date_difference)
 
 
 def get_date():
