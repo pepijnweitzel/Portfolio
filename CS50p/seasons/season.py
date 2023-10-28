@@ -13,7 +13,11 @@ def main():
     # Get difference with today
     minute_difference = get_difference(birth_date)
 
-    print(minute_difference)
+    # Change minutes to text
+    text = get_text(minute_difference)
+
+    # Print the text
+    print(text)
 
 
 def get_date():
@@ -35,6 +39,8 @@ def get_difference(birthdate):
     return ((current_date - birthdate).days) * 24 * 60
 
 
+def get_text(minutes):
+    return num2words(minutes, to = "ordinal")
 
 if __name__ == "__main__":
     main()
