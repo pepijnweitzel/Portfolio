@@ -42,6 +42,7 @@ def get_difference(birthdate):
 def get_text(minutes):
     text = num2words(minutes, to = "ordinal")
     text = text.replace("ieth", "y")
+    text = text.replace("dth", "d")
     text += " minutes"
     return text.capitalize()
 
