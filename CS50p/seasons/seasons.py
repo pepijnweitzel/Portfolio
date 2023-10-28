@@ -3,7 +3,9 @@
 import datetime
 import re
 import sys
-from num2words import num2words
+import inflect
+
+p = inflect.engine()
 
 
 def main():
@@ -35,14 +37,12 @@ def get_date():
 
 def get_difference(birthdate):
 
-    current_date = datetime.date(2000, 1, 1)
+    current_date = datetime.date.today()
     return ((current_date - birthdate).days) * 24 * 60
 
 
 def get_text(minutes):
-    text = num2words(minutes, to = "ordinal")
-    text = text.replace("ieth", "y")
-    text = text.replace("dth", "d")
+    text = p.number_to_words(minutes)
     text += " minutes"
     return text.capitalize()
 
