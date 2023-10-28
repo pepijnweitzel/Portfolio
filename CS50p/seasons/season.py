@@ -41,8 +41,7 @@ def get_difference(birthdate):
 
 def get_text(minutes):
     text = num2words(minutes, to = "ordinal")
-    if text.endswith("ieth"):
-        text[(len(text)-4):] = "y"
+    text.replace("ieth", "y")
     text += "minutes"
     return text
 
