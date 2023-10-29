@@ -27,7 +27,6 @@ class Jar:
 
 def main():
     my_jar = Jar()
-    print(my_jar)
 
 
 if __name__ == "__main__":
