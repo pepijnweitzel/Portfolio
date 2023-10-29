@@ -4,23 +4,16 @@ from fpdf import FPDF
 
 class PDF(FPDF):
     def header(self):
-        # Setting font:
-        self.set_font("helvetica", "B", 16)
+        # Rendering logo:
+        #self.image("shirtificate.png", 10, 8, 33)
+        # Setting font: helvetica bold 15
+        self.set_font("helvetica", "B", 15)
+        # Moving cursor to the right:
+        self.cell(80)
         # Printing title:
-        self.cell(100, 10, "CS50 Shirtificate", border=1, align="C")
+        self.text(30, 10, "CS50 Shirtificate")
 
-
-def main():
-
-    # Prompt user for name
-    name = input("Name: ")
-
-    pdf = FPDF(orientation="P", unit="mm", format="A4")
-    pdf.add_page()
-    pdf.header()
-    pdf.output("shirtificate.pdf")
-
-
-
-if __name__ == "__main__":
-    main()
+# Instantiation of inherited class
+pdf = PDF()
+pdf.add_page()
+pdf.output("shirtificate.pdf")
