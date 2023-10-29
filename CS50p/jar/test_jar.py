@@ -20,6 +20,8 @@ def test_deposit():
     jar = Jar()
     with pytest.raises(ValueError):
         jar.deposit(15)
+    jar.deposit(5)
+    assert
 
 
 def test_withdraw():
