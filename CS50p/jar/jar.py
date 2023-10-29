@@ -40,16 +40,7 @@ class Jar:
 
 
 def main():
-    jar = Jar()
-    jar.deposit(5)
-    print(jar)
-    print(jar.size)
-    jar.withdraw(3)
-    print(jar)
-    print(jar.size)
-    jar.capacity = 34
-    print(jar.capacity)
-
+    ...
 
 if __name__ == "__main__":
       main()
