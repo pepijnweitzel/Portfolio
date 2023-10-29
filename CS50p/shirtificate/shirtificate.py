@@ -21,6 +21,7 @@ class PDF(FPDF):
         # Print name on shirt
         self.ln(100)
         self.set_font("helvetica", "B", 25)
+        self.text_mode(3)
         self.cell(210, 10, f"{name} took CS50", align="C")
 
 def main():
