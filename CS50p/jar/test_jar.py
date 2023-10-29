@@ -21,7 +21,7 @@ def test_deposit():
     with pytest.raises(ValueError):
         jar.deposit(15)
     jar.deposit(5)
-    assert
+    assert jar.capacity == 5
 
 
 def test_withdraw():
