@@ -15,9 +15,14 @@ def test_str():
     jar.withdraw(2)
     assert str(jar) == "🍪🍪🍪"
 
+
 def test_deposit():
     jar = Jar()
-    
+    with pytest.raises(ValueError):
+        jar.deposit(15)
+
 
 def test_withdraw():
-    ...
+    jar = Jar()
+    with pytest.raises(ValueError):
+        jar.withdraw(1)
