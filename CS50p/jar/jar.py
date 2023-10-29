@@ -2,9 +2,6 @@
 
 class Jar:
     def __init__(self, capacity=12):
-        capacity = int(capacity)
-        if capacity < 1:
-            raise ValueError
         self.capacity = capacity
         self.size = 0
 
@@ -28,6 +25,18 @@ class Jar:
     @property
     def size(self):
         return self._size
+
+    @capacity.setter
+    def capacity(self, capacity):
+        capacity = int(capacity)
+        if capacity < 1:
+            raise ValueError
+        self._capacity = capacity
+
+    @size.setter
+    def size(self, size):
+        size._size = size
+
 
 
 def main():
