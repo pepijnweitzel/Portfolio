@@ -18,11 +18,14 @@ class PDF(FPDF):
         self.image("shirtificate.png", 10, 60, 190)
 
     def printing(self, name):
-        # Print name on shirt
+        # Move cursor down
         self.ln(100)
+        # Set font
         self.set_font("helvetica", "B", 25)
-        self.text_mode(3)
-        self.cell(210, 10, f"{name} took CS50", align="C")
+        # Set color to white
+        self.set_text_color(255, 255, 255)
+        # Print name with "took CS50"
+        self.cell(200, 10, f"{name} took CS50", align="C")
 
 def main():
     # Create file and set body and header
