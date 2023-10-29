@@ -1,4 +1,5 @@
 # Code created by Pepijn Weitzel
+import pygame
 
 def main():
     ...
