@@ -23,7 +23,7 @@ class Jar:
 
     @property
     def capacity(self):
-        ...
+        
 
     @property
     def size(self):
