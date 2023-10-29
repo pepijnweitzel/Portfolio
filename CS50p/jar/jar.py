@@ -6,7 +6,7 @@ class Jar:
         if capacity < 1:
             raise ValueError
         self.capacity = capacity
-        self.size = 1
+        self.size = 0
 
     def __str__(self):
         return "🍪" * self.size
@@ -23,11 +23,11 @@ class Jar:
 
     @property
     def capacity(self):
-        
+        return self._capacity
 
     @property
     def size(self):
-        ...
+        return self._size
 
 
 def main():
