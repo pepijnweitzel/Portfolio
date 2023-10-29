@@ -4,10 +4,10 @@ from fpdf import FPDF
 
 class PDF(FPDF):
     def header(self):
-        # Moving cursor to the right:
-        self.cell(80)
+        # Setting font:
+        self.set_font("helvetica", "B", 16)
         # Printing title:
-        self.cell(30, 10, "Title", border=1, align="C")
+        self.cell(100, 10, "CS50 Shirtificate", border=1, align="C")
 
 
 def main():
@@ -17,8 +17,7 @@ def main():
 
     pdf = FPDF(orientation="P", unit="mm", format="A4")
     pdf.add_page()
-    pdf.set_font("helvetica", "B", 16)
-    pdf.cell(40, 50, name)
+    pdf.header()
     pdf.output("shirtificate.pdf")
 
 
