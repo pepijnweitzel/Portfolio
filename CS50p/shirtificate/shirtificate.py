@@ -1,6 +1,15 @@
 # Code created by Pepijn Weitzel
 from fpdf import FPDF
 
+
+class PDF(FPDF):
+    def header(self):
+        # Moving cursor to the right:
+        self.cell(80)
+        # Printing title:
+        self.cell(30, 10, "Title", border=1, align="C")
+
+
 def main():
 
     # Prompt user for name
