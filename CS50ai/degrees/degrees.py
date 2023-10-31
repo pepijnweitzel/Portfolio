@@ -93,7 +93,12 @@ def shortest_path(source, target):
     """
 
     # TODO
-    # 
+    # Initialize frontier to just starting position
+    start = Node(state=self.start, parent=None, action=None)
+    frontier = QueueFrontier()
+
+    # Initialize an empty explored set
+    self.explored = set
 
     return None
 
