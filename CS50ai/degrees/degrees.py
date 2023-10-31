@@ -111,7 +111,7 @@ def shortest_path(source, target):
 
         # Check whether frontier contains the goal
         if frontier.contains_state(target):
-            ...
+            actions = 
 
         # Choose a node from the frontier
         node = frontier.remove()
@@ -119,9 +119,12 @@ def shortest_path(source, target):
         # Mark node as explored
         explored.add(node.state)
 
-
-
-    return None
+        # Add neighbors to frontier
+        for action, state in neighbors_for_person(node.state):
+            # Check whether node is already in frontier or already explored
+            if not frontier.contains_state(state) and state not in explored:
+                child = Node(state=state, parent=node, action=action)
+                frontier.add(child)
 
 
 def person_id_for_name(name):
