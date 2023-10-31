@@ -93,14 +93,12 @@ def shortest_path(source, target):
     """
 
     # TODO
-    # Er wordt 1 beginners id gegeven en 1 target id gegeven
-    #print(neighbors_for_person(source))
+    # Initialize frontier to just the starting position
     start = Node(source, None, None)
     frontier = QueueFrontier()
     frontier.add(start)
 
-    #frontier.contains_state(target)      DEZE CODE OM TE CHECKEN OF DE TARGET IN DE FRONTIER ZIT! CHECK DIT DUS ELKE KEER!
-
+    # Remember which nodes you've already explored
     explored = set()
 
     while True:
@@ -111,7 +109,8 @@ def shortest_path(source, target):
 
         # Check whether frontier contains the goal
         if frontier.contains_state(target):
-            actions = 
+            # it should return like [(action, resultingstate), (action, resultingstate)]
+            
 
         # Choose a node from the frontier
         node = frontier.remove()
