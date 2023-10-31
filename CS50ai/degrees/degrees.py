@@ -134,7 +134,7 @@ def shortest_path(source, target):
                 child = Node(state=state, parent=node, action=action)
                 frontier.add(child)
         print(f"run: {run}")
-        print(frontier.empty, "is empty or not")
+        print(frontier.empty())
 
 
 
