@@ -107,7 +107,9 @@ def shortest_path(source, target):
         if frontier.empty():
             return None
 
-        print(frontier)
+        for i in range(len(frontier)):
+            print(frontier[i])
+
 
         # Check whether frontier contains the goal
         if frontier.contains_state(target):
@@ -133,6 +135,7 @@ def shortest_path(source, target):
             if not frontier.contains_state(state) and state not in explored:
                 child = Node(state=state, parent=node, action=action)
                 frontier.add(child)
+
 
 
 def person_id_for_name(name):
