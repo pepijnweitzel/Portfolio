@@ -102,7 +102,7 @@ def shortest_path(source, target):
     explored = set()
 
     while True:
-        
+
         # If nothing left in frontier, then no path
         if frontier.empty():
             return None
@@ -116,9 +116,7 @@ def shortest_path(source, target):
             solution = []
             # Add all the states and actions to the list in a tuple
             while node.parent is not None:
-                action = node.action
-                state = node.state
-                solution.append((action, state))
+                solution.append((node.action, node.state))
                 node = node.parent
             # Reverse the list
             solution_reversed = []
