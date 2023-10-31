@@ -107,7 +107,6 @@ def shortest_path(source, target):
         if frontier.empty():
             return None
 
-        
         # Check whether frontier contains the goal
         if frontier.contains_state(target):
             # it should return like [(action, resultingstate), (action, resultingstate)]
@@ -122,6 +121,8 @@ def shortest_path(source, target):
 
         # Choose a node from the frontier
         node = frontier.remove()
+
+        print(node.state)
 
         # Mark node as explored
         explored.add(node.state)
