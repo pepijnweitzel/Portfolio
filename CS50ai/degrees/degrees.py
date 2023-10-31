@@ -119,8 +119,6 @@ def shortest_path(source, target):
                 state = node.state
                 solution.append((action, state))
                 node = node.parent
-            solution.append((node.action, node.state))
-            print(solution)
             return solution
 
         # Mark node as explored
