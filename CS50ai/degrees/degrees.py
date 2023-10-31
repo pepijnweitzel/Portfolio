@@ -107,10 +107,6 @@ def shortest_path(source, target):
         if frontier.empty():
             return None
 
-        for i in range(len(frontier)):
-            print(frontier[i])
-
-
         # Check whether frontier contains the goal
         if frontier.contains_state(target):
             # it should return like [(action, resultingstate), (action, resultingstate)]
