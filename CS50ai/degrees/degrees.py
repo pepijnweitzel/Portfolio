@@ -106,8 +106,20 @@ def shortest_path(source, target):
     while True:
 
         # If nothing left in frontier, then no path
-        if frontier.empty() == 0:
+        if frontier.empty():
             return None
+
+        # Check whether frontier contains the goal
+        if frontier.contains_state(target):
+            ...
+
+        # Choose a node from the frontier
+        node = frontier.remove()
+
+        # Mark node as explored
+        explored.add(node.state)
+
+
 
     return None
 
