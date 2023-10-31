@@ -109,6 +109,7 @@ def shortest_path(source, target):
 
         # Check whether frontier contains the goal
         if frontier.contains_state(target):
+            print("Hij heeft solution gevonden")
             # it should return like [(action, resultingstate), (action, resultingstate)]
             solution = []
             while node.parent is not None:
@@ -116,6 +117,7 @@ def shortest_path(source, target):
                 state = node.state
                 solution.append(tuple(action, state))
                 node = node.parent
+            print(solution)
             return solution.reverse()
 
 
@@ -133,8 +135,6 @@ def shortest_path(source, target):
             if not frontier.contains_state(state) and state not in explored:
                 child = Node(state=state, parent=node, action=action)
                 frontier.add(child)
-        print(f"run: {run}")
-        print(frontier.empty())
 
 
 
