@@ -112,7 +112,7 @@ def shortest_path(source, target):
 
         # If node is the goal, then we have a solution
         if node.state == target:
-            # it should return like [(action, resultingstate), (action, resultingstate)]
+
             solution = []
             while node.parent is None:
                 action = node.action
