@@ -112,6 +112,7 @@ def shortest_path(source, target):
             print("Hij heeft solution gevonden")
             # it should return like [(action, resultingstate), (action, resultingstate)]
             solution = []
+            last_action = target
             while node.parent is not None:
                 action = node.action
                 state = node.state
