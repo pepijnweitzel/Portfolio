@@ -93,6 +93,8 @@ def shortest_path(source, target):
     """
 
     # TODO
+    # Er wordt 1 beginners id gegeven en 1 target id gegeven
+    print(source, target)
 
     return None
 
