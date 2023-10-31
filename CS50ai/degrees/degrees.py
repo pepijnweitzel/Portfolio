@@ -99,7 +99,15 @@ def shortest_path(source, target):
     frontier = QueueFrontier()
     frontier.add(start)
 
-    print(frontier)
+    #frontier.contains_state(target)      DEZE CODE OM TE CHECKEN OF DE TARGET IN DE FRONTIER ZIT! CHECK DIT DUS ELKE KEER!
+
+    explored = set()
+
+    while True:
+
+        # If nothing left in frontier, then no path
+        if frontier.empty() == 0:
+            return None
 
     return None
 
