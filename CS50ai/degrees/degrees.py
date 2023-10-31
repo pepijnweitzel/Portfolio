@@ -95,7 +95,11 @@ def shortest_path(source, target):
     # TODO
     # Er wordt 1 beginners id gegeven en 1 target id gegeven
     #print(neighbors_for_person(source))
-    start = Node(state=)
+    start = Node(source, None, None)
+    frontier = QueueFrontier()
+    frontier.add(start)
+
+    print(frontier)
 
     return None
 
