@@ -100,9 +100,9 @@ def shortest_path(source, target):
 
     # Remember which nodes you've already explored
     explored = set()
-
+    run = 0
     while True:
-
+        run += 1
         # If nothing left in frontier, then no path
         if frontier.empty():
             return None
@@ -132,8 +132,9 @@ def shortest_path(source, target):
             # Check whether node is already in frontier or already explored
             if not frontier.contains_state(state) and state not in explored:
                 child = Node(state=state, parent=node, action=action)
-                print(child.action, state.action)
                 frontier.add(child)
+        print(f"run: {run}")
+        print(frontier.empty, "is empty or not")
 
 
 
