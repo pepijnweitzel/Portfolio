@@ -100,9 +100,9 @@ def shortest_path(source, target):
 
     # Remember which nodes you've already explored
     explored = set()
-    run = 0
+
     while True:
-        run += 1
+        
         # If nothing left in frontier, then no path
         if frontier.empty():
             return None
@@ -120,10 +120,11 @@ def shortest_path(source, target):
                 state = node.state
                 solution.append((action, state))
                 node = node.parent
-            print(solution)
-            test = [1, 2, 3]
-            print(test.reverse())
-            return solution
+            # Reverse the list
+            solution_reversed = []
+            for i in reversed(solution):
+                solution_reversed.append(i)
+            return solution_reversed
 
         # Mark node as explored
         explored.add(node.state)
@@ -134,8 +135,6 @@ def shortest_path(source, target):
             if not frontier.contains_state(state) and state not in explored:
                 child = Node(state=state, parent=node, action=action)
                 frontier.add(child)
-                print(child.state, child.action)
-
 
 
 def person_id_for_name(name):
