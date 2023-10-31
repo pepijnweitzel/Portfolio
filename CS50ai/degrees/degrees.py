@@ -112,8 +112,9 @@ def shortest_path(source, target):
 
         # If node is the goal, then we have a solution
         if node.state == target:
-
+            # Create list that stores the solution
             solution = []
+            # Add all the states and actions to the list in a tuple
             while node.parent is not None:
                 action = node.action
                 state = node.state
