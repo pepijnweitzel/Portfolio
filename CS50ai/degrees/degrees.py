@@ -122,7 +122,7 @@ def shortest_path(source, target):
         # Choose a node from the frontier
         node = frontier.remove()
 
-        print(node.state)
+        print(neighbors_for_person(node.state))
 
         # Mark node as explored
         explored.add(node.state)
@@ -132,6 +132,7 @@ def shortest_path(source, target):
             # Check whether node is already in frontier or already explored
             if not frontier.contains_state(state) and state not in explored:
                 child = Node(state=state, parent=node, action=action)
+                print(child.action, state.action)
                 frontier.add(child)
 
 
