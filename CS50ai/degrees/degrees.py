@@ -119,6 +119,7 @@ def shortest_path(source, target):
                 state = node.state
                 solution.append((action, state))
                 node = node.parent
+            print(solution)
             return solution.reverse()
 
         # Mark node as explored
@@ -130,6 +131,7 @@ def shortest_path(source, target):
             if not frontier.contains_state(state) and state not in explored:
                 child = Node(state=state, parent=node, action=action)
                 frontier.add(child)
+                print(child.state, child.action)
 
 
 
