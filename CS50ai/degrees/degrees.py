@@ -110,7 +110,14 @@ def shortest_path(source, target):
         # Check whether frontier contains the goal
         if frontier.contains_state(target):
             # it should return like [(action, resultingstate), (action, resultingstate)]
-            
+            solution = []
+            while node.parent is not None:
+                action = node.action
+                state = node.state
+                solution.append(tuple(action, state))
+                node = node.parent
+            return solution.reverse()
+
 
         # Choose a node from the frontier
         node = frontier.remove()
