@@ -107,25 +107,19 @@ def shortest_path(source, target):
         if frontier.empty():
             return None
 
-        # Check whether frontier contains the goal
-        if frontier.contains_state(target):
-            print("Hij heeft solution gevonden")
+        # Choose a node from the frontier
+        node = frontier.remove()
+
+        # If node is the goal, then we have a solution
+        if node.state == target:
             # it should return like [(action, resultingstate), (action, resultingstate)]
             solution = []
-            last_action = target
             while node.parent is None:
                 action = node.action
                 state = node.state
                 solution.append((action, state))
                 node = node.parent
-            print(solution)
             return solution.reverse()
-
-
-        # Choose a node from the frontier
-        node = frontier.remove()
-
-        print(neighbors_for_person(node.state))
 
         # Mark node as explored
         explored.add(node.state)
