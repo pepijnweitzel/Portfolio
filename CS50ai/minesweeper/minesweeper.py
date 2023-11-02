@@ -223,9 +223,6 @@ class MinesweeperAI():
 
         self.knowledge.append(Sentence(cells, count))
 
-        for sentence in self.knowledge:
-            print(sentence)
-
         # Mark any additional cells as safe or as mines if it can be concluded based on the AI's knowledge base
         iter_knowledge = copy.copy(self.knowledge)
         for sentence in iter_knowledge:
