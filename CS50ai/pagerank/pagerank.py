@@ -58,7 +58,7 @@ def transition_model(corpus, page, damping_factor):
     a link at random chosen from all pages in the corpus.
     """
     links = corpus[page]
-    all_pages = 
+    all_pages = corpus.keys()
 
 
 def sample_pagerank(corpus, damping_factor, n):
