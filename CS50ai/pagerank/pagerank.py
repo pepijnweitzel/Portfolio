@@ -168,7 +168,7 @@ def iterate_pagerank(corpus, damping_factor):
 
             # Add change to changes list to later check
             change = old_page_rank - new_page_rank[page]
-            if change > 0.001 or change < -0.001:
+            if abs(change) > 0.001:
                 changes.append(change)
 
         # Update all page ranks
