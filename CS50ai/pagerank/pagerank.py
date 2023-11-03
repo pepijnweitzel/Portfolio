@@ -145,7 +145,8 @@ def iterate_pagerank(corpus, damping_factor):
     for page in all_pages:
         page_rank[page] = 1 / len(all_pages)
 
-    while True:
+    run = True
+    while run:
         for page in all_pages:
             # Store old PageRank
             old_page_rank = page_rank[page]
@@ -164,7 +165,7 @@ def iterate_pagerank(corpus, damping_factor):
             # Repeat until no more changes of more than 0.001
             change = old_page_rank - page_rank[page]
             if -0.001 < change < 0.001:
-                break
+                run = False
 
     return page_rank
 
