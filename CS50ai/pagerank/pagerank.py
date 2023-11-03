@@ -102,17 +102,18 @@ def sample_pagerank(corpus, damping_factor, n):
     all_pages = [key for key in corpus.keys()]
 
     # Get first sample
-    first_page = random.choice(all_pages)
+    page = random.choice(all_pages)
     n -= 1
 
     # Store number of page visits of each page in a dict
     page_visits = {}
-    for page in all_pages:
-        page_visits[page] = 0
+    for html in all_pages:
+        page_visits[html] = 0
 
     # Repeat n times for n samples
     for _ in range(n):
-        ...
+        pb = transition_model(corpus, page, damping_factor)
+        
 
     return page_visits
 
