@@ -144,19 +144,19 @@ def iterate_pagerank(corpus, damping_factor):
     page_rank = {}
     for page in all_pages:
         page_rank[page] = 1 / len(all_pages)
-
-    for page in all_pages:
-        # Initialize the new PageRank value to (1 - damping factor) / (number of all pages)
-        page_rank[page] = (1 - damping_factor) / len(all_pages)
-        # Make dict to store all links that link to current page, and their number of links on their page
-        parent_pages = {}
-        for key in corpus.keys():
-            if page in corpus[key]:
-                parent_pages[key] = len(corpus[key])
-        # print(page)
-        # print(parent_pages)
-        for key in parent_pages.keys():
-            page_rank[page] += damping_factor * page_rank[key] / parent_pages[key]
+    for _ in range(10000):
+        for page in all_pages:
+            # Initialize the new PageRank value to (1 - damping factor) / (number of all pages)
+            page_rank[page] = (1 - damping_factor) / len(all_pages)
+            # Make dict to store all links that link to current page, and their number of links on their page
+            parent_pages = {}
+            for key in corpus.keys():
+                if page in corpus[key]:
+                    parent_pages[key] = len(corpus[key])
+            # print(page)
+            # print(parent_pages)
+            for key in parent_pages.keys():
+                page_rank[page] += damping_factor * page_rank[key] / parent_pages[key]
 
     return page_rank
 
