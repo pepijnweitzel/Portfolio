@@ -12,6 +12,7 @@ def main():
         sys.exit("Usage: python pagerank.py corpus")
     corpus = crawl(sys.argv[1])
     ranks = sample_pagerank(corpus, DAMPING, SAMPLES)
+    print(ranks)
     print(f"PageRank Results from Sampling (n = {SAMPLES})")
     for page in sorted(ranks):
         print(f"  {page}: {ranks[page]:.4f}")
@@ -98,8 +99,12 @@ def sample_pagerank(corpus, damping_factor, n):
     their estimated PageRank value (a value between 0 and 1). All
     PageRank values should sum to 1.
     """
-    raise NotImplementedError
+    # List of all pages in corpus
+    all_pages = [key for key in corpus.keys()]
 
+    first_page = random.choice(all_pages)
+
+    return first_page
 
 def iterate_pagerank(corpus, damping_factor):
     """
