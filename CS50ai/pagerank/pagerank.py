@@ -60,10 +60,20 @@ def transition_model(corpus, page, damping_factor):
     """
     # Get links page forwards to
     links = corpus[page]
+
+    # List of all pages in corpus
     all_pages = [key for key in corpus.keys()]
+
+    # Create dictionary for probability distribution
     probability_distribution = {}
     for page in all_pages:
         probability_distribution[page] = 0.0
+
+    if len(links) == 0:
+        p = 1.0 / damping_factor
+        for page in all_pages:
+            probability_distribution[page] = p
+
 
     return probability_distribution
 
