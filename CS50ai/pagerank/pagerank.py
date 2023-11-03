@@ -112,14 +112,14 @@ def sample_pagerank(corpus, damping_factor, n):
         page_visits[html] = 0
 
     # Repeat n times for n samples
-    for _ in range(0):
+    for _ in range(n):
         pb = transition_model(corpus, page, damping_factor)
         # pb looks like {1.html : 0.234, 2.html : 0.234, 3.html : 0.532}
         # all_pages looks like [2.html, 3.html, 1.html, 4.html]
-        weights = ()
+        weights = (pb[key]*10 for key in all_pages)
         page = random.choices(all_pages, weights=weights, )
 
-    return all_pages
+    return page_visits
 
 def iterate_pagerank(corpus, damping_factor):
     """
