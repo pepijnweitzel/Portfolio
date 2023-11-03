@@ -63,8 +63,9 @@ def transition_model(corpus, page, damping_factor):
     all_pages = [key for key in corpus.keys()]
     probability_distribution = {}
     for page in all_pages:
+        probability_distribution[page] = 0.0
 
-    return all_pages
+    return probability_distribution
 
 def sample_pagerank(corpus, damping_factor, n):
     """
