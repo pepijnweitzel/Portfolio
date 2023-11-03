@@ -147,6 +147,9 @@ def iterate_pagerank(corpus, damping_factor):
 
     for page in all_pages:
         page_rank[page] = (1 - damping_factor) / len(all_pages)
+        list_of_pages_who_link_to_current_page = []
+        for key in corpus.keys():
+            
 
     return page_rank
 
