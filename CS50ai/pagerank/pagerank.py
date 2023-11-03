@@ -70,7 +70,7 @@ def transition_model(corpus, page, damping_factor):
 
     # If page has no links, equal chance to go to any page in corpus
     if len(links) == 0:
-        p = 1.0 / damping_factor
+        p = 1.0 / len(all_pages)
         for page in all_pages:
             probability_distribution[page] = p
             return probability_distribution
