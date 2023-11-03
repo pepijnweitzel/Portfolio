@@ -114,13 +114,16 @@ def sample_pagerank(corpus, damping_factor, n):
 
     # Repeat n times for n samples
     for _ in range(n):
+        # Add 1 to the value page_visits of current page
         page_visits[page[0]] += 1
+        # Get probability distribution of current page for next page and create tuple for weighted random choiche
         pb = transition_model(corpus, page[0], damping_factor)
-        # pb looks like {1.html : 0.234, 2.html : 0.234, 3.html : 0.532}
-        # all_pages looks like [2.html, 3.html, 1.html, 4.html]
         weights = (pb[key]*10 for key in all_pages)
+        # Choose random page based on weighted random choiche
         page = random.choices(all_pages, weights=weights)
 
+    # Change page_visits' values into proper ranking values
+    
 
     return page_visits
 
