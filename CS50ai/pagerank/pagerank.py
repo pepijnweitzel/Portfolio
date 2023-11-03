@@ -156,7 +156,7 @@ def iterate_pagerank(corpus, damping_factor):
         # print(page)
         # print(parent_pages)
         for key in parent_pages.keys():
-            page_rank[page] += damping_factor * page_rank
+            page_rank[page] += damping_factor * page_rank[key] / parent_pages[key]
 
     return page_rank
 
