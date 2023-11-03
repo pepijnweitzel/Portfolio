@@ -147,10 +147,11 @@ def iterate_pagerank(corpus, damping_factor):
 
     for page in all_pages:
         page_rank[page] = (1 - damping_factor) / len(all_pages)
-        list_of_pages_who_link_to_current_page = []
+        dict_of_pages_who_link_to_current_page_and_number_of_links_on_their_page = {}
         for key in corpus.keys():
             if page in corpus[key]:
-                
+                dict_of_pages_who_link_to_current_page_and_number_of_links_on_their_page[key] = len(corpus[key])
+        print(dict_of_pages_who_link_to_current_page_and_number_of_links_on_their_page)
 
     return page_rank
 
