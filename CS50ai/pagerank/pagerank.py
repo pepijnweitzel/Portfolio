@@ -113,7 +113,7 @@ def sample_pagerank(corpus, damping_factor, n):
     # Repeat n times for n samples
     for _ in range(n):
         pb = transition_model(corpus, page, damping_factor)
-        
+        page = random.choices(all_pages, weights=None, )
 
     return page_visits
 
