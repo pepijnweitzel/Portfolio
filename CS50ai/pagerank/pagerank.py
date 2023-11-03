@@ -147,7 +147,7 @@ def iterate_pagerank(corpus, damping_factor):
         page_rank[page] = 1 / len(all_pages)
 
     run = True
-    while run:
+    for _ in range(1000):
         new_page_rank = copy.copy(page_rank)
         changes = []
 
@@ -166,16 +166,15 @@ def iterate_pagerank(corpus, damping_factor):
                 new_page_rank[page] += damping_factor * page_rank[key] / parent_pages[key]
 
             # Add change to changes list to later check
-            print(old_page_rank, page_rank[page])
-            changes.append(abs(old_page_rank - page_rank[page]))
+            change = old_page_rank - page_rank[page]
+            if change > 0.001 or change < -0.001:
+                changes.append(change)
 
         # Update all page ranks
         page_rank = new_page_rank
 
-
-        print(changes)
         # Check whether the value of changes made are correct by norm
-        if max(changes) > 0.001:
+        if len(changes) == len(all_pages):
             run = False
 
     return page_rank
