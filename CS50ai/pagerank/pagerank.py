@@ -2,6 +2,7 @@ import os
 import random
 import re
 import sys
+import copy
 
 DAMPING = 0.85
 SAMPLES = 10000
@@ -147,8 +148,8 @@ def iterate_pagerank(corpus, damping_factor):
 
     run = True
     while run:
-        new_page_rank = page_rank
-        
+        new_page_rank = copy.copy(page_rank)
+
         for page in all_pages:
             # Store old PageRank
             old_page_rank = page_rank[page]
