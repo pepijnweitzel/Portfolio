@@ -12,7 +12,6 @@ def main():
         sys.exit("Usage: python pagerank.py corpus")
     corpus = crawl(sys.argv[1])
     ranks = sample_pagerank(corpus, DAMPING, SAMPLES)
-    print(ranks)
     print(f"PageRank Results from Sampling (n = {SAMPLES})")
     for page in sorted(ranks):
         print(f"  {page}: {ranks[page]:.4f}")
@@ -101,14 +100,12 @@ def sample_pagerank(corpus, damping_factor, n):
     """
     # List of all pages in corpus
     all_pages = [key for key in corpus.keys()]
-    print(corpus)
 
     # Get first sample
     page = []
-    page[0] = random.choice(all_pages)
+    first_page = random.choice(all_pages)
+    page.append(first_page)
     n -= 1
-
-    a = 0
 
     # Store number of page visits of each page in a dict
     page_visits = {}
@@ -117,14 +114,13 @@ def sample_pagerank(corpus, damping_factor, n):
 
     # Repeat n times for n samples
     for _ in range(n):
-        a += 1
-        print(a)
+        page_visits[page[0]] += 1
         pb = transition_model(corpus, page[0], damping_factor)
         # pb looks like {1.html : 0.234, 2.html : 0.234, 3.html : 0.532}
         # all_pages looks like [2.html, 3.html, 1.html, 4.html]
         weights = (pb[key]*10 for key in all_pages)
         page = random.choices(all_pages, weights=weights)
-        print(page)
+
 
     return page_visits
 
