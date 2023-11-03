@@ -123,7 +123,8 @@ def sample_pagerank(corpus, damping_factor, n):
         page = random.choices(all_pages, weights=weights)
 
     # Change page_visits' values into proper ranking values
-    
+    for key in page_visits:
+        page_visits[key] = page_visits[key] / n
 
     return page_visits
 
