@@ -44,7 +44,7 @@ def crawl(directory):
             link for link in pages[filename]
             if link in pages
         )
-
+    print(pages)
     return pages
 
 
