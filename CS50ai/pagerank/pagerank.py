@@ -11,7 +11,6 @@ def main():
     if len(sys.argv) != 2:
         sys.exit("Usage: python pagerank.py corpus")
     corpus = crawl(sys.argv[1])
-    print(transition_model(corpus, "2.html", DAMPING))
     ranks = sample_pagerank(corpus, DAMPING, SAMPLES)
     print(f"PageRank Results from Sampling (n = {SAMPLES})")
     for page in sorted(ranks):
@@ -69,20 +68,24 @@ def transition_model(corpus, page, damping_factor):
     for page in all_pages:
         probability_distribution[page] = 0.0
 
+    # If page has no links, equal chance to go to any page in corpus
     if len(links) == 0:
         p = 1.0 / damping_factor
         for page in all_pages:
             probability_distribution[page] = p
             return probability_distribution
+
+    # If page does have links, calculate chance to go to every page
     else:
+        # Chance of 1 - damping factor to go to any random page in corpus
         x = 1.0 - damping_factor
         x = x / len(all_pages)
         for page in all_pages:
             probability_distribution[page] = x
+        # Chance of damping factor to follow any random link in page
         y = damping_factor / len(links)
         for page in links:
             probability_distribution[page] += y
-
 
     return probability_distribution
 
