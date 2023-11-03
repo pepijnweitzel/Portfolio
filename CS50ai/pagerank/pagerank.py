@@ -101,9 +101,20 @@ def sample_pagerank(corpus, damping_factor, n):
     # List of all pages in corpus
     all_pages = [key for key in corpus.keys()]
 
+    # Get first sample
     first_page = random.choice(all_pages)
+    n -= 1
 
-    return first_page
+    # Store number of page visits of each page in a dict
+    page_visits = {}
+    for page in all_pages:
+        page_visits[page] = 0
+
+    # Repeat n times for n samples
+    for _ in range(n):
+        ...
+
+    return page_visits
 
 def iterate_pagerank(corpus, damping_factor):
     """
