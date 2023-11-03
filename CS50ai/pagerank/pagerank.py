@@ -147,6 +147,8 @@ def iterate_pagerank(corpus, damping_factor):
 
     run = True
     while run:
+        old_page_ranks = page_rank
+        new_page_ranks = old_page_ranks
         for page in all_pages:
             # Store old PageRank
             old_page_rank = page_rank[page]
