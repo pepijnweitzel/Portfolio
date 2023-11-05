@@ -63,6 +63,7 @@ def main():
 
     # Loop over all sets of people who might have the trait
     names = set(people)
+    print(probabilities)
     for have_trait in powerset(names):
 
         # Check if current set of people violates known information
