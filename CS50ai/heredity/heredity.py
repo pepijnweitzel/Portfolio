@@ -267,8 +267,8 @@ def normalize(probabilities):
     is normalized (i.e., sums to 1, with relative proportions the same).
     """
     for person in probabilities:
-        gene_values = probabilities[person]["gene"].values()
-        print(gene_values)
+        gene_values = [value for value in probabilities[person]["gene"].values()]
+        
 
 
 def get_copies(person, one_gene, two_genes):
