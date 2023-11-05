@@ -266,7 +266,7 @@ def normalize(probabilities):
     Update `probabilities` such that each probability distribution
     is normalized (i.e., sums to 1, with relative proportions the same).
     """
-    raise NotImplementedError
+    
 
 
 def get_copies(person, one_gene, two_genes):
