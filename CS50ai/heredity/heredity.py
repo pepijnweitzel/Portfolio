@@ -235,7 +235,6 @@ def joint_probability(people, one_gene, two_genes, have_trait):
             p_trait = PROBS["trait"][copies][has_trait]
             p_values.append(p_copies * p_trait)
 
-        print(math.prod(p_values))
         return math.prod(p_values)
 
 def update(probabilities, one_gene, two_genes, have_trait, p):
