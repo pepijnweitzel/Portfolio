@@ -63,7 +63,6 @@ def main():
 
     # Loop over all sets of people who might have the trait
     names = set(people)
-    print(probabilities)
     for have_trait in powerset(names):
 
         # Check if current set of people violates known information
@@ -246,7 +245,8 @@ def update(probabilities, one_gene, two_genes, have_trait, p):
     Which value for each distribution is updated depends on whether
     the person is in `have_gene` and `have_trait`, respectively.
     """
-    #raise NotImplementedError
+    print("--------------------------------------------------------------------------------------------------------------")
+    print(one_gene, two_genes, have_trait, p)
 
 
 def normalize(probabilities):
