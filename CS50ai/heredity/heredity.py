@@ -183,7 +183,19 @@ def joint_probability(people, one_gene, two_genes, have_trait):
             elif copies == 1:
                 # Calculate p where either one of parents give 1 copie of gene
                 # Either mother gives gene or father gives gene
-                ...
+                # First handle case where mother gives the gene
+                if mother_copies == 0:
+                    p_from_mother = 1 - PROBS["mutation"]
+                elif mother_copies == 1:
+                    p_from_mother = 0.50
+                else:
+                    p_from_mother = PROBS["mutation"]
+                if father_copies == 0:
+                    p_from_father = 1 - PROBS["mutation"]
+                elif father_copies == 1:
+                    p_from_father = 0.50
+                else:
+                    p_from_father = PROBS["mutation"]
             else:
                 # Calculate p where parents both give 1 copie of gene
                 if mother_copies == 0:
@@ -198,6 +210,8 @@ def joint_probability(people, one_gene, two_genes, have_trait):
                     p_from_father = 0.50
                 else:
                     p_from_father = 1 - PROBS["mutation"]
+
+                p_copies = p_from_mother * p_from_father
 
             p_trait = PROBS["trait"][copies][has_trait]
             p_values.append(p_copies * p_trait)
