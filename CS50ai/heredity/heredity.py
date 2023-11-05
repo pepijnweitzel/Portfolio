@@ -247,7 +247,8 @@ def update(probabilities, one_gene, two_genes, have_trait, p):
     """
     # Iterate over each person in the family
     for person in probabilities:
-
+        gene = get_copies(person, one_gene, two_genes)
+        trait = 
 
 
 def normalize(probabilities):
