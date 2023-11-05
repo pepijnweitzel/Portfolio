@@ -161,8 +161,8 @@ def joint_probability(people, one_gene, two_genes, have_trait):
             p_values.append(p_copies * p_trait)
         else:
             # Get number of copies from parents
-            mother_copies = get_copies(people[person["mother"]], one_gene, two_genes)
-            father_copies = get_copies(people[person["father"]], one_gene, two_genes)
+            mother_copies = get_copies(people[person]["mother"], one_gene, two_genes)
+            father_copies = get_copies(people[person]["father"], one_gene, two_genes)
 
             if copies == 0:
                 # Calculate p where parents give 0 copies of gene
