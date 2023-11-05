@@ -238,6 +238,7 @@ def joint_probability(people, one_gene, two_genes, have_trait):
 
         return math.prod(p_values)
 
+
 def update(probabilities, one_gene, two_genes, have_trait, p):
     """
     Add to `probabilities` a new joint probability `p`.
@@ -247,8 +248,17 @@ def update(probabilities, one_gene, two_genes, have_trait, p):
     """
     # Iterate over each person in the family
     for person in probabilities:
+
+        # Get variables
         gene = get_copies(person, one_gene, two_genes)
-        trait = 
+        if person in have_trait:
+            trait = True
+        else:
+            trait = False
+
+        # Update variables in distribution
+        probabilities[person]["gene"][gene] += p
+        probabilities[person]["trait"][trait] += p
 
 
 def normalize(probabilities):
