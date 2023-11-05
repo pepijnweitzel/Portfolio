@@ -266,9 +266,24 @@ def normalize(probabilities):
     Update `probabilities` such that each probability distribution
     is normalized (i.e., sums to 1, with relative proportions the same).
     """
+    # Iterate over each person in the family
     for person in probabilities:
-        gene_values = [value for value in probabilities[person]["gene"].values()]
-        
+
+        # Get sum of all gene probability values and the multiplier for new values
+        sum_genes = sum(probabilities[person]["gene"].values())
+        multiplier = 1.0 / sum_genes
+
+        # Update probabilities
+        for i in range(3):
+            probabilities[person]["gene"][i] *= multiplier
+
+        # Get sum of all trait probability values and the multiplier for new values
+        sum_traits = sum(probabilities[person]["trait"].values())
+        multiplier = 1.0 / sum_traits
+
+        # Update probabilities
+        for value in [True, False]:
+            probabilities[person]["trait"][value] *= multiplier
 
 
 def get_copies(person, one_gene, two_genes):
