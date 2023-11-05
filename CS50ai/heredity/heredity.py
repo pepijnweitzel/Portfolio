@@ -182,8 +182,23 @@ def joint_probability(people, one_gene, two_genes, have_trait):
                 p_copies = p_from_mother * p_from_father
             elif copies == 1:
                 # Calculate p where either one of parents give 1 copie of gene
-                # Either mother gives gene or father gives gene
-                # First handle case where mother gives the gene
+                # First handle case where mother gives 1 copie of gene and father 0
+                if mother_copies == 0:
+                    p_from_mother = PROBS["mutation"]
+                elif mother_copies == 1:
+                    p_from_mother = 0.50
+                else:
+                    p_from_mother = 1 - PROBS["mutation"]
+                if father_copies == 0:
+                    p_from_father = 1 - PROBS["mutation"]
+                elif father_copies == 1:
+                    p_from_father = 0.50
+                else:
+                    p_from_father = PROBS["mutation"]
+
+                p_first_case = p_from_mother * p_from_father
+
+                # Handle case where father gives 1 copie of gene and mother 0
                 if mother_copies == 0:
                     p_from_mother = 1 - PROBS["mutation"]
                 elif mother_copies == 1:
@@ -191,11 +206,15 @@ def joint_probability(people, one_gene, two_genes, have_trait):
                 else:
                     p_from_mother = PROBS["mutation"]
                 if father_copies == 0:
-                    p_from_father = 1 - PROBS["mutation"]
+                    p_from_father = PROBS["mutation"]
                 elif father_copies == 1:
                     p_from_father = 0.50
                 else:
-                    p_from_father = PROBS["mutation"]
+                    p_from_father = 1 - PROBS["mutation"]
+
+                p_second_case = p_from_mother * p_from_father
+
+                p_copies = p_first_case + p_second_case
             else:
                 # Calculate p where parents both give 1 copie of gene
                 if mother_copies == 0:
