@@ -245,8 +245,9 @@ def update(probabilities, one_gene, two_genes, have_trait, p):
     Which value for each distribution is updated depends on whether
     the person is in `have_gene` and `have_trait`, respectively.
     """
+    # Iterate over each person in the family
     for person in probabilities:
-        print(person)
+
 
 
 def normalize(probabilities):
