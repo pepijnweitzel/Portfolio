@@ -309,8 +309,8 @@ class CrosswordCreator():
             assignment_copy[variable] = word
             if self.consistent(assignment_copy):
                 assignment[variable] = word
-                
-                result =
+
+                result = self.backtrack(assignment)
 
 
 
