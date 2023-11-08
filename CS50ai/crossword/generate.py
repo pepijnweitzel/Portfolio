@@ -258,7 +258,13 @@ class CrosswordCreator():
         # Create dictionary out of list and set value to 0
         values_value = {value : 0 for value in values}
 
-        
+        # Get neighbors from given variable
+        neighbors = self.crossword.neighbors(var)
+
+        # Iterate over all words posible in the domain of 'var'
+        for word in values:
+            
+
         return values
 
     def select_unassigned_variable(self, assignment):
