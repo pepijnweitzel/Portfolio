@@ -166,11 +166,11 @@ class CrosswordCreator():
             queue = []
             for x in self.domains:
                 for y in self.crossword.neighbors(x):
-                    print(x, y)
+                    queue.append((x, y))
         else:
             queue = arcs
 
-
+        print(queue)
 
     def assignment_complete(self, assignment):
         """
