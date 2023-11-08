@@ -116,6 +116,8 @@ class CrosswordCreator():
         False if no revision was made.
         """
         revised = False
+        for word in self.domains[x]:
+            
 
 
         return revised
