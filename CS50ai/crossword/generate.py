@@ -294,7 +294,7 @@ class CrosswordCreator():
 
         If no assignment is possible, return None.
         """
-        
+        return None
 
 
 def main():
