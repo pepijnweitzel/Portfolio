@@ -262,7 +262,6 @@ class CrosswordCreator():
         values = list(self.domains[var])
         return values
 
-
     def select_unassigned_variable(self, assignment):
         """
         Return an unassigned variable not already part of `assignment`.
