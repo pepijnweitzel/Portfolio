@@ -294,6 +294,22 @@ class CrosswordCreator():
 
         If no assignment is possible, return None.
         """
+        # If assignemnt is complete, return assignment
+        if self.assignment_complete(assignment):
+            return assignment
+
+        # Select variable
+        variable = self.select_unassigned_variable(assignment)
+
+        # Iterate over list in order by fewest ruled out values among neighbors
+        for value in self.order_domain_values(variable, assignment):
+
+            # Check if value is consistend with assignment
+            if self.consistent(assignment)
+
+
+
+
         return None
 
 
