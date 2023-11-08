@@ -1,4 +1,5 @@
 import sys
+import copy
 
 from crossword import *
 
@@ -99,9 +100,11 @@ class CrosswordCreator():
         (Remove any values that are inconsistent with a variable's unary
          constraints; in this case, the length of the word.)
         """
+        iter_domain = copy.deepcopy(self.domains)
         for domain in self.domains:
-            print(domain)
-            print(self.domains[domain])
+            for word in iter_domain[domain]:
+                if len(word) != domain.length:
+                    self.domains[domain].remove(word)
 
     def revise(self, x, y):
         """
