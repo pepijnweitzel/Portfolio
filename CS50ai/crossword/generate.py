@@ -121,7 +121,7 @@ class CrosswordCreator():
         # Set revised to false
         revised = False
 
-        # Get the index of what characters should match in the words
+        # Get the index of what characters should match in the words if there is, otherwise return False
         if self.crossword.overlaps[x, y] == None:
             return revised
         else:
@@ -145,7 +145,7 @@ class CrosswordCreator():
             # If no possible matches in y for x's word remove the word
             if possible_y_words == 0:
                 self.domains[x].remove(v1)
-                # Set revised to true since a revision has been made
+                # Set revised to True since a revision has been made
                 revised = True
             # Otherwise set possible_y_words back to 0 and keep x's word
             else:
