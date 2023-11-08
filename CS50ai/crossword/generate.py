@@ -245,10 +245,7 @@ class CrosswordCreator():
                 i, j = self.crossword.overlaps[variable, neighbor]
 
                 # Check whether overlapping characters match
-                print("------------------------------------------------------------")
-                print(f"{assignment[variable][i]} and then {next(iter(self.domains[neighbor]))[j]}")
-                print("------------------------------------------------------------")
-                if assignment[variable][i] != assignment[neighbor][j]:
+                if assignment[variable][i] != next(iter(self.domains[neighbor]))[j]:
                     return False
 
         return True
