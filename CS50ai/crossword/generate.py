@@ -122,7 +122,10 @@ class CrosswordCreator():
         revised = False
 
         # Get the index of what characters should match in the words
-        i, j = self.crossword.overlaps[x, y]
+        if self.crossword.overlaps[x, y] == None:
+            return revised
+        else:
+            i, j = self.crossword.overlaps[x, y]
 
         # Create copy of set to iterate over
         iter_domain = copy.deepcopy(self.domains[x])
