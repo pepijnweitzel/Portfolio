@@ -276,6 +276,9 @@ class CrosswordCreator():
             used_variables.append(variable)
 
         # Get list of all variables
+        variables = []
+        for variable in self.domains:
+            variables.append(variable)
 
 
     def backtrack(self, assignment):
