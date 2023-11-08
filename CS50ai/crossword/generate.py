@@ -91,7 +91,6 @@ class CrosswordCreator():
         Enforce node and arc consistency, and then solve the CSP.
         """
         self.enforce_node_consistency()
-        self.revise(5, 7)
         self.ac3()
         return self.backtrack(dict())
 
@@ -101,7 +100,10 @@ class CrosswordCreator():
         (Remove any values that are inconsistent with a variable's unary
          constraints; in this case, the length of the word.)
         """
+        # Create copy of set to iterate over
         iter_domain = copy.deepcopy(self.domains)
+
+        # Iterate over all variables in crossword puzzle and remove words with the wrong length
         for domain in self.domains:
             for word in iter_domain[domain]:
                 if len(word) != domain.length:
@@ -116,8 +118,31 @@ class CrosswordCreator():
         Return True if a revision was made to the domain of `x`; return
         False if no revision was made.
         """
+        # Set revised to false
         revised = False
-        print(self.crossword.overlaps)
+
+        # Get the index of what characters should match in the words
+        i, j = self.crossword.overlaps[x, y]
+
+        # Create copy of set to iterate over
+        iter_domain = copy.deepcopy(self.domains[x])
+
+        # Iterate over all words in x's domain
+        for v1 in iter_domain:
+
+            # Set variable to see whether word in x's domain has possible options in y's domain
+            possible_y_words = 0
+
+            # Iterate over all words in y's domain to check if y's word can be used if x's word is used
+            for v2 in self.domains[y]:
+                # If word is possible add 1 to count
+                if v1[i] == v2[j]:
+                    possible_y_words += 1
+
+            # If no possible matches in y for x's word remove the word
+            if possible_y_words == 0:
+                self.domains[x].remove(v1)
+
 
 
         return revised
