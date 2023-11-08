@@ -165,7 +165,8 @@ class CrosswordCreator():
         if arcs == None:
             queue = []
             for x in self.domains:
-                for y in 
+                for y in self.crossword.neighbors(x):
+                    print(x, y)
         else:
             queue = arcs
 
