@@ -206,7 +206,10 @@ class CrosswordCreator():
             if assignment[key] == None:
                 return False
 
-        return True
+        if len(self.domains) == len(assignment):
+            return True
+
+        return False
 
     def consistent(self, assignment):
         """
