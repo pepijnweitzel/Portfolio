@@ -314,6 +314,8 @@ class CrosswordCreator():
                 result = self.backtrack(assignment)
                 if result is not None:
                     return result
+                print(variable)
+                print(assignment)
                 del assignment[variable]
 
             # If assignment is not consistent remove {variable : value} from assignment
