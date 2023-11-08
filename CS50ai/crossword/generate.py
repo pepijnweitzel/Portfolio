@@ -269,7 +269,9 @@ class CrosswordCreator():
 
             # Iterate over all neighbors
             for neighbor in neighbors:
-                
+
+                # Get overlapping characters
+                self.crossword.overlaps[]
 
         return values
 
