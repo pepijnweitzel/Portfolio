@@ -99,7 +99,9 @@ class CrosswordCreator():
         (Remove any values that are inconsistent with a variable's unary
          constraints; in this case, the length of the word.)
         """
-        print(self.domains)
+        for domain in self.domains:
+            print(domain)
+            print(self.domains[domain])
 
     def revise(self, x, y):
         """
