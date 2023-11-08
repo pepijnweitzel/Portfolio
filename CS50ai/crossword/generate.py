@@ -270,8 +270,10 @@ class CrosswordCreator():
             # Iterate over all neighbors
             for neighbor in neighbors:
 
+                # Skip
+
                 # Get overlapping characters
-                self.crossword.overlaps[]
+                self.crossword.overlaps[var, neighbor]
 
         return values
 
