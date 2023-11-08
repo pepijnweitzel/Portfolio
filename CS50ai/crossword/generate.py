@@ -162,6 +162,7 @@ class CrosswordCreator():
         Return True if arc consistency is enforced and no domains are empty;
         return False if one or more domains end up empty.
         """
+        # Create the queue from given arcs or otherwise all arcs in the problem
         if arcs == None:
             queue = []
             for x in self.domains:
@@ -170,7 +171,8 @@ class CrosswordCreator():
         else:
             queue = arcs
 
-        print(queue)
+        while len(queue) != 0:
+            
 
     def assignment_complete(self, assignment):
         """
