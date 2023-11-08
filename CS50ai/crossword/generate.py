@@ -281,6 +281,10 @@ class CrosswordCreator():
             variables.append(variable)
 
 
+        # List of unassigned variables
+        possible_variables = [x for x in variables if x not in used_variables]
+        return possible_variables[0]
+
     def backtrack(self, assignment):
         """
         Using Backtracking Search, take as input a partial assignment for the
