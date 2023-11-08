@@ -347,9 +347,13 @@ class CrosswordCreator():
             return lowest_variables[0]
         else:
             # Check whichever one has the most neighbors
-            
-
-        return possible_variables[0]
+            n = 0
+            var = None
+            for variable in lowest_variables:
+                if len(self.crossword.neighbors(variable)) > n:
+                    n = len(self.crossword.neighbors(variable))
+                    var = variable
+            return var
 
     def backtrack(self, assignment):
         """
