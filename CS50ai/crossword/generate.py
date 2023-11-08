@@ -91,6 +91,7 @@ class CrosswordCreator():
         Enforce node and arc consistency, and then solve the CSP.
         """
         self.enforce_node_consistency()
+        self.revise(5, 7)
         self.ac3()
         return self.backtrack(dict())
 
@@ -116,8 +117,7 @@ class CrosswordCreator():
         False if no revision was made.
         """
         revised = False
-        for word in self.domains[x]:
-            
+        print(self.crossword.overlaps)
 
 
         return revised
