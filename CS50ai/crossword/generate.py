@@ -275,7 +275,7 @@ class CrosswordCreator():
         for variable in assignment:
             used_variables.append(variable)
 
-        # Get 
+        # Get list of all variables
 
 
     def backtrack(self, assignment):
