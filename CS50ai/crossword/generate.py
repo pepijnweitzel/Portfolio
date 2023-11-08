@@ -167,6 +167,9 @@ class CrosswordCreator():
         else:
             queue = arcs
 
+        while len(queue) != 0:
+
+
     def assignment_complete(self, assignment):
         """
         Return True if `assignment` is complete (i.e., assigns a value to each
