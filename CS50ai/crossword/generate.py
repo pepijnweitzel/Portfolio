@@ -163,11 +163,12 @@ class CrosswordCreator():
         return False if one or more domains end up empty.
         """
         if arcs == None:
-            ...
+            queue = []
+            for x in self.domains:
+                for y in 
         else:
             queue = arcs
 
-        while len(queue) != 0:
 
 
     def assignment_complete(self, assignment):
