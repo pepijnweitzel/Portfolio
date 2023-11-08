@@ -171,8 +171,26 @@ class CrosswordCreator():
         else:
             queue = arcs
 
+        # Loop over all arcs
         while len(queue) != 0:
-            
+
+            # Dequeue first arc
+            x, y = queue[0]
+            queue = queue[1:]
+
+            # Make arc arc consistent
+            if self.revise(x, y):
+
+                # Check if x still has possible variables
+                if len(self.domains[x]) == 0:
+                    return False
+                # Add neighbors of variable x to the queue to check if they can still be arc consistent but dont add y
+                for z in self.crossword.neighbors(x):
+                    if z == y:
+                        continue
+                    queue.append((z, x))
+
+        return True
 
     def assignment_complete(self, assignment):
         """
