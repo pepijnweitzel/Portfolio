@@ -1,5 +1,7 @@
 import sys
 import copy
+from collections import deque
+
 
 from crossword import *
 
@@ -164,19 +166,21 @@ class CrosswordCreator():
         """
         # Create the queue from given arcs or otherwise all arcs in the problem
         if arcs == None:
-            queue = []
+            queue = deque()
             for x in self.domains:
                 for y in self.crossword.neighbors(x):
                     queue.append((x, y))
         else:
-            queue = arcs
+            queue = deque
+            for arc in arcs:
+                queue.append(arc)
+
 
         # Loop over all arcs
         while len(queue) != 0:
 
             # Dequeue first arc
-            x, y = queue[0]
-            queue = queue[1:]
+            x, y = queue.popleft()
 
             # Make arc arc consistent
             if self.revise(x, y):
