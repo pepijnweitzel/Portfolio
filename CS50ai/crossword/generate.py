@@ -263,7 +263,13 @@ class CrosswordCreator():
 
         # Iterate over all words posible in the domain of 'var'
         for word in values:
-            
+
+            # Count number of eliminations in neighbors domain
+            eliminations = 0
+
+            # Iterate over all neighbors
+            for neighbor in neighbors:
+                
 
         return values
 
