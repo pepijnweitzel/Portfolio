@@ -234,6 +234,10 @@ class CrosswordCreator():
             if variable.length != len(assignment[variable]):
                 return False
 
+        # Check the overlaps of all variables words
+        for variable in assignment:
+            
+
 
     def order_domain_values(self, var, assignment):
         """
