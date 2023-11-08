@@ -246,7 +246,7 @@ class CrosswordCreator():
 
                 # Check whether overlapping characters match
                 print("------------------------------------------------------------")
-                print(f"{assignment[variable]} and then {assignment}")
+                print(f"{assignment[variable][i]} and then {next(iter(self.domains[neighbor]))[j]}")
                 print("------------------------------------------------------------")
                 if assignment[variable][i] != assignment[neighbor][j]:
                     return False
