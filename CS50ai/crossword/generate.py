@@ -253,6 +253,7 @@ class CrosswordCreator():
         that rules out the fewest values among the neighbors of `var`.
         """
         values = list(self.domains[var])
+        values_value = {value : }
         return values
 
     def select_unassigned_variable(self, assignment):
