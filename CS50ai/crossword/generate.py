@@ -341,9 +341,13 @@ class CrosswordCreator():
             if variables_value[variable] == l:
                 lowest_variables.append(variable)
 
+
+        # Check if there's only one or more
         if len(lowest_variables) == 1:
             return lowest_variables[0]
         else:
+            # Check whichever one has the most neighbors
+            
 
         return possible_variables[0]
 
