@@ -302,10 +302,15 @@ class CrosswordCreator():
         variable = self.select_unassigned_variable(assignment)
 
         # Iterate over list in order by fewest ruled out values among neighbors
-        for value in self.order_domain_values(variable, assignment):
+        for word in self.order_domain_values(variable, assignment):
 
-            # Check if value is consistend with assignment
-            if self.consistent(assignment)
+            # Check if value is consistend with assignment, if so add to the assignment
+            assignment_copy = copy.deepcopy(assignment)
+            assignment_copy[variable] = word
+            if self.consistent(assignment_copy):
+                assignment[variable] = word
+                
+                result =
 
 
 
