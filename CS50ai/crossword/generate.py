@@ -304,16 +304,19 @@ class CrosswordCreator():
         # Iterate over list in order by fewest ruled out values among neighbors
         for word in self.order_domain_values(variable, assignment):
 
-            # Check if value is consistend with assignment, if so add to the assignment
-            assignment_copy = copy.deepcopy(assignment)
-            assignment_copy[variable] = word
-            if self.consistent(assignment_copy):
-                assignment[variable] = word
+            # Add {variable : value} to assignment
+            assignment[variable] = word
 
+            # Check if assignment is consistent
+            if self.consistent(assignment):
+
+                # Call recursive function to get result
                 result = self.backtrack(assignment)
+                if result is not None:
+                    return result
 
-
-
+            # If assignment is not consistent remove {variable : value} from assignment
+            del assignment[variable]
 
         return None
 
