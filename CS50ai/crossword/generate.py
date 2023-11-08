@@ -234,8 +234,13 @@ class CrosswordCreator():
                 # Get overlapping characters
                 i, j = self.crossword.overlaps[variable, neighbor]
 
+                # Get first item from set
+                something = []
+                for item in self.domains[neighbor]:
+                    something.append(item)
+
                 # Check whether overlapping characters match
-                if assignment[variable][i] != next(iter(self.domains[neighbor]))[j]:
+                if assignment[variable][i] != something[0][j]:
                     return False
 
         return True
