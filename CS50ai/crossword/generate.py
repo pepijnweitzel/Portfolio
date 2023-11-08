@@ -255,8 +255,8 @@ class CrosswordCreator():
         # Create list of values in the domain of 'var'
         values = list(self.domains[var])
 
-        # Create dictionary out of list and set value to 0
-        values_value = {value : 0 for value in values}
+        # Create dictionary to put all words in with its corresponding eliminations count
+        values_value = {}
 
         # Get neighbors from given variable
         neighbors = self.crossword.neighbors(var)
@@ -277,8 +277,22 @@ class CrosswordCreator():
                 # Get overlapping characters
                 i, j = self.crossword.overlaps[var, neighbor]
 
-                # Get number of possible words for neighbor before choosing current word
-                
+                # Get number of options for neighbor before choosing current word
+                options_before = len(self.domains[neighbor])
+
+                # Get number of options after neighbor choosing current word
+                options_after = 0
+                for option in self.domains[neighbor]:
+                    if word[i] != option[j]:
+                        options_after += 1
+
+                # Get number of eliminations based on options_before and options_after
+                eliminations += options_before - options_after
+
+            # Add word with according number of eliminations to dict
+            values_value[word] = eliminations
+
+
 
         return values
 
