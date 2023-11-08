@@ -239,7 +239,7 @@ class CrosswordCreator():
         for variable in assignment:
 
             # Iterate over all neighbors of variable
-            for neighbor in self.crossword.neighbors(x):
+            for neighbor in self.crossword.neighbors(variable):
 
                 # Get overlapping characters
                 i, j = self.crossword.overlaps[variable, neighbor]
