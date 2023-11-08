@@ -220,6 +220,7 @@ class CrosswordCreator():
         Return True if `assignment` is consistent (i.e., words fit in crossword
         puzzle without conflicting characters); return False otherwise.
         """
+        # Check for duplicates
         # Get list of all words
         values = [word for word in assignment.values()]
 
@@ -227,6 +228,12 @@ class CrosswordCreator():
         for i in range(len(values)):
             if values.count(values[i]) != 1:
                 return False
+
+        # Check whether length of words match length of variable
+        for variable in assignment:
+            if variable.length != len(assignment[variable]):
+                return False
+
 
     def order_domain_values(self, var, assignment):
         """
