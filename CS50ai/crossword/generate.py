@@ -231,17 +231,15 @@ class CrosswordCreator():
             # Iterate over all neighbors of variable
             for neighbor in self.crossword.neighbors(variable):
 
-                # Get overlapping characters
-                i, j = self.crossword.overlaps[variable, neighbor]
+                # Only check if neighbor has already been assigned a value
+                if neighbor in assignment:
 
-                # Get first item from set
-                something = []
-                for item in self.domains[neighbor]:
-                    something.append(item)
+                    # Get overlapping characters
+                    i, j = self.crossword.overlaps[variable, neighbor]
 
-                # Check whether overlapping characters match
-                if assignment[variable][i] != something[0][j]:
-                    return False
+                    # Check whether overlapping characters match
+                    if assignment[variable][i] != assignment[neighbor][j]:
+                        return False
 
         return True
 
