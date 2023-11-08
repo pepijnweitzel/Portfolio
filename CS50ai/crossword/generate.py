@@ -168,8 +168,9 @@ class CrosswordCreator():
         if arcs == None:
             queue = deque()
             for x in self.domains:
-                for y in self.crossword.neighbors(x):
-                    queue.append((x, y))
+                for y in self.domains:
+                    if x != y:
+                        queue.append((x, y))
         else:
             queue = deque
             for arc in arcs:
