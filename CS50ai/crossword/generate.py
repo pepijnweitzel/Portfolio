@@ -335,7 +335,15 @@ class CrosswordCreator():
                 l = variables_value[variable]
 
         # Get list of all variables with that number of values
-        lowest_variables = 
+        lowest_variables = []
+
+        for variable in variables_value:
+            if variables_value[variable] == l:
+                lowest_variables.append(variable)
+
+        if len(lowest_variables) == 1:
+            return lowest_variables[0]
+        else:
 
         return possible_variables[0]
 
