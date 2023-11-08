@@ -235,8 +235,21 @@ class CrosswordCreator():
                 return False
 
         # Check the overlaps of all variables words
+        # Iterate over all variables in assignment
         for variable in assignment:
-            
+
+            # Iterate over all neighbors of variable
+            for neighbor in self.crossword.neighbors(x):
+
+                # Get overlapping characters
+                i, j = self.crossword.overlaps[variable, neighbor]
+
+                # Check whether overlapping characters match
+                if assignment[variable][i] != assignment[neighbor][j]:
+                    return False
+
+        return True
+
 
 
     def order_domain_values(self, var, assignment):
