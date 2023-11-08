@@ -261,7 +261,7 @@ class CrosswordCreator():
         # Get neighbors from given variable
         neighbors = self.crossword.neighbors(var)
 
-        # Iterate over all words posible in the domain of 'var'
+        # Iterate over all words possible in the domain of 'var'
         for word in values:
 
             # Count number of eliminations in neighbors domain
@@ -270,10 +270,15 @@ class CrosswordCreator():
             # Iterate over all neighbors
             for neighbor in neighbors:
 
-                # Skip
+                # Skip neighbor that already has a value aka already in assignment
+                if neighbor in assignment:
+                    continue
 
                 # Get overlapping characters
-                self.crossword.overlaps[var, neighbor]
+                i, j = self.crossword.overlaps[var, neighbor]
+
+                # Get number of possible words for neighbor before choosing current word
+                
 
         return values
 
