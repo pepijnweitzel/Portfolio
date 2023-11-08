@@ -292,9 +292,9 @@ class CrosswordCreator():
             # Add word with according number of eliminations to dict
             values_value[word] = eliminations
 
-        sorted_list = sorted(values_value)
+        sorted_list = sorted(values_value.items(), key=lambda x:x[1])
 
-        return sorted_list
+        return [item[0] for item in sorted_list]
 
     def select_unassigned_variable(self, assignment):
         """
