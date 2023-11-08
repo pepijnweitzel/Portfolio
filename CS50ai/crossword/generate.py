@@ -327,7 +327,15 @@ class CrosswordCreator():
             # Add to dictionary
             variables_value[variable] = n
 
-        
+        # Get the lowest number of values from variable
+        l = 999999999
+
+        for variable in variables_value:
+            if variables_value[variable] < l:
+                l = variables_value[variable]
+
+        # Get list of all variables with that number of values
+        lowest_variables = 
 
         return possible_variables[0]
 
