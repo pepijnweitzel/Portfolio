@@ -245,6 +245,7 @@ class CrosswordCreator():
                 i, j = self.crossword.overlaps[variable, neighbor]
 
                 # Check whether overlapping characters match
+                print(assignment[variable][i], neighbor)
                 if assignment[variable][i] != assignment[neighbor][j]:
                     return False
 
