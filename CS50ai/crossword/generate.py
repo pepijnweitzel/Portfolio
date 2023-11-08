@@ -317,6 +317,18 @@ class CrosswordCreator():
 
         # List of unassigned variables
         possible_variables = [x for x in variables if x not in used_variables]
+
+        # Dictionary to put all variables in as keys and number of remaining values in its domain as value
+        variables_value = {}
+
+        # Iterate over every variable to get its number of values in its domain
+        for variable in possible_variables:
+            n = len(self.domains[variable])
+            # Add to dictionary
+            variables_value[variable] = n
+
+        
+
         return possible_variables[0]
 
     def backtrack(self, assignment):
