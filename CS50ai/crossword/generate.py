@@ -203,18 +203,7 @@ class CrosswordCreator():
         crossword variable); return False otherwise.
         """
         # Check whether length is the same
-        if len(self.domains) == len(assignment):
-
-            # Iterate over all keys and check if its value is not None
-            for key in assignment:
-                if assignment[key]:
-                    continue
-                else:
-                    return False
-            return True
-
-        else:
-            return False
+        return len(self.domains) == len(assignment)
 
     def consistent(self, assignment):
         """
