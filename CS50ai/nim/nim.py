@@ -180,9 +180,12 @@ class NimAI():
             for action in actions:
                 values[action] = self.q[tuple(state), action]
 
-            # Get max actions with the max value
+            # Get best action based on Q-value
+            max = max(values, key=values.get)
 
-
+            return max
+        else:
+            
 
 def train(n):
     """
