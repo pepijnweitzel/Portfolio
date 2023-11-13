@@ -150,7 +150,11 @@ class NimAI():
         for action in actions:
 
             # Check if Q_value for state, action pair exists if so, update max_q if it's higher
-            if self.q[tuple(state), action]:
+            try:
+                self.q[tuple(state), action]
+            except KeyError:
+                continue
+            else:
                 if self.q[tuple(state), action] > max_q:
                     max_q = self.q[tuple(state), action]
 
@@ -192,9 +196,9 @@ class NimAI():
             else:
 
                 # Choose random action
-                action = random.choice(actions)
+                action = random.choices(list(actions))
 
-                return action
+                return action[0]
 
 
     def greedily(self, actions, state):
