@@ -63,9 +63,10 @@ def load_data(filename):
     evidence = []
     labels = []
 
-    # Floats and Ints
+    # Floats and Ints and Months
     floats = ["Administrative_Duration", "Informational_Duration", "ProductRelated_Duration", "BounceRates", "ExitRates", "PageValues", "SpecialDay"]
     ints = ["Administrative", "Informational", "ProductRelated", "OperatingSystems", "Browser", "Region", "TrafficType"]
+    months = ["Jan", "Feb", "Mar", "Apr","May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
 
     # Open given csv file
     with open(filename) as file:
@@ -84,7 +85,6 @@ def load_data(filename):
 
             # Convert month to int:
             month = row["Month"]
-            months = ["Jan", "Feb", "Mar", "Apr","May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
             for i in range(12):
                 if month == months[i]:
                     row["Month"] = i
