@@ -72,14 +72,8 @@ def load_data(filename):
     with open(filename) as file:
         reader = csv.DictReader(file)
 
-        t = 0
-
         # Iterate over every row in the file
         for row in reader:
-
-            if t == 5457:
-                break
-
 
             # Convert values required to be floats to floats
             for key in floats:
@@ -123,10 +117,6 @@ def load_data(filename):
 
             # Add list to evidence
             evidence.append(users_evidence)
-            print(users_evidence, label)
-
-            t += 1
-
 
     return (evidence, labels)
 
