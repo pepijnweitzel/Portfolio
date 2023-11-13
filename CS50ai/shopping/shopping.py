@@ -154,7 +154,6 @@ def evaluate(labels, predictions):
     # Set variables
     total_positive = 0
     total_negative = 0
-
     total_correct_positive = 0
     total_correct_negative = 0
 
@@ -169,12 +168,11 @@ def evaluate(labels, predictions):
             if predicted == actual:
                 total_correct_negative += 1
 
+    # Calculate sensitivity and specificity
     sensitivity = total_correct_positive / total_positive
     specificity = total_correct_negative / total_negative
 
     return sensitivity, specificity
-
-
 
 
 if __name__ == "__main__":
