@@ -63,8 +63,9 @@ def load_data(filename):
     evidence = []
     labels = []
 
-    # Floats
+    # Floats and Ints
     floats = ["Administrative_Duration", "Informational_Duration", "ProductRelated_Duration", "BounceRates", "ExitRates", "PageValues", "SpecialDay"]
+    ints = ["Administrative", "Informational", "ProductRelated", "OperatingSystems", "Browser", "Region", "TrafficType"]
 
     # Open given csv file
     with open(filename) as file:
@@ -79,6 +80,10 @@ def load_data(filename):
             # Convert values required to be floats to floats
             for key in floats:
                 row[key] = float(row[key])
+
+            # Convert values required to be ints to ints
+            for key in ints:
+                row[key] = int(row[key])
 
             # Convert month to int:
             month = row["Month"]
@@ -113,15 +118,10 @@ def load_data(filename):
             # Create list of values for in evidence
             values = list(row.values())
 
-            # Convert last strings to ints
-            for i in range(len(values)):
-                print(type(values[i]))
-                if type(values[i]) == "<class 'str'>":
-                    values[i] = int(values[i])
-
+            # Add list to evidence
             evidence.append(values)
-            print(evidence, labels)
-            break
+
+    return (evidence, labels)
 
 
 def train_model(evidence, labels):
