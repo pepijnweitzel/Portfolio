@@ -159,12 +159,11 @@ def evaluate(labels, predictions):
     # Iterate over lists
     for actual, predicted in zip(labels, predictions):
         total += 1
-        if actual == predicted:
-            correct += 1
-        else:
-            incorrect += 1
+        if actual == predicted == 1:
 
-    return correct, incorrect
+
+
+    return sensitivity, specificity
 
 
 if __name__ == "__main__":
