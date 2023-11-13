@@ -102,8 +102,8 @@ class NimAI():
         If no Q-value exists yet in `self.q`, return 0.
         """
         # Check if Q-value exists, if so return its value, otherwise return 0
-        if self.q[state, action]:
-            return self.q[state, action]
+        if self.q[tuple(state), action]:
+            return self.q[tuple(state), action]
         else:
             return 0
 
@@ -126,7 +126,7 @@ class NimAI():
         new_q_value = old_q + self.alpha * ((reward + future_rewards) - old_q)
 
         # Update the Q-value of the given state, action
-        self.q[state, action] = new_q_value
+        self.q[tuple(state), action] = new_q_value
 
     def best_future_reward(self, state):
         """
