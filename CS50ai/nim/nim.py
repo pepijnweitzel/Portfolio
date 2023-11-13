@@ -172,11 +172,16 @@ class NimAI():
         # Get all available actions in given state
         actions = Nim.available_actions(state)
 
-        # Check epsilon value
+        # Check epsilon value, if false, behave greedily, otherwise use epsilon-greedy algorithm
         if epsilon == False:
 
-            # Behave greedily
-            
+            # Get dict of all Q-value's according to action
+            values = dict()
+            for action in actions:
+                values[action] = self.q[tuple(state), action]
+
+            # Get max actions with the max value
+
 
 
 def train(n):
