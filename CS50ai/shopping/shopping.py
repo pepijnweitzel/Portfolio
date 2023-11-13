@@ -106,8 +106,8 @@ def load_data(filename):
             else:
                 row["Revenue"] = 0
 
-            evidence.append(row)
-            label = evidence[0].pop("Revenue")
+            label = row.pop("Revenue")
+            evidence.append(list(row.values()))
             labels.append(label)
             print(evidence, labels)
             break
