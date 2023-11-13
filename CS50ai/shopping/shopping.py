@@ -66,14 +66,20 @@ def load_data(filename):
     # Floats and Ints and Months
     floats = ["Administrative_Duration", "Informational_Duration", "ProductRelated_Duration", "BounceRates", "ExitRates", "PageValues", "SpecialDay"]
     ints = ["Administrative", "Informational", "ProductRelated", "OperatingSystems", "Browser", "Region", "TrafficType"]
-    months = ["Jan", "Feb", "Mar", "Apr","May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+    months = ["Jan", "Feb", "Mar", "Apr","May", "June", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
 
     # Open given csv file
     with open(filename) as file:
         reader = csv.DictReader(file)
 
+        t = 0
+
         # Iterate over every row in the file
         for row in reader:
+
+            if t == 5457:
+                break
+
 
             # Convert values required to be floats to floats
             for key in floats:
@@ -118,6 +124,9 @@ def load_data(filename):
             # Add list to evidence
             evidence.append(users_evidence)
             print(users_evidence, label)
+
+            t += 1
+
 
     return (evidence, labels)
 
