@@ -82,7 +82,13 @@ def load_data(filename):
 
             # Convert month to int:
             month = row["Month"]
-            if month == Jan
+            months = ["Jan", "Feb", "Mar", "Apr","May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+            for i in range(12):
+                if month == months[i]:
+                    row["Month"] = i
+                    break
+            
+
 
 def train_model(evidence, labels):
     """
