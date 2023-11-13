@@ -117,6 +117,7 @@ def load_data(filename):
 
             # Add list to evidence
             evidence.append(users_evidence)
+            print(users_evidence, label)
 
     return (evidence, labels)
 
