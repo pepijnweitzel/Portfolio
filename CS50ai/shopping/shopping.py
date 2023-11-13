@@ -97,13 +97,13 @@ def load_data(filename):
                 row["VisitorType"] = 0
 
             # Convert Weekend to int
-            if row["Weekend"] == "True":
+            if row["Weekend"] == "TRUE":
                 row["Weekend"] = 1
             else:
                 row["Weekend"] = 0
 
             # Convert Revenue to int
-            if row["Revenue"] == "True":
+            if row["Revenue"] == "TRUE":
                 row["Revenue"] = 1
             else:
                 row["Revenue"] = 0
@@ -157,8 +157,6 @@ def evaluate(labels, predictions):
 
     total_correct_positive = 0
     total_correct_negative = 0
-
-    print(labels)
 
     # Iterate over 2 lists zipped together
     for actual, predicted in zip(labels, predictions):
