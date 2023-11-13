@@ -110,6 +110,7 @@ def load_data(filename):
             evidence.pop("Revenue")
             labels.append(row["Revenue"])
             print(evidence, labels)
+            break
 
 
 def train_model(evidence, labels):
