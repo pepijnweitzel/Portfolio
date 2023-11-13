@@ -89,10 +89,10 @@ def load_data(filename):
                     break
 
             # Convert VisitorType to int
-            if row["Visitortype"] == "Returning_Visitor":
-                row["Visitortype"] = 1
+            if row["VisitorType"] == "Returning_Visitor":
+                row["VisitorType"] = 1
             else:
-                row["Visitortype"] = 0
+                row["VisitorType"] = 0
 
             # Convert Weekend to int
             if row["Weekend"] == "True":
@@ -106,7 +106,10 @@ def load_data(filename):
             else:
                 row["Revenue"] = 0
 
-            
+            evidence.append(row)
+            evidence.pop("Revenue")
+            labels.append(row["Revenue"])
+            print(evidence, labels)
 
 
 def train_model(evidence, labels):
