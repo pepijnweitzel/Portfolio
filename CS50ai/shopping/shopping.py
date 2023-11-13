@@ -152,14 +152,25 @@ def evaluate(labels, predictions):
     actual negative labels that were accurately identified.
     """
     # Set variables
-    correct = 0
-    incorrect = 0
-    total = 0
+    sensitivity = 0
+    specificity = 0
+    total_positive = 0
+    total_negative = 0
 
     # Iterate over lists
     for actual, predicted in zip(labels, predictions):
-        total += 1
-        if actual == predicted == 1:
+        if actual == 1:
+            total_positive += 1
+        elif actual == 0:
+            total_negative += 1
+        if actual == predicted:
+            if actual == 1:
+                sensitivity += 1
+            elif actual == 0:
+                specificity += 1
+
+    sensitivity = sensitivity / total_positive
+    specificity = specificity / total_negative
 
 
 
