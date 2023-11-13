@@ -158,9 +158,11 @@ def evaluate(labels, predictions):
     total_correct_positive = 0
     total_correct_negative = 0
 
+    print(labels)
+
     # Iterate over 2 lists zipped together
     for actual, predicted in zip(labels, predictions):
-        if predicted == 1:
+        if actual == 1:
             total_positive += 1
             if predicted == actual:
                 total_correct_positive += 1
