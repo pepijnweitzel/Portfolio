@@ -127,6 +127,7 @@ def train_model(evidence, labels):
     fitted k-nearest neighbor model (k=1) trained on the data.
     """
     model = KNeighborsClassifier()
+    model.fit(evidence, labels, k=1)
 
 
 def evaluate(labels, predictions):
