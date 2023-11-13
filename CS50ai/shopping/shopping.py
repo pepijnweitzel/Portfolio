@@ -107,8 +107,8 @@ def load_data(filename):
                 row["Revenue"] = 0
 
             evidence.append(row)
-            evidence.pop("Revenue")
-            labels.append(row["Revenue"])
+            label = evidence[0].pop("Revenue")
+            labels.append(label)
             print(evidence, labels)
             break
 
