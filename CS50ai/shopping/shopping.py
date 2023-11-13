@@ -106,9 +106,20 @@ def load_data(filename):
             else:
                 row["Revenue"] = 0
 
+            # Remove label from values and add to list of labels
             label = row.pop("Revenue")
-            evidence.append(list(row.values()))
             labels.append(label)
+
+            # Create list of values for in evidence
+            values = list(row.values())
+
+            # Convert last strings to ints
+            for i in range(len(values)):
+                print(type(values[i]))
+                if type(values[i]) == "<class 'str'>":
+                    values[i] = int(values[i])
+
+            evidence.append(values)
             print(evidence, labels)
             break
 
