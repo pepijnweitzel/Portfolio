@@ -129,8 +129,10 @@ def train_model(evidence, labels):
     # Create model based on KNeighborsClassifier with k=1
     model = KNeighborsClassifier(n_neighbors=1)
 
-    # Train the model on the given test evidence and labels
-    model.fit(evidence, labels)
+    X = evidence
+    y = labels
+
+    model.fit(X, y)
 
     # Return model
     return model
