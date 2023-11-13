@@ -63,6 +63,9 @@ def load_data(filename):
     evidence = []
     labels = []
 
+    # Floats
+    floats = ["Administrative_Duration", "Informational_Duration", "ProductRelated_Duration", "BounceRates", "ExitRates", "PageValues", "SpecialDay"]
+
     # Open given csv file
     with open(filename) as file:
         reader = csv.DictReader(file)
@@ -73,8 +76,13 @@ def load_data(filename):
             # Create list for evidence of specific user
             user_evidence = []
 
-            # Convert 
+            # Convert values required to be floats to floats
+            for key in floats:
+                row[key] = float(row[key])
 
+            # Convert month to int:
+            month = row["Month"]
+            if month == Jan
 
 def train_model(evidence, labels):
     """
