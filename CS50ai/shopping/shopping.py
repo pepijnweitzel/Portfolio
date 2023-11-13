@@ -70,7 +70,10 @@ def load_data(filename):
         # Iterate over every row in the file
         for row in reader:
 
-            # Create list for specific user
+            # Create list for evidence of specific user
+            user_evidence = []
+
+            # Convert 
 
 
 def train_model(evidence, labels):
