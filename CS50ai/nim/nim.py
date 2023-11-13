@@ -175,17 +175,39 @@ class NimAI():
         # Check epsilon value, if false, behave greedily, otherwise use epsilon-greedy algorithm
         if epsilon == False:
 
-            # Get dict of all Q-value's according to action
-            values = dict()
-            for action in actions:
-                values[action] = self.q[tuple(state), action]
-
-            # Get best action based on Q-value
-            max = max(values, key=values.get)
-
-            return max
+            return self.greedily(actions, state)
         else:
-            
+
+            # Determine whether to behave greedily or epsilon-greedily
+            options = ["greedy", "epsilon-greedy"]
+            chosen = random.choices(options, [1 - self.epsilon, self.epsilon])
+
+            # Behave according to chosen option
+            if chosen == "greedy":
+
+                return self.greedily(actions, state)
+
+            else:
+
+                # Choose random action
+                action = random.choice(actions)
+                
+                return action
+
+
+    def greedily(self, actions, state):
+
+        # Get dict of all Q-value's according to action
+        values = dict()
+        for action in actions:
+            values[action] = self.q[tuple(state), action]
+
+        # Get best action based on Q-value
+        best = max(values, key=values.get)
+
+        return best
+
+
 
 def train(n):
     """
