@@ -117,7 +117,6 @@ def load_data(filename):
 
             # Add list to evidence
             evidence.append(users_evidence)
-            print(users_evidence, label)
 
     return (evidence, labels)
 
@@ -130,10 +129,8 @@ def train_model(evidence, labels):
     # Create model based on KNeighborsClassifier with k=1
     model = KNeighborsClassifier(n_neighbors=1)
 
-    X = evidence
-    y = labels
-
-    model.fit(X, y)
+    # Train the model on the given test evidence and labels
+    model.fit(evidence, labels)
 
     # Return model
     return model
