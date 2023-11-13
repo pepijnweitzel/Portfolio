@@ -146,6 +146,8 @@ class NimAI():
 
         # Iterate over all possible actions
         for action in actions:
+
+            # Check if Q_value for state, action pair exists if so, update max_q if it's higher
             if self.q[tuple(state), action]:
                 if self.q[tuple(state), action] > max_q:
                     max_q = self.q[tuple(state), action]
