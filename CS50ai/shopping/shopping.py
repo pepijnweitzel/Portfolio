@@ -74,9 +74,6 @@ def load_data(filename):
         # Iterate over every row in the file
         for row in reader:
 
-            # Create list for evidence of specific user
-            user_evidence = []
-
             # Convert values required to be floats to floats
             for key in floats:
                 row[key] = float(row[key])
@@ -116,10 +113,10 @@ def load_data(filename):
             labels.append(label)
 
             # Create list of values for in evidence
-            values = list(row.values())
+            users_evidence = list(row.values())
 
             # Add list to evidence
-            evidence.append(values)
+            evidence.append(users_evidence)
 
     return (evidence, labels)
 
