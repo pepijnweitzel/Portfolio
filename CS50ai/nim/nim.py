@@ -102,10 +102,12 @@ class NimAI():
         If no Q-value exists yet in `self.q`, return 0.
         """
         # Check if Q-value exists, if so return its value, otherwise return 0
-        if self.q[tuple(state), action]:
-            return self.q[tuple(state), action]
-        else:
+        try:
+            self.q[tuple(state), action]
+        except KeyError:
             return 0
+        else:
+            return self.q[tuple(state), action]
 
     def update_q_value(self, state, action, old_q, reward, future_rewards):
         """
@@ -200,7 +202,10 @@ class NimAI():
         # Get dict of all Q-value's according to action
         values = dict()
         for action in actions:
-            values[action] = self.q[tuple(state), action]
+            try:
+                values[action] = self.q[tuple(state), action]
+            except KeyError:
+                values[action] = 0
 
         # Get best action based on Q-value
         best = max(values, key=values.get)
