@@ -183,7 +183,7 @@ class NimAI():
             chosen = random.choices(options, [1 - self.epsilon, self.epsilon])
 
             # Behave according to chosen option
-            if chosen == "greedy":
+            if chosen[0] == "greedy":
 
                 return self.greedily(actions, state)
 
@@ -191,7 +191,7 @@ class NimAI():
 
                 # Choose random action
                 action = random.choice(actions)
-                
+
                 return action
 
 
