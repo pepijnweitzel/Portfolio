@@ -169,7 +169,14 @@ class NimAI():
         If multiple actions have the same Q-value, any of those
         options is an acceptable return value.
         """
-        raise NotImplementedError
+        # Get all available actions in given state
+        actions = Nim.available_actions(state)
+
+        # Check epsilon value
+        if epsilon == False:
+
+            # Behave greedily
+            
 
 
 def train(n):
