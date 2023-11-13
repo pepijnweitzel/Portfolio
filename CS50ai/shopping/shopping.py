@@ -91,6 +91,22 @@ def load_data(filename):
             # Convert VisitorType to int
             if row["Visitortype"] == "Returning_Visitor":
                 row["Visitortype"] = 1
+            else:
+                row["Visitortype"] = 0
+
+            # Convert Weekend to int
+            if row["Weekend"] == "True":
+                row["Weekend"] = 1
+            else:
+                row["Weekend"] = 0
+
+            # Convert Revenue to int
+            if row["Revenue"] == "True":
+                row["Revenue"] = 1
+            else:
+                row["Revenue"] = 0
+
+            
 
 
 def train_model(evidence, labels):
