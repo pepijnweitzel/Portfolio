@@ -87,7 +87,10 @@ def load_data(filename):
                 if month == months[i]:
                     row["Month"] = i
                     break
-            
+
+            # Convert VisitorType to int
+            if row["Visitortype"] == "Returning_Visitor":
+                row["Visitortype"] = 1
 
 
 def train_model(evidence, labels):
