@@ -58,7 +58,29 @@ def load_data(data_dir):
     be a list of integer labels, representing the categories for each of the
     corresponding `images`.
     """
-    raise NotImplementedError
+    # Set variables
+    images = []
+    labels = []
+
+    # Iterate over directories in data_dir
+    for i in range(NUM_CATEGORIES):
+
+        # Iterate over every image in directory
+        for filename in os.listdir(os.path.join(data_dir, str(i))):
+
+            # Read image as numpy.ndarray
+            image = cv2.imread(os.path.join(data_dir, str(i), filename))
+
+            # Resize image to IMG_WIDTH and IMG_HEIGHT
+            resized_image = cv2.resize(image, (IMG_WIDTH, IMG_HEIGHT))
+
+            # Append numpy.ndarray to list of images
+            images.append(resized_image)
+
+            # Label is name of directory for corresponding images aka 'i', so add to labels list
+            labels.append(i)
+
+    return images, labels
 
 
 def get_model():
@@ -67,8 +89,45 @@ def get_model():
     `input_shape` of the first layer is `(IMG_WIDTH, IMG_HEIGHT, 3)`.
     The output layer should have `NUM_CATEGORIES` units, one for each category.
     """
-    raise NotImplementedError
+    # Create neural network model
+    model = tf.keras.models.Sequential([
 
+        # Add an input layer
+        tf.keras.layers.Input(shape=(IMG_WIDTH, IMG_HEIGHT, 3)),
+
+        # Convolutional layer. Learn 32 filters using a 3x3 kernel
+        tf.keras.layers.Conv2D(32, (3, 3), activation="relu"),
+
+        # Average-pooling layer, using 3x3 pool size
+        tf.keras.layers.AveragePooling2D(pool_size=(3, 3)),
+
+        # Flatten units
+        tf.keras.layers.Flatten(),
+
+        # Add a hidden layer
+        tf.keras.layers.Dense(256, activation="relu"),
+
+        # Add second hidden layer
+        tf.keras.layers.Dense(256, activation="relu"),
+
+        # Add dropout to hidden layer (dropout of 50%) to prevent overfitting
+        tf.keras.layers.Dropout(0.5),
+
+        # Add an output layer of NUM_CATERGORIES number
+        tf.keras.layers.Dense(NUM_CATEGORIES, activation="softmax")
+    ])
+
+    # Train neural network model
+    model.compile(
+        # Adam is easy default choice
+        optimizer='adam',
+        # Sparse_catergorical_crossentropy because my labels are integers
+        loss='categorical_crossentropy',
+        # Accuracy is easy default choice
+        metrics=['accuracy'
+    ])
+
+    return model
 
 if __name__ == "__main__":
     main()
