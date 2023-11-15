@@ -121,7 +121,7 @@ def get_model():
     model.compile(
         # Adam is easy default choice
         optimizer='adam',
-        # Sparse_catergorical_crossentropy because my labels are integers
+        # Categorical_crossentropy for vector usage
         loss='categorical_crossentropy',
         # Accuracy is easy default choice
         metrics=['accuracy'
