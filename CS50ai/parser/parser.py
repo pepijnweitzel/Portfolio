@@ -1,4 +1,5 @@
 import nltk
+from nltk.tokenize import word_tokenize
 import sys
 
 TERMINALS = """
@@ -63,7 +64,9 @@ def preprocess(sentence):
     character.
     """
     # Create list of every word
-    words = nltk.tokenize.word_tokenize(sentence)
+    words = word_tokenize(sentence)
+
+    print(words)
 
     return words
 
