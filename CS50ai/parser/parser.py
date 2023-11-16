@@ -62,8 +62,13 @@ def preprocess(sentence):
     and removing any word that does not contain at least one alphabetic
     character.
     """
+    nltk.download('punkt')
+
     # Create list of every word
     words = nltk.word_tokenize(sentence)
+
+    for i in range(len(words)):
+        
 
     print(words)
 
