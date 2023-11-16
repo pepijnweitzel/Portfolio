@@ -14,6 +14,8 @@ V -> "arrived" | "came" | "chuckled" | "had" | "lit" | "said" | "sat"
 V -> "smiled" | "tell" | "were"
 """
 
+#Holmes sat down and lit his pipe.
+
 NONTERMINALS = """
 S -> NP VP | NP VP VP
 
