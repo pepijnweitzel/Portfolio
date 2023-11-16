@@ -68,14 +68,12 @@ def preprocess(sentence):
     tokenizer = nltk.RegexpTokenizer(r'[a-zA-Z]+')
 
     # Create list of every word
-    words = tokenizer.tokenize(sentence)
+    tokens = tokenizer.tokenize(sentence)
 
     # Lowercase all words
+    tokens = [token.lower() for token in tokens]
 
-
-    print(words)
-
-    return words
+    return tokens
 
 
 def np_chunk(tree):
