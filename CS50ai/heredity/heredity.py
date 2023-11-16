@@ -248,10 +248,7 @@ def update(probabilities, one_gene, two_genes, have_trait, p):
 
         # Get variables
         gene = get_copies(person, one_gene, two_genes)
-        if person in have_trait:
-            trait = True
-        else:
-            trait = False
+        trait = person in have_trait
 
         # Update variables in distribution
         probabilities[person]["gene"][gene] += p
