@@ -65,7 +65,7 @@ def preprocess(sentence):
     nltk.download('punkt')
 
     # Set regular expression for tokenizer to only allow words not punctuation or numbers
-    tokenizer = nltk.RegexpTokenizer(r'[a-zA-Z]+')
+    tokenizer = nltk.RegexpTokenizer(r'\w*[a-zA-Z]+\w*')
 
     # Create list of every word
     tokens = tokenizer.tokenize(sentence)
