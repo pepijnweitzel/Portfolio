@@ -149,10 +149,7 @@ def joint_probability(people, one_gene, two_genes, have_trait):
         copies = get_copies(person, one_gene, two_genes)
 
         # Check whether person has trait or not
-        if person in have_trait:
-            has_trait = True
-        else:
-            has_trait = False
+        has_trait = person in have_trait
 
         # Check whether they have parents or not
         if people[person]["mother"] == None:
