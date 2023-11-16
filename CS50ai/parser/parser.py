@@ -14,6 +14,8 @@ V -> "arrived" | "came" | "chuckled" | "had" | "lit" | "said" | "sat"
 V -> "smiled" | "tell" | "were"
 """
 
+She never said a word until we were at the door here.
+
 NONTERMINALS = """
 S -> NP VP | NP VP VP
 
