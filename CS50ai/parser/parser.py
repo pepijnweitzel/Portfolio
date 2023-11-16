@@ -70,7 +70,6 @@ def preprocess(sentence):
         words[i] = words[i].lower()
         words[i] = words[i].strip(".")
 
-    print(words)
     return words
 
 
