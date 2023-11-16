@@ -63,12 +63,7 @@ def preprocess(sentence):
     character.
     """
     # Create list of every word
-    words = sentence.split()
-
-    # Iterate over every word
-    for i in range(len(words)):
-        words[i] = words[i].lower()
-        words[i] = words[i].strip(".")
+    words = nltk.tokenize.word_tokenize(sentence)
 
     return words
 
