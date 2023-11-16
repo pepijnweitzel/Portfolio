@@ -14,12 +14,10 @@ V -> "arrived" | "came" | "chuckled" | "had" | "lit" | "said" | "sat"
 V -> "smiled" | "tell" | "were"
 """
 
-She never said a word until we were at the door here.
-
 NONTERMINALS = """
 S -> NP VP | NP VP VP
 
-NP -> NP NP| N | Det NP | P NP | Adj NP | Conj NP
+NP -> NP NP| N | Det NP | P NP | Adj NP | Conj NP | NP Adv
 VP -> V | V NP | NP V | Adv VP
 """
 
