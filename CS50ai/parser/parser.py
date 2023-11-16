@@ -64,7 +64,7 @@ def preprocess(sentence):
     """
 
 
-    tokenizer = nltk.RegexpTokenizer(r'\w+')
+    tokenizer = nltk.RegexpTokenizer(r'[a-zA-Z]+')
 
     # Create list of every word
     words = tokenizer.tokenize(sentence)
