@@ -94,9 +94,13 @@ def np_chunk(tree):
     for subtree in tree.subtrees(filter=lambda t: t.label() == 'NP'):
 
         # Check if subtree has subtree with label NP in itself
-        for sub in subtree.subtrees():
-            
-        chunks.append(" ".join(subtree.leaves()))
+        subs_with_np = list(subtree.subtrees(filter=lambda t: t.label() == 'NP'))
+
+        if len(subs_with_np) > 1:
+            # Has other subtrees with label NP
+            continue
+        else:
+            chunks.append(" ".join(subtree.leaves()))
 
     print(chunks)
     return []
