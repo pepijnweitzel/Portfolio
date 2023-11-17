@@ -89,9 +89,16 @@ def np_chunk(tree):
     """
     # Set list for all noun phrase chunks
     chunks = []
+
+    # Iterate over all subtrees with label NP
     for subtree in tree.subtrees(filter=lambda t: t.label() == 'NP'):
-        
-        chunks.append(" ".join(subtree.leaves()))
+        print("no")
+        # Check if subtree has subtree with label NP in itself
+        if subtree.subtrees(filter=lambda t: t.label() == "NP"):
+            print("yes")
+        else:
+            print("test")
+            chunks.append(" ".join(subtree.leaves()))
 
     print(chunks)
     return []
