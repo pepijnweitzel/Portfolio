@@ -94,11 +94,9 @@ def np_chunk(tree):
     for subtree in tree.subtrees(filter=lambda t: t.label() == 'NP'):
 
         # Check if subtree has subtree with label NP in itself
-        if len(subtree) > 1:
-            print("has longer subtrees")
-        else:
-            print("test")
-            chunks.append(" ".join(subtree.leaves()))
+        for sub in subtree.subtrees():
+            
+        chunks.append(" ".join(subtree.leaves()))
 
     print(chunks)
     return []
