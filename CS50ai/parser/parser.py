@@ -87,6 +87,7 @@ def np_chunk(tree):
     noun phrases as subtrees.
     """
     print(tree)
+    print(len(tree))
     return []
 
 
