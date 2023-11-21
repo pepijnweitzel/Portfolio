@@ -1,18 +1,17 @@
 # Analysis
 
-## Layer TODO, Head TODO
+## Layer 8, Head 5
 
-TODO
-
-Example Sentences:
-- TODO
-- TODO
-
-## Layer TODO, Head TODO
-
-TODO
+The attention head mainly shows that the tokens appear to be mostly paying attention to the tokens that precede them.
 
 Example Sentences:
-- TODO
-- TODO
+- I walked towards the [MASK].
+- I [MASK] in the sea.
 
+## Layer 7, Head 10
+
+The attention head mainly shows that the tokens in a noun phrase appear to be mostly paying attention to the article of the noun phrase
+
+Example Sentences:
+- The scare [MASK] with the big glasses.
+- The cat in the [MASK] sweater.
