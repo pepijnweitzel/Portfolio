@@ -1,5 +1,6 @@
 import sys
 import tensorflow as tf
+import numpy
 
 from PIL import Image, ImageDraw, ImageFont
 from transformers import AutoTokenizer, TFBertForMaskedLM
@@ -46,8 +47,16 @@ def get_mask_token_index(mask_token_id, inputs):
     `None` if not present in the `inputs`.
     """
     # TODO: Implement this function
-    raise NotImplementedError
+    # Check if mask is present
+    if mask_token_id in inputs.input_ids[0]:
 
+        # If mask present get its index and return it (Convert TensorFlow object to a numpy array and convert it to a list to be able to use index method)
+        index = inputs.input_ids[0].numpy().tolist().index(mask_token_id)
+        return index
+    else:
+
+        # Mask is not present in text
+        return None
 
 
 def get_color_for_attention_score(attention_score):
@@ -56,8 +65,17 @@ def get_color_for_attention_score(attention_score):
     given `attention_score`. Each value should be in the range [0, 255].
     """
     # TODO: Implement this function
-    raise NotImplementedError
+    # Check if input is in range [0, 1]
+    if 0 <= attention_score <= 1:
 
+        # Calculate rgb_score
+        rgb_score = int(attention_score * 255)
+
+        # Return tuple with the rgb_scores
+        return (rgb_score, rgb_score, rgb_score)
+
+    # Attention_score was incorrect (not in range [0, 1])
+    return None
 
 
 def visualize_attentions(tokens, attentions):
@@ -71,12 +89,18 @@ def visualize_attentions(tokens, attentions):
     (starting count from 1).
     """
     # TODO: Update this function to produce diagrams for all layers and heads.
-    generate_diagram(
-        1,
-        1,
-        tokens,
-        attentions[0][0][0]
-    )
+    # Iterate over all layers
+    for i in range(len(attentions)):
+
+        # Iterate over all heads
+        for k in range(len(attentions[i][0])):
+
+            generate_diagram(
+                i + 1,
+                k + 1,
+                tokens,
+                attentions[i][0][k]
+            )
 
 
 def generate_diagram(layer_number, head_number, tokens, attention_weights):
