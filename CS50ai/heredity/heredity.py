@@ -142,11 +142,17 @@ def joint_probability(people, one_gene, two_genes, have_trait):
     """
     # Create list to store all probability values in
     p_values = []
+
     # Iterate over every person in given dictionary
     for person in people:
 
         # Check how many copies of gene person has
-        copies = get_copies(person, one_gene, two_genes)
+        if person in one_gene:
+            copies = 1
+        elif person in two_genes:
+            copies = 2
+        else:
+            copies = 0
 
         # Check whether person has trait or not
         has_trait = person in have_trait
@@ -157,81 +163,36 @@ def joint_probability(people, one_gene, two_genes, have_trait):
             p_trait = PROBS["trait"][copies][has_trait]
             p_values.append(p_copies * p_trait)
         else:
-            # Get number of copies from parents
-            mother_copies = get_copies(people[person]["mother"], one_gene, two_genes)
-            father_copies = get_copies(people[person]["father"], one_gene, two_genes)
 
-            if copies == 0:
-                # Calculate p where parents give 0 copies of gene
-                if mother_copies == 0:
-                    p_from_mother = 1 - PROBS["mutation"]
-                elif mother_copies == 1:
-                    p_from_mother = 0.50
-                else:
-                    p_from_mother = PROBS["mutation"]
-                if father_copies == 0:
-                    p_from_father = 1 - PROBS["mutation"]
-                elif father_copies == 1:
-                    p_from_father = 0.50
-                else:
-                    p_from_father = PROBS["mutation"]
-
-                p_copies = p_from_mother * p_from_father
-            elif copies == 1:
-                # Calculate p where either one of parents give 1 copie of gene
-                # First handle case where mother gives 1 copie of gene and father 0
-                if mother_copies == 0:
-                    p_from_mother = PROBS["mutation"]
-                elif mother_copies == 1:
-                    p_from_mother = 0.50
-                else:
-                    p_from_mother = 1 - PROBS["mutation"]
-                if father_copies == 0:
-                    p_from_father = 1 - PROBS["mutation"]
-                elif father_copies == 1:
-                    p_from_father = 0.50
-                else:
-                    p_from_father = PROBS["mutation"]
-
-                p_first_case = p_from_mother * p_from_father
-
-                # Handle case where father gives 1 copie of gene and mother 0
-                if mother_copies == 0:
-                    p_from_mother = 1 - PROBS["mutation"]
-                elif mother_copies == 1:
-                    p_from_mother = 0.50
-                else:
-                    p_from_mother = PROBS["mutation"]
-                if father_copies == 0:
-                    p_from_father = PROBS["mutation"]
-                elif father_copies == 1:
-                    p_from_father = 0.50
-                else:
-                    p_from_father = 1 - PROBS["mutation"]
-
-                p_second_case = p_from_mother * p_from_father
-
-                p_copies = p_first_case + p_second_case
+            # Get probability of parent given a copy to child
+            # Get p of mother
+            if people[person]["mother"] in two_genes:
+                p_from_mother = 1 - PROBS['mutation']
+            elif people[person]["mother"] in one_gene:
+                p_from_mother = 0.5
             else:
-                # Calculate p where parents both give 1 copie of gene
-                if mother_copies == 0:
-                    p_from_mother = PROBS["mutation"]
-                elif mother_copies == 1:
-                    p_from_mother = 0.50
-                else:
-                    p_from_mother = 1 - PROBS["mutation"]
-                if father_copies == 0:
-                    p_from_father = PROBS["mutation"]
-                elif father_copies == 1:
-                    p_from_father = 0.50
-                else:
-                    p_from_father = 1 - PROBS["mutation"]
+                p_from_mother = PROBS['mutation']
+            # Get p of father
+            if people[person]["father"] in two_genes:
+                p_from_father = 1 - PROBS['mutation']
+            elif people[person]["father"] in one_gene:
+                p_from_father = 0.5
+            else:
+                p_from_father = PROBS['mutation']
 
-                p_copies = p_from_mother * p_from_father
+            # Case where child gets 0 copies from parents
+            if copies == 0:
+                p_values.append((1 - p_from_mother) * (1 - p_from_father))
+            # Case where child gets 1 copy from parents
+            elif copies == 1:
+                p_values.append(((1 - p_from_mother) * p_from_father) + ((1 - p_from_father) * p_from_mother))
+            # Case where child gets 2 copies from parents
+            else:
+                p_values.append(p_from_mother * p_from_father)
 
-            # Add p of that case happening to the list
+            # Add p of that trait into list of p values
             p_trait = PROBS["trait"][copies][has_trait]
-            p_values.append(p_copies * p_trait)
+            p_values.append(p_trait)
 
     return math.prod(p_values)
 
@@ -247,7 +208,12 @@ def update(probabilities, one_gene, two_genes, have_trait, p):
     for person in probabilities:
 
         # Get variables
-        gene = get_copies(person, one_gene, two_genes)
+        if person in one_gene:
+            gene = 1
+        elif person in two_genes:
+            gene = 2
+        else:
+            gene = 0
         trait = person in have_trait
 
         # Update variables in distribution
@@ -278,20 +244,6 @@ def normalize(probabilities):
         # Update probabilities
         for value in [True, False]:
             probabilities[person]["trait"][value] *= multiplier
-
-
-def get_copies(person, one_gene, two_genes):
-    """
-    Return number of copies of the gene the given person has
-    """
-    if person in one_gene:
-        copies = 1
-    elif person in two_genes:
-        copies = 2
-    else:
-        copies = 0
-
-    return copies
 
 
 if __name__ == "__main__":
