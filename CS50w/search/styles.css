@@ -37,3 +37,7 @@ form {
 .adv {
     width: 700px;
 }
+
+#advbut {
+    text-align: right;
+}
