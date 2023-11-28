@@ -1,0 +1,31 @@
+h1 {
+    text-align: Center;
+    margin-top: 250px;
+    font-size: 50px
+}
+
+form {
+    text-align: center;
+    margin-top: 50px;
+}
+
+#inputs {
+    border-radius: 25px;
+    border: 2px solid #000000;
+    height: 50px;
+    width: 400px;
+}
+#submitter {
+    margin-top: 30px;
+}
+
+.button {
+    background-color: #e7e7e7;
+    color: black;
+    border: none;
+    padding: 15px 32px;
+}
+
+.navi {
+    text-align: right;
+}
