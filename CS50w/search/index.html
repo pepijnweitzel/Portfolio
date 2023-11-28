@@ -4,9 +4,15 @@
         <title>Search</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <style>
+            h1 {
+                text-align: Center;
+                margin-top: 250px;
+                font-size: 100px
+            }
+
             form {
                 text-align: center;
-                margin-top: 400px;
+                margin-top: 50px;
             }
 
             #inputs {
@@ -16,17 +22,24 @@
                 width: 400px;
             }
             #submitter {
-                margin-top: 50px;
+                margin-top: 30px;
             }
 
             button {
                 background-color: #e7e7e7;
                 color: black;
+                border: none;
+                padding: 15px 32px;
             }
 
         </style>
     </head>
     <body>
+        <div>
+            <h1>
+                Google Search
+            </h1>
+        </div>
         <form action="https://google.com/search">
             <div>
                 <input id="inputs" type="text" name="q">
