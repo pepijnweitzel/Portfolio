@@ -32,7 +32,8 @@ def index(request):
 
     # Return the home page
     return render(request, "encyclopedia/index.html", {
-        "entries": entries
+        "entries": entries,
+        "form": NewSearchForm()
     })
 
 
@@ -47,6 +48,7 @@ def entry(request, title):
         entry_content = error_message
     return render(request, "encyclopedia/entry.html", {
         "title" : title,
-        "entry" : entry_content
+        "entry" : entry_content,
+        "form": NewSearchForm()
     })
 
