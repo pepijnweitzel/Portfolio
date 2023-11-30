@@ -15,17 +15,17 @@ def index(request):
     if request.method == "POST":
 
         # Get the search submitted by the user
-        search = request.POST["q"]
+        search_req = request.POST["q"]
 
         # Check if search is in the list of entries, if so redirect to given search
-        if search in entries:
+        if search_req in entries:
 
             # Redirect users
-            return HttpResponseRedirect(reverse(entry, args=[search]))
+            return HttpResponseRedirect(reverse(entry, args=[search_req]))
         else:
 
             # Redirect user to search page
-            return HttpResponseRedirect(reverse("search"))
+            return HttpResponseRedirect(reverse(search, args=[search_req]))
 
 
     # Return the home page
@@ -49,5 +49,9 @@ def entry(request, title):
     })
 
 
-def search(request):
-    return render(request, "encyclopedia/search.html")
+def search(request, input):
+
+
+    return render(request, "encyclopedia/search.html", {
+        "input" : input,
+    })
