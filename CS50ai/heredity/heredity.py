@@ -141,7 +141,7 @@ def joint_probability(people, one_gene, two_genes, have_trait):
         * everyone not in set` have_trait` does not have the trait.
     """
     # Create list to store all probability values in
-    p_values = []
+    joint_prob = 1
 
     # Iterate over every person in given dictionary
     for person in people:
@@ -161,7 +161,7 @@ def joint_probability(people, one_gene, two_genes, have_trait):
         if people[person]["mother"] == None:
             p_copies = PROBS["gene"][copies]
             p_trait = PROBS["trait"][copies][has_trait]
-            p_values.append(p_copies * p_trait)
+            joint_prob *= (p_copies * p_trait)
         else:
 
             # Get probability of parent given a copy to child
@@ -182,19 +182,19 @@ def joint_probability(people, one_gene, two_genes, have_trait):
 
             # Case where child gets 0 copies from parents
             if copies == 0:
-                p_values.append((1 - p_from_mother) * (1 - p_from_father))
+                joint_prob *= (1 - p_from_mother) * (1 - p_from_father)
             # Case where child gets 1 copy from parents
             elif copies == 1:
-                p_values.append(((1 - p_from_mother) * p_from_father) + ((1 - p_from_father) * p_from_mother))
+                joint_prob *= ((1 - p_from_mother) * p_from_father) + ((1 - p_from_father) * p_from_mother)
             # Case where child gets 2 copies from parents
             else:
-                p_values.append(p_from_mother * p_from_father)
+                joint_prob *= p_from_mother * p_from_father
 
             # Add p of that trait into list of p values
             p_trait = PROBS["trait"][copies][has_trait]
-            p_values.append(p_trait)
+            joint_prob *= (p_trait)
 
-    return math.prod(p_values)
+    return joint_prob
 
 
 def update(probabilities, one_gene, two_genes, have_trait, p):
