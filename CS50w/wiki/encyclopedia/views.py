@@ -5,11 +5,13 @@ from . import util
 # Get list of all names of wiki pages
 entries = util.list_entries()
 
+
 def index(request):
     # Return the homo page
     return render(request, "encyclopedia/index.html", {
         "entries": entries
     })
+
 
 def entry(request, title):
 
@@ -24,3 +26,6 @@ def entry(request, title):
         "title" : title,
         "entry" : entry_content
     })
+
+def search(request):
+    
