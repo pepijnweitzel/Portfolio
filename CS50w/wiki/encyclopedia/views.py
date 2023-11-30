@@ -3,8 +3,9 @@ from django import forms
 
 from . import util
 
+# Create class for search results
 class NewTaskForm(forms.Form):
-    task = forms.CharField(label="New Task")
+    search_req = forms.CharField()
 
 # Get list of all names of wiki pages
 entries = util.list_entries()
@@ -15,7 +16,7 @@ def index(request):
     # Check if user submitted a search request
     if request.method == "POST":
 
-        search = form.cleaned_data["q"]
+        search = search_req.cleaned_data["q"]
         print(search)
 
     # Return the home page
