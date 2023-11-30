@@ -5,10 +5,6 @@ from django.http import HttpResponseRedirect
 
 from . import util
 
-# Create class for search results
-class NewSearchForm(forms.Form):
-    search_req = forms.CharField()
-
 # Get list of all names of wiki pages
 entries = util.list_entries()
 
@@ -18,18 +14,7 @@ def index(request):
     # Check if user submitted a search request
     if request.method == "POST":
 
-        # Take in the data the user submitted and save it as form
-        form = NewSearchForm(request.POST)
-        print(form)
-
-        # Check if form data is valid (server-side)
-        if form.is_valid():
-
-            # Isolate the search from the 'cleaned' version of form data
-            search = form.cleaned_data["q"]
-            print(search)
-        else:
-            print("noooo")
+        print(request.post)
 
     # Return the home page
     return render(request, "encyclopedia/index.html", {
