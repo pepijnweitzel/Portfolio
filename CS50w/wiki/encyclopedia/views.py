@@ -7,7 +7,10 @@ entries = util.list_entries()
 
 
 def index(request):
-    # Return the homo page
+
+    if request.method == "POST":
+        
+    # Return the home page
     return render(request, "encyclopedia/index.html", {
         "entries": entries
     })
@@ -27,5 +30,3 @@ def entry(request, title):
         "entry" : entry_content
     })
 
-def search(request):
-    
