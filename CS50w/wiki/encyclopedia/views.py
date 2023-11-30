@@ -21,7 +21,7 @@ def index(request):
         if search in entries:
 
             # Redirect users
-            return HttpResponseRedirect(reverse(search))
+            return HttpResponseRedirect(reverse(entry, args=[search]))
         else:
 
             # Redirect user to search page
@@ -48,3 +48,6 @@ def entry(request, title):
         "entry" : entry_content,
     })
 
+
+def search(request):
+    return render(request, "encyclopedia/search.html")
