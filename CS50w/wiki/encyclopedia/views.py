@@ -8,7 +8,9 @@ def index(request):
         "entries": util.list_entries()
     })
 
-for entry in util.list_entries():
-    entrypage = f"{entry}page"
-    def entrypage(request):
-        return render(request, f"encyclopedia/{entry}")
+def entry(request, title):
+    entry_content = util.get_entry(title):
+    return render(request, "encyclopedia/entry.html", {
+        "title" : title,
+        "entry" : entry_content
+    })
