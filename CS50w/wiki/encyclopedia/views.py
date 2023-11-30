@@ -2,14 +2,24 @@ from django.shortcuts import render
 
 from . import util
 
+# Get list of all names of wiki pages
+entries = util.list_entries()
 
 def index(request):
+    # Return the homo page
     return render(request, "encyclopedia/index.html", {
-        "entries": util.list_entries()
+        "entries": entries
     })
 
 def entry(request, title):
-    entry_content = util.get_entry(title)
+
+    # Check if page exists
+    if title in entries:
+        entry_content = util.get_entry(title)
+    else:
+        # Make error message and sent it as input
+        error_message = "Sorry, page does not exist yet"
+        entry_content = error_message
     return render(request, "encyclopedia/entry.html", {
         "title" : title,
         "entry" : entry_content
