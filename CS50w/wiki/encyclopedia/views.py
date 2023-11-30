@@ -8,3 +8,6 @@ def index(request):
         "entries": util.list_entries()
     })
 
+for entry in util.list_entries():
+    def entry(request):
+        
