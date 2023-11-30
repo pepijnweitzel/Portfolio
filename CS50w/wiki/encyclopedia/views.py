@@ -9,6 +9,7 @@ entries = util.list_entries()
 
 def index(request):
 
+    # Check if user submitted a search request
     if request.method == "POST":
         print(request.POST)
 
