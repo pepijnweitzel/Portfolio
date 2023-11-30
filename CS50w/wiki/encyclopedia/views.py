@@ -27,6 +27,8 @@ def index(request):
             # Isolate the search from the 'cleaned' version of form data
             search = form.cleaned_data["q"]
             print(search)
+        else:
+            print("noooo")
 
     # Return the home page
     return render(request, "encyclopedia/index.html", {
