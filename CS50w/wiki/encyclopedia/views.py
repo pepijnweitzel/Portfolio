@@ -4,7 +4,7 @@ from django import forms
 from . import util
 
 class SearchResults(forms.Form):
-    
+    task = forms.CharField()
 
 # Get list of all names of wiki pages
 entries = util.list_entries()
