@@ -3,6 +3,9 @@ from django import forms
 
 from . import util
 
+class NewTaskForm(forms.Form):
+    task = forms.CharField(label="New Task")
+
 # Get list of all names of wiki pages
 entries = util.list_entries()
 
@@ -11,7 +14,9 @@ def index(request):
 
     # Check if user submitted a search request
     if request.method == "POST":
-        print(request.POST)
+
+        search = form.cleaned_data["q"]
+        print(search)
 
     # Return the home page
     return render(request, "encyclopedia/index.html", {
