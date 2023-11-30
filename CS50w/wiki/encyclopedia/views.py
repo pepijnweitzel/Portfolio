@@ -41,7 +41,7 @@ def entry(request, title):
         entry_content = util.get_entry(title)
     else:
         # Make error message and sent it as input
-        error_message = "Sorry, page does not exist yet"
+        error_message = "Sorry, page does not exist"
         entry_content = error_message
     return render(request, "encyclopedia/entry.html", {
         "title" : title,
