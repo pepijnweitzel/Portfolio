@@ -20,6 +20,7 @@ def index(request):
 
         # Take in the data the user submitted and save it as form
         form = NewSearchForm(request.POST)
+        print(form)
 
         # Check if form data is valid (server-side)
         if form.is_valid():
