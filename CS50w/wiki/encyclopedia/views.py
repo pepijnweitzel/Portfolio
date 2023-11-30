@@ -3,9 +3,6 @@ from django import forms
 
 from . import util
 
-class SearchResults(forms.Form):
-    task = forms.CharField()
-
 # Get list of all names of wiki pages
 entries = util.list_entries()
 
@@ -13,6 +10,7 @@ entries = util.list_entries()
 def index(request):
 
     if request.method == "POST":
+        print(request.POST)
 
     # Return the home page
     return render(request, "encyclopedia/index.html", {
