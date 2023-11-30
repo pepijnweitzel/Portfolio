@@ -8,6 +8,7 @@ from . import util
 # Get list of all names of wiki pages
 entries = util.list_entries()
 
+search_reqeust = None
 
 def index(request):
 
@@ -16,6 +17,8 @@ def index(request):
 
         # Get the search submitted by the user
         search_req = request.POST["q"]
+        global search_request
+        print(search_request)
 
         # Check if search is in the list of entries, if so redirect to given search
         if search_req in entries:
@@ -25,7 +28,7 @@ def index(request):
         else:
 
             # Redirect user to search page
-            return HttpResponseRedirect(reverse(search, args=[search_req]))
+            return HttpResponseRedirect(reverse(search))
 
 
     # Return the home page
@@ -49,9 +52,7 @@ def entry(request, title):
     })
 
 
-def search(request, input):
+def search(request):
 
 
-    return render(request, "encyclopedia/search.html", {
-        "input" : input,
-    })
+    return render(request, "encyclopedia/search.html")
