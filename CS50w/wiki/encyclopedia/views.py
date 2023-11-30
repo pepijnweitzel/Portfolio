@@ -1,10 +1,12 @@
 from django.shortcuts import render
 from django import forms
+from django.urls import reverse
+from django.http import HttpResponseRedirect
 
 from . import util
 
 # Create class for search results
-class NewTaskForm(forms.Form):
+class NewSearchForm(forms.Form):
     search_req = forms.CharField()
 
 # Get list of all names of wiki pages
@@ -16,8 +18,15 @@ def index(request):
     # Check if user submitted a search request
     if request.method == "POST":
 
-        search = search_req.cleaned_data["q"]
-        print(search)
+        # Take in the data the user submitted and save it as form
+        form = NewSearchForm(request.POST)
+
+        # Check if form data is valid (server-side)
+        if form.is_valid():
+
+            # Isolate the search from the 'cleaned' version of form data
+            search = form.cleaned_data["q"]
+            print(search)
 
     # Return the home page
     return render(request, "encyclopedia/index.html", {
