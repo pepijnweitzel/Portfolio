@@ -25,7 +25,7 @@ def index(request):
         else:
 
             # Redirect user to search page
-            return HttpResponseRedirect(reverse(search, args=[search_req]))
+            return HttpResponseRedirect(reverse("search", args=[search_req]))
 
 
     # Return the home page
