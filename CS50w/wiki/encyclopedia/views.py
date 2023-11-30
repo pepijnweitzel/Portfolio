@@ -21,7 +21,11 @@ def index(request):
         if search in entries:
 
             # Redirect users
-            return HttpResponseRedirect(reverse(f"{search}"))
+            return HttpResponseRedirect(reverse(search))
+        else:
+
+            # Redirect user to search page
+            return HttpResponseRedirect(reverse("search"))
 
 
     # Return the home page
