@@ -95,7 +95,8 @@ def new(request):
                 })
             # If page does not already exist
             else:
-                
+                page_content = request.POST["page_content"]
+                print(page_content)
 
 
     return render(request, "encyclopedia/new.html", {
