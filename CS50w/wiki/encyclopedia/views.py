@@ -53,7 +53,7 @@ def search(request, input):
 
     possible_entries = []
 
-    if 
+    for 
     return render(request, "encyclopedia/search.html", {
         "input" : input
     })
