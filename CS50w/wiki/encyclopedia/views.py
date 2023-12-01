@@ -75,7 +75,19 @@ def search(request, input):
 def new(request):
 
     if request.method == "POST":
-        pass
+
+        # Take in the data the user submitted and save it as form
+        form = NewPageForm(request.POST)
+
+        # Check if form data is valid (server-side)
+        if form.is_valid():
+
+            # Isolate the task from the 'cleaned' version of form data
+            page_title = form.cleaned_data["page_title"]
+
+            if page_title in entries:
+                ...
+
 
     return render(request, "encyclopedia/new.html", {
         "title_form": NewPageForm(),
