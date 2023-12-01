@@ -51,7 +51,7 @@ def entry(request, title):
 
 def search(request, input):
 
-
+    
     return render(request, "encyclopedia/search.html", {
         "input" : input
     })
