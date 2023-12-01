@@ -89,8 +89,8 @@ def new(request):
             if page_title in entries:
 
                 # If the form is invalid, re-render the page with existing information.
-                return render(request, "tasks/add.html", {
-                    "form": form
+                return render(request, "encyclopedia/new.html", {
+                    "title_form": form
                 })
 
 
