@@ -104,6 +104,7 @@ def new(request):
                 # Redirect user to new page
                 return HttpResponseRedirect(reverse(entry, args=[page_title]))
 
+    print(entries)
 
     return render(request, "encyclopedia/new.html", {
         "title_form": NewPageForm(),
