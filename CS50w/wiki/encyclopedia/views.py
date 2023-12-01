@@ -58,7 +58,7 @@ def search(request, input):
     for title in entries:
 
         # Check if it is substring
-        if input in title:
+        if input.lower() in title.lower():
 
             # Add title to the list of entries
             possible_entries.append(title)
