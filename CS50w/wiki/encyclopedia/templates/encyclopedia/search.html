@@ -8,9 +8,13 @@
     <h1>These are your search results:</h1>
     <h2>search results:</h2>
     <ul>
-        {% for title in titles %}
-        <li><a href="{% url 'entry' title %}">{{ title }}</a></li>
-        {% endfor %}
+        {% if title %}
+            {% for title in titles %}
+            <li><a href="{% url 'entry' title %}">{{ title }}</a></li>
+            {% endfor %}
+        {% else %}
+            <li>Sorry, no such page</li>
+        {% endif %}
     </ul>
 
 {% endblock %}
