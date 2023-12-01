@@ -3,6 +3,8 @@ from django import forms
 from django.urls import reverse
 from django.http import HttpResponseRedirect
 
+import random
+
 from . import util
 
 # Create class for form
