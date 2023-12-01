@@ -31,7 +31,6 @@ def index(request):
             # Redirect user to search page
             return HttpResponseRedirect(reverse("search", args=[search_req]))
 
-
     # Return the home page
     return render(request, "encyclopedia/index.html", {
         "entries": entries,
@@ -104,7 +103,6 @@ def new(request):
                 # Redirect user to new page
                 return HttpResponseRedirect(reverse(entry, args=[page_title]))
 
-    print(entries)
 
     return render(request, "encyclopedia/new.html", {
         "title_form": NewPageForm(),
