@@ -9,7 +9,7 @@
     <form action="{% url 'new' %}" method="post">
         {% csrf_token %}
         {{ form }}
-        <input type="submit">
+        <input type="submit" value="Create Page">
     </form>
 
 {% endblock %}
