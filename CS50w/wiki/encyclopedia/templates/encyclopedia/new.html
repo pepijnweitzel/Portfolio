@@ -9,9 +9,8 @@
     <form action="{% url 'new' %}" method="post">
         {% csrf_token %}
         {{ title_form }}
-        <input type="submit" value="Create Page">
+        <input style="margin-left: 428px" type="submit" value="Create Page">
+        <br>
+        <textarea placeholder="Page context" style="height: 600px; width: 800px;" rows="4" cols="50"></textarea>
     </form>
-    <textarea placeholder="test" rows="4" cols="50">
-        Page context
-    </textarea>
 {% endblock %}
