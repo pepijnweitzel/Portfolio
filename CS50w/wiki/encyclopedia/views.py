@@ -85,8 +85,13 @@ def new(request):
             # Isolate the task from the 'cleaned' version of form data
             page_title = form.cleaned_data["page_title"]
 
+            # Check if page already exists
             if page_title in entries:
-                ...
+
+                # If the form is invalid, re-render the page with existing information.
+                return render(request, "tasks/add.html", {
+                    "form": form
+                })
 
 
     return render(request, "encyclopedia/new.html", {
