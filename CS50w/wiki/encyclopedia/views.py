@@ -8,6 +8,10 @@ from . import util
 # Get list of all names of wiki pages
 entries = util.list_entries()
 
+# Create class for form
+class NewPageForm(forms.Form):
+    page_title = forms.CharField(label="New Page Title")
+    page_context = forms.CharField(label="New Page Context")
 
 def index(request):
 
