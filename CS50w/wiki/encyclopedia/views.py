@@ -95,8 +95,14 @@ def new(request):
                 })
             # If page does not already exist
             else:
-                #page_content = request.POST["page_content"]
-                print(request.POST)
+                # Retrieve content for page
+                page_content = request.POST["page_content"]
+
+                # Save the page
+                util.save_entry(page_title, page_content)
+
+                # Redirect user to new page
+                return HttpResponseRedirect(reverse(entry, args=[page_title]))
 
 
     return render(request, "encyclopedia/new.html", {
