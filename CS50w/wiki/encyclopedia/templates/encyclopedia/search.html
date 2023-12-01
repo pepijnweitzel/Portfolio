@@ -6,8 +6,11 @@
 
 {% block body %}
     <h1>These are your search results:</h1>
-
-    <p>search results</p>
-    <p>input: {{ input }}</p>
+    <h2>search results:</h2>
+    <ul>
+        {% for title in titles %}
+        <li><a href="{% url 'entry' title %}">{{ title }}</a></li>
+        {% endfor %}
+    </ul>
 
 {% endblock %}
