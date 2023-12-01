@@ -1,7 +1,6 @@
 import csv
 import itertools
 import sys
-import math
 
 PROBS = {
 
