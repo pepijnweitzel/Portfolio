@@ -93,6 +93,9 @@ def new(request):
                     "title_form": form,
                     "placeholder" : "Page already exists"
                 })
+            # If page does not already exist
+            else:
+                
 
 
     return render(request, "encyclopedia/new.html", {
