@@ -18,7 +18,7 @@ def index(request):
     entries = util.list_entries()
 
     # Pick a random page
-    random_page = random.choice(entries)
+    random_page = [random.choice(entries)]
 
     # Check if user submitted a search request
     if request.method == "POST":
@@ -49,7 +49,7 @@ def entry(request, title):
     entries = util.list_entries()
 
     # Pick a random page
-    random_page = random.choice(entries)
+    random_page = [random.choice(entries)]
 
     # Check if page exists
     if title in entries:
@@ -74,7 +74,7 @@ def search(request, input):
     entries = util.list_entries()
 
     # Pick a random page
-    random_page = random.choice(entries)
+    random_page = [random.choice(entries)]
 
     # Iterate over all entries to check if it is substring of
     for title in entries:
@@ -97,7 +97,7 @@ def new(request):
     entries = util.list_entries()
 
     # Pick a random page
-    random_page = random.choice(entries)
+    random_page = [random.choice(entries)]
 
     if request.method == "POST":
 

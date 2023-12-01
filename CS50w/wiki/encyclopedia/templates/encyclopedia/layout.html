@@ -23,7 +23,9 @@
                     <a href="{% url 'new' %}">Create New Page</a>
                 </div>
                 <div>
-                    <a href="{% url '{{ random }}' %}"
+                    {% for title in random %}
+                        <a href="{% url 'entry' title %}">Random Page</a>
+                    {% endfor %}
                 </div>
                 {% block nav %}
                 {% endblock %}
