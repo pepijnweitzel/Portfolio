@@ -51,9 +51,15 @@ def entry(request, title):
 
 def search(request, input):
 
+    # Create list to put search results in
     possible_entries = []
 
-    for 
+    # Iterate over all entries to check if it is substring of
+    for title in entries:
+
+        if input in title:
+            
+
     return render(request, "encyclopedia/search.html", {
         "input" : input
     })
