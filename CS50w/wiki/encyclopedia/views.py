@@ -17,6 +17,9 @@ def index(request):
     # Get entries
     entries = util.list_entries()
 
+    # Pick a random page
+    random_page = random.choice(entries)
+
     # Check if user submitted a search request
     if request.method == "POST":
 
@@ -35,7 +38,8 @@ def index(request):
 
     # Return the home page
     return render(request, "encyclopedia/index.html", {
-        "entries": entries,
+        "entries" : entries,
+        "random" : random_page
     })
 
 
@@ -43,6 +47,9 @@ def entry(request, title):
 
     # Get entries
     entries = util.list_entries()
+
+    # Pick a random page
+    random_page = random.choice(entries)
 
     # Check if page exists
     if title in entries:
@@ -54,6 +61,7 @@ def entry(request, title):
     return render(request, "encyclopedia/entry.html", {
         "title" : title,
         "entry" : entry_content,
+        "random" : random_page
     })
 
 
@@ -65,6 +73,9 @@ def search(request, input):
     # Get entries
     entries = util.list_entries()
 
+    # Pick a random page
+    random_page = random.choice(entries)
+
     # Iterate over all entries to check if it is substring of
     for title in entries:
 
@@ -75,7 +86,8 @@ def search(request, input):
             possible_entries.append(title)
 
     return render(request, "encyclopedia/search.html", {
-        "titles" : possible_entries
+        "titles" : possible_entries,
+        "random" : random_page
     })
 
 
@@ -83,6 +95,9 @@ def new(request):
 
     # Get entries
     entries = util.list_entries()
+
+    # Pick a random page
+    random_page = random.choice(entries)
 
     if request.method == "POST":
 
@@ -101,7 +116,8 @@ def new(request):
                 # If the form is invalid, re-render the page with existing information.
                 return render(request, "encyclopedia/new.html", {
                     "title_form": form,
-                    "placeholder" : "Page already exists"
+                    "placeholder" : "Page already exists",
+                    "random" : random_page,
                 })
             # If page does not already exist
             else:
@@ -117,5 +133,6 @@ def new(request):
 
     return render(request, "encyclopedia/new.html", {
         "title_form": NewPageForm(),
-        "placeholder": "Page context"
+        "placeholder": "Page context",
+        "random" : random_page,
     })
