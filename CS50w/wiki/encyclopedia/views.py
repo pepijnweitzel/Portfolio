@@ -6,7 +6,6 @@ from django.http import HttpResponseRedirect
 from . import util
 
 # Get list of all names of wiki pages
-global entries
 entries = util.list_entries()
 
 # Create class for form
