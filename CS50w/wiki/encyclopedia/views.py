@@ -101,6 +101,7 @@ def new(request):
                 util.save_entry(page_title, page_content)
 
                 # Update entries
+                global entries
                 entries = util.list_entries
 
                 # Redirect user to new page
