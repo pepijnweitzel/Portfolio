@@ -90,10 +90,12 @@ def new(request):
 
                 # If the form is invalid, re-render the page with existing information.
                 return render(request, "encyclopedia/new.html", {
-                    "title_form": form
+                    "title_form": form,
+                    "placeholder" : "Page already exists"
                 })
 
 
     return render(request, "encyclopedia/new.html", {
         "title_form": NewPageForm(),
+        "placeholder": "Page context"
     })
