@@ -6,6 +6,7 @@ from django.http import HttpResponseRedirect
 from . import util
 
 # Get list of all names of wiki pages
+global entries
 entries = util.list_entries()
 
 # Create class for form
@@ -101,7 +102,6 @@ def new(request):
                 util.save_entry(page_title, page_content)
 
                 # Update entries
-                global entries
                 entries = util.list_entries
 
                 # Redirect user to new page
