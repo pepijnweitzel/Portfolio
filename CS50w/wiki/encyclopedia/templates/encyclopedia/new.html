@@ -10,7 +10,9 @@
         {% csrf_token %}
         {{ title_form }}
         <br>
-        {{ context_form }}
+        <textarea name="context" rows="4" cols="50">
+            Page context
+        </textarea>
         <br>
         <input type="submit" value="Create Page">
     </form>
