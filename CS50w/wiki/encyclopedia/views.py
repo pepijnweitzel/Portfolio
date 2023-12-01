@@ -11,6 +11,8 @@ entries = util.list_entries()
 # Create class for form
 class NewPageForm(forms.Form):
     page_title = forms.CharField(label="New Page Title", initial='Page title')
+
+class NewContextForm(forms.Form):
     page_context = forms.CharField(label="New Page Context", initial='Page context')
 
 
@@ -76,5 +78,6 @@ def search(request, input):
 def new(request):
 
     return render(request, "encyclopedia/new.html", {
-        "form": NewPageForm()
+        "title_form": NewPageForm(),
+        "context_form" : NewContextForm()
     })
