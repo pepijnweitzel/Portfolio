@@ -104,7 +104,7 @@ def new(request):
             # If page does not already exist
             else:
                 # Retrieve content for page
-                page_content = request.POST["page_content"]
+                page_content = f"# {page_title.capitalize()}\n\n{request.POST["page_content"]}\n"
 
                 # Save the page
                 util.save_entry(page_title, page_content)
