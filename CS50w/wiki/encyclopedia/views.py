@@ -74,6 +74,9 @@ def search(request, input):
 
 def new(request):
 
+    if request.method == "POST":
+        pass
+
     return render(request, "encyclopedia/new.html", {
         "title_form": NewPageForm(),
     })
