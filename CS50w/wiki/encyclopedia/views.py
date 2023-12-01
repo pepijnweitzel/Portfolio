@@ -100,6 +100,9 @@ def new(request):
                 # Save the page
                 util.save_entry(page_title, page_content)
 
+                # Update entries
+                entries = util.list_entries
+
                 # Redirect user to new page
                 return HttpResponseRedirect(reverse(entry, args=[page_title]))
 
