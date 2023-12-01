@@ -66,3 +66,8 @@ def search(request, input):
     return render(request, "encyclopedia/search.html", {
         "titles" : possible_entries
     })
+
+
+def new(request):
+
+    return render(request, "encyclopedia/new.html")
