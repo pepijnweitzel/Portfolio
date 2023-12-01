@@ -51,7 +51,9 @@ def entry(request, title):
 
 def search(request, input):
 
-    
+    possible_entries = []
+
+    if 
     return render(request, "encyclopedia/search.html", {
         "input" : input
     })
