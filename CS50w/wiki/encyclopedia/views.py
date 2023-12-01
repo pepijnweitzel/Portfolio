@@ -5,15 +5,15 @@ from django.http import HttpResponseRedirect
 
 from . import util
 
-# Get list of all names of wiki pages
-entries = util.list_entries()
-
 # Create class for form
 class NewPageForm(forms.Form):
     page_title = forms.CharField(label="Page Title", )
 
 
 def index(request):
+
+    # Get entries
+    entries = util.list_entries()
 
     # Check if user submitted a search request
     if request.method == "POST":
@@ -39,6 +39,9 @@ def index(request):
 
 def entry(request, title):
 
+    # Get entries
+    entries = util.list_entries()
+
     # Check if page exists
     if title in entries:
         entry_content = util.get_entry(title)
@@ -57,6 +60,9 @@ def search(request, input):
     # Create list to put search results in
     possible_entries = []
 
+    # Get entries
+    entries = util.list_entries()
+
     # Iterate over all entries to check if it is substring of
     for title in entries:
 
@@ -72,6 +78,9 @@ def search(request, input):
 
 
 def new(request):
+
+    # Get entries
+    entries = util.list_entries()
 
     if request.method == "POST":
 
@@ -99,9 +108,6 @@ def new(request):
 
                 # Save the page
                 util.save_entry(page_title, page_content)
-
-                # Update entries
-                entries = util.list_entries()
 
                 # Redirect user to new page
                 return HttpResponseRedirect(reverse(entry, args=[page_title]))
