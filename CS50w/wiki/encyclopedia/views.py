@@ -144,6 +144,10 @@ def edit(request, title):
     # Get context through util function
     context = util.get_entry(title)
 
+    # Remove prefix of the context
+    characters = len(title) + 3
+    context = context[characters:]
+
     return render(request, "encyclopedia/edit.html", {
         "title" : title,
         "context" : context
