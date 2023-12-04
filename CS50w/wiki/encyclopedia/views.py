@@ -60,6 +60,7 @@ def entry(request, title):
         entry_content = error_message
     return render(request, "encyclopedia/entry.html", {
         "title" : title,
+        "titles" : [title],
         "entry" : entry_content,
         "random" : random_page
     })

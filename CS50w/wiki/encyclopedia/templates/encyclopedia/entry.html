@@ -8,10 +8,11 @@
     <h1>This is wiki page for {{ title }}</h1>
 
     <p>{{ entry }}</p>
-
-    <form action="{% url 'edit' %}" method="post">
-        {% csrf_token %}
-        <input type="submit" value="Edit Page">
-    </form>
+    {% for title in titles %}
+        <form action="{% url 'edit' title %}" method="post">
+            {% csrf_token %}
+            <input type="submit" value="Edit Page">
+        </form>
+    {% endfor %}
 
 {% endblock %}
