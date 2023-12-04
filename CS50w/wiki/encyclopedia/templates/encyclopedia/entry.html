@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block body %}
-    {{ entry }}
+    {{ entry |safe}}
     {% for title in titles %}
         <form action="{% url 'edit' title %}" method="post">
             {% csrf_token %}
