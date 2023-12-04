@@ -142,16 +142,27 @@ def new(request):
 def edit(request, title):
 
     if request.method == "POST":
-        pass
+
+        # Get input submitted by user
+        new_content = request.POST["page_content"]
+
+        # Add prefix
+        new_content = f"# {title}\n\n{new_content}"
+
+        # Update entry
+        util.save_entry(title, new_content)
+
+        # Redirect user to entry page
+        return HttpResponseRedirect(reverse(entry, args=[title]))
 
     # Get context through util function
-    context = util.get_entry(title)
+    content = util.get_entry(title)
 
     # Remove prefix (and suffix if any) of the context
     characters = len(title) + 2
-    context = context[characters:].strip()
+    content = content[characters:].strip()
 
     return render(request, "encyclopedia/edit.html", {
         "title" : title,
-        "context" : context
+        "content" : content
     })
