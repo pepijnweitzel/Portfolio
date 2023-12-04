@@ -45,11 +45,7 @@ def index(request):
 
 def entry(request, title):
 
-    # Get entries
     entries = util.list_entries()
-
-    # Pick a random page
-    random_page = [random.choice(entries)]
 
     # Check if page exists
     if title in entries:
@@ -62,7 +58,6 @@ def entry(request, title):
         "title" : title,
         "titles" : [title],
         "entry" : entry_content,
-        "random" : random_page
     })
 
 
@@ -94,11 +89,7 @@ def search(request, input):
 
 def new(request):
 
-    # Get entries
     entries = util.list_entries()
-
-    # Pick a random page
-    random_page = [random.choice(entries)]
 
     if request.method == "POST":
 
@@ -118,7 +109,6 @@ def new(request):
                 return render(request, "encyclopedia/new.html", {
                     "title_form": form,
                     "placeholder" : "Page already exists",
-                    "random" : random_page,
                 })
             # If page does not already exist
             else:
@@ -135,17 +125,10 @@ def new(request):
     return render(request, "encyclopedia/new.html", {
         "title_form": NewPageForm(),
         "placeholder": "Page context",
-        "random" : random_page,
     })
 
 
 def edit(request, title):
-
-    # Get entries
-    entries = util.list_entries()
-
-    # Pick a random page
-    random_page = [random.choice(entries)]
 
     if request.method == "POST":
 
@@ -172,5 +155,4 @@ def edit(request, title):
     return render(request, "encyclopedia/edit.html", {
         "title" : title,
         "content" : content,
-        "random" : random_page,
     })
