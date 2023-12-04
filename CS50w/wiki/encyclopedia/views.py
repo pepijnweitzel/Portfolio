@@ -152,12 +152,12 @@ def edit(request, title):
 
         # Get input submitted by user
         new_content = f"# {title.capitalize()}\n\n{request.POST["edit"]}\n"
-        print(new_content)
+
         # Update entry
-        #util.save_entry(title, new_content)
+        util.save_entry(title, new_content)
 
         # Redirect user to entry page
-        #return HttpResponseRedirect(reverse(entry, args=[title]))
+        return HttpResponseRedirect(reverse(entry, args=[title]))
 
     # Get context through util function
     content = util.get_entry(title)
