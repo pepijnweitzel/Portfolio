@@ -140,16 +140,11 @@ def new(request):
 
 
 def edit(request, title):
-    print("------------------------------------------------")
+
     if request.method == "POST":
 
         # Get input submitted by user
-        print(request.POST)
-        print("+++++++++++++++++++++++++++++++++++++++++++++++")
-        new_content = request.POST["edit"]
-
-        # Add prefix
-        new_content = f"# {title}\n\n{new_content}"
+        new_content = f"# {title.capitalize()}\n\n{request.POST["edit"]}\n"
 
         # Update entry
         util.save_entry(title, new_content)
