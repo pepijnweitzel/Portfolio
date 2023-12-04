@@ -144,7 +144,8 @@ def edit(request, title):
     if request.method == "POST":
 
         # Get input submitted by user
-        new_content = request.POST["page_content"]
+        print(request.POST)
+        new_content = request.POST["edit"]
 
         # Add prefix
         new_content = f"# {title}\n\n{new_content}"
