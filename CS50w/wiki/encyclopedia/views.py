@@ -2,10 +2,13 @@ from django.shortcuts import render
 from django import forms
 from django.urls import reverse
 from django.http import HttpResponseRedirect
+from markdown2 import Markdown
 
 import random
 
 from . import util
+
+markdowner = Markdown()
 
 # Create class for form
 class NewPageForm(forms.Form):
@@ -61,7 +64,7 @@ def entry(request, title):
     return render(request, "encyclopedia/entry.html", {
         "title" : title,
         "titles" : [title],
-        "entry" : entry_content,
+        "entry" : markdowner.convert(entry_content),
         "random" : random_page
     })
 
