@@ -9,7 +9,8 @@
 
     <p>{{ entry }}</p>
 
-    <form>
+    <form action="{% url 'edit' %}" method="post">
+        {% csrf_token %}
         <input type="submit" value="Edit Page">
     </form>
 

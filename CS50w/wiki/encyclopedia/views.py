@@ -136,3 +136,7 @@ def new(request):
         "placeholder": "Page context",
         "random" : random_page,
     })
+
+
+def edit(request):
+    return render(request, "encyclopedia/edit.html")
