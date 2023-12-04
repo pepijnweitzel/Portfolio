@@ -6,6 +6,9 @@
 
 {% block body %}
     <h1>Edit page: {{ title }}</h1>
-    <textarea placeholder="{{ placeholder }}" style="height: 600px; width: 800px;" name="page_content">{{ context }}</textarea>
-    <br><input type="submit" value="Save changes">
+
+    <form>
+        <textarea placeholder="{{ placeholder }}" style="height: 600px; width: 800px;" name="page_content">{{ context }}</textarea>
+        <br><input type="submit" value="Save changes">
+    </form>
 {% endblock %}
