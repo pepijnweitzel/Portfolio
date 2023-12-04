@@ -147,9 +147,9 @@ def edit(request, title):
     # Get context through util function
     context = util.get_entry(title)
 
-    # Remove prefix of the context
-    characters = len(title) + 3
-    context = context[characters:]
+    # Remove prefix (and suffix if any) of the context
+    characters = len(title) + 2
+    context = context[characters:].strip()
 
     return render(request, "encyclopedia/edit.html", {
         "title" : title,
