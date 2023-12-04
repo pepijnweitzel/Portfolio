@@ -140,11 +140,12 @@ def new(request):
 
 
 def edit(request, title):
-
+    print("------------------------------------------------")
     if request.method == "POST":
 
         # Get input submitted by user
         print(request.POST)
+        print("+++++++++++++++++++++++++++++++++++++++++++++++")
         new_content = request.POST["edit"]
 
         # Add prefix
