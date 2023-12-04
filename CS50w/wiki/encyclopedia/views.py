@@ -141,6 +141,9 @@ def new(request):
 
 def edit(request, title):
 
+    if request.method == "POST":
+        pass
+
     # Get context through util function
     context = util.get_entry(title)
 
