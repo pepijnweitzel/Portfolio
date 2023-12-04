@@ -149,11 +149,10 @@ def edit(request, title):
 
     if request.method == "POST":
 
-        content = f"# {title.capitalize()}\n\n{request.POST["edit"]}\n"
-        print(content)
-        # Get input submitted by user
-        #new_content = f"# {title.capitalize()}\n\n{request.POST["edit"]}\n"
 
+        # Get input submitted by user
+        new_content = f"# {title.capitalize()}\n\n{request.POST["edit"]}\n"
+        print(new_content)
         # Update entry
         #util.save_entry(title, new_content)
 
