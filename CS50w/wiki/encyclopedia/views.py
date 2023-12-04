@@ -141,9 +141,10 @@ def new(request):
 
 def edit(request, title):
 
+    # Get context through util function
     context = util.get_entry(title)
 
     return render(request, "encyclopedia/edit.html", {
         "title" : title,
-        
+        "context" : context
     })
