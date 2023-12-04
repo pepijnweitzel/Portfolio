@@ -138,5 +138,7 @@ def new(request):
     })
 
 
-def edit(request):
-    return render(request, "encyclopedia/edit.html")
+def edit(request, title):
+    return render(request, "encyclopedia/edit.html", {
+        "title" : title
+    })
