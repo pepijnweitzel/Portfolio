@@ -149,15 +149,18 @@ def edit(request, title):
 
     if request.method == "POST":
 
+        # Make sure there is content before calling it
+        try:
+            # Get input submitted by user
+            new_content = f"# {title.capitalize()}\n\n{request.POST["edit"]}\n"
+        except KeyError:
+            pass
+        else:
+            # Update entry
+            util.save_entry(title, new_content)
 
-        # Get input submitted by user
-        new_content = f"# {title.capitalize()}\n\n{request.POST["edit"]}\n"
-
-        # Update entry
-        util.save_entry(title, new_content)
-
-        # Redirect user to entry page
-        return HttpResponseRedirect(reverse(entry, args=[title]))
+            # Redirect user to entry page
+            return HttpResponseRedirect(reverse(entry, args=[title]))
 
     # Get context through util function
     content = util.get_entry(title)
