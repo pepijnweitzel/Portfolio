@@ -5,9 +5,7 @@
 {% endblock %}
 
 {% block body %}
-    <h1>This is wiki page for {{ title }}</h1>
-
-    <p>{{ entry }}</p>
+    {{ entry }}
     {% for title in titles %}
         <form action="{% url 'edit' title %}" method="post">
             {% csrf_token %}
