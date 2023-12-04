@@ -141,16 +141,24 @@ def new(request):
 
 def edit(request, title):
 
+    # Get entries
+    entries = util.list_entries()
+
+    # Pick a random page
+    random_page = [random.choice(entries)]
+
     if request.method == "POST":
 
+        content = f"# {title.capitalize()}\n\n{request.POST["edit"]}\n"
+        print(content)
         # Get input submitted by user
-        new_content = f"# {title.capitalize()}\n\n{request.POST["edit"]}\n"
+        #new_content = f"# {title.capitalize()}\n\n{request.POST["edit"]}\n"
 
         # Update entry
-        util.save_entry(title, new_content)
+        #util.save_entry(title, new_content)
 
         # Redirect user to entry page
-        return HttpResponseRedirect(reverse(entry, args=[title]))
+        #return HttpResponseRedirect(reverse(entry, args=[title]))
 
     # Get context through util function
     content = util.get_entry(title)
@@ -161,5 +169,6 @@ def edit(request, title):
 
     return render(request, "encyclopedia/edit.html", {
         "title" : title,
-        "content" : content
+        "content" : content,
+        "random" : random_page,
     })

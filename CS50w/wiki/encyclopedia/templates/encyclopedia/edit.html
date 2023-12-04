@@ -8,6 +8,7 @@
     <h1>Edit page: {{ title }}</h1>
 
     <form method="post">
+        {% csrf_token %}
         <textarea placeholder="{{ placeholder }}" style="height: 600px; width: 800px;" name="edit">{{ content }}</textarea>
         <br><input type="submit" value="Save changes">
     </form>
