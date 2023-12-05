@@ -76,8 +76,17 @@ def register(request):
 @login_required
 def create(request):
 
+    # Check if method is POST
     if request.method == "POST":
-        pass
+
+        # Take in the data the user submitted and save it as form
+        form = NewListingForm(request.POST)
+
+        # Check if form data is valid (server-side)
+        if form.is_valid():
+
+            # Isolate the attributes from the 'cleaned' version of form data
+            page_title = form.cleaned_data["page_title"]
 
     return render(request, "auctions/create.html", {
         "form" : NewListingForm(),
