@@ -79,12 +79,8 @@ def create(request):
     # Check if method is POST
     if request.method == "POST":
 
-        print("test")
-
         # Take in the data the user submitted and save it as form
         form = NewListingForm(request.POST)
-
-        print("coming")
 
         # Check if form data is valid (server-side)
         if form.is_valid():
