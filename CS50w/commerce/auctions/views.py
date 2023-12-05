@@ -86,7 +86,11 @@ def create(request):
         if form.is_valid():
 
             # Isolate the attributes from the 'cleaned' version of form data
-            page_title = form.cleaned_data["page_title"]
+            title = form.cleaned_data["listings_title"]
+            description = form.cleaned_data["listings_description"]
+            starting_bid = form.cleaned_data["listings_starting_bid"]
+            url = form.cleaned_data["listings_url"]
+            category = form.cleaned_data["listings_category"]
 
     return render(request, "auctions/create.html", {
         "form" : NewListingForm(),
