@@ -93,6 +93,7 @@ def create(request):
             starting_bid = form.cleaned_data["listings_starting_bid"]
             url = form.cleaned_data["listings_url"]
             category = form.cleaned_data["listings_category"]
+            username = request.user
 
             # Save listing to database
             #TODO
