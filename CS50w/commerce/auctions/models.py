@@ -9,7 +9,7 @@ class Listing(models.Model):
     title = models.CharField(max_length=64)
     description = models.CharField(max_length=1024)
     starting_bid = models.IntegerField()
-    url = models.CharField(max_length=1024, default="https://cdn.vectorstock.com/i/1000x1000/79/45/product-image-default-thumbnail-icon-graphic-web-vector-49027945.webp")
+    url = models.CharField(max_length=1024, default="https://assets.pokemon.com/assets/cms2/img/pokedex/full/004.png")
     category = models.CharField(max_length=64)
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name="listings")
 
