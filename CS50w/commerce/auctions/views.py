@@ -107,5 +107,5 @@ def create(request):
     })
 
 
-def list(request, listing):
+def listing(request):
     return render(request, "auctions/listing.html")
