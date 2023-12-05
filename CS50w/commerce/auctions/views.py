@@ -4,9 +4,15 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
+from django import forms
 
 from .models import User
 
+
+# Create class for form to create listing
+class NewListingForm(forms.Form):
+    listing_title = forms.CharField(label="Listings Title")
+    
 
 def index(request):
     return render(request, "auctions/index.html")
