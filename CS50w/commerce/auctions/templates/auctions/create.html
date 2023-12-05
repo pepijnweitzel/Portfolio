@@ -6,5 +6,6 @@
     <form action="{% url 'index' %}" method="post">
         {% csrf_token %}
         {{ form }}
+        <input>
     </form>
 {% endblock %}
