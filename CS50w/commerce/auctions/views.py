@@ -92,6 +92,10 @@ def create(request):
             url = form.cleaned_data["listings_url"]
             category = form.cleaned_data["listings_category"]
 
+            print(title, description, starting_bid, url, category)
+            # Update database and sent user to index
+            return HttpResponseRedirect(reverse("index"))
+
     return render(request, "auctions/create.html", {
         "form" : NewListingForm(),
     })
