@@ -9,6 +9,8 @@
             {{ listing.title }} for ${{ listing.starting_bid }}<br>
             {% if listing.url %}
                 <img src={{listing.url}} alt="Picture of Listing"><br>
+            {% else %}
+                No Image<br>
             {% endif %}
             {{ listing.description }}
         </div>
