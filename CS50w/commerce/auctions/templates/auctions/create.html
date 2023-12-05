@@ -6,6 +6,6 @@
     <form action="{% url 'index' %}" method="post">
         {% csrf_token %}
         {{ form }}
-        <input>
+        <input type=submit value="Create Listing">
     </form>
 {% endblock %}
