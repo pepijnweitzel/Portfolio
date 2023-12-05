@@ -5,7 +5,11 @@
 
     <p>
         {% for listing in listings %}
-        <div>{{ listing.title }} for ${{ listing.starting_bid }} <img src={{listing.url}} alt="Picture of Listing"></div>
+        <div>
+            {{ listing.title }} for ${{ listing.starting_bid }} <br>
+            <img src={{listing.url}} alt="Picture of Listing">
+            {{ listing.description }}
+        </div>
         {% endfor %}
     </p>
 {% endblock %}
