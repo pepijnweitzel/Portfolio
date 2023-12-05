@@ -6,7 +6,7 @@ from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django import forms
 
-from .models import User
+from .models import User, Listing
 
 
 # Create class for form to create listing
