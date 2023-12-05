@@ -96,7 +96,7 @@ def create(request):
             username = request.user
 
             # Save listing to database
-            listing = Listing(title=title, description=description, starting_bid=starting_bid, url=url, category=category, user=username)
+            listing = Listing(title=title, description=description, starting_bid=starting_bid, url=url, category=category, owner=username)
             listing.save()
 
             # Redirect user to index page
