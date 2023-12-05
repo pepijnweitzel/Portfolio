@@ -14,5 +14,5 @@ class Listing(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name="listings")
 
     def __str__(self):
-        return f"{self.title} selling for ${self.starting_bid}."
+        return f"{self.title} selling for ${self.starting_bid}, url: {self.url}"
 
