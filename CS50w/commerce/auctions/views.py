@@ -11,11 +11,11 @@ from .models import User
 
 # Create class for form to create listing
 class NewListingForm(forms.Form):
-    listings_title = forms.CharField(label="Listings Title")
-    listings_description = forms.CharField(widget=forms.Textarea, label="Listings Description")
+    listings_title = forms.CharField(label="Listings Title", max_length=64)
+    listings_description = forms.CharField(widget=forms.Textarea, label="Listings Description", max_length=1024)
     listings_starting_bid = forms.IntegerField(label="Starting Bid")
     listings_url = forms.URLField(label="Image URL", required=False)
-    listings_category = forms.CharField(label="Listings Category", required=False)
+    listings_category = forms.CharField(label="Listings Category", required=False, max_length=64)
 
 
 def index(request):
