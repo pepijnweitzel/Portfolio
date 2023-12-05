@@ -5,11 +5,14 @@
 
     <form action="{% url 'index' %}" method="post">
         {% csrf_token %}
-        {% for field in form %}
-        <div>
-            {{ field.label }}
-        </div>
-        {% endfor %}
+        <table>
+            {% for field in form %}
+            <tr>
+                <td>{{ field.label }}</td>
+                <td>{{ field }}</td>
+            </tr>
+            {% endfor %}
+        </table>
         <input type=submit value="Create Listing">
     </form>
 {% endblock %}
