@@ -9,7 +9,7 @@ class Listing(models.Model):
     title = models.CharField(max_length=64)
     description = models.CharField(max_length=1024)
     starting_bid = models.IntegerField()
-    url = models.URLField()
+    url = models.URLField(default=)
     category = models.CharField(max_length=64)
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="listings")
 
