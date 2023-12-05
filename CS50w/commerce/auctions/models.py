@@ -11,6 +11,7 @@ class Listing(models.Model):
     starting_bid = models.IntegerField()
     url = models.URLField()
     category = models.CharField(max_length=64)
+    user = models.
 
 
     def __str__(self):
