@@ -11,7 +11,7 @@ class Listing(models.Model):
     starting_bid = models.IntegerField()
     url = models.URLField()
     category = models.CharField(max_length=64)
-    user = models.
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="listings")
 
 
     def __str__(self):
