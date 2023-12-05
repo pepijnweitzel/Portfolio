@@ -96,7 +96,8 @@ def create(request):
             username = request.user
 
             # Save listing to database
-            #TODO
+            listing = Listing(title=title, description=description, starting_bid=starting_bid, url=url, category=category, user=username)
+            listing.save()
 
             # Redirect user to index page
             return HttpResponseRedirect(reverse("index"))
