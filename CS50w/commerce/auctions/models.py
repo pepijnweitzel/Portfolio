@@ -16,3 +16,5 @@ class Listing(models.Model):
     def __str__(self):
         return f"{self.title} selling for ${self.starting_bid}, url: {self.url}"
 
+class Comment(models.Model):
+    pass
