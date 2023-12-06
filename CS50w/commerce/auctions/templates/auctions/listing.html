@@ -3,29 +3,32 @@
 {% block body %}
     <h1>Listing: {{ listing.title }}</h1>
 
-    {% if user.is_authenticated %}
-    <div>
-        <button type="button" class="btn btn-secondary">Watchlist</button>
-    </div>
-    {% endif %}
-    {% if listing.url %}
-    <div>
-        <img src={{listing.url}} alt="Picture of Listing">
-    </div>
-    {% else %}
-    <div>
-        No Image
-    </div>
-    {% endif %}
-    <div>
-        <h4>
-            {{ listing.title }}
-        </h4>
-        <h3>
-            ${{ listing.starting_bid }}.00
-        </h3>
-        <form>
-            <input type="number" placeholder="Bid">
-        </form>
+    <div style="text-align: left;">
+        {% if user.is_authenticated %}
+        <div>
+            <button type="button" class="btn btn-secondary">Watchlist</button>
+        </div>
+        {% endif %}
+        {% if listing.url %}
+        <div>
+            <img src={{listing.url}} alt="Picture of Listing">
+        </div>
+        {% else %}
+        <div>
+            No Image
+        </div>
+        {% endif %}
+        <div>
+            <h4>
+                {{ listing.title }}
+            </h4>
+            <h3>
+                ${{ listing.starting_bid }}.00
+            </h3>
+            <form>
+                <input type="number" placeholder="Bid">
+                <button type="button" class="btn btn-primary">Place Bid</button>
+            </form>
+        </div>
     </div>
 {% endblock %}
