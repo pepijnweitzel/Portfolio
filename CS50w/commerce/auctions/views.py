@@ -107,5 +107,9 @@ def create(request):
     })
 
 
-def listing(request):
-    return render(request, "auctions/listing.html")
+def listing(request, listing_id):
+
+    listing = Listing.objects.get(id=listing_id)
+    return render(request, "auctions/listing.html", {
+        "listing" : listing
+    })
