@@ -12,6 +12,7 @@ class Listing(models.Model):
     url = models.CharField(max_length=1024)
     category = models.CharField(max_length=64)
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name="listings")
+    highest_bidder = models.ForeignKey(User, on_delete=models.CASCADE, )
 
     def __str__(self):
         return f"{self.title} selling for ${self.starting_bid}, url: {self.url}"
