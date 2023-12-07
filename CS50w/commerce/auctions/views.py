@@ -114,8 +114,14 @@ def listing(request, listing_id):
 
             if request.POST["watch"]:
                 # Add to watchlist
-                #TODO
-                pass
+                # Get the user who gets listing in his watchlist
+                user = User.objects.get(username=request.user.username)
+
+                # Finding the listing based on the id
+                listing = Listing.objects.get(id=listing_id)
+
+                # Add listing to the watchlist
+                listing.watchlist.add(user)
 
         except KeyError:
 
@@ -138,8 +144,7 @@ def listing(request, listing_id):
                 listing.starting_bid = bid
 
                 # Set highest bidder to new user
-                username = request.user.username
-                user = User.objects.get(username=username)
+                user = User.objects.get(username=request.user.username)
                 listing.highest_bidder = user
 
                 # Update the listing
@@ -151,3 +156,17 @@ def listing(request, listing_id):
         "listing" : listing,
         "error" : None
     })
+
+
+@login_required
+def watch(request):
+
+    # Get the user
+    user = User.objects.get(username=request.user.username)
+
+    # Get user's listings from his watchlist if any
+    all_listings = user.watchlist.all()
+    return render(request, "auctions/watch.html", {
+        "watchlist" : all_listings
+    })
+

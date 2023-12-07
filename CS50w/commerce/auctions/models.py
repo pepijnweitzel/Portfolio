@@ -13,7 +13,7 @@ class Listing(models.Model):
     category = models.CharField(max_length=64)
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name="listings")
     highest_bidder = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
-    watchlists = models.ManyToManyField(User, blank=True, related_name="watchlists")
+    watchlist = models.ManyToManyField(User, blank=True, related_name="watchlist")
 
     def __str__(self):
         return f"{self.title} selling for ${self.starting_bid}, url: {self.url}"

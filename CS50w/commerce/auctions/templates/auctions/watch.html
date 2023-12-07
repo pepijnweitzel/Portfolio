@@ -1,0 +1,24 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <h1>Watchlist</h1>
+
+    <p>
+        {% for listing in watchlist %}
+        <a href="{% url 'listing' listing.id %}">
+            <div>
+                {{ listing.title }} for ${{ listing.starting_bid }}<br>
+                {% if listing.url %}
+                    <img src={{listing.url}} alt="Picture of Listing"><br>
+                {% else %}
+                    No Image<br>
+                {% endif %}
+                {{ listing.description }}
+            </div>
+            <hr>
+        </a>
+        {% empty %}
+        No listings in watchlist
+        {% endfor %}
+    </p>
+{% endblock %}
