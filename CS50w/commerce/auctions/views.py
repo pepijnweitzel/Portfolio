@@ -9,6 +9,7 @@ from django import forms
 from .models import User, Listing
 
 
+
 # Create class for form to create listing
 class NewListingForm(forms.Form):
     listings_title = forms.CharField(label="Listings Title", max_length=64)
@@ -16,6 +17,7 @@ class NewListingForm(forms.Form):
     listings_starting_bid = forms.IntegerField(label="Starting Bid")
     listings_url = forms.URLField(label="Image URL", required=False)
     listings_category = forms.CharField(label="Listings Category", required=False, max_length=64)
+
 
 
 def index(request):
@@ -149,7 +151,6 @@ def listing(request, listing_id):
 
                 # Update the listing
                 listing.save()
-
 
     listing = Listing.objects.get(id=listing_id)
     return render(request, "auctions/listing.html", {
