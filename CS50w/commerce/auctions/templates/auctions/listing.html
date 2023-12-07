@@ -7,7 +7,7 @@
         {% if user.is_authenticated %}
         <form actions="{% url 'listing' listing.id %}"  method="post">
             {% csrf_token %}
-            <input type="submit" class="btn btn-secondary" value="Watchlist" name="poo"></input>
+            <input type="submit" class="btn btn-secondary" value="Watchlist" name="watch"></input>
         </form>
         {% endif %}
         {% if listing.url %}
@@ -26,9 +26,10 @@
             <h3>
                 ${{ listing.starting_bid }}.00
             </h3>
-            <form>
-                <input type="number" placeholder="Bid">
-                <button type="button" class="btn btn-primary">Place Bid</button>
+            <form actions="{% url 'listing' listing.id %}"  method="post">
+                {% csrf_token %}
+                <input type="number" placeholder="Bid" name="bid">
+                <input type="submit" class="btn btn-primary" value="Place Bid"></input>
             </form>
         </div>
         <hr>

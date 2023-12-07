@@ -110,7 +110,26 @@ def create(request):
 def listing(request, listing_id):
 
     if request.method == "POST":
-        print(request.POST["poo"])
+        try:
+
+            if request.POST["watch"]:
+                # Add to watchlist
+                #TODO
+                pass
+
+        except KeyError:
+
+            if request.POST["bid"]:
+                # Update bid
+                # Get bidded value
+                bid = int(request.POST["bid"])
+
+                # Get listing object
+                listing = Listing.objects.get(id=listing_id)
+
+                # Update the value of the bid
+                listing.starting_bid = bid
+
 
     listing = Listing.objects.get(id=listing_id)
     return render(request, "auctions/listing.html", {
