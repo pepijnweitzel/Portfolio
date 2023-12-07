@@ -126,14 +126,19 @@ def listing(request, listing_id):
     if request.method == "POST":
 
         # Check if in watchlist
-        if in_watchlist:
-            
+        button_kind = "remove_watch" if in_watchlist else "watch"
+
+        # Try to do button call, if error gets raised, a bid has been placed
         try:
 
-            if request.POST["watch"]:
+            if request.POST[button_kind]:
 
-                # Add listing to the watchlist
-                listing.watchlist.add(user)
+                if in_watchlist:
+                    # Del from watchlist
+
+                else:
+                    # Add listing to the watchlist
+                    listing.watchlist.add(user)
 
         except KeyError:
 
