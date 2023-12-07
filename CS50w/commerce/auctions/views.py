@@ -135,10 +135,14 @@ def listing(request, listing_id):
 
                 if in_watchlist:
                     # Del from watchlist
+                    listing.watchlist.remove(user)
 
                 else:
                     # Add listing to the watchlist
                     listing.watchlist.add(user)
+                    
+                # Return listings page with GET request
+                return HttpResponseRedirect(reverse("listing", args=[listing.id]))
 
         except KeyError:
 
