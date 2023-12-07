@@ -132,10 +132,10 @@ def listing(request, listing_id):
 
                 # Set highest bidder to new user
                 username = request.user.username
+                user = User.objects.get(username=username)
+                listing.highest_bidder = user
 
-                print(username)
-
-                # Update value of bid
+                # Update the listing
                 listing.save()
 
 
