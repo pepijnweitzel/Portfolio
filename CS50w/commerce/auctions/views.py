@@ -19,6 +19,7 @@ class NewListingForm(forms.Form):
 
 
 def index(request):
+    
     return render(request, "auctions/index.html", {
         "listings" : Listing.objects.all()
     })
