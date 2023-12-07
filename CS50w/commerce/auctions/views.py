@@ -167,6 +167,7 @@ def watch(request):
 
     # Get user's listings from his watchlist if any
     all_listings = user.watchlist.all()
+    print(all_listings)
     return render(request, "auctions/watch.html", {
         "watchlist" : all_listings
     })
