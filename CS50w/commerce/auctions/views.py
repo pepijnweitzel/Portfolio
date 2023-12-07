@@ -110,7 +110,7 @@ def create(request):
 def listing(request, listing_id):
 
     if request.method == "POST":
-        print("test")
+        print(request.POST["poo"])
 
     listing = Listing.objects.get(id=listing_id)
     return render(request, "auctions/listing.html", {

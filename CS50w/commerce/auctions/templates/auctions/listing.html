@@ -7,7 +7,7 @@
         {% if user.is_authenticated %}
         <form actions="{% url 'listing' listing.id %}"  method="post">
             {% csrf_token %}
-            <input type="submit" class="btn btn-secondary" value="Watchlist"></input>
+            <input type="submit" class="btn btn-secondary" value="Watchlist" name="poo"></input>
         </form>
         {% endif %}
         {% if listing.url %}
