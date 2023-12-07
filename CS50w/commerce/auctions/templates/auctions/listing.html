@@ -7,7 +7,9 @@
     </div>
     {% endif %}
     <h1>Listing: {{ listing.title }}</h1>
-
+    {% if user == listing.owner %}
+    <h2>TODO: allow to close listing.</h2>
+    {% endif %}
     <div style="text-align: left;">
         {% if user.is_authenticated %}
         <form actions="{% url 'listing' listing.id %}"  method="post">
