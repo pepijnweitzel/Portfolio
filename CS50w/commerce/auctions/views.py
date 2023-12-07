@@ -114,15 +114,23 @@ def listing(request, listing_id):
     # Get listing based on id
     listing = Listing.objects.get(id=listing_id)
 
-    
+    # Get the user
+    user = User.objects.get(username=request.user.username)
+
+    # Get user's listings from his watchlist if any
+    all_listings = user.watchlist.all()
+
+    # Check if listing is in user's watchlist
+    in_watchlist = True if listing in all_listings else None
 
     if request.method == "POST":
+
+        # Check if in watchlist
+        if in_watchlist:
+            
         try:
 
             if request.POST["watch"]:
-                # Add to watchlist
-                # Get the user who gets listing in his watchlist
-                user = User.objects.get(username=request.user.username)
 
                 # Add listing to the watchlist
                 listing.watchlist.add(user)
@@ -130,7 +138,7 @@ def listing(request, listing_id):
         except KeyError:
 
             if request.POST["bid"]:
-                # Update bid
+
                 # Get bidded value
                 bid = int(request.POST["bid"])
 
@@ -138,14 +146,14 @@ def listing(request, listing_id):
                 if bid < listing.starting_bid:
                     return render(request, "auctions/listing.html", {
                         "listing" : listing,
-                        "error" : "Bid is too low !"
+                        "error" : "Bid is too low !",
+                        "in_watchlist" : in_watchlist
                     })
 
                 # Change the value of the bid
                 listing.starting_bid = bid
 
                 # Set highest bidder to new user
-                user = User.objects.get(username=request.user.username)
                 listing.highest_bidder = user
 
                 # Update the listing
@@ -153,7 +161,8 @@ def listing(request, listing_id):
 
     return render(request, "auctions/listing.html", {
         "listing" : listing,
-        "error" : None
+        "error" : None,
+        "in_watchlist" : in_watchlist
     })
 
 

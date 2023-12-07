@@ -11,7 +11,11 @@
         {% if user.is_authenticated %}
         <form actions="{% url 'listing' listing.id %}"  method="post">
             {% csrf_token %}
-            <input type="submit" class="btn btn-secondary" value="Watchlist" name="watch"></input>
+            {% if in_watchlist %}
+                <input type="submit" class="btn btn-secondary" value="Remove from watchlist" name="remove_watch"></input>
+            {% else %}
+                <input type="submit" class="btn btn-secondary" value="Watchlist" name="watch"></input>
+            {% endif %}
             {% if user == listing.owner %}
             <h2>TODO: allow to close listing.</h2>
             {% endif %}
