@@ -5,9 +5,9 @@
 
     <div style="text-align: left;">
         {% if user.is_authenticated %}
-        <div>
+        <form method="post">
             <button type="button" class="btn btn-secondary">Watchlist</button>
-        </div>
+        </form>
         {% endif %}
         {% if listing.url %}
         <div>

@@ -108,7 +108,9 @@ def create(request):
 
 
 def listing(request, listing_id):
-
+    print("ya")
+    if request.method == "POST":
+        print("test")
     listing = Listing.objects.get(id=listing_id)
     return render(request, "auctions/listing.html", {
         "listing" : listing
