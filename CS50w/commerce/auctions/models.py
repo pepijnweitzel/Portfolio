@@ -8,7 +8,7 @@ class User(AbstractUser):
 class Listing(models.Model):
     title = models.CharField(max_length=64)
     description = models.CharField(max_length=1024)
-    bid = models.IntegerField()
+    starting_bid = models.IntegerField()
     url = models.CharField(max_length=1024)
     category = models.CharField(max_length=64)
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name="listings")
