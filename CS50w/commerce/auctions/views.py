@@ -127,8 +127,11 @@ def listing(request, listing_id):
                 # Get listing object
                 listing = Listing.objects.get(id=listing_id)
 
-                # Update the value of the bid
+                # Change the local value of the bid
                 listing.starting_bid = bid
+
+                # Update value in database
+                listing.save()
 
 
     listing = Listing.objects.get(id=listing_id)
