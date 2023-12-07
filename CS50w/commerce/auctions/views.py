@@ -127,6 +127,13 @@ def listing(request, listing_id):
                 # Get listing object
                 listing = Listing.objects.get(id=listing_id)
 
+                # Check if bidding is correct value
+                if bid < listing.starting_bid:
+                    return render(request, "auctions/listing.html", {
+                        "listing" : listing
+                        "error" : "Bid is too low"
+                    })
+
                 # Change the value of the bid
                 listing.starting_bid = bid
 
@@ -142,4 +149,5 @@ def listing(request, listing_id):
     listing = Listing.objects.get(id=listing_id)
     return render(request, "auctions/listing.html", {
         "listing" : listing
+        "error" : None
     })
