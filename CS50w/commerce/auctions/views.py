@@ -131,7 +131,7 @@ def listing(request, listing_id):
                 listing.starting_bid = bid
 
                 # Set highest bidder to new user
-                
+                username = request.user.username
 
                 # Update value of bid
                 listing.save()
