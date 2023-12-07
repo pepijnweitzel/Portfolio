@@ -111,6 +111,11 @@ def create(request):
 
 def listing(request, listing_id):
 
+    # Get listing based on id
+    listing = Listing.objects.get(id=listing_id)
+
+    
+
     if request.method == "POST":
         try:
 
@@ -118,9 +123,6 @@ def listing(request, listing_id):
                 # Add to watchlist
                 # Get the user who gets listing in his watchlist
                 user = User.objects.get(username=request.user.username)
-
-                # Finding the listing based on the id
-                listing = Listing.objects.get(id=listing_id)
 
                 # Add listing to the watchlist
                 listing.watchlist.add(user)
@@ -131,9 +133,6 @@ def listing(request, listing_id):
                 # Update bid
                 # Get bidded value
                 bid = int(request.POST["bid"])
-
-                # Get listing object
-                listing = Listing.objects.get(id=listing_id)
 
                 # Check if bidding is correct value
                 if bid < listing.starting_bid:
@@ -152,7 +151,6 @@ def listing(request, listing_id):
                 # Update the listing
                 listing.save()
 
-    listing = Listing.objects.get(id=listing_id)
     return render(request, "auctions/listing.html", {
         "listing" : listing,
         "error" : None
@@ -167,7 +165,7 @@ def watch(request):
 
     # Get user's listings from his watchlist if any
     all_listings = user.watchlist.all()
-    print(all_listings)
+
     return render(request, "auctions/watch.html", {
         "watchlist" : all_listings
     })
