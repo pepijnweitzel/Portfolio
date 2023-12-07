@@ -130,6 +130,9 @@ def listing(request, listing_id):
                 # Change the value of the bid
                 listing.starting_bid = bid
 
+                # Set highest bidder to new user
+                
+
                 # Update value of bid
                 listing.save()
 
