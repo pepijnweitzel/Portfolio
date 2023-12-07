@@ -24,11 +24,11 @@
                 {{ listing.title }}
             </h4>
             <h3>
-                ${{ listing.starting_bid }}.00
+                ${{ listing.bid }}.00
             </h3>
             <form actions="{% url 'listing' listing.id %}"  method="post">
                 {% csrf_token %}
-                <input type="number" placeholder="Bid" name="bid">
+                <input type="number" placeholder="Bid" name="bid" min="{{ listing.bid }}">
                 <input type="submit" class="btn btn-primary" value="Place Bid"></input>
             </form>
         </div>

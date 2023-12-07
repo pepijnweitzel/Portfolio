@@ -13,7 +13,7 @@ from .models import User, Listing
 class NewListingForm(forms.Form):
     listings_title = forms.CharField(label="Listings Title", max_length=64)
     listings_description = forms.CharField(widget=forms.Textarea, label="Listings Description", max_length=1024)
-    listings_starting_bid = forms.IntegerField(label="Starting Bid")
+    listings_bid = forms.IntegerField(label="Starting Bid")
     listings_url = forms.URLField(label="Image URL", required=False)
     listings_category = forms.CharField(label="Listings Category", required=False, max_length=64)
 
@@ -90,13 +90,13 @@ def create(request):
             # Isolate the attributes from the 'cleaned' version of form data
             title = form.cleaned_data["listings_title"]
             description = form.cleaned_data["listings_description"]
-            starting_bid = form.cleaned_data["listings_starting_bid"]
+            bid = form.cleaned_data["listings_starting_bid"]
             url = form.cleaned_data["listings_url"]
             category = form.cleaned_data["listings_category"]
             username = request.user
 
             # Save listing to database
-            listing = Listing(title=title, description=description, starting_bid=starting_bid, url=url, category=category, owner=username)
+            listing = Listing(title=title, description=description, bid=bid, url=url, category=category, owner=username)
             listing.save()
 
             # Redirect user to index page
@@ -128,7 +128,7 @@ def listing(request, listing_id):
                 listing = Listing.objects.get(id=listing_id)
 
                 # Change the local value of the bid
-                listing.starting_bid = bid
+                listing.bid = bid
 
                 # Update value in database
                 listing.save()
