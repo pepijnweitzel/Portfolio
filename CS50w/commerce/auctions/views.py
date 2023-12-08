@@ -245,17 +245,8 @@ def categories(request):
 
 def category_option(request, option):
 
-    # Get correct option syntax
-    for category in Listing.CATEGORY_CHOICES:
-        if category[0] == option:
-            filter_category = category
-            break
-
     # Get all listings with category of that option
-    all_listings_option = Listing.objects.filter(category=filter_category)
-
-    test = Listing.objects.get(id=15)
-    print(test.category)
+    all_listings_option = Listing.objects.filter(category=option)
 
     return render(request, "auctions/category.html", {
         "option" : option,
