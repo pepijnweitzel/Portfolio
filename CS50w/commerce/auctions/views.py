@@ -154,10 +154,15 @@ def listing(request, listing_id):
 
                 # Check if bidding is correct value
                 if bid < listing.starting_bid:
+
+                    # Get all comments from listing
+                    comments = listing.location.all()
+
                     return render(request, "auctions/listing.html", {
                         "listing" : listing,
                         "error" : "Bid is too low !",
-                        "in_watchlist" : in_watchlist
+                        "in_watchlist" : in_watchlist,
+                        "comments" : comments
                     })
 
                 # Change the value of the bid
@@ -175,6 +180,8 @@ def listing(request, listing_id):
                 # Get comment
                 comment_text = request.POST["comment"]
 
+                
+
                 # Create comment and save it to database
                 comment = Comment(author=user, text=comment_text, location=listing)
                 comment.save()
@@ -186,6 +193,7 @@ def listing(request, listing_id):
         "listing" : listing,
         "error" : None,
         "in_watchlist" : in_watchlist,
+        "comments" : comments
     })
 
 

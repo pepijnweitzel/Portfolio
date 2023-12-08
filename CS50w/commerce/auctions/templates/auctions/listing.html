@@ -62,15 +62,22 @@
                     </div>
                 </div>
             <div class="col">
+                {% if user.is_authenticated %}
                 <form actions="{% url 'listing' listing.id %}" method="post">
                     {% csrf_token %}
                     <input type="text" placeholder="Comment" name="comment">
                     <input type="submit" class="btn btn-primary" value="Place Comment">
                 </form>
+                {% endif %}
+                <div>
+                    <strong>Comments:</strong>
+                </div>
                 <ul>
-                    for comment in comments
-
-                    endfor
+                    {% for comment in comments %}
+                    <li>{{ comment.author }}: {{ comment.text }}</li>
+                    {% empty %}
+                    <li>No comments have been placed</li>
+                    {% endfor %}
                 </ul>
             </div>
         </div>
