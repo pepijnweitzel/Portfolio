@@ -179,10 +179,13 @@ def listing(request, listing_id):
                 comment = Comment(author=user, text=comment_text, location=listing)
                 comment.save()
 
+    # Get all comments from listing
+    listing.
+
     return render(request, "auctions/listing.html", {
         "listing" : listing,
         "error" : None,
-        "in_watchlist" : in_watchlist
+        "in_watchlist" : in_watchlist,
     })
 
 
