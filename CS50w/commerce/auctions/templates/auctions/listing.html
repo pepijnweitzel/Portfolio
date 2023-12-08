@@ -44,7 +44,7 @@
                         <form actions="{% url 'listing' listing.id %}"  method="post">
                             {% csrf_token %}
                             <input type="number" placeholder="Bid" name="bid" min="{{ listing.starting_bid }}">
-                            <input type="submit" class="btn btn-primary" value="Place Bid"></input>
+                            <input type="submit" class="btn btn-primary" value="Place Bid">
                         </form>
                         {% endif %}
                     </div>
@@ -62,7 +62,16 @@
                     </div>
                 </div>
             <div class="col">
-                here is comment section
+                <form actions="{% url 'listing' listing.id %}" method="post">
+                    {% csrf_token %}
+                    <input type="text" placeholder="Comment" name="comment">
+                    <input type="submit" class="btn btn-primary" value="Place Comment">
+                </form>
+                <ul>
+                    for comment in comments
+
+                    endfor
+                </ul>
             </div>
         </div>
     </div>
