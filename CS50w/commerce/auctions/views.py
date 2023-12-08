@@ -244,4 +244,6 @@ def categories(request):
     })
 
 def category(request, option):
-    return render(request, "auctions/category.html")
+    return render(request, "auctions/category.html", {
+        "option" : option
+    })

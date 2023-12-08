@@ -6,9 +6,9 @@
 
         <ul>
             {% for category in categories %}
+            <li>test</li>
             <li><a href="{% url 'category' category %}">{{ Category }}</a></li>
             {% endfor %}
         </ul>
     </div>
 {% endblock %}
-<a class="nav-link" href="{% url 'index' %}">Active Listings</a>
