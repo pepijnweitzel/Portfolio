@@ -23,3 +23,6 @@ class Comment(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="comments")
     text = models.CharField(max_length=1024)
     location = models.ForeignKey(Listing, on_delete=models.CASCADE, related_name="location")
+
+class Category(models.Model):
+    pass
