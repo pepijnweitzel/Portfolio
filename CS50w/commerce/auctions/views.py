@@ -180,7 +180,7 @@ def listing(request, listing_id):
                 # Get comment
                 comment_text = request.POST["comment"]
 
-                
+                listing.location.remove(listing.location.all())
 
                 # Create comment and save it to database
                 comment = Comment(author=user, text=comment_text, location=listing)
