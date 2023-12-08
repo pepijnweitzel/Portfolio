@@ -151,46 +151,56 @@ def listing(request, listing_id):
         except KeyError:
 
             # Check if it is the owner thats on the page
-            if user:
-                if user == 
-
-            # Try to call bid via post, if error gets raised, a comment has been placed=
             try:
+                # Check if user is the owner, if so check if the owner closed the listing
+                if user != listing.owner:
+                    raise KeyError
 
-                # Get bidded value
-                bid = int(request.POST["bid"])
+                else:
+                    if request.POST["close"]:
 
-                # Check if bidding is correct value
-                if bid < listing.starting_bid:
-
-                    # Get all comments from listing
-                    comments = listing.location.all()
-
-                    return render(request, "auctions/listing.html", {
-                        "listing" : listing,
-                        "error" : "Bid is too low !",
-                        "in_watchlist" : in_watchlist,
-                        "comments" : comments
-                    })
-
-                # Change the value of the bid
-                listing.starting_bid = bid
-
-                # Set highest bidder to new user
-                listing.highest_bidder = user
-
-                # Update the listing
-                listing.save()
+                        # Close the listing
+                        pass
 
             except KeyError:
 
-                # Comment has been placed
-                # Get comment
-                comment_text = request.POST["comment"]
+                # Try to call bid via post, if error gets raised, a comment has been placed
+                try:
 
-                # Create comment and save it to database
-                comment = Comment(author=user, text=comment_text, location=listing)
-                comment.save()
+                    # Get bidded value
+                    bid = int(request.POST["bid"])
+
+                    # Check if bidding is correct value
+                    if bid < listing.starting_bid:
+
+                        # Get all comments from listing
+                        comments = listing.location.all()
+
+                        return render(request, "auctions/listing.html", {
+                            "listing" : listing,
+                            "error" : "Bid is too low !",
+                            "in_watchlist" : in_watchlist,
+                            "comments" : comments
+                        })
+
+                    # Change the value of the bid
+                    listing.starting_bid = bid
+
+                    # Set highest bidder to new user
+                    listing.highest_bidder = user
+
+                    # Update the listing
+                    listing.save()
+
+                except KeyError:
+
+                    # Comment has been placed
+                    # Get comment
+                    comment_text = request.POST["comment"]
+
+                    # Create comment and save it to database
+                    comment = Comment(author=user, text=comment_text, location=listing)
+                    comment.save()
 
     # Get all comments from listing
     comments = listing.location.all()
