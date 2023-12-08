@@ -132,7 +132,7 @@ def listing(request, listing_id):
         # Check if in watchlist
         button_kind = "remove_watch" if in_watchlist else "watch"
 
-        # Try to do button call, if error gets raised, a bid or comment has been placed
+        # Try to do button call, if error gets raised, a bid or comment has been placed or owner wants to close listing
         try:
 
             if request.POST[button_kind]:
@@ -149,6 +149,10 @@ def listing(request, listing_id):
                 return HttpResponseRedirect(reverse("listing", args=[listing.id]))
 
         except KeyError:
+
+            # Check if it is the owner thats on the page
+            if user:
+                if user == 
 
             # Try to call bid via post, if error gets raised, a comment has been placed=
             try:
