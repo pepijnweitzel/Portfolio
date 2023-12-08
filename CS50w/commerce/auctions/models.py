@@ -24,5 +24,8 @@ class Comment(models.Model):
     text = models.CharField(max_length=1024)
     location = models.ForeignKey(Listing, on_delete=models.CASCADE, related_name="location")
 
+    def __str__(self):
+        return f"{self.author} said on {self.location.title}: {self.text}"
+
 class Category(models.Model):
     name = models.CharField(max_length=64)
