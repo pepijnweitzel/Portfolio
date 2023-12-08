@@ -140,7 +140,7 @@ def listing(request, listing_id):
                 else:
                     # Add listing to the watchlist
                     listing.watchlist.add(user)
-                    
+
                 # Return listings page with GET request
                 return HttpResponseRedirect(reverse("listing", args=[listing.id]))
 
@@ -187,4 +187,3 @@ def watch(request):
     return render(request, "auctions/watch.html", {
         "watchlist" : all_listings
     })
-
