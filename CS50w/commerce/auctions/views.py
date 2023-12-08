@@ -243,11 +243,12 @@ def categories(request):
         "categories" : ["Fun", "Indoor", "Outdoor", "Computer"]
     })
 
-def category(request, option):
+def category_option(request, option):
 
     # Get all listings with category of that option
-    
+    all_listings_option = Listing.objects.filter(category=option)
 
     return render(request, "auctions/category.html", {
-        "option" : option
+        "option" : option,
+        "listings" : all_listings_option
     })

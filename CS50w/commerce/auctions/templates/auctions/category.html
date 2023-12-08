@@ -4,5 +4,26 @@
     <div>
         <h1>All Listings from {{ option }}</h1>
 
+        <div>
+            {% for listing in listings %}
+            {% if listing.closed %}
+            {% else %}
+            <a href="{% url 'listing' listing.id %}">
+                <div>
+                    {{ listing.title }} for ${{ listing.starting_bid }}<br>
+                    {% if listing.url %}
+                        <img src={{listing.url}} alt="Picture of Listing"><br>
+                    {% else %}
+                        No Image<br>
+                    {% endif %}
+                    {{ listing.description }}
+                </div>
+                <hr>
+            </a>
+            {% endif %}
+            {% empty %}
+            No current listings for category: {{ option }}
+            {% endfor %}
+        <div>
     </div>
 {% endblock %}
