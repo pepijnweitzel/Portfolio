@@ -17,3 +17,7 @@ class Listing(models.Model):
 
     def __str__(self):
         return f"{self.title} selling for ${self.starting_bid}, url: {self.url}"
+
+class Comment(models.Model):
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="comments")
+    text = models.CharField(max_length=1024)
