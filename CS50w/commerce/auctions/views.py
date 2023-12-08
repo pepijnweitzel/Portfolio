@@ -240,15 +240,22 @@ def watch(request):
 
 def categories(request):
     return render(request, "auctions/categories.html", {
-        "categories" : Listing.CATEGORY_CHOICES
+        "categories" : ["Fun", "Inside", "Outside", "Computer"]
     })
 
 def category_option(request, option):
 
-    # Get all listings with category of that option
-    all_listings_option = Listing.objects.filter(category=option)
+    # Get correct option syntax
+    for category in Listing.CATEGORY_CHOICES:
+        if category[0] == option:
+            filter_category = category
+            break
 
-    print(Listing.objects.all())
+    # Get all listings with category of that option
+    all_listings_option = Listing.objects.filter(category=filter_category)
+
+    test = Listing.objects.get(id=15)
+    print(test.category)
 
     return render(request, "auctions/category.html", {
         "option" : option,
