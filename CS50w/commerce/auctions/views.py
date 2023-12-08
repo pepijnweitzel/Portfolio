@@ -119,7 +119,7 @@ def listing(request, listing_id):
     try:
         user = User.objects.get(username=request.user.username)
     except ObjectDoesNotExist:
-        pass
+        in_watchlist = None
     else:
         # Get user's listings from his watchlist if any
         all_listings = user.watchlist.all()
