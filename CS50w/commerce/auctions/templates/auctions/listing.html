@@ -12,12 +12,12 @@
         <form actions="{% url 'listing' listing.id %}"  method="post">
             {% csrf_token %}
             {% if in_watchlist %}
-                <input type="submit" class="btn btn-secondary" value="Remove from watchlist" name="remove_watch"></input>
+                <input type="submit" class="btn btn-secondary" value="Remove from watchlist" name="remove_watch">
             {% else %}
-                <input type="submit" class="btn btn-secondary" value="Watchlist" name="watch"></input>
+                <input type="submit" class="btn btn-secondary" value="Watchlist" name="watch">
             {% endif %}
             {% if user == listing.owner %}
-            <h2>TODO: allow to close listing.</h2>
+                <input type="submit" class="btn btn-danger" value="Close Listing" name="close">
             {% endif %}
         </form>
         {% endif %}
