@@ -180,7 +180,7 @@ def listing(request, listing_id):
                 comment.save()
 
     # Get all comments from listing
-    listing.
+    comments = listing.location.all()
 
     return render(request, "auctions/listing.html", {
         "listing" : listing,
