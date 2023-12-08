@@ -7,10 +7,10 @@
     </div>
     {% endif %}
     {% if closed %}
-    <div class="alert alert-succeed" role="alert">
-        {{ listing.highest_bidder }} has won the auction!
+    <div class="alert alert-success text-center" role="alert">
+        <strong>{{ listing.highest_bidder }} has won the auction for {{ listing.title }}!</strong>
     </div>
-    {% endif %}
+    {% else %}
     <h1>Listing: {{ listing.title }}</h1>
     <div style="text-align: left;">
         {% if user.is_authenticated %}
@@ -88,4 +88,5 @@
         </div>
     </div>
     </div>
+    {% endif %}
 {% endblock %}

@@ -162,6 +162,9 @@ def listing(request, listing_id):
                         # Close the listing
                         listing.closed = True
 
+                        # Update the listing
+                        listing.save()
+
             except KeyError:
 
                 # Try to call bid via post, if error gets raised, a comment has been placed
