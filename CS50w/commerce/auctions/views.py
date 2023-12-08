@@ -114,8 +114,10 @@ def listing(request, listing_id):
     # Get listing based on id
     listing = Listing.objects.get(id=listing_id)
 
-    # Get the user
-    user = User.objects.get(username=request.user.username)
+    # Try to get the user
+    try:
+        user = User.objects.get(username=request.user.username)
+    except DoesNotExist
 
     # Get user's listings from his watchlist if any
     all_listings = user.watchlist.all()
