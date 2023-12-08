@@ -25,4 +25,4 @@ class Comment(models.Model):
     location = models.ForeignKey(Listing, on_delete=models.CASCADE, related_name="location")
 
 class Category(models.Model):
-    pass
+    name = models.CharField(max_length=64)
