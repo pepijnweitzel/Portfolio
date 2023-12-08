@@ -4,7 +4,7 @@
     <div>
         <h1>All Listings from {{ option }}</h1>
 
-        <div>
+        <p>
             {% for listing in listings %}
             {% if listing.closed %}
             {% else %}
@@ -24,6 +24,6 @@
             {% empty %}
             No current listings for category: {{ option }}
             {% endfor %}
-        <div>
+        <p>
     </div>
 {% endblock %}
