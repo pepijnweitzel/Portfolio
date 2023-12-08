@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django import forms
 from django.core.exceptions import ObjectDoesNotExist
 
-from .models import User, Listing, Comment
+from .models import User, Listing, Comment, Bid
 
 
 
@@ -173,8 +173,11 @@ def listing(request, listing_id):
                     # Get bidded value
                     bid = int(request.POST["bid"])
 
+                    # Make bid object
+                    bidding = Bid(bidder=user, value=bid, location=listing)
+
                     # Check if bidding is correct value
-                    if bid < listing.starting_bid:
+                    if bidding.value < listing.starting_bid:
 
                         # Get all comments from listing
                         comments = listing.location.all()
@@ -187,8 +190,11 @@ def listing(request, listing_id):
                             "closed" : listing.closed
                         })
 
+                    # Save bid object
+                    bidding.save()
+
                     # Change the value of the bid
-                    listing.starting_bid = bid
+                    listing.starting_bid = bidding.value
 
                     # Set highest bidder to new user
                     listing.highest_bidder = user
