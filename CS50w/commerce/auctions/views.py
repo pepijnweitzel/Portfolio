@@ -236,3 +236,7 @@ def watch(request):
     return render(request, "auctions/watch.html", {
         "watchlist" : all_listings
     })
+
+
+def categories(request):
+    return render(request, "auctions/categories.html")
