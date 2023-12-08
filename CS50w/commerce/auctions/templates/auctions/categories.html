@@ -5,9 +5,8 @@
         <h1>All Categories</h1>
 
         <ul>
-            {% for category in categories %}
-            <li>test</li>
-            <li><a href="{% url 'category' category %}">{{ Category }}</a></li>
+            {% for option in categories %}
+            <li><a href="{% url 'category' option %}">{{ option }}</a></li>
             {% endfor %}
         </ul>
     </div>

@@ -244,6 +244,10 @@ def categories(request):
     })
 
 def category(request, option):
+
+    # Get all listings with category of that option
+    
+
     return render(request, "auctions/category.html", {
         "option" : option
     })
