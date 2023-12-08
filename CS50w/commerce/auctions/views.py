@@ -6,7 +6,7 @@ from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django import forms
 
-from .models import User, Listing
+from .models import User, Listing, Comment
 
 
 
@@ -128,7 +128,7 @@ def listing(request, listing_id):
         # Check if in watchlist
         button_kind = "remove_watch" if in_watchlist else "watch"
 
-        # Try to do button call, if error gets raised, a bid has been placed
+        # Try to do button call, if error gets raised, a bid or comment has been placed
         try:
 
             if request.POST[button_kind]:
@@ -146,7 +146,8 @@ def listing(request, listing_id):
 
         except KeyError:
 
-            if request.POST["bid"]:
+            # Try to call bid via post, if error gets raised, a comment has been placed=
+            try:
 
                 # Get bidded value
                 bid = int(request.POST["bid"])
@@ -167,6 +168,16 @@ def listing(request, listing_id):
 
                 # Update the listing
                 listing.save()
+
+            except KeyError:
+
+                # Comment has been placed
+                # Get comment
+                comment_text = request.POST["comment"]
+
+                # Create comment and save it to database
+                comment = Comment(author=user, text=comment_text, location=listing)
+                comment.save()
 
     return render(request, "auctions/listing.html", {
         "listing" : listing,
