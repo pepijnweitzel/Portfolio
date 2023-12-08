@@ -160,7 +160,7 @@ def listing(request, listing_id):
                     if request.POST["close"]:
 
                         # Close the listing
-                        pass
+                        listing.closed = True
 
             except KeyError:
 
@@ -180,7 +180,8 @@ def listing(request, listing_id):
                             "listing" : listing,
                             "error" : "Bid is too low !",
                             "in_watchlist" : in_watchlist,
-                            "comments" : comments
+                            "comments" : comments,
+                            "closed" : listing.closed
                         })
 
                     # Change the value of the bid
@@ -209,7 +210,8 @@ def listing(request, listing_id):
         "listing" : listing,
         "error" : None,
         "in_watchlist" : in_watchlist,
-        "comments" : comments
+        "comments" : comments,
+        "closed" : listing.closed
     })
 
 
