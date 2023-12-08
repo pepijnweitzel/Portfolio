@@ -27,5 +27,7 @@ class Comment(models.Model):
     def __str__(self):
         return f"{self.author} said on {self.location.title}: {self.text}"
 
-class Category(models.Model):
-    name = models.CharField(max_length=64)
+class Bid(models.Model):
+    bidder = models.ForeignKey(User, on_delete=models.CASCADE)
+    value = models.IntegerField()
+    location = models.ForeignKey(Listing, on_delete=models.CASCADE, related_name="bids")
