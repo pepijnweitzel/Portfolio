@@ -5,6 +5,7 @@ from django.shortcuts import render
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django import forms
+from django.core.exceptions import ObjectDoesNotExist
 
 from .models import User, Listing, Comment
 
@@ -117,13 +118,14 @@ def listing(request, listing_id):
     # Try to get the user
     try:
         user = User.objects.get(username=request.user.username)
-    except DoesNotExist
+    except ObjectDoesNotExist:
+        pass
+    else:
+        # Get user's listings from his watchlist if any
+        all_listings = user.watchlist.all()
 
-    # Get user's listings from his watchlist if any
-    all_listings = user.watchlist.all()
-
-    # Check if listing is in user's watchlist
-    in_watchlist = True if listing in all_listings else None
+        # Check if listing is in user's watchlist
+        in_watchlist = True if listing in all_listings else None
 
     if request.method == "POST":
 
