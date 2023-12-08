@@ -5,6 +5,8 @@
 
     <p>
         {% for listing in listings %}
+        {% if listing.closed %}
+        {% else %}
         <a href="{% url 'listing' listing.id %}">
             <div>
                 {{ listing.title }} for ${{ listing.starting_bid }}<br>
@@ -17,6 +19,7 @@
             </div>
             <hr>
         </a>
+        {% endif %}
         {% endfor %}
     </p>
 {% endblock %}
