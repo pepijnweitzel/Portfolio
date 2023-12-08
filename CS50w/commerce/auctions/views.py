@@ -239,4 +239,6 @@ def watch(request):
 
 
 def categories(request):
-    return render(request, "auctions/categories.html")
+    return render(request, "auctions/categories.html", {
+        "categories" : Listing.CATEGORY_CHOICES
+    })
