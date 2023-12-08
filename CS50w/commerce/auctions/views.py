@@ -240,7 +240,7 @@ def watch(request):
 
 def categories(request):
     return render(request, "auctions/categories.html", {
-        "categories" : ["Fun", "Indoor", "Outdoor", "Computer"]
+        "categories" : Listing.CATEGORY_CHOICES
     })
 
 def category_option(request, option):
