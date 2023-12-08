@@ -17,7 +17,7 @@ class NewListingForm(forms.Form):
     listings_description = forms.CharField(widget=forms.Textarea, label="Listings Description", max_length=1024)
     listings_starting_bid = forms.IntegerField(label="Starting Bid")
     listings_url = forms.URLField(label="Image URL", required=False)
-    listings_category = forms.CharField(label="Listings Category", required=False, max_length=64)
+    listings_category = forms.CharField(label="Listings Category", , required=False, max_length=64)
 
 
 
