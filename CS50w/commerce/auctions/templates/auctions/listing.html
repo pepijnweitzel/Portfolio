@@ -21,41 +21,50 @@
             {% endif %}
         </form>
         {% endif %}
-        {% if listing.url %}
-        <div>
-            <img src={{listing.url}} alt="Picture of Listing">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    {% if listing.url %}
+                    <div>
+                        <img src={{listing.url}} alt="Picture of Listing">
+                    </div>
+                    {% else %}
+                    <div>
+                        No Image
+                    </div>
+                    {% endif %}
+                    <div>
+                        <h4>
+                            {{ listing.title }}--Highest Bidder: {{ listing.highest_bidder }}
+                        </h4>
+                        <h3>
+                            ${{ listing.starting_bid }}.00
+                        </h3>
+                        {% if user.is_authenticated %}
+                        <form actions="{% url 'listing' listing.id %}"  method="post">
+                            {% csrf_token %}
+                            <input type="number" placeholder="Bid" name="bid" min="{{ listing.starting_bid }}">
+                            <input type="submit" class="btn btn-primary" value="Place Bid"></input>
+                        </form>
+                        {% endif %}
+                    </div>
+                    <hr>
+                    <div>
+                        Details:
+                        <ul>
+                            <li>Listed by: {{ listing.owner }}</li>
+                            {% if listing.category %}
+                            <li>Category: {{ listing.category }}</li>
+                            {% else %}
+                            <li>Category: No Category Listed</li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            <div class="col">
+                here is comment section
+            </div>
         </div>
-        {% else %}
-        <div>
-            No Image
-        </div>
-        {% endif %}
-        <div>
-            <h4>
-                {{ listing.title }}--Highest Bidder: {{ listing.highest_bidder }}
-            </h4>
-            <h3>
-                ${{ listing.starting_bid }}.00
-            </h3>
-            {% if user.is_authenticated %}
-            <form actions="{% url 'listing' listing.id %}"  method="post">
-                {% csrf_token %}
-                <input type="number" placeholder="Bid" name="bid" min="{{ listing.starting_bid }}">
-                <input type="submit" class="btn btn-primary" value="Place Bid"></input>
-            </form>
-            {% endif %}
-        </div>
-        <hr>
-        <div>
-            Details:
-            <ul>
-                <li>Listed by: {{ listing.owner }}</li>
-                {% if listing.category %}
-                <li>Category: {{ listing.category }}</li>
-                {% else %}
-                <li>Category: No Category Listed</li>
-                {% endif %}
-            </ul>
-        </div>
+    </div>
     </div>
 {% endblock %}
