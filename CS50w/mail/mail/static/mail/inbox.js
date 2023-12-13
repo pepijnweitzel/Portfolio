@@ -122,6 +122,8 @@ function load_email(email) {
   document.querySelector('#email-view').style.display = 'block';
   document.querySelector('#compose-view').style.display = 'none';
 
+  document.querySelector
+
   const info = document.createElement('div');
   info.innerHTML = `<h3>From: ${email['sender']}</h3><br><h3>To: ${email['recipients']}</h3><br><h3>Subject: ${email['subject']}</h3><br><h3>Timestamp: ${email['timestamp']}</h3>`
   document.querySelector('#email-view').append(info);
