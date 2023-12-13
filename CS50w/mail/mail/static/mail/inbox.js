@@ -79,19 +79,14 @@ function load_mailbox(mailbox) {
   fetch(`/emails/${mailbox}`)
   .then(response => response.json())
   .then(emails => {
-      // Print emails
-      console.log(emails);
 
       // Create div for every email
       emails.forEach(email => {
-        console.log(email);
 
         // Create the div
         const element = document.createElement('div');
-
         // Add its content
         element.innerHTML = `${email['sender']} - ${email['subject']} - ${email['timestamp']}`;
-
         // Add its style
         if (email['read'] === false) {
           element.style.backgroundColor = 'gray';
@@ -99,12 +94,11 @@ function load_mailbox(mailbox) {
           element.style.backgroundColor = 'white';
         }
         element.style.border = "thin solid #000000";
-
         // Add event listener for accessing the email
         element.addEventListener('click', function() {
             console.log('This element has been clicked!')
         });
-
+        // Add element to the view
         document.querySelector('#emails-view').append(element);
       })
   });
