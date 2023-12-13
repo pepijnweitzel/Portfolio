@@ -128,5 +128,32 @@ function load_email(email) {
   document.querySelector('#email-view').innerHTML += `<h3>To: ${email['recipients']}</h3>`;
   document.querySelector('#email-view').innerHTML += `<h3>Subject: ${email['subject']}</h3>`;
   document.querySelector('#email-view').innerHTML += `<h3>Timestamp: ${email['timestamp']}</h3><hr>`;
+
+  // Create archrive button or unarchrive if archrived
+  const element = document.createElement('button');
+  if (email['archrived'] === false) {
+    element.innerHTML = `archive`;
+  } else{
+    element.innerHTML = `unarchive`;
+  }
+  // Add event listener for accessing the email
+  element.addEventListener('click', => {
+
+    if (email['archived'] === false) {
+      // Archive email
+      fetch('/emails/100', {
+        method: 'PUT',
+        body: JSON.stringify({
+            archived: true
+        })
+      })
+    } else{
+      // Unarchive email
+    }
+});
+
+
+
+  // Show body of email
   document.querySelector('#email-view').innerHTML += `<p>${email['body']}</p>`;
 }
