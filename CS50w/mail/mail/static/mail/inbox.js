@@ -44,6 +44,7 @@ function compose_email() {
     });
 
     // Load user's sent inbox
+    load_mailbox('sent')
   }
 }
 
