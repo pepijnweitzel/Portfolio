@@ -128,13 +128,7 @@ function load_email(email) {
   document.querySelector('#email-view').innerHTML += `<h3>Subject: ${email['subject']}</h3>`;
   document.querySelector('#email-view').innerHTML += `<h3>Timestamp: ${email['timestamp']}</h3>`;
 
-  // Create archrive button or unarchrive if archrived
-  document.querySelector('#email-view').innerHTML += `<button onclick="archiver">archive</button>`;
-
   // Show body of email
   document.querySelector('#email-view').innerHTML += `<hr><p>${email['body']}</p>`;
 }
 
-function archiver() {
-  console.log('clicked');
-}
