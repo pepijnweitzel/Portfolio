@@ -90,7 +90,7 @@ function load_mailbox(mailbox) {
         const element = document.createElement('div');
 
         // Add its content
-        element.innerHTML = 'This is the content of the div.';
+        element.innerHTML = 'sender - subject - timestamp';
 
         // Add its style
         if (email['read'] === false) {
@@ -98,7 +98,7 @@ function load_mailbox(mailbox) {
         } else {
           element.style.backgroundColor = 'white';
         }
-        element.style.border = "solid #000000";
+        element.style.border = "thin solid #000000";
 
         // Add event listener for accessing the email
         element.addEventListener('click', function() {
