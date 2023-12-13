@@ -122,11 +122,43 @@ function load_email(email) {
   document.querySelector('#email-view').style.display = 'block';
   document.querySelector('#compose-view').style.display = 'none';
 
-  const element = document.createElement('div');
-  element.innerHTML = `<h3>From: ${email['sender']}</h3><br><h3>To: ${email['recipients']}</h3><br><h3>Subject: ${email['subject']}</h3><br><h3>Timestamp: ${email['timestamp']}</h3>`
-  document.querySelector('#email-view').append(element);
+  const info = document.createElement('div');
+  info.innerHTML = `<h3>From: ${email['sender']}</h3><br><h3>To: ${email['recipients']}</h3><br><h3>Subject: ${email['subject']}</h3><br><h3>Timestamp: ${email['timestamp']}</h3>`
+  document.querySelector('#email-view').append(info);
 
   // Show body of email
   document.querySelector('#email-view').innerHTML += `<hr><p>${email['body']}</p>`;
+
+  const element = document.createElement('button');
+  if (email['archived'] === false) {
+    element.innerHTML = 'Archive';
+  } else {
+    element.innerHTML = 'Unarchive';
+  }
+  element.addEventListener('click', function() {
+    if (email['archived'] === false) {
+      console.log("archiving it");
+      // Archive email
+      fetch(`/emails/${email['id']}`, {
+        method: 'PUT',
+        body: JSON.stringify({
+            archived: true
+        })
+      })
+    } else {
+      console.log("unarchiving it");
+      // Unarchive email
+      fetch(`/emails/${email['id']}`, {
+        method: 'PUT',
+        body: JSON.stringify({
+            archived: false
+        })
+      })
+    }
+    // Load inbox
+    load_mailbox('inbox')
+  });
+  
+  document.querySelector('#email-view').append(element);
 }
 
