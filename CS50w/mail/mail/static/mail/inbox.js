@@ -49,9 +49,11 @@ function compose_email() {
         if (result['error']) {
           // Check which error it is
           if (result['error'] === 'At least one recipient required.') {
-            console.log("one recipient error")
+            // Handle One Recipient Error
+            l
           } else {
-            
+            // Handle Email Nonexistent Error
+            console.log("email does not exist error");
           }
         }
 
