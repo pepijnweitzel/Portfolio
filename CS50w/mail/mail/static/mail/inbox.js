@@ -133,6 +133,17 @@ function load_email(email, mailbox) {
   // Show body of email
   document.querySelector('#email-view').innerHTML += `<hr><p>${email['body']}</p>`;
 
+  // Add reply button
+  // Create button
+  const reply = document.createElement('button');
+  reply.innerHTML = 'Reply';
+  reply.addEventListener('click', function() {
+    // Load Compose
+    compose_email()
+  });
+  // Add button
+  document.querySelector('#email-view').append(reply);
+
   if (mailbox !== 'sent') {
     // Create button
     const element = document.createElement('button');
