@@ -83,6 +83,12 @@ function load_mailbox(mailbox) {
       console.log(emails);
 
       // ... do something else with emails ...
-      
+      emails.forEach()
+      const element = document.createElement('div');
+      element.innerHTML = 'This is the content of the div.';
+      element.addEventListener('click', function() {
+          console.log('This element has been clicked!')
+      });
+      document.querySelector('#container').append(element);
   });
 }
