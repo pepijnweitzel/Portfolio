@@ -83,5 +83,6 @@ function load_mailbox(mailbox) {
       console.log(emails);
 
       // ... do something else with emails ...
+      
   });
 }
