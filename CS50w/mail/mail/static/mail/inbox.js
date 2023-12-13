@@ -130,11 +130,7 @@ function load_email(email) {
 
   // Create archrive button or unarchrive if archrived
   const newButton = document.createElement('div');
-  if (email['archive'] === false) {
-    newButton.textContent = 'archive';
-  } else {
-    newButton.textContent = 'unarchive';
-  }
+  newButton.textContent = "test"
   newButton.addEventListener('click', function() {
     console.log("made it here");
   });
