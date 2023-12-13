@@ -42,19 +42,25 @@ function compose_email() {
     })
     .then(response => response.json())
     .then(result => {
+
         // Check for errors
         if (result['error']) {
+
           // Check which error it is
           if (result['error'] === 'At least one recipient required.') {
+
             // Handle One Recipient Error
             console.log("One recipient Error")
           } else {
+
             // Handle Email Nonexistent Error
             console.log("email does not exist error");
           }
         } else {
+
           // Everything went right
           console.log("Email POST went correct")
+          
           // Load user's sent inbox
           load_mailbox('sent');
         }
