@@ -21,7 +21,14 @@ function compose_email() {
   document.querySelector('#compose-subject').value = '';
   document.querySelector('#compose-body').value = '';
 
-  // Get acces to form of the compose email
+  // Get acces to form of the compose email on submit
+  document.querySelector('#compose-form').onsubmit = () => {
+
+  }
+
+  // Post the email
+
+  // Load user's sent inbox
 }
 
 function load_mailbox(mailbox) {
