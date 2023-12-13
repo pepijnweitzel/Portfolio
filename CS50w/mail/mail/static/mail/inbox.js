@@ -83,6 +83,8 @@ function load_mailbox(mailbox) {
       console.log(emails);
 
       // ... do something else with emails ...
-      emails.forEach()
+      emails.forEach(email => {
+        console.log(email);
+      })
   });
 }
