@@ -136,7 +136,10 @@ function load_email(email) {
   } else{
     element.innerHTML = `unarchive`;
   }
-  // Add event listener for accessing the email
+  element.style.backgroundColor = 'blue';
+  element.style.color = 'white';
+
+  // Add event listener
   element.addEventListener('click', function() {
 
     console.log("i make it here")
