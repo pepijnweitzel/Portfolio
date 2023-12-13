@@ -141,7 +141,7 @@ function load_email(email) {
 
     if (email['archived'] === false) {
       // Archive email
-      fetch('/emails/100', {
+      fetch(`/emails/${email['id']}`, {
         method: 'PUT',
         body: JSON.stringify({
             archived: true
@@ -149,7 +149,15 @@ function load_email(email) {
       })
     } else{
       // Unarchive email
+      fetch(`/emails/${email['id']}`, {
+        method: 'PUT',
+        body: JSON.stringify({
+            archived: false
+        })
+      })
     }
+
+    // Sent back to inbox
 });
 
 
