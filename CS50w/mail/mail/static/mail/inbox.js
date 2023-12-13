@@ -99,8 +99,6 @@ function load_mailbox(mailbox) {
         // Add event listener for accessing the email
         element.addEventListener('click', function() {
 
-            console.log("I'm clicked")
-
             // Mark email as read
             fetch(`/emails/${email['id']}`, {
               method: 'PUT',
@@ -127,12 +125,6 @@ function load_email(email) {
   const element = document.createElement('div');
   element.innerHTML = `<h3>From: ${email['sender']}</h3><br><h3>To: ${email['recipients']}</h3><br><h3>Subject: ${email['subject']}</h3><br><h3>Timestamp: ${email['timestamp']}</h3>`
   document.querySelector('#email-view').append(element);
-  const element2 = document.createElement('div');
-  element2.innerHTML = 'button';
-  element2.addEventListener('click', function() {
-    console.log("clicked");
-  })
-  document.querySelector('#email-view').append(element2);
 
   // Show body of email
   document.querySelector('#email-view').innerHTML += `<hr><p>${email['body']}</p>`;
