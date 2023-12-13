@@ -41,10 +41,9 @@ function compose_email() {
     .then(result => {
         // Print result
         console.log(result);
+        // Load user's sent inbox
+        load_mailbox('sent');
     });
-
-    // Load user's sent inbox
-    load_mailbox('sent')
   }
 }
 
