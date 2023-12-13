@@ -98,7 +98,6 @@ function load_mailbox(mailbox) {
         element.style.border = "thin solid #000000";
         // Add event listener for accessing the email
         element.addEventListener('click', function() {
-            console.log('This element has been clicked!')
 
             // Mark email as read
             fetch(`/emails/${email['id']}`, {
@@ -130,43 +129,7 @@ function load_email(email) {
   document.querySelector('#email-view').innerHTML += `<h3>Timestamp: ${email['timestamp']}</h3>`;
 
   // Create archrive button or unarchrive if archrived
-  const element = document.createElement('div');
-  if (email['archived'] === false) {
-    element.innerHTML = `archive`;
-  } else{
-    element.innerHTML = `unarchive`;
-  }
-  element.style.backgroundColor = 'blue';
-  element.style.color = 'white';
-
-  // Add event listener
-  element.addEventListener('click', function() {
-
-    console.log("i make it here")
-
-    if (email['archived'] === false) {
-      // Archive email
-      fetch(`/emails/${email['id']}`, {
-        method: 'PUT',
-        body: JSON.stringify({
-            archived: true
-        })
-      })
-    } else{
-      // Unarchive email
-      fetch(`/emails/${email['id']}`, {
-        method: 'PUT',
-        body: JSON.stringify({
-            archived: false
-        })
-      })
-    }
-    // Sent back to inbox
-    load_mailbox('inbox');
-  });
-
-  // Add element to the view
-  document.querySelector('#email-view').append(element);
+  
 
   // Show body of email
   document.querySelector('#email-view').innerHTML += `<hr><p>${email['body']}</p>`;
