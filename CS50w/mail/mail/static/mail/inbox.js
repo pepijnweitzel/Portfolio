@@ -127,17 +127,17 @@ function load_email(email) {
   document.querySelector('#email-view').innerHTML = `<h3>From: ${email['sender']}</h3>`;
   document.querySelector('#email-view').innerHTML += `<h3>To: ${email['recipients']}</h3>`;
   document.querySelector('#email-view').innerHTML += `<h3>Subject: ${email['subject']}</h3>`;
-  document.querySelector('#email-view').innerHTML += `<h3>Timestamp: ${email['timestamp']}</h3><hr>`;
+  document.querySelector('#email-view').innerHTML += `<h3>Timestamp: ${email['timestamp']}</h3>`;
 
   // Create archrive button or unarchrive if archrived
   const element = document.createElement('button');
-  if (email['archrived'] === false) {
+  if (email['archived'] === false) {
     element.innerHTML = `archive`;
   } else{
     element.innerHTML = `unarchive`;
   }
   // Add event listener for accessing the email
-  element.addEventListener('click', => {
+  element.addEventListener('click', () => {
 
     if (email['archived'] === false) {
       // Archive email
@@ -156,12 +156,14 @@ function load_email(email) {
         })
       })
     }
-
+    console.log("i make it here")
     // Sent back to inbox
-});
+    load_mailbox('inbox');
+  });
 
-
+  // Add element to the view
+  document.querySelector('#email-view').append(element);
 
   // Show body of email
-  document.querySelector('#email-view').innerHTML += `<p>${email['body']}</p>`;
+  document.querySelector('#email-view').innerHTML += `<hr><p>${email['body']}</p>`;
 }
