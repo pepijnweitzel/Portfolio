@@ -137,7 +137,6 @@ function load_email(email) {
   }
   element.addEventListener('click', function() {
     if (email['archived'] === false) {
-      console.log("archiving it");
       // Archive email
       fetch(`/emails/${email['id']}`, {
         method: 'PUT',
@@ -146,7 +145,6 @@ function load_email(email) {
         })
       })
     } else {
-      console.log("unarchiving it");
       // Unarchive email
       fetch(`/emails/${email['id']}`, {
         method: 'PUT',
@@ -158,7 +156,7 @@ function load_email(email) {
     // Load inbox
     load_mailbox('inbox')
   });
-  
+
   document.querySelector('#email-view').append(element);
 }
 
