@@ -90,7 +90,7 @@ function load_mailbox(mailbox) {
         const element = document.createElement('div');
 
         // Add its content
-        element.innerHTML = 'sender - subject - timestamp';
+        element.innerHTML = `${email['sender']} - ${email['subject']} - ${email['timestamp']}`;
 
         // Add its style
         if (email['read'] === false) {
