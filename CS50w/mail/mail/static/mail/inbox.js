@@ -97,6 +97,15 @@ function load_mailbox(mailbox) {
         // Add event listener for accessing the email
         element.addEventListener('click', function() {
             console.log('This element has been clicked!')
+
+            // Mark email as read
+            fetch('/emails/100', {
+              method: 'PUT',
+              body: JSON.stringify({
+                  read: true
+              })
+            })
+            
         });
         // Add element to the view
         document.querySelector('#emails-view').append(element);
