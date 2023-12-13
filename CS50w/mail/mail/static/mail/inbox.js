@@ -127,5 +127,6 @@ function load_email(email) {
   document.querySelector('#email-view').innerHTML = `<h3>From: ${email['sender']}</h3>`;
   document.querySelector('#email-view').innerHTML += `<h3>To: ${email['recipients']}</h3>`;
   document.querySelector('#email-view').innerHTML += `<h3>Subject: ${email['subject']}</h3>`;
-  document.querySelector('#email-view').innerHTML += `<h3>Timestamp: ${email['timestamp']}</h3>`;
+  document.querySelector('#email-view').innerHTML += `<h3>Timestamp: ${email['timestamp']}</h3><hr>`;
+  document.querySelector('#email-view').innerHTML += `<p>${email['body']}</p>`;
 }
