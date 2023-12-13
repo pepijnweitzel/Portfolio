@@ -48,7 +48,11 @@ function compose_email() {
         // Check for errors
         if (result['error']) {
           // Check which error it is
-          if (result['error'] === )
+          if (result['error'] === 'At least one recipient required.') {
+            console.log("one recipient error")
+          } else {
+            
+          }
         }
 
         // Load user's sent inbox
