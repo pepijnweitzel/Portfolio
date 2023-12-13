@@ -129,16 +129,16 @@ function load_email(email) {
   document.querySelector('#email-view').innerHTML += `<h3>Timestamp: ${email['timestamp']}</h3>`;
 
   // Create archrive button or unarchrive if archrived
-  const newButton = document.createElement('button');
+  const newButton = document.createElement('div');
   if (email['archive'] === false) {
     newButton.textContent = 'archive';
   } else {
     newButton.textContent = 'unarchive';
   }
-  
-
-  document.querySelector('#email-view').appendChild(newButton);
-
+  newButton.addEventListener('click', function() {
+    console.log("made it here");
+  });
+  document.querySelector('#email-view').append(newButton);
 
   // Show body of email
   document.querySelector('#email-view').innerHTML += `<hr><p>${email['body']}</p>`;
