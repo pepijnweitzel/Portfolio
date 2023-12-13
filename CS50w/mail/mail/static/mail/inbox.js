@@ -34,7 +34,7 @@ function compose_email() {
       body: JSON.stringify({
           recipients: recipients,
           subject: subject,
-          body: 
+          body: body
       })
     })
     .then(response => response.json())
