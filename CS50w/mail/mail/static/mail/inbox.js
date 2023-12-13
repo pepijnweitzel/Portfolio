@@ -126,6 +126,14 @@ function load_email(email) {
   element.innerHTML = `<h3>From: ${email['sender']}</h3><br><h3>To: ${email['recipients']}</h3><br><h3>Subject: ${email['subject']}</h3><br><h3>Timestamp: ${email['timestamp']}</h3>`
   document.querySelector('#email-view').append(element);
 
+  const button = document.createElement('button');
+  button.textContent = 'archive';
+  button.addEventListener('click', function() {
+    console.log('clicked');
+  });
+  jdocument.querySelector('#email-view').append(button);
+
+
   // Show body of email
   document.querySelector('#email-view').innerHTML += `<hr><p>${email['body']}</p>`;
 }
