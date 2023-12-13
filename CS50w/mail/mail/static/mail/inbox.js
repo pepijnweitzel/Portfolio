@@ -130,14 +130,16 @@ function load_email(email) {
   document.querySelector('#email-view').innerHTML += `<h3>Timestamp: ${email['timestamp']}</h3>`;
 
   // Create archrive button or unarchrive if archrived
-  const element = document.createElement('button');
+  const element = document.createElement('div');
   if (email['archived'] === false) {
     element.innerHTML = `archive`;
   } else{
     element.innerHTML = `unarchive`;
   }
   // Add event listener for accessing the email
-  element.addEventListener('click', () => {
+  element.addEventListener('click', function() {
+
+    console.log("i make it here")
 
     if (email['archived'] === false) {
       // Archive email
@@ -156,7 +158,6 @@ function load_email(email) {
         })
       })
     }
-    console.log("i make it here")
     // Sent back to inbox
     load_mailbox('inbox');
   });
