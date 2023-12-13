@@ -25,12 +25,26 @@ function compose_email() {
   document.querySelector('#compose-form').onsubmit = () => {
     // Get values of all forms
     const recipients = document.querySelector('#compose-recipients').value;
-    
+    const subject = document.querySelector('#compose-subject').value;
+    const body = document.querySelector('#compose-body').value;
+
+    // Post the email
+    fetch('/emails', {
+      method: 'POST',
+      body: JSON.stringify({
+          recipients: recipients,
+          subject: subject,
+          body: 
+      })
+    })
+    .then(response => response.json())
+    .then(result => {
+        // Print result
+        console.log(result);
+    });
+
+    // Load user's sent inbox
   }
-
-  // Post the email
-
-  // Load user's sent inbox
 }
 
 function load_mailbox(mailbox) {
