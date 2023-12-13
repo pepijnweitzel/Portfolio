@@ -131,7 +131,7 @@ function load_email(email) {
   button.addEventListener('click', function() {
     console.log('clicked');
   });
-  jdocument.querySelector('#email-view').append(button);
+  document.querySelector('#email-view').append(button);
 
 
   // Show body of email
