@@ -124,5 +124,8 @@ function load_email(email) {
   document.querySelector('#compose-view').style.display = 'none';
 
   // Show email info
-  document.querySelector('#email-view').innerHTML = `<h3>${email['subject']}</h3>`;
+  document.querySelector('#email-view').innerHTML = `<h3>From: ${email['sender']}</h3>`;
+  document.querySelector('#email-view').innerHTML += `<h3>To: ${email['recipiant']}</h3>`;
+  document.querySelector('#email-view').innerHTML += `<h3>Subject: ${email['subject']}</h3>`;
+  document.querySelector('#email-view').innerHTML += `<h3>Timestamp: ${email['timestamp']}</h3>`;
 }
