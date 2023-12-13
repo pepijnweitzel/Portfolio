@@ -82,14 +82,25 @@ function load_mailbox(mailbox) {
       // Print emails
       console.log(emails);
 
-      // ... do something else with emails ...
+      // Create div for every email
       emails.forEach(email => {
         console.log(email);
+
+        // Create the div
         const element = document.createElement('div');
+
+        // Add its content
         element.innerHTML = 'This is the content of the div.';
+
+        // Add its style
+        if (email['read'] === false)
+        element.style.backgroundColor = 'gray';
+
+        // Add event listener for accessing the email
         element.addEventListener('click', function() {
             console.log('This element has been clicked!')
         });
+
         document.querySelector('#emails-view').append(element);
       })
   });
