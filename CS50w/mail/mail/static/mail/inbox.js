@@ -20,6 +20,8 @@ function compose_email() {
   document.querySelector('#compose-recipients').value = '';
   document.querySelector('#compose-subject').value = '';
   document.querySelector('#compose-body').value = '';
+
+  // Get acces to form of the compose email
 }
 
 function load_mailbox(mailbox) {
