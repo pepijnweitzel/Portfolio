@@ -93,8 +93,12 @@ function load_mailbox(mailbox) {
         element.innerHTML = 'This is the content of the div.';
 
         // Add its style
-        if (email['read'] === false)
-        element.style.backgroundColor = 'gray';
+        if (email['read'] === false) {
+          element.style.backgroundColor = 'gray';
+        } else {
+          element.style.backgroundColor = 'white';
+        }
+        
 
         // Add event listener for accessing the email
         element.addEventListener('click', function() {
