@@ -17,9 +17,9 @@ function compose_email() {
   document.querySelector('#compose-view').style.display = 'block';
 
   // Clear out composition fields
-  //document.querySelector('#compose-recipients').value = '';
-  //document.querySelector('#compose-subject').value = '';
-  //document.querySelector('#compose-body').value = '';
+  document.querySelector('#compose-recipients').value = '';
+  document.querySelector('#compose-subject').value = '';
+  document.querySelector('#compose-body').value = '';
 }
 
 function load_mailbox(mailbox) {
