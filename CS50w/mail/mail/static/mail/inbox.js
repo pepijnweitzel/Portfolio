@@ -23,7 +23,8 @@ function compose_email() {
 
   // Get acces to form of the compose email on submit
   document.querySelector('#compose-form').onsubmit = () => {
-
+    // Get values of all forms
+    const recipients = 
   }
 
   // Post the email
