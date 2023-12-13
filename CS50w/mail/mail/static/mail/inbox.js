@@ -129,13 +129,12 @@ function load_email(email) {
   document.querySelector('#email-view').innerHTML += `<h3>Timestamp: ${email['timestamp']}</h3>`;
 
   // Create archrive button or unarchrive if archrived
-  const newButton = document.createElement('div');
-  newButton.textContent = "test";
-  newButton.addEventListener('click', function() {
-    console.log("made it here");
-  });
-  document.querySelector('#email-view').append(newButton);
+  document.querySelector('#email-view').innerHTML += `<button onclick="archiver">archive</button>`;
 
   // Show body of email
   document.querySelector('#email-view').innerHTML += `<hr><p>${email['body']}</p>`;
+}
+
+function archiver() {
+  console.log('clicked');
 }
