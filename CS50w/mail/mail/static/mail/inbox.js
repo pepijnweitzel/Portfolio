@@ -130,7 +130,7 @@ function load_email(email) {
 
   // Create archrive button or unarchrive if archrived
   const newButton = document.createElement('div');
-  newButton.textContent = "test"
+  newButton.textContent = "test";
   newButton.addEventListener('click', function() {
     console.log("made it here");
   });
