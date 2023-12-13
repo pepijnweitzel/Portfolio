@@ -59,8 +59,6 @@ function compose_email() {
         } else {
 
           // Everything went right
-          console.log("Email POST went correct")
-          
           // Load user's sent inbox
           load_mailbox('sent');
         }
@@ -76,4 +74,7 @@ function load_mailbox(mailbox) {
 
   // Show the mailbox name
   document.querySelector('#emails-view').innerHTML = `<h3>${mailbox.charAt(0).toUpperCase() + mailbox.slice(1)}</h3>`;
+
+  // Make get request to '/emails/<mailbox>' to request the emails for a particular mailbox.
+  
 }
