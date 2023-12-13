@@ -54,11 +54,10 @@ function compose_email() {
           }
         } else {
           // Everything went right
-          consol
+          console.log("Email POST went correct")
+          // Load user's sent inbox
+          load_mailbox('sent');
         }
-
-        // Load user's sent inbox
-        load_mailbox('sent');
     });
   });
 }
