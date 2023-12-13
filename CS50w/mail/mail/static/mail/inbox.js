@@ -108,10 +108,21 @@ function load_mailbox(mailbox) {
               })
             })
 
-
+            // Load email
+            load_email(email);
         });
         // Add element to the view
         document.querySelector('#emails-view').append(element);
       })
   });
+}
+
+function load_email(email) {
+  // Show the email and hide other views
+  document.querySelector('#emails-view').style.display = 'none';
+  document.querySelector('#email-view').style.display = 'block';
+  document.querySelector('#compose-view').style.display = 'none';
+
+  // Show email info
+  document.querySelector('#emails-view').innerHTML = `<h3>${email['']}</h3>`;
 }
