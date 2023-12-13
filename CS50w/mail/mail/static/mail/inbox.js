@@ -98,7 +98,7 @@ function load_mailbox(mailbox) {
         } else {
           element.style.backgroundColor = 'white';
         }
-        
+        element.style.border = "solid #000000";
 
         // Add event listener for accessing the email
         element.addEventListener('click', function() {
