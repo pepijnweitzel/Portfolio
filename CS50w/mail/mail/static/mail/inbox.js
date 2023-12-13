@@ -44,6 +44,13 @@ function compose_email() {
     .then(result => {
         // Print result
         console.log(result);
+
+        // Check for errors
+        if (result['error']) {
+          // Check which error it is
+          if (result['error'] === )
+        }
+
         // Load user's sent inbox
         load_mailbox('sent');
     });
