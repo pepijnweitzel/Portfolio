@@ -1,0 +1,28 @@
+{% extends "network/layout.html" %}
+{% load static %}
+
+{% block body %}
+    <div class="container container-new">
+        <div class="left-container">
+            I don't know what to put here :(
+            <br>perhaps more ads?
+            <br>or the most liked post
+            <br>or user with most followers/posts
+        </div>
+        <div id="posts-view" class="center-container">
+        </div>
+        <div class="right-container">
+            I don't know what to put here either :(
+            <br>perhaps more ads too?
+        </div>
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'network/post.js' %}"></script>
+    {% if user.is_authenticated %}
+    <script>
+        let currentUsername = "{{ user.username }}";
+    </script>
+    {% endif %}
+{% endblock %}

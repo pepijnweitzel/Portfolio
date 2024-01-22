@@ -1,0 +1,54 @@
+{% extends "network/layout.html" %}
+{% load static %}
+
+{% block head %}
+{% csrf_token %}
+{% endblock %}
+
+{% block body %}
+    <div class="container container-new">
+        <div class="left-container">
+            <h3>{{ profile_owner.username }}</h3>
+            <img id="profile-image" src="{{ profile_owner.avatar_location }}" alt="User Avatar">
+            {% if user.is_authenticated %}
+            {% if user != profile_owner %}
+            <br><button id="follow-button">{{ following_status }}</button>
+            {% endif %}
+            {% endif %}
+            <p id="email">{{ profile_owner.email }}</p>
+            <div class="follow-info">
+                <div>Followers</div>
+                <div id="follower-count">{{ followers }}</div>
+                <div>Following</div>
+                <div id="following-count">{{ followings }}</div> 
+            </div>
+        </div>
+        <div id="posts-view" class="center-container">
+        </div>
+        <div class="right-container">
+            {% if user == profile_owner %}
+            <form method="post">
+                {% csrf_token %}
+                <label for="title">New username:</label>
+                <input id="new_username" type ="text" name="new_username" maxlength="20">
+                <label for="content">New email:</label>
+                <input id="new_email" type="email" name="new_email" maxlength="40">
+                <br>
+                <button type="submit">Change</button>
+            </form>
+            {% else %}
+            <h1>ADS</h1>
+            <h5>or something else</h5>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'network/post.js' %}"></script>
+    {% if user.is_authenticated %}
+    <script>
+        let currentUsername = "{{ user.username }}";
+    </script>
+    {% endif %}
+{% endblock %}

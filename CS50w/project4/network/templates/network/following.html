@@ -1,0 +1,46 @@
+{% extends "network/layout.html" %}
+{% load static %}
+
+{% block body %}
+<div class="container container-new">
+    <div class="left-container">
+        <h2>Twotters you might like</h2>
+        {% for random_user in randoms %}
+        <a href="{% url 'profile' random_user.username %}">
+            <div class="following_users">
+                <img src="{{random_user.avatar_location}}" alt="User Avatar">
+                <strong>@{{ random_user.username }}</strong>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+    <div id="posts-view" class="center-container">
+    </div>
+    <div class="right-container">
+        <h2>
+            TWOTTERS you follow
+        </h2>
+        {% for following in followings %}
+        <a href="{% url 'profile' following.username %}">
+            <div class="following_users">
+                <img src="{{following.avatar_location}}" alt="User Avatar">
+                <strong>@{{ following.username }}</strong>
+            </div>
+        </a>
+        {% empty %}
+        <div>
+            You currently follow 0 Twotters
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'network/post.js' %}"></script>
+    {% if user.is_authenticated %}
+    <script>
+        let currentUsername = "{{ user.username }}";
+    </script>
+    {% endif %}
+{% endblock %}
